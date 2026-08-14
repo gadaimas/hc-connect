@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HC Connect - PT Gadai MAS Nusantara</title>
+    
+    <!-- Google Fonts Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- RESET & GLOBAL STYLES --- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        body {
+            background-color: #0b1329; /* Background Gelap Elegan */
+            color: #f8fafc;
+            line-height: 1.6;
+            overflow-x: hidden;
+            display: block; /* Memastikan tata letak mengalir vertikal dari atas ke bawah */
+            width: 100%;
+        }
+
+        /* --- 1. NAVBAR --- */
+        nav {
+            background-color: #0f172a;
+            padding: 18px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #1e293b;
+            width: 100%;
+        }
+
+        .nav-logo {
+            font-size: 1.4rem;
+            font-weight: 900;
+            color: #ffffff;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .nav-item {
+            color: #94a3b8;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.3s;
+        }
+
+        .nav-item:hover, .nav-item.active {
+            color: #f59e0b;
+        }
+
+        .btn-contact {
+            background-color: #ffffff;
+            color: #0f172a;
+            padding: 8px 22px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-contact:hover {
+            background-color: #f59e0b;
+            color: #0f172a;
+            transform: translateY(-2px);
+        }
+
+        /* --- 2. HERO / LANDING SECTION --- */
+        .hero-wrapper {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            padding: 60px 8% 80px 8%;
+            width: 100%;
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: #f8fafc;
+            border-radius: 24px;
+            padding: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+            color: #0f172a;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-text {
+            flex: 1;
+            max-width: 600px;
+        }
+
+        .hero-title {
+            font-size: 2.8rem;
+            font-weight: 900;
+            color: #0f2b48;
+            line-height: 1.2;
+            margin-bottom: 8px;
+        }
+
+        .hero-subtitle-brand {
+            color: #d97706;
+            font-weight: 800;
+            font-size: 1.25rem;
+            margin-bottom: 16px;
+            letter-spacing: 0.5px;
+        }
+
+        .hero-desc {
+            color: #475569;
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 28px;
+        }
+
+        .btn-explore {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background-color: #0f2b48;
+            color: #ffffff;
+            padding: 14px 28px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-explore:hover {
+            background-color: #1e40af;
+            transform: translateY(-2px);
+        }
+
+        .btn-explore .arrow {
+            background-color: #f59e0b;
+            color: #0f2b48;
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .hero-media {
+            flex: 1;
+            max-width: 420px;
+            text-align: center;
+        }
+
+        .hero-media img {
+            width: 100%;
+            height: auto;
+            border-radius: 16px;
+        }
+
+        /* --- 3. QUICK ACCESS SECTION --- */
+        .quick-access-section {
+            padding: 70px 8%;
+            width: 100%;
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            margin-bottom: 35px;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #ffffff;
+            border-left: 5px solid #f59e0b;
+            padding-left: 14px;
+        }
+
+        /* GRID KARTU (Berjejer Kesamping) */
+        .qa-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .qa-card {
+            border-radius: 28px;
+            padding: 35px 28px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 340px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+        }
+
+        .qa-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 30px rgba(0,0,0,0.4);
+        }
+
+        .card-dark {
+            background-color: #0f1c2e;
+            color: #ffffff;
+            border: 1px solid #1e293b;
+        }
+
+        .card-gold {
+            background-color: #f59e0b;
+            color: #0f2b48;
+        }
+
+        .card-icon {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: 800;
+            line-height: 1.25;
+            margin-bottom: 12px;
+        }
+
+        .card-desc {
+            font-size: 0.9rem;
+            opacity: 0.85;
+            margin-bottom: 30px;
+            line-height: 1.5;
+        }
+
+        .btn-learn {
+            background-color: #ffffff;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            cursor: pointer;
+            width: fit-content;
+            color: #0f2b48;
+            transition: all 0.3s ease;
+        }
+
+        .qa-card:hover .btn-learn {
+            background-color: #0f2b48;
+            color: #ffffff;
+        }
+
+        /* --- 4. CONTENT SECTIONS --- */
+        .main-container {
+            max-width: 1280px;
+            margin: 0 auto 60px auto;
+            padding: 0 8%;
+            width: 100%;
+        }
+
+        .card-box {
+            background-color: #ffffff;
+            color: #0f172a;
+            border-radius: 20px;
+            padding: 32px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        .card-box .section-title {
+            color: #0f2b48;
+            margin-bottom: 8px;
+        }
+
+        /* FORM & TABEL */
+        .aspirasi-form {
+            display: flex;
+            gap: 12px;
+            margin: 20px 0 25px 0;
+            flex-wrap: wrap;
+        }
+
+        .aspirasi-form input {
+            flex: 1;
+            min-width: 220px;
+            padding: 12px 16px;
+            border: 1px solid #cbd5e1;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            outline: none;
+        }
+
+        .aspirasi-form input:focus {
+            border-color: #f59e0b;
+        }
+
+        .btn-submit {
+            background-color: #f59e0b;
+            color: #0f2b48;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 10px;
+            font-weight: 800;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .btn-submit:hover {
+            background-color: #d97706;
+            color: #ffffff;
+        }
+
+        .status-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .status-table th, .status-table td {
+            padding: 14px 16px;
+            text-align: left;
+            border-bottom: 1px solid #f1f5f9;
+            font-size: 0.9rem;
+        }
+
+        .status-table th {
+            background-color: #f8fafc;
+            color: #0f2b48;
+            font-weight: 700;
+        }
+
+        .badge {
+            padding: 5px 12px;
+            border-radius: 12px;
+            font-size: 0.78rem;
+            font-weight: 700;
+        }
+        .badge-pending { background-color: #fef08a; color: #854d0e; }
+        .badge-process { background-color: #bfdbfe; color: #1e40af; }
+        .badge-done { background-color: #bbf7d0; color: #166534; }
+
+        .two-col-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+        }
+
+        /* --- 5. FOOTER --- */
+        footer {
+            text-align: center;
+            padding: 30px 5%;
+            background-color: #070d19;
+            color: #64748b;
+            font-size: 0.85rem;
+            border-top: 1px solid #1e293b;
+            width: 100%;
+        }
+
+        /* RESPONSIVE DESIGN */
+        @media (max-width: 900px) {
+            .hero-container {
+                flex-direction: column;
+                text-align: center;
+                padding: 30px;
+            }
+            .hero-text { max-width: 100%; }
+            .btn-explore { justify-content: center; }
+            .two-col-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 1. NAVBAR -->
+    <nav>
+        <div class="nav-logo">HC CONNECT</div>
+        <div class="nav-links">
+            <a href="#" class="nav-item active">
+                <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+                </svg>
+                Home
+            </a>
+            <a href="#contact" class="btn-contact">Contact</a>
+        </div>
+    </nav>
+
+    <!-- 2. HERO / LANDING SECTION (DI SINI LOKASI TEKS SAMBUTAN & GAMBARNYA) -->
+    <div class="hero-wrapper">
+        <div class="hero-container">
+            <div class="hero-text">
+                <h1 class="hero-title">Selamat datang di HC Connect</h1>
+                <p class="hero-subtitle-brand">PT Gadai MAS Nusantara</p>
+                <p class="hero-desc">Portal Resmi Divisi Human Capital Business Partner (HCBP) untuk Akses Kebijakan, SOP, Layanan Administrasi, dan Aspirasi Karyawan.</p>
+                
+                <a href="#quick-access" class="btn-explore">
+                    Jelajahi HC Connect
+                    <span class="arrow">&gt;</span>
+                </a>
+            </div>
+            <div class="hero-media">
+                <img src="https://img.freepik.com/free-vector/corporate-culture-hands-together-business-people_74855-5209.jpg" alt="HC Connect Teamwork PT Gadai MAS Nusantara">
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. QUICK ACCESS SERVICES -->
+    <section class="quick-access-section" id="quick-access">
+        <div class="section-header">
+            <h2 class="section-title">Quick Access Services</h2>
+        </div>
+        
+        <div class="qa-grid">
+            <!-- Card 1 -->
+            <div class="qa-card card-dark" onclick="scrollToSection('employee-voice-section')">
+                <div>
+                    <div class="card-icon">🗣️</div>
+                    <h3 class="card-title">Employee<br>Voice</h3>
+                    <p class="card-desc">Sampaikan pendapat, ide, dan aspirasi Anda untuk kemajuan bersama.</p>
+                </div>
+                <button class="btn-learn">Learn More</button>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="qa-card card-gold">
+                <div>
+                    <div class="card-icon">📋</div>
+                    <h3 class="card-title">Form<br>Administrasi</h3>
+                    <p class="card-desc">Pengajuan & Layanan Administrasi HC secara cepat dan terintegrasi.</p>
+                </div>
+                <button class="btn-learn">Learn More</button>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="qa-card card-dark">
+                <div>
+                    <div class="card-icon">📊</div>
+                    <h3 class="card-title">Dashboard<br>& Report</h3>
+                    <p class="card-desc">Akses data dan insight performa serta operasional karyawan.</p>
+                </div>
+                <button class="btn-learn">Learn More</button>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="qa-card card-gold">
+                <div>
+                    <div class="card-icon">📚</div>
+                    <h3 class="card-title">SOP &<br>Policy</h3>
+                    <p class="card-desc">Pusat Kebijakan dan Panduan Prosedur Operasional Perusahaan.</p>
+                </div>
+                <button class="btn-learn">Learn More</button>
+            </div>
+
+            <!-- Card 5 -->
+            <div class="qa-card card-dark">
+                <div>
+                    <div class="card-icon">🎓</div>
+                    <h3 class="card-title">Learning &<br>Development</h3>
+                    <p class="card-desc">Tingkatkan kompetensi dan kembangkan karier profesional Anda.</p>
+                </div>
+                <button class="btn-learn">Learn More</button>
+            </div>
+
+            <!-- Card 6 -->
+            <div class="qa-card card-gold">
+                <div>
+                    <div class="card-icon">💡</div>
+                    <h3 class="card-title">Knowledge<br>Center</h3>
+                    <p class="card-desc">Berbagi ilmu, pengalaman, dan berkembang bersama seluruh tim.</p>
+                </div>
+                <button class="btn-learn">Learn More</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. CONTENT CONTAINER (Tabel & Pengumuman) -->
+    <div class="main-container" id="employee-voice-section">
+        <div class="card-box">
+            <h2 class="section-title">Status Pengajuan Employee Voice</h2>
+            <p style="font-size: 0.9rem; color: #64748b;">Pantau status ide dan aspirasi yang telah dikirimkan:</p>
+
+            <form class="aspirasi-form" onsubmit="tambahAspirasi(event)">
+                <input type="text" id="namaKaryawan" placeholder="Nama Anda" required>
+                <input type="text" id="isiAspirasi" placeholder="Tuliskan Ide / Aspirasi Anda..." required>
+                <button type="submit" class="btn-submit">+ Kirim Aspirasi</button>
+            </form>
+
+            <table class="status-table">
+                <thead>
+                    <tr>
+                        <th>Nama Karyawan</th>
+                        <th>Gagasan / Aspirasi</th>
+                        <th>Tanggal Submit</th>
+                        <th>Status Proses</th>
+                    </tr>
+                </thead>
+                <tbody id="tabelStatusBody">
+                    <tr>
+                        <td>Budi Santoso (BSD)</td>
+                        <td>Usulan penambahan AC di ruang pelayanan nasabah</td>
+                        <td>12 Aug 2026</td>
+                        <td><span class="badge badge-done">Selesai (Disetujui)</span></td>
+                    </tr>
+                    <tr>
+                        <td>Siti Rahma (HQ)</td>
+                        <td>Pembaruan modul training SOP Gadai Emas 2026</td>
+                        <td>13 Aug 2026</td>
+                        <td><span class="badge badge-process">Dalam Review</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- TWO COLUMNS -->
+        <div class="two-col-grid">
+            <div class="card-box" style="margin-bottom:0;">
+                <h2 class="section-title">Pengumuman Terkini</h2>
+                <div style="margin-top: 15px;">
+                    <h4 style="color:#0f2b48;">Pembaruan Jam Operasional Kantor</h4>
+                    <span style="font-size: 0.8rem; color:#64748b;">11 Agustus 2026</span>
+                </div>
+                <hr style="margin: 12px 0; border:0; border-top:1px solid #f1f5f9;">
+                <div>
+                    <h4 style="color:#0f2b48;">Sosialisasi Asuransi Kesehatan Baru</h4>
+                    <span style="font-size: 0.8rem; color:#64748b;">08 Agustus 2026</span>
+                </div>
+            </div>
+
+            <div class="card-box" style="margin-bottom:0;">
+                <h2 class="section-title">Upcoming Event</h2>
+                <ul style="list-style: none; margin-top: 15px;">
+                    <li style="display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px dashed #e2e8f0;">
+                        <span><strong>Townhall Meeting Q3</strong></span>
+                        <span style="color: #d97706; font-weight: bold;">13 Aug</span>
+                    </li>
+                    <li style="display: flex; justify-content: space-between; padding: 10px 0;">
+                        <span><strong>Training: Risk Management</strong></span>
+                        <span style="color: #d97706; font-weight: bold;">18 Aug</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- 5. FOOTER -->
+    <footer>
+        <p>&copy; 2026 PT Gadai MAS Nusantara - Divisi Human Capital Business Partner (HCBP).</p>
+    </footer>
+
+    <script>
+        function scrollToSection(sectionId) {
+            document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function tambahAspirasi(event) {
+            event.preventDefault();
+            var nama = document.getElementById('namaKaryawan').value;
+            var aspirasi = document.getElementById('isiAspirasi').value;
+            var today = new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
+
+            var tbody = document.getElementById('tabelStatusBody');
+            var newRow = document.createElement('tr');
+            newRow.innerHTML = `
+                <td>${nama}</td>
+                <td>${aspirasi}</td>
+                <td>${today}</td>
+                <td><span class="badge badge-pending">Menunggu Antrean</span></td>
+            `;
+
+            tbody.insertBefore(newRow, tbody.firstChild);
+            document.getElementById('namaKaryawan').value = '';
+            document.getElementById('isiAspirasi').value = '';
+            alert('Aspirasi berhasil dikirim!');
+        }
+    </script>
+</body>
+</html>
