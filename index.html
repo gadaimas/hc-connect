@@ -5,11 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HC Connect - PT Gadai MAS Nusantara</title>
     
-    <!-- Google Fonts Inter -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Google Fonts Inter & Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800;900&display=swap" rel="stylesheet">
 
     <style>
-        /* --- RESET & GLOBAL STYLES --- */
+        /* --- 1. RESET & GLOBAL VARIABLES --- */
+        :root {
+            --bg-main: #0a0f1d;
+            --bg-card: rgba(18, 26, 47, 0.75);
+            --bg-card-hover: rgba(28, 39, 68, 0.85);
+            --accent-gold: #f59e0b;
+            --accent-gold-glow: rgba(245, 158, 11, 0.35);
+            --accent-blue: #3b82f6;
+            --accent-blue-glow: rgba(59, 130, 246, 0.35);
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border-glow: rgba(255, 255, 255, 0.1);
+            --gradient-card-gold: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            --gradient-card-dark: linear-gradient(135deg, rgba(30, 41, 59, 0.8) 0%, rgba(15, 23, 42, 0.9) 100%);
+        }
+
         * {
             box-sizing: border-box;
             margin: 0;
@@ -19,60 +34,72 @@
         }
 
         body {
-            background-color: #0b1329;
-            color: #f8fafc;
+            background-color: var(--bg-main);
+            color: var(--text-main);
             line-height: 1.6;
             overflow-x: hidden;
             width: 100%;
+            /* Latar Belakang Mesh Gradient & Grid pattern */
+            background-image: 
+                radial-gradient(at 10% 10%, rgba(59, 130, 246, 0.15) 0px, transparent 50%),
+                radial-gradient(at 90% 20%, rgba(245, 158, 11, 0.12) 0px, transparent 50%),
+                radial-gradient(at 50% 80%, rgba(99, 102, 241, 0.12) 0px, transparent 50%);
+            background-attachment: fixed;
         }
 
-        /* --- KEYFRAMES & ANIMATIONS --- */
+        h1, h2, h3, .nav-logo {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* --- 2. KEYFRAMES ANIMATIONS --- */
         @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-20px); }
+            from { opacity: 0; transform: translateY(-30px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
         @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
+            from { opacity: 0; transform: translateY(40px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
         @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0px); }
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-12px) rotate(1deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
         }
 
-        @keyframes pulseGlow {
-            0% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.4); }
-            70% { box-shadow: 0 0 0 12px rgba(245, 158, 11, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0); }
+        @keyframes glowPulse {
+            0% { box-shadow: 0 0 15px rgba(245, 158, 11, 0.2); }
+            50% { box-shadow: 0 0 30px rgba(245, 158, 11, 0.5); }
+            100% { box-shadow: 0 0 15px rgba(245, 158, 11, 0.2); }
         }
 
-        /* --- 1. NAVBAR --- */
+        /* --- 3. NAVBAR --- */
         nav {
-            background-color: rgba(15, 23, 42, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 18px 8%;
+            background: rgba(10, 15, 29, 0.75);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            padding: 16px 8%;
             display: flex;
             justify-content: space-between;
             align-items: center;
             position: sticky;
             top: 0;
             z-index: 1000;
-            border-bottom: 1px solid #1e293b;
-            width: 100%;
+            border-bottom: 1px solid var(--border-glow);
             animation: fadeInDown 0.8s ease-out;
         }
 
         .nav-logo {
-            font-size: 1.4rem;
-            font-weight: 900;
-            color: #ffffff;
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: linear-gradient(90deg, #ffffff 0%, var(--accent-gold) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
             letter-spacing: 0.5px;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
         }
 
         .nav-links {
@@ -82,7 +109,7 @@
         }
 
         .nav-item {
-            color: #94a3b8;
+            color: var(--text-muted);
             text-decoration: none;
             font-size: 0.95rem;
             font-weight: 600;
@@ -93,57 +120,74 @@
         }
 
         .nav-item:hover, .nav-item.active {
-            color: #f59e0b;
+            color: var(--accent-gold);
             transform: translateY(-2px);
         }
 
         .btn-contact {
-            background-color: #ffffff;
+            background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 100%);
             color: #0f172a;
-            padding: 8px 22px;
-            border-radius: 20px;
+            padding: 9px 24px;
+            border-radius: 30px;
             text-decoration: none;
             font-weight: 700;
             font-size: 0.9rem;
             transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
         }
 
         .btn-contact:hover {
-            background-color: #f59e0b;
+            background: var(--accent-gold);
             color: #0f172a;
-            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
-            transform: translateY(-2px);
+            box-shadow: 0 0 20px var(--accent-gold-glow);
+            transform: translateY(-2px) scale(1.03);
         }
 
-        /* --- 2. HERO / LANDING SECTION --- */
+        /* --- 4. HERO SECTION --- */
         .hero-wrapper {
-            background: radial-gradient(circle at top right, #1e293b 0%, #0f172a 100%);
-            padding: 40px 5% 50px 5%;
+            padding: 50px 5% 40px 5%;
             width: 100%;
         }
 
         .hero-container {
             max-width: 1300px;
             margin: 0 auto;
-            background-color: #f8fafc;
-            border-radius: 24px;
-            padding: 45px 50px;
+            background: rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(20px);
+            border-radius: 28px;
+            padding: 50px 60px;
             display: flex;
             align-items: center;
             justify-content: space-between;
             gap: 40px;
             color: #0f172a;
-            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.5), inset 0 0 0 1px rgba(255, 255, 255, 0.6);
             animation: fadeInUp 0.8s ease-out;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Accent glow effect inside hero */
+        .hero-container::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -10%;
+            width: 300px;
+            height: 300px;
+            background: rgba(245, 158, 11, 0.15);
+            filter: blur(80px);
+            border-radius: 50%;
+            pointer-events: none;
         }
 
         .hero-text {
             flex: 1.3;
+            z-index: 2;
         }
 
-        /* Satu baris untuk tulisan Selamat Datang di HC CONNECT */
         .hero-title {
-            font-size: 2.2rem;
+            font-size: 2.3rem;
             font-weight: 900;
             color: #0f2b48;
             line-height: 1.2;
@@ -154,42 +198,45 @@
         .hero-subtitle-brand {
             color: #d97706;
             font-weight: 800;
-            font-size: 1.15rem;
+            font-size: 1.2rem;
             margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
         .hero-desc {
             color: #475569;
-            font-size: 0.98rem;
+            font-size: 1rem;
             line-height: 1.6;
-            margin-bottom: 24px;
+            margin-bottom: 28px;
         }
 
         .btn-explore {
             display: inline-flex;
             align-items: center;
-            gap: 12px;
-            background-color: #0f2b48;
+            gap: 14px;
+            background: linear-gradient(135deg, #0f2b48 0%, #1e40af 100%);
             color: #ffffff;
-            padding: 12px 26px;
+            padding: 14px 30px;
             border-radius: 30px;
             text-decoration: none;
             font-weight: 700;
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
+            font-size: 0.95rem;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 10px 25px rgba(15, 43, 72, 0.25);
         }
 
         .btn-explore:hover {
-            background-color: #1e40af;
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(15, 43, 72, 0.3);
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(30, 64, 175, 0.35);
         }
 
         .btn-explore .arrow {
-            background-color: #f59e0b;
+            background-color: var(--accent-gold);
             color: #0f2b48;
-            width: 24px;
-            height: 24px;
+            width: 28px;
+            height: 28px;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -199,25 +246,26 @@
         }
 
         .btn-explore:hover .arrow {
-            transform: translateX(4px);
+            transform: translateX(5px);
         }
 
         .hero-media {
             flex: 0.9;
             text-align: center;
-            animation: float 5s ease-in-out infinite;
+            z-index: 2;
+            animation: float 6s ease-in-out infinite;
         }
 
         .hero-media img {
             width: 100%;
-            max-width: 360px;
+            max-width: 380px;
             height: auto;
-            border-radius: 16px;
+            filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.15));
         }
 
-        /* --- 3. QUICK ACCESS SECTION (4 CARDS SEJAJAR 1 BARIS) --- */
+        /* --- 5. QUICK ACCESS SECTION (GLASSMORPHISM & GLOW CARDS) --- */
         .quick-access-section {
-            padding: 50px 5%;
+            padding: 40px 5%;
             width: 100%;
             max-width: 1350px;
             margin: 0 auto;
@@ -231,65 +279,92 @@
             font-size: 1.8rem;
             font-weight: 800;
             color: #ffffff;
-            border-left: 5px solid #f59e0b;
-            padding-left: 14px;
+            border-left: 5px solid var(--accent-gold);
+            padding-left: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
         }
 
-        /* Grid sejajar 4 kolom presisi */
         .qa-grid-4 {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
+            gap: 22px;
         }
 
         .qa-card {
-            border-radius: 20px;
-            padding: 28px 20px;
+            border-radius: 24px;
+            padding: 30px 22px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            min-height: 390px;
+            min-height: 410px;
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
         }
 
-        .qa-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 35px rgba(0,0,0,0.5);
-        }
-
+        /* Glassmorphic Dark Card */
         .card-dark {
-            background-color: #0f1c2e;
+            background: var(--gradient-card-dark);
             color: #ffffff;
-            border: 1px solid #1e293b;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
         }
 
+        .card-dark:hover {
+            border-color: rgba(59, 130, 246, 0.5);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 25px var(--accent-blue-glow);
+            transform: translateY(-10px);
+        }
+
+        /* Glassmorphic Gold/Accent Card */
         .card-gold {
-            background-color: #f59e0b;
-            color: #0f2b48;
+            background: linear-gradient(135deg, #f59e0b 0%, #b45309 100%);
+            color: #ffffff;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 15px 35px rgba(245, 158, 11, 0.2);
+        }
+
+        .card-gold:hover {
+            border-color: rgba(255, 255, 255, 0.4);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 30px var(--accent-gold-glow);
+            transform: translateY(-10px);
         }
 
         .card-icon {
-            font-size: 2.2rem;
-            margin-bottom: 14px;
+            font-size: 2.5rem;
+            margin-bottom: 16px;
             display: inline-block;
-            transition: transform 0.3s ease;
+            background: rgba(255, 255, 255, 0.1);
+            width: 60px;
+            height: 60px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(5px);
+            transition: transform 0.4s ease;
         }
 
         .qa-card:hover .card-icon {
-            transform: scale(1.15) rotate(5deg);
+            transform: scale(1.15) rotate(6deg);
+            background: rgba(255, 255, 255, 0.2);
         }
 
         .card-title {
-            font-size: 1.25rem;
+            font-size: 1.3rem;
             font-weight: 800;
             line-height: 1.3;
             margin-bottom: 10px;
         }
 
         .card-desc {
-            font-size: 0.84rem;
-            opacity: 0.88;
-            margin-bottom: 20px;
+            font-size: 0.86rem;
+            opacity: 0.9;
+            margin-bottom: 24px;
             line-height: 1.5;
         }
 
@@ -304,10 +379,10 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 10px 14px;
-            border-radius: 12px;
+            padding: 12px 16px;
+            border-radius: 14px;
             font-weight: 700;
-            font-size: 0.8rem;
+            font-size: 0.82rem;
             text-decoration: none;
             transition: all 0.3s ease;
             cursor: pointer;
@@ -317,55 +392,63 @@
         }
 
         .card-dark .btn-sub {
-            background-color: #1e293b;
+            background: rgba(255, 255, 255, 0.06);
             color: #ffffff;
-            border: 1px solid #334155;
+            border: 1px solid rgba(255, 255, 255, 0.08);
         }
+
         .card-dark .btn-sub:hover {
-            background-color: #f59e0b;
+            background: var(--accent-gold);
             color: #0f2b48;
-            border-color: #f59e0b;
-            transform: translateX(4px);
+            border-color: var(--accent-gold);
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px var(--accent-gold-glow);
         }
 
         .card-gold .btn-sub {
-            background-color: #0f2b48;
+            background: rgba(15, 43, 72, 0.85);
             color: #ffffff;
-        }
-        .card-gold .btn-sub:hover {
-            background-color: #ffffff;
-            color: #0f2b48;
-            transform: translateX(4px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        /* --- 4. UPCOMING EVENT SECTION (MINI KALENDER & REALTIME EVENT) --- */
+        .card-gold .btn-sub:hover {
+            background: #ffffff;
+            color: #0f2b48;
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.3);
+        }
+
+        /* --- 6. UPCOMING EVENT SECTION --- */
         .event-section {
-            padding: 20px 5% 50px 5%;
+            padding: 20px 5% 60px 5%;
             width: 100%;
             max-width: 1350px;
             margin: 0 auto;
         }
 
         .event-wrapper {
-            background-color: #0f1c2e;
-            border: 1px solid #1e293b;
-            border-radius: 24px;
-            padding: 35px;
+            background: var(--gradient-card-dark);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 28px;
+            padding: 40px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.4);
+            backdrop-filter: blur(16px);
         }
 
         .event-grid {
             display: grid;
             grid-template-columns: 320px 1fr;
-            gap: 30px;
-            margin-top: 20px;
+            gap: 35px;
+            margin-top: 25px;
         }
 
-        /* Mini Calendar Component */
+        /* Mini Calendar UI */
         .mini-calendar {
-            background-color: #1e293b;
-            border-radius: 18px;
-            padding: 20px;
-            border: 1px solid #334155;
+            background: rgba(15, 23, 42, 0.8);
+            border-radius: 20px;
+            padding: 22px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.2);
         }
 
         .cal-header {
@@ -373,19 +456,19 @@
             justify-content: space-between;
             align-items: center;
             font-weight: 800;
-            font-size: 1.05rem;
-            margin-bottom: 15px;
-            color: #f59e0b;
+            font-size: 1.1rem;
+            margin-bottom: 18px;
+            color: var(--accent-gold);
         }
 
         .cal-days {
             display: grid;
             grid-template-columns: repeat(7, 1fr);
             text-align: center;
-            font-size: 0.75rem;
+            font-size: 0.78rem;
             font-weight: 700;
-            color: #94a3b8;
-            margin-bottom: 10px;
+            color: var(--text-muted);
+            margin-bottom: 12px;
         }
 
         .cal-dates {
@@ -398,20 +481,22 @@
 
         .cal-date {
             padding: 8px 0;
-            border-radius: 8px;
+            border-radius: 10px;
             color: #cbd5e1;
             cursor: pointer;
             transition: all 0.2s;
         }
 
         .cal-date:hover {
-            background-color: #334155;
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
         }
 
         .cal-date.active {
-            background-color: #f59e0b;
+            background: var(--gradient-card-gold);
             color: #0f2b48;
             font-weight: 800;
+            box-shadow: 0 0 12px var(--accent-gold-glow);
         }
 
         .cal-date.has-event {
@@ -422,27 +507,28 @@
         .cal-date.has-event::after {
             content: '';
             position: absolute;
-            bottom: 3px;
+            bottom: 4px;
             left: 50%;
             transform: translateX(-50%);
-            width: 4px;
-            height: 4px;
-            background-color: #f59e0b;
+            width: 5px;
+            height: 5px;
+            background-color: var(--accent-gold);
             border-radius: 50%;
+            box-shadow: 0 0 6px var(--accent-gold);
         }
 
         /* Event Cards List */
         .events-list {
             display: flex;
             flex-direction: column;
-            gap: 16px;
+            gap: 18px;
         }
 
         .event-card-item {
-            background-color: #1e293b;
-            border: 1px solid #334155;
-            border-radius: 16px;
-            padding: 20px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: 22px;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -451,29 +537,32 @@
         }
 
         .event-card-item:hover {
-            border-color: #f59e0b;
-            transform: translateX(5px);
+            border-color: var(--accent-gold);
+            background: rgba(255, 255, 255, 0.06);
+            transform: translateX(6px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
         }
 
         .event-date-badge {
-            background-color: #0f2b48;
-            border: 1px solid #334155;
-            border-radius: 12px;
-            padding: 10px 16px;
+            background: linear-gradient(135deg, #0f2b48 0%, #1e293b 100%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 12px 18px;
             text-align: center;
-            min-width: 85px;
+            min-width: 90px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
         }
 
         .event-date-badge .day {
-            font-size: 1.4rem;
+            font-size: 1.5rem;
             font-weight: 900;
-            color: #f59e0b;
+            color: var(--accent-gold);
             line-height: 1;
         }
 
         .event-date-badge .month {
             font-size: 0.75rem;
-            font-weight: 700;
+            font-weight: 800;
             color: #cbd5e1;
             text-transform: uppercase;
         }
@@ -486,66 +575,71 @@
             display: inline-block;
             font-size: 0.7rem;
             font-weight: 800;
-            padding: 3px 10px;
-            border-radius: 12px;
+            padding: 4px 12px;
+            border-radius: 20px;
             text-transform: uppercase;
+            margin-bottom: 8px;
+            letter-spacing: 0.5px;
+        }
+
+        .tag-training { background: rgba(59, 130, 246, 0.2); color: #60a5fa; border: 1px solid rgba(59, 130, 246, 0.3); }
+        .tag-meeting { background: rgba(245, 158, 11, 0.2); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.3); }
+        .tag-event { background: rgba(16, 185, 129, 0.2); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3); }
+
+        .event-title {
+            font-size: 1.15rem;
+            font-weight: 800;
+            color: #ffffff;
             margin-bottom: 6px;
         }
 
-        .tag-training { background-color: rgba(59, 130, 246, 0.2); color: #60a5fa; }
-        .tag-meeting { background-color: rgba(245, 158, 11, 0.2); color: #fbbf24; }
-        .tag-event { background-color: rgba(16, 185, 129, 0.2); color: #34d399; }
-
-        .event-title {
-            font-size: 1.1rem;
-            font-weight: 800;
-            color: #ffffff;
-            margin-bottom: 4px;
-        }
-
         .event-time-loc {
-            font-size: 0.82rem;
-            color: #94a3b8;
+            font-size: 0.85rem;
+            color: var(--text-muted);
             display: flex;
-            gap: 15px;
+            gap: 18px;
         }
 
         .btn-event-link {
-            background-color: #f59e0b;
+            background: var(--gradient-card-gold);
             color: #0f2b48;
-            padding: 10px 18px;
-            border-radius: 10px;
+            padding: 12px 22px;
+            border-radius: 12px;
             font-weight: 800;
-            font-size: 0.82rem;
+            font-size: 0.85rem;
             text-decoration: none;
             transition: all 0.3s ease;
             white-space: nowrap;
+            box-shadow: 0 4px 15px var(--accent-gold-glow);
         }
 
         .btn-event-link:hover {
-            background-color: #ffffff;
-            box-shadow: 0 4px 12px rgba(255,255,255,0.2);
+            background: #ffffff;
+            color: #0f2b48;
+            box-shadow: 0 6px 20px rgba(255,255,255,0.4);
+            transform: translateY(-2px);
         }
 
         .integration-info-box {
             margin-top: 25px;
-            background-color: rgba(30, 41, 59, 0.6);
-            border: 1px dashed #334155;
-            border-radius: 14px;
-            padding: 16px 20px;
-            font-size: 0.83rem;
-            color: #94a3b8;
+            background: rgba(30, 41, 59, 0.4);
+            border: 1px dashed rgba(255, 255, 255, 0.15);
+            border-radius: 16px;
+            padding: 16px 22px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 14px;
         }
 
-        /* --- 5. MODALS & FORMS --- */
+        /* --- 7. MODALS & POPUPS --- */
         .modal-overlay {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(15, 23, 42, 0.85);
-            backdrop-filter: blur(8px);
+            background: rgba(10, 15, 29, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             display: none;
             justify-content: center;
             align-items: center;
@@ -560,18 +654,18 @@
         }
 
         .modal-box {
-            background-color: #ffffff;
+            background: #ffffff;
             width: 92%;
             max-width: 850px;
-            border-radius: 24px;
-            padding: 35px 40px;
+            border-radius: 28px;
+            padding: 40px 45px;
             color: #0f172a;
             position: relative;
             max-height: 88vh;
             overflow-y: auto;
             transform: scale(0.9);
-            transition: transform 0.3s ease;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
         }
 
         .modal-overlay.show .modal-box {
@@ -580,28 +674,30 @@
 
         .modal-close {
             position: absolute;
-            top: 20px; right: 20px;
+            top: 22px; right: 22px;
             background: #f1f5f9;
             border: none;
             font-weight: bold;
-            font-size: 1.2rem;
-            width: 36px; height: 36px;
+            font-size: 1.3rem;
+            width: 40px; height: 40px;
             border-radius: 50%;
             cursor: pointer;
             transition: all 0.2s ease;
             display: flex;
             align-items: center;
             justify-content: center;
+            color: #64748b;
         }
 
         .modal-close:hover {
             background-color: #dc2626;
             color: #ffffff;
+            transform: rotate(90deg);
         }
 
-        /* FORM STYLES INSIDE MODAL */
+        /* Form Controls */
         .form-section-title {
-            font-size: 1.6rem;
+            font-size: 1.7rem;
             font-weight: 900;
             color: #0f2b48;
             margin-bottom: 6px;
@@ -609,12 +705,12 @@
 
         .form-section-subtitle {
             color: #64748b;
-            font-size: 0.9rem;
-            margin-bottom: 25px;
+            font-size: 0.92rem;
+            margin-bottom: 28px;
         }
 
         .form-group {
-            margin-bottom: 20px;
+            margin-bottom: 22px;
         }
 
         .form-label {
@@ -631,10 +727,10 @@
 
         .form-control {
             width: 100%;
-            padding: 12px 16px;
+            padding: 13px 18px;
             border: 1.5px solid #cbd5e1;
-            border-radius: 10px;
-            font-size: 0.9rem;
+            border-radius: 12px;
+            font-size: 0.92rem;
             outline: none;
             background-color: #f8fafc;
             transition: all 0.3s ease;
@@ -643,13 +739,13 @@
         .form-control:focus {
             border-color: #0f2b48;
             background-color: #ffffff;
-            box-shadow: 0 0 0 4px rgba(15, 43, 72, 0.1);
+            box-shadow: 0 0 0 4px rgba(15, 43, 72, 0.12);
         }
 
         .radio-list {
             display: flex;
             flex-direction: column;
-            gap: 8px;
+            gap: 10px;
         }
 
         .radio-item {
@@ -657,23 +753,24 @@
             align-items: center;
             gap: 12px;
             background-color: #f8fafc;
-            padding: 10px 14px;
+            padding: 12px 16px;
             border: 1.5px solid #e2e8f0;
-            border-radius: 10px;
+            border-radius: 12px;
             cursor: pointer;
-            font-size: 0.88rem;
+            font-size: 0.9rem;
             color: #334155;
             transition: all 0.2s ease;
         }
 
         .radio-item:hover {
             background-color: #f1f5f9;
+            border-color: #cbd5e1;
         }
 
         .radio-item input[type="radio"] {
             accent-color: #0f2b48;
-            width: 16px;
-            height: 16px;
+            width: 18px;
+            height: 18px;
         }
 
         .input-lainnya {
@@ -683,33 +780,34 @@
 
         .btn-submit {
             width: 100%;
-            background-color: #0f2b48;
+            background: linear-gradient(135deg, #0f2b48 0%, #1e40af 100%);
             color: #ffffff;
-            padding: 15px;
+            padding: 16px;
             border: none;
-            border-radius: 12px;
+            border-radius: 14px;
             font-weight: 800;
-            font-size: 1rem;
+            font-size: 1.05rem;
             cursor: pointer;
             transition: all 0.3s ease;
-            margin-top: 10px;
+            margin-top: 15px;
+            box-shadow: 0 10px 20px rgba(15, 43, 72, 0.2);
         }
 
         .btn-submit:hover {
-            background-color: #1e40af;
-            box-shadow: 0 8px 20px rgba(30, 64, 175, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 25px rgba(30, 64, 175, 0.35);
         }
 
-        /* TRACKING DASHBOARD STYLES INSIDE MODAL */
+        /* Tracking Dashboard Modal */
         .ev-header {
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
             flex-wrap: wrap;
             gap: 15px;
-            margin-bottom: 20px;
+            margin-bottom: 22px;
             border-bottom: 2px solid #f1f5f9;
-            padding-bottom: 15px;
+            padding-bottom: 18px;
         }
 
         .ev-title-badge {
@@ -721,7 +819,7 @@
         }
 
         .ev-title-main {
-            font-size: 1.6rem;
+            font-size: 1.7rem;
             font-weight: 900;
             color: #0f2b48;
         }
@@ -729,29 +827,29 @@
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-            gap: 15px;
+            gap: 16px;
             margin-bottom: 25px;
         }
 
         .stat-card {
             border: 1px solid #e2e8f0;
-            border-radius: 14px;
-            padding: 16px;
+            border-radius: 16px;
+            padding: 18px;
             background-color: #f8fafc;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
         }
 
         .stat-label {
             font-size: 0.8rem;
             color: #64748b;
             font-weight: 600;
-            margin-bottom: 4px;
+            margin-bottom: 6px;
         }
 
         .stat-value {
-            font-size: 1.8rem;
+            font-size: 2rem;
             font-weight: 900;
             line-height: 1;
-            margin-bottom: 4px;
         }
 
         .color-total { color: #0f2b48; }
@@ -772,8 +870,8 @@
 
         .voice-table th {
             text-align: left;
-            padding: 10px 14px;
-            font-size: 0.78rem;
+            padding: 12px 16px;
+            font-size: 0.8rem;
             color: #64748b;
             font-weight: 700;
             text-transform: uppercase;
@@ -781,21 +879,22 @@
 
         .voice-table tr.data-row {
             background-color: #ffffff;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.04);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
             border: 1px solid #e2e8f0;
+            border-radius: 12px;
         }
 
         .voice-table td {
-            padding: 14px;
-            font-size: 0.85rem;
+            padding: 16px;
+            font-size: 0.88rem;
             border-top: 1px solid #f1f5f9;
             border-bottom: 1px solid #f1f5f9;
         }
 
         .badge-status {
-            padding: 4px 12px;
+            padding: 5px 14px;
             border-radius: 20px;
-            font-size: 0.75rem;
+            font-size: 0.78rem;
             font-weight: 800;
             display: inline-block;
         }
@@ -804,12 +903,12 @@
         .bg-done { background-color: #dcfce7; color: #15803d; }
         .bg-alert { background-color: #fee2e2; color: #b91c1c; }
 
-        /* --- 6. FOOTER --- */
+        /* --- 8. FOOTER --- */
         footer {
-            background-color: #091122;
+            background: #060a14;
             color: #cbd5e1;
-            padding: 50px 8% 30px 8%;
-            border-top: 1px solid #1e293b;
+            padding: 60px 8% 30px 8%;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
             width: 100%;
         }
 
@@ -819,8 +918,8 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 40px;
-            padding-bottom: 30px;
-            border-bottom: 1px solid #1e293b;
+            padding-bottom: 40px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
         }
 
         .footer-col h3 {
@@ -828,24 +927,25 @@
             font-size: 1.1rem;
             font-weight: 800;
             letter-spacing: 0.5px;
-            margin-bottom: 20px;
+            margin-bottom: 22px;
             text-transform: uppercase;
         }
 
         .contact-info p {
             font-size: 0.95rem;
-            color: #94a3b8;
-            margin-bottom: 8px;
+            color: var(--text-muted);
+            margin-bottom: 10px;
         }
 
         .contact-info a {
             color: #f8fafc;
             text-decoration: none;
             font-weight: 600;
+            transition: color 0.3s;
         }
 
         .contact-info a:hover {
-            color: #f59e0b;
+            color: var(--accent-gold);
         }
 
         .footer-links {
@@ -853,35 +953,39 @@
         }
 
         .footer-links li {
-            margin-bottom: 10px;
-            padding-left: 15px;
+            margin-bottom: 12px;
+            padding-left: 16px;
             position: relative;
         }
 
         .footer-links li::before {
             content: "•";
-            color: #f59e0b;
+            color: var(--accent-gold);
             position: absolute;
             left: 0;
+            font-size: 1.2rem;
+            line-height: 1;
         }
 
         .footer-links a {
             color: #cbd5e1;
             text-decoration: none;
-            font-size: 0.9rem;
+            font-size: 0.92rem;
+            transition: color 0.3s;
         }
 
         .footer-links a:hover {
-            color: #f59e0b;
+            color: var(--accent-gold);
         }
 
         .footer-bottom {
             text-align: center;
-            padding-top: 25px;
+            padding-top: 30px;
             color: #64748b;
-            font-size: 0.85rem;
+            font-size: 0.88rem;
         }
 
+        /* Responsive Breakpoints */
         @media (max-width: 1100px) {
             .qa-grid-4 { grid-template-columns: repeat(2, 1fr); }
             .hero-title { white-space: normal; }
@@ -890,8 +994,8 @@
 
         @media (max-width: 650px) {
             .qa-grid-4 { grid-template-columns: 1fr; }
-            .hero-container { flex-direction: column; text-align: center; padding: 30px 20px; }
-            .hero-title { font-size: 1.7rem; }
+            .hero-container { flex-direction: column; text-align: center; padding: 35px 25px; }
+            .hero-title { font-size: 1.8rem; }
             .btn-explore { justify-content: center; }
         }
     </style>
@@ -916,9 +1020,10 @@
     <div class="hero-wrapper">
         <div class="hero-container">
             <div class="hero-text">
-                <!-- Teks Satu Baris -->
                 <h1 class="hero-title">Selamat datang di HC CONNECT</h1>
-                <p class="hero-subtitle-brand">PT Gadai MAS Nusantara</p>
+                <p class="hero-subtitle-brand">
+                    <span>🏢</span> PT Gadai MAS Nusantara
+                </p>
                 <p class="hero-desc">Portal Resmi Divisi Human Capital Business Partner (HCBP) untuk Akses Kebijakan, SOP, Layanan Administrasi, dan Aspirasi Karyawan.</p>
                 
                 <a href="#quick-access" class="btn-explore">
@@ -927,13 +1032,12 @@
                 </a>
             </div>
             <div class="hero-media">
-                <!-- Gambar Gaya 2D Business Illustration -->
                 <img src="https://cdni.iconscout.com/illustration/premium/thumb/business-teamwork-4512028-3758999.png" alt="HC Connect Business 2D Vector Illustration">
             </div>
         </div>
     </div>
 
-    <!-- 3. QUICK ACCESS SECTION (4 SECTIONS SEJAJAR) -->
+    <!-- 3. QUICK ACCESS SECTION (4 CARDS GLASSMORPHISM) -->
     <section class="quick-access-section" id="quick-access">
         <div class="section-header">
             <h2 class="section-title-main">Quick Access Services</h2>
@@ -949,12 +1053,10 @@
                     <p class="card-desc">Wadah resmi menyampaikan gagasan, ide, dan masukan untuk kemajuan perusahaan.</p>
                 </div>
                 <div class="sub-btn-group">
-                    <!-- Membuka Popup Form -->
                     <button onclick="openModal('modalFormVoice')" class="btn-sub">
                         <span>📝 Form Employee Voice</span>
                         <span>➔</span>
                     </button>
-                    <!-- Membuka Popup Status Tracking -->
                     <button onclick="openModal('modalTrackVoice')" class="btn-sub">
                         <span>📊 Track Your Voice</span>
                         <span>➔</span>
@@ -1022,12 +1124,12 @@
         </div>
     </section>
 
-    <!-- 4. UPCOMING EVENT SECTION (FITUR MINI KALENDER REALTIME) -->
+    <!-- 4. UPCOMING EVENT SECTION -->
     <section class="event-section">
         <div class="event-wrapper">
             <div class="section-header">
                 <h2 class="section-title-main">Upcoming Events</h2>
-                <p style="color: #94a3b8; font-size: 0.9rem; margin-top: 6px;">Jadwal kegiatan, pelatihan, dan pertemuan penting perusahaan yang sedang & akan berlangsung.</p>
+                <p style="color: var(--text-muted); font-size: 0.92rem; margin-top: 6px;">Jadwal kegiatan, pelatihan, dan pertemuan penting perusahaan yang sedang & akan berlangsung.</p>
             </div>
 
             <div class="event-grid">
@@ -1064,7 +1166,6 @@
 
                 <!-- Event Cards List Realtime Links -->
                 <div class="events-list">
-                    <!-- Event 1 -->
                     <div class="event-card-item">
                         <div class="event-date-badge">
                             <div class="day">19</div>
@@ -1081,7 +1182,6 @@
                         <a href="https://zoom.us/j/YOUR_MEETING_ID" target="_blank" class="btn-event-link">Join Zoom Meeting ➔</a>
                     </div>
 
-                    <!-- Event 2 -->
                     <div class="event-card-item">
                         <div class="event-date-badge">
                             <div class="day">20</div>
@@ -1098,7 +1198,6 @@
                         <a href="https://forms.google.com/YOUR_REGISTER_FORM" target="_blank" class="btn-event-link">Daftar Kehadiran ➔</a>
                     </div>
 
-                    <!-- Event 3 -->
                     <div class="event-card-item">
                         <div class="event-date-badge">
                             <div class="day">22</div>
@@ -1117,10 +1216,9 @@
                 </div>
             </div>
 
-            <!-- Rekomendasi Aplikasi Integrasi -->
             <div class="integration-info-box">
-                <span style="font-size:1.2rem;">💡</span>
-                <span><b>Tips Integrasi Realtime:</b> Kalender ini disinkronkan secara otomatis menggunakan **Google Calendar API** / **Microsoft Outlook Calendar**. Perubahan jadwal di kalender pusat HCBP akan langsung ter-update di portal ini secara otomatis.</span>
+                <span style="font-size:1.3rem;">💡</span>
+                <span><b>Tips Integrasi Realtime:</b> Kalender ini dapat disinkronkan secara otomatis menggunakan **Google Calendar API** / **Microsoft Outlook Calendar**. Perubahan jadwal di pusat HCBP akan otomatis di-update.</span>
             </div>
         </div>
     </section>
@@ -1133,19 +1231,16 @@
             <p class="form-section-subtitle">Sampaikan aspirasi, ide, atau permasalahan Anda secara langsung kepada tim HCBP.</p>
 
             <form id="employeeVoiceForm" onsubmit="handleFormSubmit(event)">
-                <!-- 1. Email -->
                 <div class="form-group">
                     <label class="form-label">1. Email <span>*</span></label>
                     <input type="email" name="email" class="form-control" placeholder="nama@gadaimas.co.id" required>
                 </div>
 
-                <!-- 2. Nama Lengkap -->
                 <div class="form-group">
                     <label class="form-label">2. Nama Lengkap <span>*</span></label>
                     <input type="text" name="nama" class="form-control" placeholder="Masukkan nama lengkap Anda" required>
                 </div>
 
-                <!-- 3. Jabatan -->
                 <div class="form-group">
                     <label class="form-label">3. Jabatan <span>*</span></label>
                     <select name="jabatan" class="form-control" required>
@@ -1169,13 +1264,11 @@
                     </select>
                 </div>
 
-                <!-- 4. Unit Kerja -->
                 <div class="form-group">
                     <label class="form-label">4. Unit Kerja <span>*</span></label>
                     <input type="text" name="unit_kerja" class="form-control" placeholder="Contoh: MAS OEBOBO" required>
                 </div>
 
-                <!-- 5. Jenis Suara -->
                 <div class="form-group">
                     <label class="form-label">5. Jenis Suara <span>*</span></label>
                     <select name="jenis_suara" class="form-control" required>
@@ -1190,7 +1283,6 @@
                     </select>
                 </div>
 
-                <!-- 6. Topik Terkait -->
                 <div class="form-group">
                     <label class="form-label">6. Topik Terkait <span>*</span></label>
                     <select name="topik" id="topikSelect" class="form-control" onchange="toggleLainnya('topikSelect', 'topikLainnyaInput')" required>
@@ -1214,13 +1306,11 @@
                     <input type="text" name="topik_lainnya" id="topikLainnyaInput" class="form-control input-lainnya" placeholder="Tuliskan topik lainnya di sini...">
                 </div>
 
-                <!-- 7. Ceritakan yang terjadi -->
                 <div class="form-group">
                     <label class="form-label">7. Ceritakan yang terjadi pada Anda <span>*</span></label>
                     <textarea name="cerita" class="form-control" rows="3" placeholder="Jelaskan kronologi atau detail aspirasi Anda..." required></textarea>
                 </div>
 
-                <!-- 8. Dampak dari kondisi tersebut -->
                 <div class="form-group">
                     <label class="form-label">8. Apa dampak dari kondisi tersebut? <span>*</span></label>
                     <div class="radio-list">
@@ -1235,13 +1325,11 @@
                     <input type="text" name="dampak_lainnya" id="dampakLainnyaInput" class="form-control input-lainnya" placeholder="Tuliskan dampak lainnya di sini...">
                 </div>
 
-                <!-- 9. Solusi/Perbaikan -->
                 <div class="form-group">
                     <label class="form-label">9. Apa Solusi / Perbaikan yang dapat dilakukan? <span>*</span></label>
                     <textarea name="solusi" class="form-control" rows="2" placeholder="Tuliskan ide atau perbaikan yang disarankan..." required></textarea>
                 </div>
 
-                <!-- 10. Urgensi -->
                 <div class="form-group">
                     <label class="form-label">10. Seberapa Penting hal ini untuk ditindaklanjuti? <span>*</span></label>
                     <select name="urgensi" class="form-control" required>
@@ -1253,13 +1341,11 @@
                     </select>
                 </div>
 
-                <!-- 11. Upload Bukti -->
                 <div class="form-group">
                     <label class="form-label">11. Upload Dokumen / Bukti Pendukung (Foto/PDF)</label>
                     <input type="file" id="fileInput" class="form-control" accept="image/*,.pdf,.docx,.xlsx">
                 </div>
 
-                <!-- 12. Penanganan Identitas -->
                 <div class="form-group">
                     <label class="form-label">12. Bagaimana Anda ingin identitas Anda ditangani? <span>*</span></label>
                     <select name="penanganan_identitas" class="form-control" required>
@@ -1391,7 +1477,7 @@
 
     <!-- INTERACTIVE JAVASCRIPT -->
     <script>
-        // Modal Control Functions (Show/Hide Popup)
+        // Open Modal Function
         function openModal(modalId) {
             const modal = document.getElementById(modalId);
             if(modal) {
@@ -1399,6 +1485,7 @@
             }
         }
 
+        // Close Modal Function
         function closeModal(modalId) {
             const modal = document.getElementById(modalId);
             if(modal) {
@@ -1406,7 +1493,7 @@
             }
         }
 
-        // Close modal when clicking on overlay outside modal-box
+        // Close modal when clicking outside content box
         window.onclick = function(event) {
             const overlays = document.querySelectorAll('.modal-overlay');
             overlays.forEach(overlay => {
@@ -1416,7 +1503,7 @@
             });
         }
 
-        // Dynamic Form Logic
+        // Dynamic Form Field (Select)
         function toggleLainnya(selectId, inputId) {
             const selectVal = document.getElementById(selectId).value;
             const inputEl = document.getElementById(inputId);
@@ -1429,6 +1516,7 @@
             }
         }
 
+        // Dynamic Form Field (Radio)
         function toggleRadioLainnya(isLainnya, inputId) {
             const inputEl = document.getElementById(inputId);
             if (isLainnya) {
@@ -1440,6 +1528,7 @@
             }
         }
 
+        // Form Submit Handler
         function handleFormSubmit(event) {
             event.preventDefault();
             alert('Aspirasi Anda berhasil dikirim! Tim HCBP akan segera menindaklanjutinya.');
