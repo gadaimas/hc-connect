@@ -18,11 +18,10 @@
         }
 
         body {
-            background-color: #0b1329; /* Background Gelap Elegan */
+            background-color: #0b1329;
             color: #f8fafc;
             line-height: 1.6;
             overflow-x: hidden;
-            display: block; /* Memastikan tata letak mengalir vertikal dari atas ke bawah */
             width: 100%;
         }
 
@@ -82,13 +81,12 @@
         .btn-contact:hover {
             background-color: #f59e0b;
             color: #0f172a;
-            transform: translateY(-2px);
         }
 
         /* --- 2. HERO / LANDING SECTION --- */
         .hero-wrapper {
             background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
-            padding: 60px 8% 80px 8%;
+            padding: 50px 8% 60px 8%;
             width: 100%;
         }
 
@@ -97,7 +95,7 @@
             margin: 0 auto;
             background-color: #f8fafc;
             border-radius: 24px;
-            padding: 50px;
+            padding: 45px;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -112,7 +110,7 @@
         }
 
         .hero-title {
-            font-size: 2.8rem;
+            font-size: 2.6rem;
             font-weight: 900;
             color: #0f2b48;
             line-height: 1.2;
@@ -122,16 +120,15 @@
         .hero-subtitle-brand {
             color: #d97706;
             font-weight: 800;
-            font-size: 1.25rem;
+            font-size: 1.2rem;
             margin-bottom: 16px;
-            letter-spacing: 0.5px;
         }
 
         .hero-desc {
             color: #475569;
-            font-size: 1rem;
+            font-size: 0.98rem;
             line-height: 1.6;
-            margin-bottom: 28px;
+            margin-bottom: 24px;
         }
 
         .btn-explore {
@@ -140,11 +137,11 @@
             gap: 12px;
             background-color: #0f2b48;
             color: #ffffff;
-            padding: 14px 28px;
+            padding: 12px 26px;
             border-radius: 30px;
             text-decoration: none;
             font-weight: 700;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             transition: all 0.3s ease;
         }
 
@@ -156,8 +153,8 @@
         .btn-explore .arrow {
             background-color: #f59e0b;
             color: #0f2b48;
-            width: 26px;
-            height: 26px;
+            width: 24px;
+            height: 24px;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -167,7 +164,7 @@
 
         .hero-media {
             flex: 1;
-            max-width: 420px;
+            max-width: 400px;
             text-align: center;
         }
 
@@ -177,19 +174,19 @@
             border-radius: 16px;
         }
 
-        /* --- 3. QUICK ACCESS SECTION --- */
+        /* --- 3. QUICK ACCESS SECTION (4 CARDS) --- */
         .quick-access-section {
-            padding: 70px 8%;
+            padding: 60px 8%;
             width: 100%;
             max-width: 1280px;
             margin: 0 auto;
         }
 
         .section-header {
-            margin-bottom: 35px;
+            margin-bottom: 30px;
         }
 
-        .section-title {
+        .section-title-main {
             font-size: 1.8rem;
             font-weight: 800;
             color: #ffffff;
@@ -197,27 +194,25 @@
             padding-left: 14px;
         }
 
-        /* GRID KARTU (Berjejer Kesamping) */
-        .qa-grid {
+        .qa-grid-4 {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+            gap: 24px;
         }
 
         .qa-card {
-            border-radius: 28px;
-            padding: 35px 28px;
+            border-radius: 24px;
+            padding: 30px 24px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            min-height: 340px;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            cursor: pointer;
+            min-height: 380px;
+            transition: all 0.3s ease;
         }
 
         .qa-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 30px rgba(0,0,0,0.4);
+            transform: translateY(-6px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.4);
         }
 
         .card-dark {
@@ -233,42 +228,67 @@
 
         .card-icon {
             font-size: 2.2rem;
-            margin-bottom: 20px;
+            margin-bottom: 16px;
         }
 
         .card-title {
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             font-weight: 800;
-            line-height: 1.25;
-            margin-bottom: 12px;
+            line-height: 1.3;
+            margin-bottom: 10px;
         }
 
         .card-desc {
-            font-size: 0.9rem;
-            opacity: 0.85;
-            margin-bottom: 30px;
+            font-size: 0.88rem;
+            opacity: 0.88;
+            margin-bottom: 20px;
             line-height: 1.5;
         }
 
-        .btn-learn {
-            background-color: #ffffff;
-            border: none;
-            padding: 12px 24px;
-            border-radius: 20px;
-            font-weight: 700;
-            font-size: 0.85rem;
-            cursor: pointer;
-            width: fit-content;
-            color: #0f2b48;
-            transition: all 0.3s ease;
+        .sub-btn-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: auto;
         }
 
-        .qa-card:hover .btn-learn {
+        .btn-sub {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 16px;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 0.82rem;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            border: none;
+            width: 100%;
+            text-align: left;
+        }
+
+        .card-dark .btn-sub {
+            background-color: #1e293b;
+            color: #ffffff;
+            border: 1px solid #334155;
+        }
+        .card-dark .btn-sub:hover {
+            background-color: #f59e0b;
+            color: #0f2b48;
+            border-color: #f59e0b;
+        }
+
+        .card-gold .btn-sub {
             background-color: #0f2b48;
             color: #ffffff;
         }
+        .card-gold .btn-sub:hover {
+            background-color: #ffffff;
+            color: #0f2b48;
+        }
 
-        /* --- 4. CONTENT SECTIONS --- */
+        /* --- 4. DETAILED SECTIONS (EMPLOYEE VOICE DASHBOARD) --- */
         .main-container {
             max-width: 1280px;
             margin: 0 auto 60px auto;
@@ -276,104 +296,334 @@
             width: 100%;
         }
 
-        .card-box {
+        .white-card {
             background-color: #ffffff;
             color: #0f172a;
             border-radius: 20px;
-            padding: 32px;
-            margin-bottom: 30px;
+            padding: 35px;
+            margin-bottom: 35px;
             box-shadow: 0 10px 25px rgba(0,0,0,0.2);
         }
 
-        .card-box .section-title {
-            color: #0f2b48;
-            margin-bottom: 8px;
-        }
-
-        /* FORM & TABEL */
-        .aspirasi-form {
+        .ev-header {
             display: flex;
-            gap: 12px;
-            margin: 20px 0 25px 0;
+            justify-content: space-between;
+            align-items: flex-start;
             flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 25px;
+            border-bottom: 2px solid #f1f5f9;
+            padding-bottom: 20px;
         }
 
-        .aspirasi-form input {
-            flex: 1;
-            min-width: 220px;
-            padding: 12px 16px;
-            border: 1px solid #cbd5e1;
-            border-radius: 10px;
-            font-size: 0.9rem;
-            outline: none;
-        }
-
-        .aspirasi-form input:focus {
-            border-color: #f59e0b;
-        }
-
-        .btn-submit {
-            background-color: #f59e0b;
-            color: #0f2b48;
-            border: none;
-            padding: 12px 24px;
-            border-radius: 10px;
+        .ev-title-badge {
+            font-size: 0.8rem;
+            color: #d97706;
             font-weight: 800;
-            cursor: pointer;
-            transition: background 0.2s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        .btn-submit:hover {
-            background-color: #d97706;
-            color: #ffffff;
-        }
-
-        .status-table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        .status-table th, .status-table td {
-            padding: 14px 16px;
-            text-align: left;
-            border-bottom: 1px solid #f1f5f9;
-            font-size: 0.9rem;
-        }
-
-        .status-table th {
-            background-color: #f8fafc;
+        .ev-title-main {
+            font-size: 1.8rem;
+            font-weight: 900;
             color: #0f2b48;
-            font-weight: 700;
         }
 
-        .badge {
-            padding: 5px 12px;
-            border-radius: 12px;
-            font-size: 0.78rem;
-            font-weight: 700;
+        .ev-pills {
+            display: flex;
+            gap: 10px;
         }
-        .badge-pending { background-color: #fef08a; color: #854d0e; }
-        .badge-process { background-color: #bfdbfe; color: #1e40af; }
-        .badge-done { background-color: #bbf7d0; color: #166534; }
 
-        .two-col-grid {
+        .pill-info {
+            background-color: #eff6ff;
+            color: #1d4ed8;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        .pill-status {
+            background-color: #f0fdf4;
+            color: #15803d;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        .stats-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
         }
 
-        /* --- 5. FOOTER --- */
-        footer {
-            text-align: center;
-            padding: 30px 5%;
-            background-color: #070d19;
-            color: #64748b;
+        .stat-card {
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 20px;
+            background-color: #f8fafc;
+        }
+
+        .stat-label {
             font-size: 0.85rem;
+            color: #64748b;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 900;
+            line-height: 1;
+            margin-bottom: 6px;
+        }
+
+        .stat-desc {
+            font-size: 0.75rem;
+            color: #94a3b8;
+        }
+
+        .color-total { color: #0f2b48; }
+        .color-process { color: #d97706; }
+        .color-done { color: #16a34a; }
+        .color-alert { color: #dc2626; }
+
+        .track-section-title {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: #0f2b48;
+            margin-bottom: 4px;
+        }
+
+        .track-section-sub {
+            font-size: 0.85rem;
+            color: #64748b;
+            margin-bottom: 20px;
+        }
+
+        .voice-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0 10px;
+        }
+
+        .voice-table th {
+            text-align: left;
+            padding: 10px 16px;
+            font-size: 0.8rem;
+            color: #64748b;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .voice-table tr.data-row {
+            background-color: #ffffff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.04);
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            transition: transform 0.2s;
+        }
+
+        .voice-table tr.data-row:hover {
+            transform: scale(1.005);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        .voice-table td {
+            padding: 16px;
+            font-size: 0.88rem;
+            border-top: 1px solid #f1f5f9;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .voice-table td:first-child {
+            border-left: 1px solid #f1f5f9;
+            border-top-left-radius: 12px;
+            border-bottom-left-radius: 12px;
+        }
+
+        .voice-table td:last-child {
+            border-right: 1px solid #f1f5f9;
+            border-top-right-radius: 12px;
+            border-bottom-right-radius: 12px;
+        }
+
+        .req-id {
+            font-weight: 900;
+            color: #0f2b48;
+        }
+
+        .badge-status {
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.78rem;
+            font-weight: 800;
+            display: inline-block;
+        }
+
+        .bg-process { background-color: #fef3c7; color: #d97706; }
+        .bg-done { background-color: #dcfce7; color: #15803d; }
+        .bg-alert { background-color: #fee2e2; color: #b91c1c; }
+
+        /* MODAL POPUP MONITORING */
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(4px);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+        }
+
+        .modal-box {
+            background-color: #ffffff;
+            width: 90%;
+            max-width: 900px;
+            border-radius: 20px;
+            padding: 30px;
+            color: #0f172a;
+            position: relative;
+            max-height: 85vh;
+            overflow-y: auto;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px; right: 20px;
+            background: #f1f5f9;
+            border: none;
+            font-weight: bold;
+            font-size: 1.2rem;
+            width: 32px; height: 32px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        /* --- 5. FOOTER CUSTOM BARU --- */
+        footer {
+            background-color: #091122;
+            color: #cbd5e1;
+            padding: 60px 8% 30px 8%;
             border-top: 1px solid #1e293b;
             width: 100%;
         }
 
-        /* RESPONSIVE DESIGN */
+        .footer-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            padding-bottom: 40px;
+            border-bottom: 1px solid #1e293b;
+        }
+
+        .footer-col h3 {
+            color: #ffffff;
+            font-size: 1.1rem;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        /* Kolom Contact */
+        .contact-info p {
+            font-size: 0.95rem;
+            color: #94a3b8;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .contact-info a {
+            color: #f8fafc;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.2s;
+        }
+
+        .contact-info a:hover {
+            color: #f59e0b;
+        }
+
+        /* Kolom Resources */
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+            position: relative;
+            padding-left: 18px;
+        }
+
+        .footer-links li::before {
+            content: "•";
+            color: #ffffff;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+            top: -1px;
+            font-size: 1.1rem;
+        }
+
+        .footer-links a {
+            color: #cbd5e1;
+            text-decoration: none;
+            font-size: 0.93rem;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: #f59e0b;
+        }
+
+        /* Kolom Follow Us */
+        .social-icons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .social-btn {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.9rem;
+            transition: transform 0.2s ease;
+        }
+
+        .social-btn:hover {
+            transform: translateY(-3px);
+        }
+
+        .bg-fb { background-color: #1877f2; }
+        .bg-ig { background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); }
+        .bg-yt { background-color: #ff0000; }
+        .bg-x { background-color: #000000; border: 1px solid #334155; }
+        .bg-li { background-color: #0a66c2; }
+        .bg-tt { background-color: #000000; border: 1px solid #334155; }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            color: #64748b;
+            font-size: 0.85rem;
+        }
+
         @media (max-width: 900px) {
             .hero-container {
                 flex-direction: column;
@@ -382,7 +632,7 @@
             }
             .hero-text { max-width: 100%; }
             .btn-explore { justify-content: center; }
-            .two-col-grid { grid-template-columns: 1fr; }
+            .ev-header { flex-direction: column; }
         }
     </style>
 </head>
@@ -402,13 +652,13 @@
         </div>
     </nav>
 
-    <!-- 2. HERO / LANDING SECTION (DI SINI LOKASI TEKS SAMBUTAN & GAMBARNYA) -->
+    <!-- 2. HERO / LANDING SECTION -->
     <div class="hero-wrapper">
         <div class="hero-container">
             <div class="hero-text">
-                <h1 class="hero-title">Selamat datang di HC CONNECT</h1>
+                <h1 class="hero-title">Selamat datang di HC Connect</h1>
                 <p class="hero-subtitle-brand">PT Gadai MAS Nusantara</p>
-                <p class="hero-desc">Portal Informasi, Layanan, dan Pengembangan Karyawan untuk Mendukung Kinerja Terbaik Pertumbuhan Bersama.</p>
+                <p class="hero-desc">Portal Resmi Divisi Human Capital Business Partner (HCBP) untuk Akses Kebijakan, SOP, Layanan Administrasi, dan Aspirasi Karyawan.</p>
                 
                 <a href="#quick-access" class="btn-explore">
                     Jelajahi HC Connect
@@ -416,132 +666,227 @@
                 </a>
             </div>
             <div class="hero-media">
-                <img src="https://www.vecteezy.com/png/39323012-ai-generated-manager-man-present-successful-group-business-people" alt="HC Connect Teamwork PT Gadai MAS Nusantara">
+                <img src="https://img.freepik.com/free-vector/corporate-culture-hands-together-business-people_74855-5209.jpg" alt="HC Connect Teamwork PT Gadai MAS Nusantara">
             </div>
         </div>
     </div>
 
-    <!-- 3. QUICK ACCESS SERVICES -->
+    <!-- 3. QUICK ACCESS SECTION (4 SUB SECTION) -->
     <section class="quick-access-section" id="quick-access">
         <div class="section-header">
-            <h2 class="section-title">QUICK ACCESS</h2>
+            <h2 class="section-title-main">Quick Access Services</h2>
         </div>
         
-        <div class="qa-grid">
-            <!-- Card 1 -->
-            <div class="qa-card card-dark" onclick="scrollToSection('employee-voice-section')">
+        <div class="qa-grid-4">
+            
+            <!-- KARTU 1: EMPLOYEE VOICE -->
+            <div class="qa-card card-dark">
                 <div>
                     <div class="card-icon">🗣️</div>
-                    <h3 class="card-title">Employee<br>Voice</h3>
-                    <p class="card-desc">Sampaikan pendapat, ide, dan aspirasi Anda untuk kemajuan bersama.</p>
+                    <h3 class="card-title">Employee Voice</h3>
+                    <p class="card-desc">Wadah resmi menyampaikan gagasan, ide, dan masukan untuk kemajuan perusahaan.</p>
                 </div>
-                <button class="btn-learn">Learn More</button>
+                <div class="sub-btn-group">
+                    <a href="https://forms.google.com/YOUR_GFORM_EMPLOYEE_VOICE" target="_blank" class="btn-sub">
+                        <span>📝 Form Employee Voice</span>
+                        <span>➔</span>
+                    </a>
+                    <button onclick="scrollToSection('employee-voice-papan')" class="btn-sub">
+                        <span>📊 Track Your Voice</span>
+                        <span>➔</span>
+                    </button>
+                </div>
             </div>
 
-            <!-- Card 2 -->
+            <!-- KARTU 2: FORM ADMINISTRASI -->
             <div class="qa-card card-gold">
                 <div>
                     <div class="card-icon">📋</div>
-                    <h3 class="card-title">Form<br>Administrasi</h3>
-                    <p class="card-desc">Pengajuan & Layanan Administrasi HC secara cepat dan terintegrasi.</p>
+                    <h3 class="card-title">Form Administrasi</h3>
+                    <p class="card-desc">Layanan administrasi Human Capital terintegrasi secara praktis dan serba digital.</p>
                 </div>
-                <button class="btn-learn">Learn More</button>
+                <div class="sub-btn-group">
+                    <a href="https://forms.google.com/YOUR_FORM_TENAGA_KERJA" target="_blank" class="btn-sub">
+                        <span>👤 Form Pengajuan Tenaga Kerja</span>
+                        <span>➔</span>
+                    </a>
+                    <a href="https://forms.google.com/YOUR_FORM_IZIN_CUTI" target="_blank" class="btn-sub">
+                        <span>🗓️ Form Izin / Cuti</span>
+                        <span>➔</span>
+                    </a>
+                    <button onclick="openModal('modalCuti')" class="btn-sub">
+                        <span>📈 Monitoring Izin / Cuti</span>
+                        <span>➔</span>
+                    </button>
+                </div>
             </div>
 
-            <!-- Card 3 -->
-            <div class="qa-card card-dark">
-                <div>
-                    <div class="card-icon">📊</div>
-                    <h3 class="card-title">Dashboard<br>& Report</h3>
-                    <p class="card-desc">Akses data dan insight performa serta operasional karyawan.</p>
-                </div>
-                <button class="btn-learn">Learn More</button>
-            </div>
-
-            <!-- Card 5 -->
+            <!-- KARTU 3: LEARNING & DEVELOPMENT -->
             <div class="qa-card card-dark">
                 <div>
                     <div class="card-icon">🎓</div>
-                    <h3 class="card-title">Learning &<br>Development</h3>
-                    <p class="card-desc">Tingkatkan kompetensi dan kembangkan karier profesional Anda.</p>
+                    <h3 class="card-title">Learning & Development</h3>
+                    <p class="card-desc">Pusat pengembangan kompetensi, panduan operasional, dan materi pembelajaran.</p>
                 </div>
-                <button class="btn-learn">Learn More</button>
+                <div class="sub-btn-group">
+                    <a href="https://lms.perusahaan.com/sop-policy" target="_blank" class="btn-sub">
+                        <span>📚 SOP & Policy</span>
+                        <span>➔</span>
+                    </a>
+                    <a href="https://lms.perusahaan.com/knowledge-center" target="_blank" class="btn-sub">
+                        <span>💡 Knowledge Center</span>
+                        <span>➔</span>
+                    </a>
+                </div>
             </div>
+
+            <!-- KARTU 4: DASHBOARD & REPORT -->
+            <div class="qa-card card-gold">
+                <div>
+                    <div class="card-icon">📊</div>
+                    <h3 class="card-title">Dashboard & Report</h3>
+                    <p class="card-desc">Akses data analitik, statistik HR, serta laporan performa operasional HC secara terpusat.</p>
+                </div>
+                <div class="sub-btn-group">
+                    <a href="https://lookerstudio.google.com/" target="_blank" class="btn-sub">
+                        <span>📈 Buka Dashboard Utama</span>
+                        <span>➔</span>
+                    </a>
+                </div>
+            </div>
+
         </div>
     </section>
 
-    <!-- 4. CONTENT CONTAINER (Tabel & Pengumuman) -->
-    <div class="main-container" id="employee-voice-section">
-        <div class="card-box">
-            <h2 class="section-title">Status Pengajuan Employee Voice</h2>
-            <p style="font-size: 0.9rem; color: #64748b;">Pantau status ide dan aspirasi yang telah dikirimkan:</p>
-
-            <form class="aspirasi-form" onsubmit="tambahAspirasi(event)">
-                <input type="text" id="namaKaryawan" placeholder="Nama Anda" required>
-                <input type="text" id="isiAspirasi" placeholder="Tuliskan Ide / Aspirasi Anda..." required>
-                <button type="submit" class="btn-submit">+ Kirim Aspirasi</button>
-            </form>
-
-            <table class="status-table">
-                <thead>
-                    <tr>
-                        <th>Nama Karyawan</th>
-                        <th>Gagasan / Aspirasi</th>
-                        <th>Tanggal Submit</th>
-                        <th>Status Proses</th>
-                    </tr>
-                </thead>
-                <tbody id="tabelStatusBody">
-                    <tr>
-                        <td>Budi Santoso (BSD)</td>
-                        <td>Usulan penambahan AC di ruang pelayanan nasabah</td>
-                        <td>12 Aug 2026</td>
-                        <td><span class="badge badge-done">Selesai (Disetujui)</span></td>
-                    </tr>
-                    <tr>
-                        <td>Siti Rahma (HQ)</td>
-                        <td>Pembaruan modul training SOP Gadai Emas 2026</td>
-                        <td>13 Aug 2026</td>
-                        <td><span class="badge badge-process">Dalam Review</span></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
-        <!-- TWO COLUMNS -->
-        <div class="two-col-grid">
-            <div class="card-box" style="margin-bottom:0;">
-                <h2 class="section-title">Pengumuman Terkini</h2>
-                <div style="margin-top: 15px;">
-                    <h4 style="color:#0f2b48;">Pembaruan Jam Operasional Kantor</h4>
-                    <span style="font-size: 0.8rem; color:#64748b;">11 Agustus 2026</span>
-                </div>
-                <hr style="margin: 12px 0; border:0; border-top:1px solid #f1f5f9;">
+    <!-- 4. SECTION DETIL EMPLOYEE VOICE -->
+    <div class="main-container" id="employee-voice-papan">
+        <div class="white-card">
+            
+            <div class="ev-header">
                 <div>
-                    <h4 style="color:#0f2b48;">Sosialisasi Asuransi Kesehatan Baru</h4>
-                    <span style="font-size: 0.8rem; color:#64748b;">08 Agustus 2026</span>
+                    <span class="ev-title-badge">HC CONNECT</span>
+                    <h2 class="ev-title-main">Employee Voice — Papan Informasi SDM</h2>
+                    <p style="color: #64748b; font-size: 0.9rem;">Transparansi tindak lanjut suara karyawan Gadai MAS Nusantara</p>
+                </div>
+                <div class="ev-pills">
+                    <span class="pill-info">Update: Agustus 2026</span>
+                    <span class="pill-status">● Sistem Aktif</span>
                 </div>
             </div>
 
-            <div class="card-box" style="margin-bottom:0;">
-                <h2 class="section-title">Upcoming Event</h2>
-                <ul style="list-style: none; margin-top: 15px;">
-                    <li style="display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px dashed #e2e8f0;">
-                        <span><strong>Townhall Meeting Q3</strong></span>
-                        <span style="color: #d97706; font-weight: bold;">13 Aug</span>
-                    </li>
-                    <li style="display: flex; justify-content: space-between; padding: 10px 0;">
-                        <span><strong>Training: Risk Management</strong></span>
-                        <span style="color: #d97706; font-weight: bold;">18 Aug</span>
-                    </li>
-                </ul>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-label">Total Voice</div>
+                    <div class="stat-value color-total">1.248</div>
+                    <div class="stat-desc">Semua periode</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Dalam Tindak Lanjut</div>
+                    <div class="stat-value color-process">57</div>
+                    <div class="stat-desc">Sedang diproses</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Selesai</div>
+                    <div class="stat-value color-done">872</div>
+                    <div class="stat-desc">Sudah ditindaklanjuti</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Perlu Perhatian</div>
+                    <div class="stat-value color-alert">12</div>
+                    <div class="stat-desc">Melewati target</div>
+                </div>
+            </div>
+
+            <hr style="border:0; border-top:1px solid #f1f5f9; margin: 30px 0;">
+
+            <div>
+                <h3 class="track-section-title">Track Your Voice — Informasi Tindak Lanjut Terbaru</h3>
+                <p class="track-section-sub">Gunakan Request ID untuk pemantauan dan komunikasi dengan tim HC.</p>
+
+                <table class="voice-table">
+                    <thead>
+                        <tr>
+                            <th>Request ID</th>
+                            <th>Nama Pengaju</th>
+                            <th>Kategori</th>
+                            <th>Status</th>
+                            <th>Update Terakhir</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="data-row">
+                            <td class="req-id">EV-2026-00125</td>
+                            <td>Budi Santoso</td>
+                            <td>Fasilitas Kerja</td>
+                            <td><span class="badge-status bg-process">Dalam Tindak Lanjut</span></td>
+                            <td>12 Agustus 2026</td>
+                        </tr>
+                        <tr class="data-row">
+                            <td class="req-id">EV-2026-00118</td>
+                            <td>Siti Rahma</td>
+                            <td>Learning & Development</td>
+                            <td><span class="badge-status bg-done">Selesai</span></td>
+                            <td>10 Agustus 2026</td>
+                        </tr>
+                        <tr class="data-row">
+                            <td class="req-id">EV-2026-00107</td>
+                            <td>Andi Pratama</td>
+                            <td>Komunikasi Internal</td>
+                            <td><span class="badge-status bg-alert">Perlu Perhatian</span></td>
+                            <td>7 Agustus 2026</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- MODAL POPUP MONITORING IZIN / CUTI -->
+    <div class="modal-overlay" id="modalCuti">
+        <div class="modal-box">
+            <button class="modal-close" onclick="closeModal('modalCuti')">&times;</button>
+            <h2 style="color:#0f2b48; margin-bottom: 6px;">Monitoring Pengajuan Izin & Cuti</h2>
+            <p style="color:#64748b; font-size: 0.88rem; margin-bottom: 20px;">
+                Data real-time pengajuan izin/cuti karyawan yang terhubung dari Google Spreadsheet / Form.
+            </p>
+            
+            <div style="width: 100%; height: 380px; background-color: #f8fafc; border: 2px dashed #cbd5e1; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: #64748b; font-weight: 600; text-align: center; padding: 20px;">
+                <span>
+                    📋 [Sematkan Iframe Google Spreadsheet / Looker Studio di Sini]<br>
+                    <small style="font-weight: normal; opacity: 0.8;">Contoh: &lt;iframe src="LINK_SPREADSHEET_PUBLIC" width="100%" height="350"&gt;&lt;/iframe&gt;</small>
+                </span>
             </div>
         </div>
     </div>
 
-    <!-- 5. FOOTER -->
-    <footer>
-        <p>&copy; 2026 PT Gadai MAS Nusantara - Divisi Human Capital Business Partner (HCBP).</p>
+    <!-- 5. FOOTER MULTI-KOLOM (Sesuai Request Gambar) -->
+    <footer id="contact">
+        <div class="footer-container">
+            
+            <!-- KOLOM 1: CONTACT (Hanya No HP & Email) -->
+            <div class="footer-col contact-info">
+                <h3>CONTACT</h3>
+                <p>📧 Email: <a href="mailto:hc.connect@hcbp.com">hc.connect@hcbp.com</a></p>
+                <p>📞 Phone: <a href="tel:+6281220002964">+62 812-2000-2964</a></p>
+            </div>
+
+            <!-- KOLOM 2: RESOURCES -->
+            <div class="footer-col">
+                <h3>RESOURCES</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Employee Handbook</a></li>
+                    <li><a href="#">HC Policies & SOP</a></li>
+                    <li><a href="#">Learning Center</a></li>
+                    <li><a href="#">Workforce Movement</a></li>
+                </ul>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 PT Gadai MAS Nusantara - Divisi Human Capital Business Partner (HCBP).</p>
+        </div>
     </footer>
 
     <script>
@@ -549,25 +894,19 @@
             document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
         }
 
-        function tambahAspirasi(event) {
-            event.preventDefault();
-            var nama = document.getElementById('namaKaryawan').value;
-            var aspirasi = document.getElementById('isiAspirasi').value;
-            var today = new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = 'flex';
+        }
 
-            var tbody = document.getElementById('tabelStatusBody');
-            var newRow = document.createElement('tr');
-            newRow.innerHTML = `
-                <td>${nama}</td>
-                <td>${aspirasi}</td>
-                <td>${today}</td>
-                <td><span class="badge badge-pending">Menunggu Antrean</span></td>
-            `;
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
 
-            tbody.insertBefore(newRow, tbody.firstChild);
-            document.getElementById('namaKaryawan').value = '';
-            document.getElementById('isiAspirasi').value = '';
-            alert('Aspirasi berhasil dikirim!');
+        window.onclick = function(event) {
+            var modal = document.getElementById('modalCuti');
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
         }
     </script>
 </body>
