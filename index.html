@@ -39,7 +39,7 @@
 
         @keyframes float {
             0% { transform: translateY(0px); }
-            50% { transform: translateY(-12px); }
+            50% { transform: translateY(-10px); }
             100% { transform: translateY(0px); }
         }
 
@@ -118,16 +118,16 @@
         /* --- 2. HERO / LANDING SECTION --- */
         .hero-wrapper {
             background: radial-gradient(circle at top right, #1e293b 0%, #0f172a 100%);
-            padding: 50px 8% 60px 8%;
+            padding: 40px 5% 50px 5%;
             width: 100%;
         }
 
         .hero-container {
-            max-width: 1200px;
+            max-width: 1300px;
             margin: 0 auto;
             background-color: #f8fafc;
             border-radius: 24px;
-            padding: 45px;
+            padding: 45px 50px;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -138,22 +138,23 @@
         }
 
         .hero-text {
-            flex: 1;
-            max-width: 600px;
+            flex: 1.3;
         }
 
+        /* Satu baris untuk tulisan Selamat Datang di HC CONNECT */
         .hero-title {
-            font-size: 2.6rem;
+            font-size: 2.2rem;
             font-weight: 900;
             color: #0f2b48;
             line-height: 1.2;
             margin-bottom: 8px;
+            white-space: nowrap; 
         }
 
         .hero-subtitle-brand {
             color: #d97706;
             font-weight: 800;
-            font-size: 1.2rem;
+            font-size: 1.15rem;
             margin-bottom: 16px;
         }
 
@@ -202,24 +203,23 @@
         }
 
         .hero-media {
-            flex: 1;
-            max-width: 400px;
+            flex: 0.9;
             text-align: center;
             animation: float 5s ease-in-out infinite;
         }
 
         .hero-media img {
             width: 100%;
+            max-width: 360px;
             height: auto;
             border-radius: 16px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
         }
 
-        /* --- 3. QUICK ACCESS SECTION (4 CARDS) --- */
+        /* --- 3. QUICK ACCESS SECTION (4 CARDS SEJAJAR 1 BARIS) --- */
         .quick-access-section {
-            padding: 60px 8%;
+            padding: 50px 5%;
             width: 100%;
-            max-width: 1280px;
+            max-width: 1350px;
             margin: 0 auto;
         }
 
@@ -235,19 +235,20 @@
             padding-left: 14px;
         }
 
+        /* Grid sejajar 4 kolom presisi */
         .qa-grid-4 {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
-            gap: 24px;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
         }
 
         .qa-card {
-            border-radius: 24px;
-            padding: 30px 24px;
+            border-radius: 20px;
+            padding: 28px 20px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            min-height: 380px;
+            min-height: 390px;
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
@@ -269,24 +270,24 @@
 
         .card-icon {
             font-size: 2.2rem;
-            margin-bottom: 16px;
+            margin-bottom: 14px;
             display: inline-block;
             transition: transform 0.3s ease;
         }
 
         .qa-card:hover .card-icon {
-            transform: scale(1.2) rotate(5deg);
+            transform: scale(1.15) rotate(5deg);
         }
 
         .card-title {
-            font-size: 1.4rem;
+            font-size: 1.25rem;
             font-weight: 800;
             line-height: 1.3;
             margin-bottom: 10px;
         }
 
         .card-desc {
-            font-size: 0.88rem;
+            font-size: 0.84rem;
             opacity: 0.88;
             margin-bottom: 20px;
             line-height: 1.5;
@@ -303,10 +304,10 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 10px 16px;
+            padding: 10px 14px;
             border-radius: 12px;
             font-weight: 700;
-            font-size: 0.82rem;
+            font-size: 0.8rem;
             text-decoration: none;
             transition: all 0.3s ease;
             cursor: pointer;
@@ -337,25 +338,268 @@
             transform: translateX(4px);
         }
 
-        /* --- 4. INTEGRATED FORM SECTION & DASHBOARD --- */
-        .main-container {
-            max-width: 1280px;
-            margin: 0 auto 60px auto;
-            padding: 0 8%;
+        /* --- 4. UPCOMING EVENT SECTION (MINI KALENDER & REALTIME EVENT) --- */
+        .event-section {
+            padding: 20px 5% 50px 5%;
             width: 100%;
+            max-width: 1350px;
+            margin: 0 auto;
         }
 
-        .white-card {
-            background-color: #ffffff;
-            color: #0f172a;
+        .event-wrapper {
+            background-color: #0f1c2e;
+            border: 1px solid #1e293b;
             border-radius: 24px;
-            padding: 40px;
-            margin-bottom: 35px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+            padding: 35px;
+        }
+
+        .event-grid {
+            display: grid;
+            grid-template-columns: 320px 1fr;
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        /* Mini Calendar Component */
+        .mini-calendar {
+            background-color: #1e293b;
+            border-radius: 18px;
+            padding: 20px;
+            border: 1px solid #334155;
+        }
+
+        .cal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 800;
+            font-size: 1.05rem;
+            margin-bottom: 15px;
+            color: #f59e0b;
+        }
+
+        .cal-days {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            text-align: center;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #94a3b8;
+            margin-bottom: 10px;
+        }
+
+        .cal-dates {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 6px;
+            text-align: center;
+            font-size: 0.85rem;
+        }
+
+        .cal-date {
+            padding: 8px 0;
+            border-radius: 8px;
+            color: #cbd5e1;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .cal-date:hover {
+            background-color: #334155;
+        }
+
+        .cal-date.active {
+            background-color: #f59e0b;
+            color: #0f2b48;
+            font-weight: 800;
+        }
+
+        .cal-date.has-event {
+            position: relative;
+            font-weight: bold;
+        }
+
+        .cal-date.has-event::after {
+            content: '';
+            position: absolute;
+            bottom: 3px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 4px;
+            background-color: #f59e0b;
+            border-radius: 50%;
+        }
+
+        /* Event Cards List */
+        .events-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .event-card-item {
+            background-color: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 16px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
             transition: all 0.3s ease;
         }
 
-        /* DYNAMIC FORM STYLES */
+        .event-card-item:hover {
+            border-color: #f59e0b;
+            transform: translateX(5px);
+        }
+
+        .event-date-badge {
+            background-color: #0f2b48;
+            border: 1px solid #334155;
+            border-radius: 12px;
+            padding: 10px 16px;
+            text-align: center;
+            min-width: 85px;
+        }
+
+        .event-date-badge .day {
+            font-size: 1.4rem;
+            font-weight: 900;
+            color: #f59e0b;
+            line-height: 1;
+        }
+
+        .event-date-badge .month {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #cbd5e1;
+            text-transform: uppercase;
+        }
+
+        .event-details {
+            flex: 1;
+        }
+
+        .event-tag {
+            display: inline-block;
+            font-size: 0.7rem;
+            font-weight: 800;
+            padding: 3px 10px;
+            border-radius: 12px;
+            text-transform: uppercase;
+            margin-bottom: 6px;
+        }
+
+        .tag-training { background-color: rgba(59, 130, 246, 0.2); color: #60a5fa; }
+        .tag-meeting { background-color: rgba(245, 158, 11, 0.2); color: #fbbf24; }
+        .tag-event { background-color: rgba(16, 185, 129, 0.2); color: #34d399; }
+
+        .event-title {
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: #ffffff;
+            margin-bottom: 4px;
+        }
+
+        .event-time-loc {
+            font-size: 0.82rem;
+            color: #94a3b8;
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn-event-link {
+            background-color: #f59e0b;
+            color: #0f2b48;
+            padding: 10px 18px;
+            border-radius: 10px;
+            font-weight: 800;
+            font-size: 0.82rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .btn-event-link:hover {
+            background-color: #ffffff;
+            box-shadow: 0 4px 12px rgba(255,255,255,0.2);
+        }
+
+        .integration-info-box {
+            margin-top: 25px;
+            background-color: rgba(30, 41, 59, 0.6);
+            border: 1px dashed #334155;
+            border-radius: 14px;
+            padding: 16px 20px;
+            font-size: 0.83rem;
+            color: #94a3b8;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        /* --- 5. MODALS & FORMS --- */
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(8px);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-overlay.show {
+            display: flex;
+            opacity: 1;
+        }
+
+        .modal-box {
+            background-color: #ffffff;
+            width: 92%;
+            max-width: 850px;
+            border-radius: 24px;
+            padding: 35px 40px;
+            color: #0f172a;
+            position: relative;
+            max-height: 88vh;
+            overflow-y: auto;
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-overlay.show .modal-box {
+            transform: scale(1);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px; right: 20px;
+            background: #f1f5f9;
+            border: none;
+            font-weight: bold;
+            font-size: 1.2rem;
+            width: 36px; height: 36px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-close:hover {
+            background-color: #dc2626;
+            color: #ffffff;
+        }
+
+        /* FORM STYLES INSIDE MODAL */
         .form-section-title {
             font-size: 1.6rem;
             font-weight: 900;
@@ -366,18 +610,17 @@
         .form-section-subtitle {
             color: #64748b;
             font-size: 0.9rem;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
         }
 
         .form-group {
-            margin-bottom: 24px;
-            animation: fadeInUp 0.5s ease-out;
+            margin-bottom: 20px;
         }
 
         .form-label {
             display: block;
             font-weight: 700;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             color: #0f2b48;
             margin-bottom: 8px;
         }
@@ -406,7 +649,7 @@
         .radio-list {
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 8px;
         }
 
         .radio-item {
@@ -414,7 +657,7 @@
             align-items: center;
             gap: 12px;
             background-color: #f8fafc;
-            padding: 12px 16px;
+            padding: 10px 14px;
             border: 1.5px solid #e2e8f0;
             border-radius: 10px;
             cursor: pointer;
@@ -425,8 +668,6 @@
 
         .radio-item:hover {
             background-color: #f1f5f9;
-            border-color: #cbd5e1;
-            transform: translateX(3px);
         }
 
         .radio-item input[type="radio"] {
@@ -444,7 +685,7 @@
             width: 100%;
             background-color: #0f2b48;
             color: #ffffff;
-            padding: 16px;
+            padding: 15px;
             border: none;
             border-radius: 12px;
             font-weight: 800;
@@ -452,29 +693,27 @@
             cursor: pointer;
             transition: all 0.3s ease;
             margin-top: 10px;
-            box-shadow: 0 4px 12px rgba(15, 43, 72, 0.2);
         }
 
         .btn-submit:hover {
             background-color: #1e40af;
-            transform: translateY(-2px);
             box-shadow: 0 8px 20px rgba(30, 64, 175, 0.3);
         }
 
-        /* DASHBOARD BOARD STYLES */
+        /* TRACKING DASHBOARD STYLES INSIDE MODAL */
         .ev-header {
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
             flex-wrap: wrap;
             gap: 15px;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
             border-bottom: 2px solid #f1f5f9;
-            padding-bottom: 20px;
+            padding-bottom: 15px;
         }
 
         .ev-title-badge {
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             color: #d97706;
             font-weight: 800;
             text-transform: uppercase;
@@ -482,90 +721,43 @@
         }
 
         .ev-title-main {
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             font-weight: 900;
             color: #0f2b48;
         }
 
-        .ev-pills {
-            display: flex;
-            gap: 10px;
-        }
-
-        .pill-info {
-            background-color: #eff6ff;
-            color: #1d4ed8;
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-weight: 700;
-            font-size: 0.8rem;
-        }
-
-        .pill-status {
-            background-color: #f0fdf4;
-            color: #15803d;
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-weight: 700;
-            font-size: 0.8rem;
-            animation: pulseGlow 2s infinite;
-        }
-
         .stats-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin-bottom: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 15px;
+            margin-bottom: 25px;
         }
 
         .stat-card {
             border: 1px solid #e2e8f0;
-            border-radius: 16px;
-            padding: 20px;
+            border-radius: 14px;
+            padding: 16px;
             background-color: #f8fafc;
-            transition: transform 0.3s ease;
-        }
-
-        .stat-card:hover {
-            transform: translateY(-4px);
         }
 
         .stat-label {
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             color: #64748b;
             font-weight: 600;
-            margin-bottom: 6px;
+            margin-bottom: 4px;
         }
 
         .stat-value {
-            font-size: 2rem;
+            font-size: 1.8rem;
             font-weight: 900;
             line-height: 1;
-            margin-bottom: 6px;
-        }
-
-        .stat-desc {
-            font-size: 0.75rem;
-            color: #94a3b8;
+            margin-bottom: 4px;
         }
 
         .color-total { color: #0f2b48; }
         .color-process { color: #d97706; }
         .color-done { color: #16a34a; }
         .color-alert { color: #dc2626; }
-
-        .track-section-title {
-            font-size: 1.25rem;
-            font-weight: 800;
-            color: #0f2b48;
-            margin-bottom: 4px;
-        }
-
-        .track-section-sub {
-            font-size: 0.85rem;
-            color: #64748b;
-            margin-bottom: 20px;
-        }
 
         .table-responsive {
             width: 100%;
@@ -575,13 +767,13 @@
         .voice-table {
             width: 100%;
             border-collapse: separate;
-            border-spacing: 0 10px;
+            border-spacing: 0 8px;
         }
 
         .voice-table th {
             text-align: left;
-            padding: 10px 16px;
-            font-size: 0.8rem;
+            padding: 10px 14px;
+            font-size: 0.78rem;
             color: #64748b;
             font-weight: 700;
             text-transform: uppercase;
@@ -591,43 +783,19 @@
             background-color: #ffffff;
             box-shadow: 0 2px 5px rgba(0,0,0,0.04);
             border: 1px solid #e2e8f0;
-            border-radius: 12px;
-            transition: all 0.2s ease;
-        }
-
-        .voice-table tr.data-row:hover {
-            transform: scale(1.008);
-            box-shadow: 0 6px 16px rgba(0,0,0,0.08);
         }
 
         .voice-table td {
-            padding: 16px;
-            font-size: 0.88rem;
+            padding: 14px;
+            font-size: 0.85rem;
             border-top: 1px solid #f1f5f9;
             border-bottom: 1px solid #f1f5f9;
         }
 
-        .voice-table td:first-child {
-            border-left: 1px solid #f1f5f9;
-            border-top-left-radius: 12px;
-            border-bottom-left-radius: 12px;
-        }
-
-        .voice-table td:last-child {
-            border-right: 1px solid #f1f5f9;
-            border-top-right-radius: 12px;
-            border-bottom-right-radius: 12px;
-        }
-
-        .req-id {
-            font-weight: 900;
-            color: #0f2b48;
-        }
-
         .badge-status {
-            padding: 6px 14px;
+            padding: 4px 12px;
             border-radius: 20px;
-            font-size: 0.78rem;
+            font-size: 0.75rem;
             font-weight: 800;
             display: inline-block;
         }
@@ -636,78 +804,22 @@
         .bg-done { background-color: #dcfce7; color: #15803d; }
         .bg-alert { background-color: #fee2e2; color: #b91c1c; }
 
-        /* MODAL POPUP MONITORING */
-        .modal-overlay {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(15, 23, 42, 0.8);
-            backdrop-filter: blur(6px);
-            display: none;
-            justify-content: center;
-            align-items: center;
-            z-index: 2000;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .modal-overlay.show {
-            display: flex;
-            opacity: 1;
-        }
-
-        .modal-box {
-            background-color: #ffffff;
-            width: 90%;
-            max-width: 900px;
-            border-radius: 24px;
-            padding: 35px;
-            color: #0f172a;
-            position: relative;
-            max-height: 85vh;
-            overflow-y: auto;
-            transform: scale(0.9);
-            transition: transform 0.3s ease;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-        }
-
-        .modal-overlay.show .modal-box {
-            transform: scale(1);
-        }
-
-        .modal-close {
-            position: absolute;
-            top: 20px; right: 20px;
-            background: #f1f5f9;
-            border: none;
-            font-weight: bold;
-            font-size: 1.2rem;
-            width: 36px; height: 36px;
-            border-radius: 50%;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .modal-close:hover {
-            background-color: #dc2626;
-            color: #ffffff;
-        }
-
-        /* --- 5. FOOTER --- */
+        /* --- 6. FOOTER --- */
         footer {
             background-color: #091122;
             color: #cbd5e1;
-            padding: 60px 8% 30px 8%;
+            padding: 50px 8% 30px 8%;
             border-top: 1px solid #1e293b;
             width: 100%;
         }
 
         .footer-container {
-            max-width: 1280px;
+            max-width: 1350px;
             margin: 0 auto;
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 40px;
-            padding-bottom: 40px;
+            padding-bottom: 30px;
             border-bottom: 1px solid #1e293b;
         }
 
@@ -724,16 +836,12 @@
             font-size: 0.95rem;
             color: #94a3b8;
             margin-bottom: 8px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
         }
 
         .contact-info a {
             color: #f8fafc;
             text-decoration: none;
             font-weight: 600;
-            transition: color 0.2s;
         }
 
         .contact-info a:hover {
@@ -745,26 +853,22 @@
         }
 
         .footer-links li {
-            margin-bottom: 12px;
+            margin-bottom: 10px;
+            padding-left: 15px;
             position: relative;
-            padding-left: 18px;
         }
 
         .footer-links li::before {
             content: "•";
-            color: #ffffff;
-            font-weight: bold;
+            color: #f59e0b;
             position: absolute;
             left: 0;
-            top: -1px;
-            font-size: 1.1rem;
         }
 
         .footer-links a {
             color: #cbd5e1;
             text-decoration: none;
-            font-size: 0.93rem;
-            transition: color 0.2s;
+            font-size: 0.9rem;
         }
 
         .footer-links a:hover {
@@ -773,21 +877,22 @@
 
         .footer-bottom {
             text-align: center;
-            padding-top: 30px;
+            padding-top: 25px;
             color: #64748b;
             font-size: 0.85rem;
         }
 
-        @media (max-width: 900px) {
-            .hero-container {
-                flex-direction: column;
-                text-align: center;
-                padding: 30px;
-            }
-            .hero-text { max-width: 100%; }
+        @media (max-width: 1100px) {
+            .qa-grid-4 { grid-template-columns: repeat(2, 1fr); }
+            .hero-title { white-space: normal; }
+            .event-grid { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 650px) {
+            .qa-grid-4 { grid-template-columns: 1fr; }
+            .hero-container { flex-direction: column; text-align: center; padding: 30px 20px; }
+            .hero-title { font-size: 1.7rem; }
             .btn-explore { justify-content: center; }
-            .ev-header { flex-direction: column; }
-            .white-card { padding: 25px; }
         }
     </style>
 </head>
@@ -811,7 +916,8 @@
     <div class="hero-wrapper">
         <div class="hero-container">
             <div class="hero-text">
-                <h1 class="hero-title">Selamat datang di HC Connect</h1>
+                <!-- Teks Satu Baris -->
+                <h1 class="hero-title">Selamat datang di HC CONNECT</h1>
                 <p class="hero-subtitle-brand">PT Gadai MAS Nusantara</p>
                 <p class="hero-desc">Portal Resmi Divisi Human Capital Business Partner (HCBP) untuk Akses Kebijakan, SOP, Layanan Administrasi, dan Aspirasi Karyawan.</p>
                 
@@ -821,12 +927,13 @@
                 </a>
             </div>
             <div class="hero-media">
-                <img src="https://img.freepik.com/free-vector/corporate-culture-hands-together-business-people_74855-5209.jpg" alt="HC Connect Teamwork PT Gadai MAS Nusantara">
+                <!-- Gambar Gaya 2D Business Illustration -->
+                <img src="https://cdni.iconscout.com/illustration/premium/thumb/business-teamwork-4512028-3758999.png" alt="HC Connect Business 2D Vector Illustration">
             </div>
         </div>
     </div>
 
-    <!-- 3. QUICK ACCESS SECTION -->
+    <!-- 3. QUICK ACCESS SECTION (4 SECTIONS SEJAJAR) -->
     <section class="quick-access-section" id="quick-access">
         <div class="section-header">
             <h2 class="section-title-main">Quick Access Services</h2>
@@ -842,11 +949,13 @@
                     <p class="card-desc">Wadah resmi menyampaikan gagasan, ide, dan masukan untuk kemajuan perusahaan.</p>
                 </div>
                 <div class="sub-btn-group">
-                    <button onclick="scrollToSection('employee-voice-form')" class="btn-sub">
+                    <!-- Membuka Popup Form -->
+                    <button onclick="openModal('modalFormVoice')" class="btn-sub">
                         <span>📝 Form Employee Voice</span>
                         <span>➔</span>
                     </button>
-                    <button onclick="scrollToSection('employee-voice-papan')" class="btn-sub">
+                    <!-- Membuka Popup Status Tracking -->
+                    <button onclick="openModal('modalTrackVoice')" class="btn-sub">
                         <span>📊 Track Your Voice</span>
                         <span>➔</span>
                     </button>
@@ -913,11 +1022,113 @@
         </div>
     </section>
 
-    <!-- 4. SECTION FORM EMPLOYEE VOICE & BOARD MONITORING -->
-    <div class="main-container">
-        
-        <!-- INTEGRATED FULL FORM SECTION -->
-        <div class="white-card" id="employee-voice-form">
+    <!-- 4. UPCOMING EVENT SECTION (FITUR MINI KALENDER REALTIME) -->
+    <section class="event-section">
+        <div class="event-wrapper">
+            <div class="section-header">
+                <h2 class="section-title-main">Upcoming Events</h2>
+                <p style="color: #94a3b8; font-size: 0.9rem; margin-top: 6px;">Jadwal kegiatan, pelatihan, dan pertemuan penting perusahaan yang sedang & akan berlangsung.</p>
+            </div>
+
+            <div class="event-grid">
+                <!-- Mini Kalender -->
+                <div class="mini-calendar">
+                    <div class="cal-header">
+                        <span>&lt;</span>
+                        <span>Agustus 2026</span>
+                        <span>&gt;</span>
+                    </div>
+                    <div class="cal-days">
+                        <span>M</span><span>S</span><span>S</span><span>R</span><span>K</span><span>J</span><span>S</span>
+                    </div>
+                    <div class="cal-dates">
+                        <span class="cal-date" style="opacity:0.3">26</span>
+                        <span class="cal-date" style="opacity:0.3">27</span>
+                        <span class="cal-date" style="opacity:0.3">28</span>
+                        <span class="cal-date" style="opacity:0.3">29</span>
+                        <span class="cal-date" style="opacity:0.3">30</span>
+                        <span class="cal-date" style="opacity:0.3">31</span>
+                        <span class="cal-date">1</span>
+                        <span class="cal-date">2</span><span class="cal-date">3</span><span class="cal-date">4</span>
+                        <span class="cal-date">5</span><span class="cal-date">6</span><span class="cal-date">7</span>
+                        <span class="cal-date">8</span><span class="cal-date">9</span><span class="cal-date">10</span>
+                        <span class="cal-date">11</span><span class="cal-date">12</span><span class="cal-date">13</span>
+                        <span class="cal-date">14</span><span class="cal-date">15</span><span class="cal-date">16</span>
+                        <span class="cal-date">17</span><span class="cal-date active">18</span><span class="cal-date has-event">19</span>
+                        <span class="cal-date has-event">20</span><span class="cal-date">21</span><span class="cal-date has-event">22</span>
+                        <span class="cal-date">23</span><span class="cal-date">24</span><span class="cal-date">25</span>
+                        <span class="cal-date">26</span><span class="cal-date">27</span><span class="cal-date">28</span>
+                        <span class="cal-date">29</span><span class="cal-date">30</span><span class="cal-date">31</span>
+                    </div>
+                </div>
+
+                <!-- Event Cards List Realtime Links -->
+                <div class="events-list">
+                    <!-- Event 1 -->
+                    <div class="event-card-item">
+                        <div class="event-date-badge">
+                            <div class="day">19</div>
+                            <div class="month">AGU</div>
+                        </div>
+                        <div class="event-details">
+                            <span class="event-tag tag-training">Training & Workshop</span>
+                            <h4 class="event-title">Sosialisasi SOP Operasional & Service Excellence 2026</h4>
+                            <div class="event-time-loc">
+                                <span>🕒 09:00 - 12:00 WIB</span>
+                                <span>📍 Zoom Meeting</span>
+                            </div>
+                        </div>
+                        <a href="https://zoom.us/j/YOUR_MEETING_ID" target="_blank" class="btn-event-link">Join Zoom Meeting ➔</a>
+                    </div>
+
+                    <!-- Event 2 -->
+                    <div class="event-card-item">
+                        <div class="event-date-badge">
+                            <div class="day">20</div>
+                            <div class="month">AGU</div>
+                        </div>
+                        <div class="event-details">
+                            <span class="event-tag tag-meeting">Townhall Meeting</span>
+                            <h4 class="event-title">Monthly Business Review Q3 - PT Gadai MAS Nusantara</h4>
+                            <div class="event-time-loc">
+                                <span>🕒 14:00 - 16:00 WIB</span>
+                                <span>📍 Ruang Rapat Utama & Online</span>
+                            </div>
+                        </div>
+                        <a href="https://forms.google.com/YOUR_REGISTER_FORM" target="_blank" class="btn-event-link">Daftar Kehadiran ➔</a>
+                    </div>
+
+                    <!-- Event 3 -->
+                    <div class="event-card-item">
+                        <div class="event-date-badge">
+                            <div class="day">22</div>
+                            <div class="month">AGU</div>
+                        </div>
+                        <div class="event-details">
+                            <span class="event-tag tag-event">Internal Event</span>
+                            <h4 class="event-title">HC Sharing Session: Managing Career Growth in Financial Services</h4>
+                            <div class="event-time-loc">
+                                <span>🕒 10:00 - 11:30 WIB</span>
+                                <span>📍 Google Meet</span>
+                            </div>
+                        </div>
+                        <a href="https://meet.google.com/abc-defg-hij" target="_blank" class="btn-event-link">Join Meeting ➔</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Rekomendasi Aplikasi Integrasi -->
+            <div class="integration-info-box">
+                <span style="font-size:1.2rem;">💡</span>
+                <span><b>Tips Integrasi Realtime:</b> Kalender ini disinkronkan secara otomatis menggunakan **Google Calendar API** / **Microsoft Outlook Calendar**. Perubahan jadwal di kalender pusat HCBP akan langsung ter-update di portal ini secara otomatis.</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. POPUP MODAL 1: FORM EMPLOYEE VOICE -->
+    <div class="modal-overlay" id="modalFormVoice">
+        <div class="modal-box">
+            <button class="modal-close" onclick="closeModal('modalFormVoice')">&times;</button>
             <h2 class="form-section-title">Form Input Aspirasi — Employee Voice</h2>
             <p class="form-section-subtitle">Sampaikan aspirasi, ide, atau permasalahan Anda secara langsung kepada tim HCBP.</p>
 
@@ -1006,7 +1217,7 @@
                 <!-- 7. Ceritakan yang terjadi -->
                 <div class="form-group">
                     <label class="form-label">7. Ceritakan yang terjadi pada Anda <span>*</span></label>
-                    <textarea name="cerita" class="form-control" rows="4" placeholder="Jelaskan kronologi atau detail aspirasi Anda..." required></textarea>
+                    <textarea name="cerita" class="form-control" rows="3" placeholder="Jelaskan kronologi atau detail aspirasi Anda..." required></textarea>
                 </div>
 
                 <!-- 8. Dampak dari kondisi tersebut -->
@@ -1027,10 +1238,10 @@
                 <!-- 9. Solusi/Perbaikan -->
                 <div class="form-group">
                     <label class="form-label">9. Apa Solusi / Perbaikan yang dapat dilakukan? <span>*</span></label>
-                    <textarea name="solusi" class="form-control" rows="3" placeholder="Tuliskan ide atau perbaikan yang disarankan..." required></textarea>
+                    <textarea name="solusi" class="form-control" rows="2" placeholder="Tuliskan ide atau perbaikan yang disarankan..." required></textarea>
                 </div>
 
-                <!-- 10. Seberapa Penting / Urgensi -->
+                <!-- 10. Urgensi -->
                 <div class="form-group">
                     <label class="form-label">10. Seberapa Penting hal ini untuk ditindaklanjuti? <span>*</span></label>
                     <select name="urgensi" class="form-control" required>
@@ -1042,9 +1253,9 @@
                     </select>
                 </div>
 
-                <!-- 11. Upload Bukti Pendukung -->
+                <!-- 11. Upload Bukti -->
                 <div class="form-group">
-                    <label class="form-label">11. Apakah Anda memiliki dokumen / bukti pendukung? (Foto/PDF)</label>
+                    <label class="form-label">11. Upload Dokumen / Bukti Pendukung (Foto/PDF)</label>
                     <input type="file" id="fileInput" class="form-control" accept="image/*,.pdf,.docx,.xlsx">
                 </div>
 
@@ -1062,18 +1273,18 @@
                 <button type="submit" class="btn-submit">🚀 Kirim Aspirasi Sekarang</button>
             </form>
         </div>
+    </div>
 
-        <!-- TRACKING & MONITORING BOARD -->
-        <div class="white-card" id="employee-voice-papan">
+    <!-- 6. POPUP MODAL 2: TRACK YOUR VOICE BOARD -->
+    <div class="modal-overlay" id="modalTrackVoice">
+        <div class="modal-box">
+            <button class="modal-close" onclick="closeModal('modalTrackVoice')">&times;</button>
+            
             <div class="ev-header">
                 <div>
                     <span class="ev-title-badge">HC CONNECT</span>
-                    <h2 class="ev-title-main">Employee Voice — Papan Informasi SDM</h2>
-                    <p style="color: #64748b; font-size: 0.9rem;">Transparansi tindak lanjut suara karyawan Gadai MAS Nusantara</p>
-                </div>
-                <div class="ev-pills">
-                    <span class="pill-info">Update: Agustus 2026</span>
-                    <span class="pill-status">● Sistem Aktif</span>
+                    <h2 class="ev-title-main">Employee Voice — Status Monitoring</h2>
+                    <p style="color: #64748b; font-size: 0.88rem;">Transparansi tindak lanjut suara karyawan Gadai MAS Nusantara</p>
                 </div>
             </div>
 
@@ -1081,73 +1292,61 @@
                 <div class="stat-card">
                     <div class="stat-label">Total Voice</div>
                     <div class="stat-value color-total">1.248</div>
-                    <div class="stat-desc">Semua periode</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-label">Dalam Tindak Lanjut</div>
+                    <div class="stat-label">Dalam Proses</div>
                     <div class="stat-value color-process">57</div>
-                    <div class="stat-desc">Sedang diproses</div>
                 </div>
                 <div class="stat-card">
                     <div class="stat-label">Selesai</div>
                     <div class="stat-value color-done">872</div>
-                    <div class="stat-desc">Sudah ditindaklanjuti</div>
                 </div>
                 <div class="stat-card">
                     <div class="stat-label">Perlu Perhatian</div>
                     <div class="stat-value color-alert">12</div>
-                    <div class="stat-desc">Melewati target</div>
                 </div>
             </div>
 
-            <hr style="border:0; border-top:1px solid #f1f5f9; margin: 30px 0;">
-
-            <div>
-                <h3 class="track-section-title">Track Your Voice — Informasi Tindak Lanjut Terbaru</h3>
-                <p class="track-section-sub">Gunakan Request ID untuk pemantauan dan komunikasi dengan tim HC.</p>
-
-                <div class="table-responsive">
-                    <table class="voice-table">
-                        <thead>
-                            <tr>
-                                <th>Request ID</th>
-                                <th>Nama Pengaju</th>
-                                <th>Kategori</th>
-                                <th>Status</th>
-                                <th>Update Terakhir</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr class="data-row">
-                                <td class="req-id">EV-2026-00125</td>
-                                <td>Budi Santoso</td>
-                                <td>Fasilitas Kerja</td>
-                                <td><span class="badge-status bg-process">Dalam Tindak Lanjut</span></td>
-                                <td>12 Agustus 2026</td>
-                            </tr>
-                            <tr class="data-row">
-                                <td class="req-id">EV-2026-00118</td>
-                                <td>Siti Rahma</td>
-                                <td>Learning & Development</td>
-                                <td><span class="badge-status bg-done">Selesai</span></td>
-                                <td>10 Agustus 2026</td>
-                            </tr>
-                            <tr class="data-row">
-                                <td class="req-id">EV-2026-00107</td>
-                                <td>Andi Pratama</td>
-                                <td>Komunikasi Internal</td>
-                                <td><span class="badge-status bg-alert">Perlu Perhatian</span></td>
-                                <td>7 Agustus 2026</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+            <div class="table-responsive">
+                <table class="voice-table">
+                    <thead>
+                        <tr>
+                            <th>Request ID</th>
+                            <th>Nama Pengaju</th>
+                            <th>Kategori</th>
+                            <th>Status</th>
+                            <th>Update Terakhir</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="data-row">
+                            <td style="font-weight:bold; color:#0f2b48;">EV-2026-00125</td>
+                            <td>Budi Santoso</td>
+                            <td>Fasilitas Kerja</td>
+                            <td><span class="badge-status bg-process">Dalam Tindak Lanjut</span></td>
+                            <td>12 Agustus 2026</td>
+                        </tr>
+                        <tr class="data-row">
+                            <td style="font-weight:bold; color:#0f2b48;">EV-2026-00118</td>
+                            <td>Siti Rahma</td>
+                            <td>Learning & Development</td>
+                            <td><span class="badge-status bg-done">Selesai</span></td>
+                            <td>10 Agustus 2026</td>
+                        </tr>
+                        <tr class="data-row">
+                            <td style="font-weight:bold; color:#0f2b48;">EV-2026-00107</td>
+                            <td>Andi Pratama</td>
+                            <td>Komunikasi Internal</td>
+                            <td><span class="badge-status bg-alert">Perlu Perhatian</span></td>
+                            <td>7 Agustus 2026</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
-
         </div>
     </div>
 
-    <!-- MODAL POPUP MONITORING IZIN / CUTI -->
+    <!-- 7. POPUP MODAL 3: MONITORING IZIN / CUTI -->
     <div class="modal-overlay" id="modalCuti">
         <div class="modal-box">
             <button class="modal-close" onclick="closeModal('modalCuti')">&times;</button>
@@ -1156,16 +1355,16 @@
                 Data real-time pengajuan izin/cuti karyawan yang terhubung dari Google Spreadsheet / Form.
             </p>
             
-            <div style="width: 100%; height: 380px; background-color: #f8fafc; border: 2px dashed #cbd5e1; border-radius: 16px; display: flex; align-items: center; justify-content: center; color: #64748b; font-weight: 600; text-align: center; padding: 20px;">
+            <div style="width: 100%; height: 350px; background-color: #f8fafc; border: 2px dashed #cbd5e1; border-radius: 16px; display: flex; align-items: center; justify-content: center; color: #64748b; font-weight: 600; text-align: center; padding: 20px;">
                 <span>
                     📋 [Sematkan Iframe Google Spreadsheet / Looker Studio di Sini]<br>
-                    <small style="font-weight: normal; opacity: 0.8;">Contoh: &lt;iframe src="LINK_SPREADSHEET_PUBLIC" width="100%" height="350"&gt;&lt;/iframe&gt;</small>
+                    <small style="font-weight: normal; opacity: 0.8;">Contoh: &lt;iframe src="LINK_SPREADSHEET_PUBLIC" width="100%" height="330"&gt;&lt;/iframe&gt;</small>
                 </span>
             </div>
         </div>
     </div>
 
-    <!-- 5. FOOTER -->
+    <!-- 8. FOOTER -->
     <footer id="contact">
         <div class="footer-container">
             <div class="footer-col contact-info">
@@ -1192,27 +1391,32 @@
 
     <!-- INTERACTIVE JAVASCRIPT -->
     <script>
-        function scrollToSection(sectionId) {
-            document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
-        }
-
+        // Modal Control Functions (Show/Hide Popup)
         function openModal(modalId) {
             const modal = document.getElementById(modalId);
-            modal.classList.add('show');
+            if(modal) {
+                modal.classList.add('show');
+            }
         }
 
         function closeModal(modalId) {
             const modal = document.getElementById(modalId);
-            modal.classList.remove('show');
-        }
-
-        window.onclick = function(event) {
-            var modal = document.getElementById('modalCuti');
-            if (event.target == modal) {
-                closeModal('modalCuti');
+            if(modal) {
+                modal.classList.remove('show');
             }
         }
 
+        // Close modal when clicking on overlay outside modal-box
+        window.onclick = function(event) {
+            const overlays = document.querySelectorAll('.modal-overlay');
+            overlays.forEach(overlay => {
+                if (event.target === overlay) {
+                    overlay.classList.remove('show');
+                }
+            });
+        }
+
+        // Dynamic Form Logic
         function toggleLainnya(selectId, inputId) {
             const selectVal = document.getElementById(selectId).value;
             const inputEl = document.getElementById(inputId);
@@ -1242,6 +1446,7 @@
             document.getElementById('employeeVoiceForm').reset();
             document.getElementById('topikLainnyaInput').style.display = 'none';
             document.getElementById('dampakLainnyaInput').style.display = 'none';
+            closeModal('modalFormVoice');
         }
     </script>
 </body>
