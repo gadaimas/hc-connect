@@ -4,451 +4,451 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HC Connect - PT Gadai MAS Nusantara</title>
-    
-    <!-- Google Fonts Inter & Poppins -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Google Fonts: Great Vibes (Script), Plus Jakarta Sans, Playfair Display -->
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Playfair+Display:ital,wght@1,600;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
         /* --- 1. RESET & GLOBAL VARIABLES --- */
         :root {
-            --bg-main: #0a0f1d;
-            --bg-card: rgba(18, 26, 47, 0.75);
-            --bg-card-hover: rgba(28, 39, 68, 0.85);
-            --accent-gold: #f59e0b;
-            --accent-gold-glow: rgba(245, 158, 11, 0.35);
-            --accent-blue: #3b82f6;
-            --accent-blue-glow: rgba(59, 130, 246, 0.35);
-            --text-main: #f8fafc;
-            --text-muted: #94a3b8;
-            --border-glow: rgba(255, 255, 255, 0.1);
-            --gradient-card-gold: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
-            --gradient-card-dark: linear-gradient(135deg, rgba(30, 41, 59, 0.8) 0%, rgba(15, 23, 42, 0.9) 100%);
+            --brand-blue: #0f2c89;
+            --brand-blue-hover: #0a1f63;
+            --brand-yellow: #f5a623;
+            --brand-yellow-light: #fff8eb;
+            --bg-light: #ffffff;
+            --bg-gradient: linear-gradient(135deg, #ffffff 0%, #f0f4ff 50%, #fffbeB 100%);
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border-color: #e2e8f0;
+            --shadow-card: 0 10px 25px -5px rgba(15, 44, 137, 0.08);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-family: 'Plus Jakarta Sans', sans-serif;
             scroll-behavior: smooth;
         }
 
         body {
-            background-color: var(--bg-main);
+            background: var(--bg-gradient);
             color: var(--text-main);
             line-height: 1.6;
             overflow-x: hidden;
             width: 100%;
-            /* Latar Belakang Mesh Gradient & Grid pattern */
-            background-image: 
-                radial-gradient(at 10% 10%, rgba(59, 130, 246, 0.15) 0px, transparent 50%),
-                radial-gradient(at 90% 20%, rgba(245, 158, 11, 0.12) 0px, transparent 50%),
-                radial-gradient(at 50% 80%, rgba(99, 102, 241, 0.12) 0px, transparent 50%);
-            background-attachment: fixed;
         }
 
-        h1, h2, h3, .nav-logo {
-            font-family: 'Poppins', sans-serif;
-        }
-
-        /* --- 2. KEYFRAMES ANIMATIONS --- */
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(40px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes float {
-            0% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-12px) rotate(1deg); }
-            100% { transform: translateY(0px) rotate(0deg); }
-        }
-
-        @keyframes glowPulse {
-            0% { box-shadow: 0 0 15px rgba(245, 158, 11, 0.2); }
-            50% { box-shadow: 0 0 30px rgba(245, 158, 11, 0.5); }
-            100% { box-shadow: 0 0 15px rgba(245, 158, 11, 0.2); }
-        }
-
-        /* --- 3. NAVBAR --- */
+        /* --- 2. NAVBAR --- */
         nav {
-            background: rgba(10, 15, 29, 0.75);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            padding: 16px 8%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
+            padding: 12px 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
             position: sticky;
             top: 0;
             z-index: 1000;
-            border-bottom: 1px solid var(--border-glow);
-            animation: fadeInDown 0.8s ease-out;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+            border-bottom: 1px solid var(--border-color);
         }
 
-        .nav-logo {
-            font-size: 1.5rem;
-            font-weight: 800;
-            background: linear-gradient(90deg, #ffffff 0%, var(--accent-gold) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            letter-spacing: 0.5px;
+        .brand-group {
             display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 24px;
-        }
-
-        .nav-item {
-            color: var(--text-muted);
-            text-decoration: none;
-            font-size: 0.95rem;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            transition: all 0.3s ease;
-        }
-
-        .nav-item:hover, .nav-item.active {
-            color: var(--accent-gold);
-            transform: translateY(-2px);
-        }
-
-        .btn-contact {
-            background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 100%);
-            color: #0f172a;
-            padding: 9px 24px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
-        }
-
-        .btn-contact:hover {
-            background: var(--accent-gold);
-            color: #0f172a;
-            box-shadow: 0 0 20px var(--accent-gold-glow);
-            transform: translateY(-2px) scale(1.03);
-        }
-
-        /* --- 4. HERO SECTION --- */
-        .hero-wrapper {
-            padding: 50px 5% 40px 5%;
-            width: 100%;
-        }
-
-        .hero-container {
-            max-width: 1300px;
-            margin: 0 auto;
-            background: rgba(255, 255, 255, 0.96);
-            backdrop-filter: blur(20px);
-            border-radius: 28px;
-            padding: 50px 60px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 40px;
-            color: #0f172a;
-            box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.5), inset 0 0 0 1px rgba(255, 255, 255, 0.6);
-            animation: fadeInUp 0.8s ease-out;
-            position: relative;
-            overflow: hidden;
-        }
-
-        /* Accent glow effect inside hero */
-        .hero-container::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -10%;
-            width: 300px;
-            height: 300px;
-            background: rgba(245, 158, 11, 0.15);
-            filter: blur(80px);
-            border-radius: 50%;
-            pointer-events: none;
-        }
-
-        .hero-text {
-            flex: 1.3;
-            z-index: 2;
-        }
-
-        .hero-title {
-            font-size: 2.3rem;
-            font-weight: 900;
-            color: #0f2b48;
-            line-height: 1.2;
-            margin-bottom: 8px;
-            white-space: nowrap; 
-        }
-
-        .hero-subtitle-brand {
-            color: #d97706;
-            font-weight: 800;
-            font-size: 1.2rem;
-            margin-bottom: 16px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .hero-desc {
-            color: #475569;
-            font-size: 1rem;
-            line-height: 1.6;
-            margin-bottom: 28px;
-        }
-
-        .btn-explore {
-            display: inline-flex;
             align-items: center;
             gap: 14px;
-            background: linear-gradient(135deg, #0f2b48 0%, #1e40af 100%);
-            color: #ffffff;
-            padding: 14px 30px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 0.95rem;
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            box-shadow: 0 10px 25px rgba(15, 43, 72, 0.25);
         }
 
-        .btn-explore:hover {
-            transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 15px 30px rgba(30, 64, 175, 0.35);
-        }
-
-        .btn-explore .arrow {
-            background-color: var(--accent-gold);
-            color: #0f2b48;
-            width: 28px;
-            height: 28px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            transition: transform 0.3s ease;
-        }
-
-        .btn-explore:hover .arrow {
-            transform: translateX(5px);
-        }
-
-        .hero-media {
-            flex: 0.9;
-            text-align: center;
-            z-index: 2;
-            animation: float 6s ease-in-out infinite;
-        }
-
-        .hero-media img {
-            width: 100%;
-            max-width: 380px;
-            height: auto;
-            filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.15));
-        }
-
-        /* --- 5. QUICK ACCESS SECTION (GLASSMORPHISM & GLOW CARDS) --- */
-        .quick-access-section {
-            padding: 40px 5%;
-            width: 100%;
-            max-width: 1350px;
-            margin: 0 auto;
-        }
-
-        .section-header {
-            margin-bottom: 30px;
-        }
-
-        .section-title-main {
-            font-size: 1.8rem;
-            font-weight: 800;
-            color: #ffffff;
-            border-left: 5px solid var(--accent-gold);
-            padding-left: 16px;
+        .logo-container {
             display: flex;
             align-items: center;
             gap: 12px;
         }
 
+        .logo-img {
+            height: 42px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .brand-text-stack {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            line-height: 1.1;
+        }
+
+        .text-line-1 { font-size: 1.25rem; font-weight: 900; white-space: nowrap; }
+        .text-gadai { color: var(--brand-blue); }
+        .text-mas { color: var(--brand-yellow); }
+
+        .text-nusantara {
+            font-size: 0.65rem;
+            font-weight: 800;
+            color: var(--brand-blue);
+            letter-spacing: 2px;
+            margin-top: 2px;
+            text-align: center;
+            width: 100%;
+        }
+
+        .brand-divider {
+            width: 1px;
+            height: 28px;
+            background-color: var(--border-color);
+        }
+
+        .brand-title {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--brand-blue);
+        }
+
+        .brand-title span { color: var(--brand-yellow); }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            list-style: none;
+            gap: 28px;
+        }
+
+        .nav-item {
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 0.92rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: var(--transition);
+        }
+
+        .nav-item:hover, .nav-item.active { color: var(--brand-blue); }
+
+        /* --- 3. HERO BANNER --- */
+        .hero-banner {
+            position: relative;
+            width: 100%;
+            min-height: 440px;
+            background: linear-gradient(135deg, #e1e6f0 0%, #f0f4ff 100%);
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            margin-bottom: 40px;
+        }
+
+        .hero-left {
+            width: 48%;
+            padding-left: 5%;
+            padding-right: 20px;
+            z-index: 2;
+        }
+
+        .hero-sub { font-size: 2.2rem; font-weight: 700; color: var(--brand-blue); }
+        .hero-main { font-size: 3.8rem; font-weight: 800; color: var(--brand-blue); line-height: 1.05; margin-bottom: 18px; }
+        .hero-main span { color: var(--brand-yellow); }
+        .hero-desc { font-size: 0.98rem; color: var(--text-muted); margin-bottom: 30px; max-width: 460px; }
+
+        .btn-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background-color: var(--brand-blue);
+            color: #ffffff;
+            padding: 6px 6px 6px 24px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.9rem;
+            box-shadow: 0 8px 18px rgba(15, 44, 137, 0.25);
+        }
+
+        .pill-circle {
+            width: 32px;
+            height: 32px;
+            background-color: var(--brand-yellow);
+            color: var(--brand-blue);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-right {
+            position: absolute;
+            top: 0; right: 0;
+            width: 55%; height: 100%;
+            z-index: 1;
+        }
+
+        .hero-bg-photo {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            clip-path: ellipse(95% 100% at 95% 50%);
+        }
+
+        /* --- 4. CONTAINER & SECTION HEADERS --- */
+        .container {
+            width: 90%;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .section-header { margin-bottom: 24px; }
+
+        .section-title-main {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--brand-blue);
+            border-left: 5px solid var(--brand-yellow);
+            padding-left: 14px;
+            text-transform: uppercase;
+        }
+
+        /* --- 5. QUICK ACCESS SECTION --- */
+        .quick-access-section { margin-bottom: 40px; }
+
         .qa-grid-4 {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 22px;
+            align-items: start;
         }
 
-        .qa-card {
-            border-radius: 24px;
-            padding: 30px 22px;
+        .qa-card-simple {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 24px 20px;
+            transition: var(--transition);
+            box-shadow: var(--shadow-card);
+            border: 1px solid var(--border-color);
+            cursor: pointer;
+            text-decoration: none;
+            display: block;
+            color: inherit;
+        }
+
+        .qa-card-simple:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(15, 44, 137, 0.12);
+            border-color: var(--brand-yellow);
+        }
+
+        .qa-card-dropdown {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 24px 20px;
+            transition: var(--transition);
+            box-shadow: var(--shadow-card);
+            border: 1px solid var(--border-color);
+        }
+
+        .dropdown-header {
             display: flex;
-            flex-direction: column;
+            align-items: center;
             justify-content: space-between;
-            min-height: 410px;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            position: relative;
-            overflow: hidden;
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+            cursor: pointer;
         }
 
-        /* Glassmorphic Dark Card */
-        .card-dark {
-            background: var(--gradient-card-dark);
-            color: #ffffff;
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+        .dropdown-header-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
         }
 
-        .card-dark:hover {
-            border-color: rgba(59, 130, 246, 0.5);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 25px var(--accent-blue-glow);
-            transform: translateY(-10px);
+        .dropdown-icon-arrow {
+            font-size: 0.9rem;
+            color: var(--brand-blue);
+            transition: transform 0.3s ease;
         }
 
-        /* Glassmorphic Gold/Accent Card */
-        .card-gold {
-            background: linear-gradient(135deg, #f59e0b 0%, #b45309 100%);
-            color: #ffffff;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 15px 35px rgba(245, 158, 11, 0.2);
+        .qa-card-dropdown.active .dropdown-icon-arrow {
+            transform: rotate(180deg);
         }
 
-        .card-gold:hover {
-            border-color: rgba(255, 255, 255, 0.4);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 30px var(--accent-gold-glow);
-            transform: translateY(-10px);
-        }
-
-        .card-icon {
-            font-size: 2.5rem;
-            margin-bottom: 16px;
-            display: inline-block;
-            background: rgba(255, 255, 255, 0.1);
-            width: 60px;
-            height: 60px;
-            border-radius: 16px;
+        .card-icon-small {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            background: var(--brand-yellow-light);
+            color: var(--brand-blue);
             display: flex;
             align-items: center;
             justify-content: center;
-            backdrop-filter: blur(5px);
-            transition: transform 0.4s ease;
-        }
-
-        .qa-card:hover .card-icon {
-            transform: scale(1.15) rotate(6deg);
-            background: rgba(255, 255, 255, 0.2);
-        }
-
-        .card-title {
             font-size: 1.3rem;
-            font-weight: 800;
-            line-height: 1.3;
-            margin-bottom: 10px;
+            flex-shrink: 0;
         }
 
-        .card-desc {
-            font-size: 0.86rem;
-            opacity: 0.9;
-            margin-bottom: 24px;
+        .card-title-sub {
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: var(--brand-blue);
+        }
+
+        .card-desc-text {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-top: 10px;
             line-height: 1.5;
         }
 
-        .sub-btn-group {
+        .dropdown-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, margin-top 0.3s ease;
             display: flex;
             flex-direction: column;
-            gap: 10px;
-            margin-top: auto;
+            gap: 8px;
         }
 
-        .btn-sub {
+        .qa-card-dropdown.active .dropdown-content {
+            max-height: 500px;
+            margin-top: 16px;
+            padding-top: 12px;
+            border-top: 1px dashed var(--border-color);
+        }
+
+        .btn-dropdown-action {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 12px 16px;
-            border-radius: 14px;
-            font-weight: 700;
-            font-size: 0.82rem;
+            padding: 12px 14px;
+            background: #f8fafc;
+            border-radius: 10px;
             text-decoration: none;
-            transition: all 0.3s ease;
+            color: var(--brand-blue);
+            font-size: 0.85rem;
+            font-weight: 700;
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
             cursor: pointer;
-            border: none;
             width: 100%;
             text-align: left;
         }
 
-        .card-dark .btn-sub {
-            background: rgba(255, 255, 255, 0.06);
+        .btn-dropdown-action:hover {
+            background: var(--brand-blue);
             color: #ffffff;
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-color: var(--brand-blue);
         }
 
-        .card-dark .btn-sub:hover {
-            background: var(--accent-gold);
-            color: #0f2b48;
-            border-color: var(--accent-gold);
-            transform: translateX(5px);
-            box-shadow: 0 5px 15px var(--accent-gold-glow);
+        .btn-dropdown-action.monitoring-type {
+            background: #fff8eb;
+            color: #b45309;
+            border-color: #fde68a;
         }
 
-        .card-gold .btn-sub {
-            background: rgba(15, 43, 72, 0.85);
-            color: #ffffff;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+        .btn-dropdown-action.monitoring-type:hover {
+            background: var(--brand-yellow);
+            color: var(--brand-blue);
+            border-color: var(--brand-yellow);
         }
 
-        .card-gold .btn-sub:hover {
+        .hub-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 16px;
+            margin-top: 20px;
+        }
+
+        .hub-item-card {
             background: #ffffff;
-            color: #0f2b48;
-            transform: translateX(5px);
-            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.3);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 18px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 12px;
+            transition: var(--transition);
+            cursor: pointer;
         }
 
-        /* --- 6. UPCOMING EVENT SECTION --- */
-        .event-section {
-            padding: 20px 5% 60px 5%;
-            width: 100%;
-            max-width: 1350px;
-            margin: 0 auto;
+        .hub-item-card:hover {
+            border-color: var(--brand-blue);
+            box-shadow: var(--shadow-card);
+            transform: translateY(-3px);
         }
 
+        .hub-item-title {
+            font-size: 0.95rem;
+            font-weight: 800;
+            color: var(--brand-blue);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* --- 6. TRACK YOUR VOICE BOARD --- */
+        .track-voice-section {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 30px;
+            box-shadow: var(--shadow-card);
+            border: 1px solid var(--border-color);
+            margin-bottom: 50px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .stat-card {
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 16px;
+            background-color: #f8fafc;
+        }
+
+        .stat-label { font-size: 0.8rem; color: var(--text-muted); font-weight: 600; }
+        .stat-value { font-size: 1.8rem; font-weight: 900; }
+
+        .table-responsive { width: 100%; overflow-x: auto; }
+        .voice-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+        .voice-table th { text-align: left; padding: 12px 14px; background: #f1f5f9; color: var(--text-muted); font-weight: 700; }
+        .voice-table td { padding: 14px; border-bottom: 1px solid var(--border-color); }
+
+        .badge-status {
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 800;
+        }
+
+        .bg-process { background-color: #fef3c7; color: #d97706; }
+        .bg-done { background-color: #dcfce7; color: #15803d; }
+
+        /* --- 7. UPCOMING EVENT SECTION --- */
+        .event-section { margin-bottom: 50px; }
         .event-wrapper {
-            background: var(--gradient-card-dark);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 28px;
-            padding: 40px;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.4);
-            backdrop-filter: blur(16px);
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            padding: 32px;
+            box-shadow: var(--shadow-card);
         }
 
         .event-grid {
             display: grid;
             grid-template-columns: 320px 1fr;
-            gap: 35px;
-            margin-top: 25px;
+            gap: 30px;
+            margin-top: 20px;
         }
 
-        /* Mini Calendar UI */
         .mini-calendar {
-            background: rgba(15, 23, 42, 0.8);
-            border-radius: 20px;
-            padding: 22px;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: inset 0 0 20px rgba(0,0,0,0.2);
+            background: #f8fafc;
+            border-radius: 18px;
+            padding: 20px;
+            border: 1px solid var(--border-color);
         }
 
         .cal-header {
@@ -456,190 +456,553 @@
             justify-content: space-between;
             align-items: center;
             font-weight: 800;
-            font-size: 1.1rem;
-            margin-bottom: 18px;
-            color: var(--accent-gold);
+            font-size: 1rem;
+            margin-bottom: 16px;
+            color: var(--brand-blue);
         }
 
         .cal-days {
             display: grid;
             grid-template-columns: repeat(7, 1fr);
             text-align: center;
-            font-size: 0.78rem;
+            font-size: 0.75rem;
             font-weight: 700;
             color: var(--text-muted);
-            margin-bottom: 12px;
+            margin-bottom: 10px;
         }
 
         .cal-dates {
             display: grid;
             grid-template-columns: repeat(7, 1fr);
-            gap: 6px;
+            gap: 4px;
             text-align: center;
-            font-size: 0.85rem;
+            font-size: 0.82rem;
         }
 
-        .cal-date {
-            padding: 8px 0;
-            border-radius: 10px;
-            color: #cbd5e1;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
+        .cal-date { padding: 6px 0; border-radius: 8px; }
+        .cal-date.active { background: var(--brand-yellow); color: var(--brand-blue); font-weight: 800; }
+        .cal-date.has-event { font-weight: bold; color: var(--brand-blue); background: #e0e7ff; }
 
-        .cal-date:hover {
-            background: rgba(255, 255, 255, 0.1);
-            color: #fff;
-        }
-
-        .cal-date.active {
-            background: var(--gradient-card-gold);
-            color: #0f2b48;
-            font-weight: 800;
-            box-shadow: 0 0 12px var(--accent-gold-glow);
-        }
-
-        .cal-date.has-event {
-            position: relative;
-            font-weight: bold;
-        }
-
-        .cal-date.has-event::after {
-            content: '';
-            position: absolute;
-            bottom: 4px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 5px;
-            height: 5px;
-            background-color: var(--accent-gold);
-            border-radius: 50%;
-            box-shadow: 0 0 6px var(--accent-gold);
-        }
-
-        /* Event Cards List */
-        .events-list {
-            display: flex;
-            flex-direction: column;
-            gap: 18px;
-        }
-
+        .events-list { display: flex; flex-direction: column; gap: 14px; }
         .event-card-item {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 20px;
-            padding: 22px;
+            background: #f8fafc;
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 16px 20px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            gap: 20px;
-            transition: all 0.3s ease;
-        }
-
-        .event-card-item:hover {
-            border-color: var(--accent-gold);
-            background: rgba(255, 255, 255, 0.06);
-            transform: translateX(6px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            gap: 16px;
         }
 
         .event-date-badge {
-            background: linear-gradient(135deg, #0f2b48 0%, #1e293b 100%);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 16px;
-            padding: 12px 18px;
+            background: var(--brand-blue);
+            border-radius: 12px;
+            padding: 10px 14px;
             text-align: center;
-            min-width: 90px;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            min-width: 75px;
+            color: white;
         }
 
-        .event-date-badge .day {
-            font-size: 1.5rem;
-            font-weight: 900;
-            color: var(--accent-gold);
-            line-height: 1;
-        }
+        .event-date-badge .day { font-size: 1.3rem; font-weight: 900; color: var(--brand-yellow); line-height: 1; }
+        .event-date-badge .month { font-size: 0.7rem; font-weight: 800; }
 
-        .event-date-badge .month {
-            font-size: 0.75rem;
-            font-weight: 800;
-            color: #cbd5e1;
-            text-transform: uppercase;
-        }
-
-        .event-details {
-            flex: 1;
-        }
-
-        .event-tag {
-            display: inline-block;
-            font-size: 0.7rem;
-            font-weight: 800;
-            padding: 4px 12px;
-            border-radius: 20px;
-            text-transform: uppercase;
-            margin-bottom: 8px;
-            letter-spacing: 0.5px;
-        }
-
-        .tag-training { background: rgba(59, 130, 246, 0.2); color: #60a5fa; border: 1px solid rgba(59, 130, 246, 0.3); }
-        .tag-meeting { background: rgba(245, 158, 11, 0.2); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.3); }
-        .tag-event { background: rgba(16, 185, 129, 0.2); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3); }
-
-        .event-title {
-            font-size: 1.15rem;
-            font-weight: 800;
-            color: #ffffff;
-            margin-bottom: 6px;
-        }
-
-        .event-time-loc {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            display: flex;
-            gap: 18px;
-        }
+        .event-details { flex: 1; }
+        .event-title { font-size: 1rem; font-weight: 800; color: var(--brand-blue); margin-bottom: 4px; }
+        .event-time-loc { font-size: 0.8rem; color: var(--text-muted); display: flex; gap: 14px; }
 
         .btn-event-link {
-            background: var(--gradient-card-gold);
-            color: #0f2b48;
-            padding: 12px 22px;
-            border-radius: 12px;
+            background: var(--brand-blue);
+            color: #ffffff;
+            padding: 10px 18px;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 0.8rem;
+            text-decoration: none;
+        }
+
+        /* --- 8. NEWS & UPDATE SECTION --- */
+        .news-section { margin-bottom: 50px; }
+        .news-section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+
+        .news-header-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .news-header-title i {
+            font-size: 1.8rem;
+            color: var(--brand-yellow);
+        }
+
+        .news-title-main {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--brand-blue);
+            text-transform: uppercase;
+        }
+
+        .news-title-sub {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-top: 2px;
+        }
+
+        .btn-see-all-news {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            font-weight: 800;
+            color: var(--brand-blue);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .btn-see-all-news:hover { color: var(--brand-yellow); }
+
+        /* ==================== BANNER KAIZEN ==================== */
+        .kaizen-hero-banner {
+            background: 
+                radial-gradient(circle at 85% 20%, rgba(245, 166, 35, 0.28) 0%, transparent 40%),
+                radial-gradient(circle at 15% 80%, rgba(30, 90, 255, 0.35) 0%, transparent 50%),
+                linear-gradient(135deg, #020b2d 0%, #06174c 50%, #0a226c 100%);
+            border-radius: 28px;
+            padding: 40px 45px;
+            position: relative;
+            overflow: hidden;
+            color: #ffffff;
+            box-shadow: 0 25px 60px rgba(2, 11, 45, 0.6), inset 0 0 0 2px rgba(245, 166, 35, 0.5);
+            display: grid;
+            grid-template-columns: 1.1fr 1.2fr;
+            gap: 35px;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        /* LIGHT SWEEP GLOW */
+        .kaizen-hero-banner::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -60%;
+            width: 50%;
+            height: 200%;
+            background: linear-gradient(
+                to right,
+                rgba(255, 255, 255, 0) 0%,
+                rgba(255, 255, 255, 0.12) 50%,
+                rgba(255, 255, 255, 0) 100%
+            );
+            transform: rotate(30deg);
+            animation: lightSweep 6s infinite ease-in-out;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        @keyframes lightSweep {
+            0% { left: -60%; }
+            30%, 100% { left: 140%; }
+        }
+
+        /* CANVAS GOLD CONFETTI MELAYANG */
+        #confettiCanvas {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* FRAME FOTO POLAROID PEMENANG (KIRI) */
+        .kaizen-polaroid-wrapper {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 3;
+        }
+
+        .polaroid-frame {
+            background: #ffffff;
+            padding: 12px 12px 18px 12px;
+            border-radius: 24px;
+            /* GOLD SHADOW EFEK GLOWING */
+            box-shadow: 0 15px 35px rgba(245, 166, 35, 0.4), 0 0 25px rgba(255, 226, 133, 0.6);
+            transform: rotate(-3deg);
+            max-width: 440px;
+            width: 100%;
+            border: 3.5px solid #f5a623;
+            position: relative;
+        }
+
+        .polaroid-img {
+             width: 100%;
+             height: 340px; /* Tingkatkan tinggi kotak agar seragam lebih muat */
+            object-fit: cover;
+            object-position: center 18%; /* Geser fokus agar seragam terbawa */
+            border-radius: 16px;
+        }
+
+        /* FOTO PIALA KECIL PADA SEAL MEDALI EMAS - DIPINDAHKAN KE POJOK (MERAH) */
+        .gold-seal-emboss {
+            position: absolute;
+            bottom: -40px; left: -30px; /* Disesuaikan persis menimpa pojok foto */
+            width: 150px; height: 150px;
+            background: radial-gradient(circle at 30% 30%, #fff1b8 0%, #f5a623 45%, #b47a10 85%, #784e03 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5), 0 0 15px rgba(245, 166, 35, 0.6);
+            border: 3px dashed #ffe285;
+            z-index: 7;
+        }
+
+        .gold-seal-inner {
+            width: 130px; height: 130px;
+            border-radius: 50%;
+            border: 2px solid #ffffff;
+            display: flex;
+            align-items: center; 
+            justify-content: center;
+            overflow: hidden;
+            background: #ffffff;
+        }
+
+        .seal-piala-img {
+            width: 95%;
+            height: 95%;
+            object-fit: contain;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+        }
+
+        /* DETAIL KANAN (TULISAN & MAHKOTA FOTO) */
+        .kaizen-details-side {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 10px;
+            z-index: 3;
+        }
+
+        /* FOTO MAHKOTA 3D ASLI DI ATAS TULISAN */
+        .mahkota-img-3d {
+            height: 70px;
+            width: auto;
+            object-fit: contain;
+            filter: drop-shadow(0 4px 10px rgba(245, 166, 35, 0.8));
+            margin-bottom: -5px;
+        }
+
+        /* TULISAN KALIGRAFI / CURSIVE SELAMAT & SUKSES! */
+        .kaizen-cursive-title {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3.8rem;
+            color: #ffe285;
+            line-height: 1;
+            text-shadow: 0 3px 12px rgba(0,0,0,0.6);
+            letter-spacing: 1px;
+        }
+
+        .kaizen-subtext {
+            font-size: 0.95rem;
+            color: #ffffff;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            margin-top: -4px;
+        }
+
+        .kaizen-main-title {
+            font-size: 3.2rem;
+            font-weight: 900;
+            color: #ffffff;
+            letter-spacing: 3px;
+            line-height: 1;
+            margin-bottom: 6px;
+            text-shadow: 0 4px 15px rgba(0,0,0,0.7);
+        }
+
+        /* BOX KUTIPAN TRANSPARAN DENGAN PADDING & SPASING LENGKAP (BIRU) */
+        .kaizen-quote-box {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            border-radius: 18px;
+            padding: 16px 36px; /* Padding samping diperlebar agar tidak menabrak ikon */
+            font-size: 0.86rem;
+            color: #f8fafc;
+            line-height: 1.5;
+            position: relative;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+            width: 100%;
+        }
+
+        .kaizen-quote-box i.fa-quote-left {
+            font-size: 1.1rem; 
+            color: #3b82f6; 
+            opacity: 0.8; 
+            position: absolute; 
+            top: 14px; 
+            left: 14px;
+        }
+
+        .kaizen-quote-box i.fa-quote-right {
+            font-size: 1.1rem; 
+            color: #3b82f6; 
+            opacity: 0.8; 
+            position: absolute; 
+            bottom: 14px; 
+            right: 14px;
+        }
+
+        /* PILL KATEGORI EMAS MEWAH */
+        .kaizen-category-pill {
+            background: linear-gradient(90deg, #f5a623 0%, #d97706 100%);
+            color: #ffffff;
+            font-size: 0.8rem;
+            font-weight: 800;
+            padding: 6px 24px;
+            border-radius: 20px;
+            box-shadow: 0 4px 15px rgba(217, 119, 6, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            margin-top: 2px;
+        }
+
+        /* --- KOTAK PEMENANG DENGAN ANIMATED GRADIENT BORDER --- */
+        .winner-card-box {
+            background: #ffffff;
+            color: var(--text-main);
+            border-radius: 20px;
+            padding: 16px 24px;
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            width: 100%;
+            text-align: left;
+
+            /* Properti Wajib untuk Animated Border */
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 12px 30px rgba(245, 166, 35, 0.35), 0 0 15px rgba(255, 226, 133, 0.5);
+            z-index: 1;
+        }
+
+        /* KOTAK BORDER ANIMASI BERJALAN (LAYER BELAKANG) */
+        .winner-card-box::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            /* Gradasi warna dibuat menyebar seimbang agar perputaran konstan */
+            background: conic-gradient(
+                transparent 0deg,
+                transparent 180deg,
+                #f5a623 270deg,
+                #ffe285 315deg,
+                transparent 360deg
+            );
+            filter: drop-shadow(0 0 12px #f5a623);
+
+            /* 'linear' memastikan rotasi fisik berjalan konstan tanpa acceleration/deceleration */
+            animation: rotateBorder 4s linear infinite;
+            z-index: -2;
+        }
+
+        /* LAYER PUTIH DALAM (AGAR ISI TEKS TETAP BERSIH) */
+        .winner-card-box::after {
+            content: '';
+            position: absolute;
+            inset: 4px; /* Ketebalan garis border (3px) */
+            background: #ffffff;
+            border-radius: 16px; /* Menyesuaikan kelengkungan dalam */
+            z-index: -1;
+        }
+
+        /* KEYFRAMES UNTUK ANIMASI BERPUTAR LOOPING */
+        @keyframes rotateBorder {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* GAMBAR PIALA LANGSUNG TANPA BACKGROUND WADAH KOTAK */
+        .piala-card-img {
+            height: 75px;
+            width: auto;
+            object-fit: contain;
+            flex-shrink: 0;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.25));
+        }
+
+        .winner-info-title { font-size: 1.1rem; font-weight: 900; color: #854d0e; }
+        .winner-info-sub { font-size: 0.88rem; font-weight: 800; color: var(--brand-blue); }
+        .winner-info-desc { font-size: 0.8rem; color: var(--text-muted); font-weight: 600; }
+
+        /* GRID BERITA LAINNYA */
+        .news-grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .news-card-single {
+            background: #ffffff;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-card);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .news-card-single:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(15, 44, 137, 0.12);
+        }
+
+        .news-card-img-wrap {
+            position: relative;
+            width: 100%;
+            height: 160px;
+            overflow: hidden;
+        }
+
+        .news-card-img-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .news-badge {
+            position: absolute;
+            top: 12px; left: 12px;
+            padding: 4px 10px;
+            border-radius: 8px;
+            font-size: 0.68rem;
+            font-weight: 800;
+            color: #ffffff;
+            text-transform: uppercase;
+        }
+
+        .bg-blue { background: #0284c7; }
+        .bg-purple { background: #7c3aed; }
+        .bg-teal { background: #0d9488; }
+
+        .news-card-body {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            justify-content: space-between;
+        }
+
+        .news-card-title {
+            font-size: 1rem;
+            font-weight: 800;
+            color: var(--brand-blue);
+            line-height: 1.35;
+            margin-bottom: 8px;
+        }
+
+        .news-card-snippet {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+            margin-bottom: 16px;
+        }
+
+        .news-card-footer {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            border-top: 1px solid #f1f5f9;
+            padding-top: 12px;
+        }
+
+        .news-meta {
+            font-size: 0.72rem;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+
+        .news-read-more {
+            color: var(--brand-blue);
+            font-size: 0.82rem;
+            font-weight: 800;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .news-read-more:hover { color: var(--brand-yellow); }
+
+        /* BANNER CHAT HC */
+        .hc-help-banner {
+            background: #040e30;
+            border-radius: 20px;
+            padding: 16px 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: white;
+            margin-top: 30px;
+        }
+
+        .hc-help-left {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .hc-help-avatar {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: var(--brand-yellow);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            color: var(--brand-blue);
+        }
+
+        .hc-help-text h4 { font-size: 0.95rem; font-weight: 800; }
+        .hc-help-text p { font-size: 0.8rem; opacity: 0.8; }
+
+        .btn-chat-hc {
+            background: var(--brand-yellow);
+            color: var(--brand-blue);
+            padding: 10px 20px;
+            border-radius: 10px;
             font-weight: 800;
             font-size: 0.85rem;
             text-decoration: none;
-            transition: all 0.3s ease;
-            white-space: nowrap;
-            box-shadow: 0 4px 15px var(--accent-gold-glow);
-        }
-
-        .btn-event-link:hover {
-            background: #ffffff;
-            color: #0f2b48;
-            box-shadow: 0 6px 20px rgba(255,255,255,0.4);
-            transform: translateY(-2px);
-        }
-
-        .integration-info-box {
-            margin-top: 25px;
-            background: rgba(30, 41, 59, 0.4);
-            border: 1px dashed rgba(255, 255, 255, 0.15);
-            border-radius: 16px;
-            padding: 16px 22px;
-            font-size: 0.85rem;
-            color: var(--text-muted);
             display: flex;
             align-items: center;
-            gap: 14px;
+            gap: 8px;
         }
 
-        /* --- 7. MODALS & POPUPS --- */
+        /* --- 9. MODALS --- */
         .modal-overlay {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(10, 15, 29, 0.85);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(6px);
             display: none;
             justify-content: center;
             align-items: center;
@@ -648,589 +1011,568 @@
             transition: opacity 0.3s ease;
         }
 
-        .modal-overlay.show {
-            display: flex;
-            opacity: 1;
-        }
-
+        .modal-overlay.show { display: flex; opacity: 1; }
         .modal-box {
             background: #ffffff;
-            width: 92%;
-            max-width: 850px;
-            border-radius: 28px;
-            padding: 40px 45px;
-            color: #0f172a;
+            width: 92%; max-width: 850px;
+            border-radius: 24px;
+            padding: 36px;
             position: relative;
             max-height: 88vh;
             overflow-y: auto;
-            transform: scale(0.9);
-            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
-        }
-
-        .modal-overlay.show .modal-box {
-            transform: scale(1);
         }
 
         .modal-close {
             position: absolute;
-            top: 22px; right: 22px;
+            top: 20px; right: 20px;
+            background: #f1f5f9; border: none;
+            font-size: 1.2rem; width: 36px; height: 36px;
+            border-radius: 50%; cursor: pointer;
+        }
+
+        .form-section-title { font-size: 1.5rem; font-weight: 800; color: var(--brand-blue); margin-bottom: 4px; }
+        .form-section-subtitle { color: var(--text-muted); font-size: 0.88rem; margin-bottom: 24px; }
+        .form-group { margin-bottom: 22px; }
+        .form-label { display: block; font-weight: 700; font-size: 0.9rem; color: var(--brand-blue); margin-bottom: 4px; }
+        .form-label span { color: #dc2626; }
+        .form-note { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 8px; font-style: italic; }
+        .form-control { width: 100%; padding: 12px 16px; border: 1px solid var(--border-color); border-radius: 10px; font-size: 0.9rem; background: #f8fafc; outline: none; }
+        .form-control:focus { border-color: var(--brand-blue); background: #ffffff; box-shadow: 0 0 0 3px rgba(15, 44, 137, 0.1); }
+        .input-lainnya { margin-top: 10px; display: none; }
+
+        .radio-list { display: flex; flex-direction: column; gap: 10px; }
+        .radio-item {
+            display: flex; align-items: center; gap: 12px;
+            background-color: #f8fafc; padding: 12px 16px;
+            border: 1px solid var(--border-color); border-radius: 12px;
+            cursor: pointer; font-size: 0.9rem; color: #334155;
+            transition: var(--transition);
+        }
+        .radio-item:hover { background-color: #f1f5f9; border-color: #cbd5e1; }
+        .radio-item input[type="radio"] { accent-color: var(--brand-blue); width: 18px; height: 18px; }
+
+        .scale-box { background: #f8fafc; border: 1px solid var(--border-color); border-radius: 16px; padding: 24px 20px; margin-top: 8px; }
+        .scale-options { display: flex; justify-content: space-between; align-items: center; margin: 15px 0; gap: 8px; overflow-x: auto; padding-bottom: 8px; }
+        .scale-option { display: flex; flex-direction: column; align-items: center; gap: 8px; min-width: 32px; }
+        .scale-option label { font-size: 0.88rem; font-weight: 700; color: var(--brand-blue); cursor: pointer; }
+        .scale-option input[type="radio"] { width: 20px; height: 20px; accent-color: var(--brand-blue); cursor: pointer; }
+        .scale-labels { display: flex; justify-content: space-between; font-size: 0.82rem; font-weight: 700; color: var(--text-muted); }
+
+        .btn-submit { width: 100%; background: var(--brand-blue); color: white; padding: 14px; border: none; border-radius: 12px; font-weight: 800; cursor: pointer; transition: var(--transition); }
+        .btn-submit:hover { background: var(--brand-blue-hover); }
+
+        .sheet-container { width: 100%; height: 450px; background-color: #f8fafc; border: 2px dashed var(--border-color); border-radius: 16px; overflow: hidden; }
+        .sheet-iframe { width: 100%; height: 100%; border: none; }
+
+        /* WADAH CONTOH APPROVAL (FOTO PANDUAN) */
+        .sample-image-box {
+            margin-top: 10px;
             background: #f1f5f9;
-            border: none;
-            font-weight: bold;
-            font-size: 1.3rem;
-            width: 40px; height: 40px;
-            border-radius: 50%;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #64748b;
+            border: 1px dashed var(--brand-blue);
+            border-radius: 12px;
+            padding: 12px;
+            text-align: center;
         }
-
-        .modal-close:hover {
-            background-color: #dc2626;
-            color: #ffffff;
-            transform: rotate(90deg);
-        }
-
-        /* Form Controls */
-        .form-section-title {
-            font-size: 1.7rem;
-            font-weight: 900;
-            color: #0f2b48;
+        .sample-image-box p {
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: var(--brand-blue);
             margin-bottom: 6px;
         }
-
-        .form-section-subtitle {
-            color: #64748b;
-            font-size: 0.92rem;
-            margin-bottom: 28px;
+        .sample-image-box img {
+            max-width: 100%;
+            height: auto;
+            max-height: 200px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
         }
 
-        .form-group {
-            margin-bottom: 22px;
-        }
+        /* --- 10. FOOTER --- */
+        footer { background: #e1e6f0; padding: 40px 5% 20px; border-top: 1px solid var(--border-color); }
+        .footer-container { max-width: 1300px; margin: 0 auto; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 20px; }
 
-        .form-label {
-            display: block;
-            font-weight: 700;
-            font-size: 0.9rem;
-            color: #0f2b48;
-            margin-bottom: 8px;
-        }
-
-        .form-label span {
-            color: #dc2626;
-        }
-
-        .form-control {
-            width: 100%;
-            padding: 13px 18px;
-            border: 1.5px solid #cbd5e1;
-            border-radius: 12px;
-            font-size: 0.92rem;
-            outline: none;
-            background-color: #f8fafc;
-            transition: all 0.3s ease;
-        }
-
-        .form-control:focus {
-            border-color: #0f2b48;
-            background-color: #ffffff;
-            box-shadow: 0 0 0 4px rgba(15, 43, 72, 0.12);
-        }
-
-        .radio-list {
+        /* --- UPDATE STYLES FOOTER --- */
+        .footer-contact-group {
             display: flex;
             flex-direction: column;
             gap: 10px;
+            align-items: flex-end; /* Memosisikan kontak di sebelah kanan */
         }
 
-        .radio-item {
+        .footer-contact-item {
             display: flex;
             align-items: center;
-            gap: 12px;
-            background-color: #f8fafc;
-            padding: 12px 16px;
-            border: 1.5px solid #e2e8f0;
-            border-radius: 12px;
-            cursor: pointer;
-            font-size: 0.9rem;
-            color: #334155;
-            transition: all 0.2s ease;
-        }
-
-        .radio-item:hover {
-            background-color: #f1f5f9;
-            border-color: #cbd5e1;
-        }
-
-        .radio-item input[type="radio"] {
-            accent-color: #0f2b48;
-            width: 18px;
-            height: 18px;
-        }
-
-        .input-lainnya {
-            margin-top: 10px;
-            display: none;
-        }
-
-        .btn-submit {
-            width: 100%;
-            background: linear-gradient(135deg, #0f2b48 0%, #1e40af 100%);
-            color: #ffffff;
-            padding: 16px;
-            border: none;
-            border-radius: 14px;
-            font-weight: 800;
-            font-size: 1.05rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            margin-top: 15px;
-            box-shadow: 0 10px 20px rgba(15, 43, 72, 0.2);
-        }
-
-        .btn-submit:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 12px 25px rgba(30, 64, 175, 0.35);
-        }
-
-        /* Tracking Dashboard Modal */
-        .ev-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            flex-wrap: wrap;
-            gap: 15px;
-            margin-bottom: 22px;
-            border-bottom: 2px solid #f1f5f9;
-            padding-bottom: 18px;
-        }
-
-        .ev-title-badge {
-            font-size: 0.75rem;
-            color: #d97706;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .ev-title-main {
-            font-size: 1.7rem;
-            font-weight: 900;
-            color: #0f2b48;
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-            gap: 16px;
-            margin-bottom: 25px;
-        }
-
-        .stat-card {
-            border: 1px solid #e2e8f0;
-            border-radius: 16px;
-            padding: 18px;
-            background-color: #f8fafc;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
-        }
-
-        .stat-label {
-            font-size: 0.8rem;
-            color: #64748b;
-            font-weight: 600;
-            margin-bottom: 6px;
-        }
-
-        .stat-value {
-            font-size: 2rem;
-            font-weight: 900;
-            line-height: 1;
-        }
-
-        .color-total { color: #0f2b48; }
-        .color-process { color: #d97706; }
-        .color-done { color: #16a34a; }
-        .color-alert { color: #dc2626; }
-
-        .table-responsive {
-            width: 100%;
-            overflow-x: auto;
-        }
-
-        .voice-table {
-            width: 100%;
-            border-collapse: separate;
-            border-spacing: 0 8px;
-        }
-
-        .voice-table th {
-            text-align: left;
-            padding: 12px 16px;
-            font-size: 0.8rem;
-            color: #64748b;
-            font-weight: 700;
-            text-transform: uppercase;
-        }
-
-        .voice-table tr.data-row {
-            background-color: #ffffff;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-            border: 1px solid #e2e8f0;
-            border-radius: 12px;
-        }
-
-        .voice-table td {
-            padding: 16px;
-            font-size: 0.88rem;
-            border-top: 1px solid #f1f5f9;
-            border-bottom: 1px solid #f1f5f9;
-        }
-
-        .badge-status {
-            padding: 5px 14px;
-            border-radius: 20px;
-            font-size: 0.78rem;
-            font-weight: 800;
-            display: inline-block;
-        }
-
-        .bg-process { background-color: #fef3c7; color: #d97706; }
-        .bg-done { background-color: #dcfce7; color: #15803d; }
-        .bg-alert { background-color: #fee2e2; color: #b91c1c; }
-
-        /* --- 8. FOOTER --- */
-        footer {
-            background: #060a14;
-            color: #cbd5e1;
-            padding: 60px 8% 30px 8%;
-            border-top: 1px solid rgba(255, 255, 255, 0.08);
-            width: 100%;
-        }
-
-        .footer-container {
-            max-width: 1350px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            padding-bottom: 40px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-        }
-
-        .footer-col h3 {
-            color: #ffffff;
-            font-size: 1.1rem;
-            font-weight: 800;
-            letter-spacing: 0.5px;
-            margin-bottom: 22px;
-            text-transform: uppercase;
-        }
-
-        .contact-info p {
-            font-size: 0.95rem;
+            gap: 10px;
             color: var(--text-muted);
-            margin-bottom: 10px;
-        }
-
-        .contact-info a {
-            color: #f8fafc;
-            text-decoration: none;
+            font-size: 0.9rem;
             font-weight: 600;
-            transition: color 0.3s;
-        }
-
-        .contact-info a:hover {
-            color: var(--accent-gold);
-        }
-
-        .footer-links {
-            list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 12px;
-            padding-left: 16px;
-            position: relative;
-        }
-
-        .footer-links li::before {
-            content: "•";
-            color: var(--accent-gold);
-            position: absolute;
-            left: 0;
-            font-size: 1.2rem;
-            line-height: 1;
-        }
-
-        .footer-links a {
-            color: #cbd5e1;
             text-decoration: none;
-            font-size: 0.92rem;
-            transition: color 0.3s;
+            transition: var(--transition);
         }
 
-        .footer-links a:hover {
-            color: var(--accent-gold);
+        .footer-contact-item i {
+            font-size: 1.1rem;
+            color: var(--brand-blue);
         }
 
-        .footer-bottom {
-            text-align: center;
-            padding-top: 30px;
-            color: #64748b;
-            font-size: 0.88rem;
+        .footer-contact-item:hover {
+            color: var(--brand-blue);
         }
 
-        /* Responsive Breakpoints */
-        @media (max-width: 1100px) {
-            .qa-grid-4 { grid-template-columns: repeat(2, 1fr); }
-            .hero-title { white-space: normal; }
-            .event-grid { grid-template-columns: 1fr; }
-        }
-
-        @media (max-width: 650px) {
+        @media (max-width: 900px) {
             .qa-grid-4 { grid-template-columns: 1fr; }
-            .hero-container { flex-direction: column; text-align: center; padding: 35px 25px; }
-            .hero-title { font-size: 1.8rem; }
-            .btn-explore { justify-content: center; }
+            .hero-banner { flex-direction: column; }
+            .hero-left { width: 100%; padding: 40px 5%; }
+            .hero-right { position: relative; width: 100%; height: 250px; }
+            .hero-bg-photo { clip-path: none; }
+            .event-grid { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+            .kaizen-hero-banner { grid-template-columns: 1fr; padding: 24px; }
+            .news-grid-3 { grid-template-columns: 1fr; }
+            .hc-help-banner { flex-direction: column; gap: 14px; text-align: center; }
+
+            /* Penyesuaian responsif layar HP */
+            .footer-contact-group {
+                align-items: flex-start;
+                margin-top: 15px;
+            }
         }
     </style>
 </head>
 <body>
 
+    <!-- DEFINISI GRADIENT EMAS SVG -->
+    <svg style="width:0;height:0;position:absolute;" aria-hidden="true" focusable="false">
+      <linearGradient id="goldGradient3D" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#fff8d6" />
+        <stop offset="30%" stop-color="#f5a623" />
+        <stop offset="70%" stop-color="#b47a10" />
+        <stop offset="100%" stop-color="#694300" />
+      </linearGradient>
+    </svg>
+
     <!-- 1. NAVBAR -->
     <nav>
-        <div class="nav-logo">HC CONNECT</div>
-        <div class="nav-links">
-            <a href="#" class="nav-item active">
-                <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
-                </svg>
-                Home
-            </a>
-            <a href="#contact" class="btn-contact">Contact</a>
+        <div class="brand-group">
+            <div class="logo-container">
+                <img src="logo.png" alt="Logo Gadai MAS Nusantara" class="logo-img">
+            </div>
+            <div class="brand-divider"></div>
+            <div class="brand-title">HC <span>CONNECT</span></div>
         </div>
+
+        <ul class="nav-links">
+            <li><a href="#" class="nav-item active">Home</a></li>
+            <li><a href="#quick-access" class="nav-item">Quick Access</a></li>
+            <li><a href="#track-voice" class="nav-item">Track Voice</a></li>
+            <li><a href="#events" class="nav-item">Events</a></li>
+            <li><a href="#news" class="nav-item">News</a></li>
+        </ul>
     </nav>
 
-    <!-- 2. HERO / LANDING SECTION -->
-    <div class="hero-wrapper">
-        <div class="hero-container">
-            <div class="hero-text">
-                <h1 class="hero-title">Selamat datang di HC CONNECT</h1>
-                <p class="hero-subtitle-brand">
-                    <span>🏢</span> PT Gadai MAS Nusantara
-                </p>
-                <p class="hero-desc">Portal Resmi Divisi Human Capital Business Partner (HCBP) untuk Akses Kebijakan, SOP, Layanan Administrasi, dan Aspirasi Karyawan.</p>
-                
-                <a href="#quick-access" class="btn-explore">
-                    Jelajahi HC Connect
-                    <span class="arrow">&gt;</span>
+    <!-- 2. HERO BANNER -->
+    <section class="hero-banner">
+        <div class="hero-left">
+            <h2 class="hero-sub">Selamat datang di</h2>
+            <h1 class="hero-main">HC <span>CONNECT</span></h1>
+            <p class="hero-desc">
+                Portal informasi, layanan, dan pengembangan karyawan untuk mendukung kinerja terbaik pertumbuhan bersama.
+            </p>
+            <a href="#quick-access" class="btn-pill">
+                Jelajahi HC Connect
+                <span class="pill-circle"><i class="fa-solid fa-arrow-right"></i></span>
+            </a>
+        </div>
+
+        <div class="hero-right">
+            <img src="header.png" alt="Kantor Gadai MAS Nusantara" class="hero-bg-photo">
+        </div>
+    </section>
+
+    <div class="container">
+
+        <!-- 3. QUICK ACCESS SECTION -->
+        <section class="quick-access-section" id="quick-access">
+            <div class="section-header">
+                <h2 class="section-title-main">Quick Access</h2>
+            </div>
+
+            <div class="qa-grid-4">
+                <div class="qa-card-simple" onclick="openModal('modalFormVoice')">
+                    <div style="display: flex; align-items: center; gap: 12px;">
+                        <div class="card-icon-small"><i class="fa-solid fa-comments"></i></div>
+                        <h3 class="card-title-sub">Employee Voice</h3>
+                    </div>
+                    <p class="card-desc-text">Sampaikan masukan, ide, dan aspirasi Anda secara langsung.</p>
+                </div>
+
+                <div class="qa-card-dropdown" id="dropdownHC">
+                    <div class="dropdown-header" onclick="toggleDropdown('dropdownHC')">
+                        <div class="dropdown-header-left">
+                            <div class="card-icon-small" style="background:#e0f2fe; color:#0284c7;"><i class="fa-solid fa-file-signature"></i></div>
+                            <h3 class="card-title-sub">HC Service</h3>
+                        </div>
+                        <i class="fa-solid fa-chevron-down dropdown-icon-arrow"></i>
+                    </div>
+                    <p class="card-desc-text">Layanan administrasi dan pemantauan pengajuan karyawan.</p>
+
+                    <div class="dropdown-content">
+                        <button class="btn-dropdown-action" onclick="openModal('pageFormAdministrasi')">
+                            <span>📝 Form Administrasi</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                        <button class="btn-dropdown-action monitoring-type" onclick="openModal('pageMonitoringAdministrasi')">
+                            <span>📊 Monitoring Status Administrasi</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="qa-card-dropdown" id="dropdownLearning">
+                    <div class="dropdown-header" onclick="toggleDropdown('dropdownLearning')">
+                        <div class="dropdown-header-left">
+                            <div class="card-icon-small" style="background:#f0fdf4; color:#16a34a;"><i class="fa-solid fa-graduation-cap"></i></div>
+                            <h3 class="card-title-sub">Learning & Dev</h3>
+                        </div>
+                        <i class="fa-solid fa-chevron-down dropdown-icon-arrow"></i>
+                    </div>
+                    <p class="card-desc-text">Pusat pembelajaran, panduan kerja, dan kebijakan perusahaan.</p>
+
+                    <div class="dropdown-content">
+                        <a href="https://mas-academy.training" target="_blank" class="btn-dropdown-action">
+                            <span>📚 SOP & Policy</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                        <a href="https://mas-academy.training" target="_blank" class="btn-dropdown-action">
+                            <span>💡 Knowledge Center</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <a href="https://lookerstudio.google.com/" target="_blank" class="qa-card-simple">
+                    <div style="display: flex; align-items: center; gap: 12px;">
+                        <div class="card-icon-small" style="background:#fef2f2; color:#dc2626;"><i class="fa-solid fa-chart-pie"></i></div>
+                        <h3 class="card-title-sub">Dashboard & Report</h3>
+                    </div>
+                    <p class="card-desc-text">Akses data analitik dan laporan performa internal.</p>
                 </a>
             </div>
-            <div class="hero-media">
-                <img src="https://cdni.iconscout.com/illustration/premium/thumb/business-teamwork-4512028-3758999.png" alt="HC Connect Business 2D Vector Illustration">
+        </section>
+
+        <!-- 4. TRACK YOUR VOICE BOARD -->
+        <section class="track-voice-section" id="track-voice">
+            <div class="section-header">
+                <h2 class="section-title-main">Track Your Voice</h2>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-label">Total Aspirasi</div>
+                    <div class="stat-value" style="color:var(--brand-blue);">18</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Dalam Proses</div>
+                    <div class="stat-value" style="color:#d97706;">7</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Selesai Ditindaklanjuti</div>
+                    <div class="stat-value" style="color:#16a34a;">11</div>
+                </div>
+            </div>
+
+            <div class="table-responsive">
+                <table class="voice-table">
+                    <thead>
+                        <tr>
+                            <th>ID Request</th>
+                            <th>Nama Pengaju</th>
+                            <th>Kategori</th>
+                            <th>Status Tindak Lanjut</th>
+                            <th>Update Terakhir</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><b>EV-2026-0018</b></td>
+                            <td>Budi Santoso</td>
+                            <td>Fasilitas Kerja</td>
+                            <td><span class="badge-status bg-process">Diproses</span></td>
+                            <td>12 Agustus 2026</td>
+                        </tr>
+                        <tr>
+                            <td><b>EV-2026-0017</b></td>
+                            <td>Siti Rahma</td>
+                            <td>Learning & Dev</td>
+                            <td><span class="badge-status bg-done">Selesai</span></td>
+                            <td>10 Agustus 2026</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- 5. UPCOMING EVENT SECTION -->
+        <section class="event-section" id="events">
+            <div class="event-wrapper">
+                <div class="section-header">
+                    <h2 class="section-title-main">Upcoming Events</h2>
+                </div>
+
+                <div class="event-grid">
+                    <div class="mini-calendar">
+                        <div class="cal-header">
+                            <i class="fa-solid fa-chevron-left"></i>
+                            <span>Agustus 2026</span>
+                            <i class="fa-solid fa-chevron-right"></i>
+                        </div>
+                        <div class="cal-days">
+                            <span>M</span><span>S</span><span>S</span><span>R</span><span>K</span><span>J</span><span>S</span>
+                        </div>
+                        <div class="cal-dates">
+                            <span class="cal-date" style="opacity:0.3">26</span><span class="cal-date" style="opacity:0.3">27</span><span class="cal-date" style="opacity:0.3">28</span><span class="cal-date" style="opacity:0.3">29</span><span class="cal-date" style="opacity:0.3">30</span><span class="cal-date" style="opacity:0.3">31</span><span class="cal-date">1</span>
+                            <span class="cal-date">2</span><span class="cal-date">3</span><span class="cal-date">4</span><span class="cal-date">5</span><span class="cal-date">6</span><span class="cal-date">7</span><span class="cal-date">8</span>
+                            <span class="cal-date">9</span><span class="cal-date">10</span><span class="cal-date">11</span><span class="cal-date">12</span><span class="cal-date">13</span><span class="cal-date">14</span><span class="cal-date">15</span>
+                            <span class="cal-date">16</span><span class="cal-date">17</span><span class="cal-date active">18</span><span class="cal-date has-event">19</span><span class="cal-date has-event">20</span><span class="cal-date">21</span><span class="cal-date">22</span>
+                        </div>
+                    </div>
+
+                    <div class="events-list">
+                        <div class="event-card-item">
+                            <div class="event-date-badge">
+                                <div class="day">19</div>
+                                <div class="month">AGU</div>
+                            </div>
+                            <div class="event-details">
+                                <h4 class="event-title">Sosialisasi SOP Operasional & Service Excellence 2026</h4>
+                                <div class="event-time-loc">
+                                    <span><i class="fa-regular fa-clock"></i> 09:00 - 12:00 WIB</span>
+                                    <span><i class="fa-solid fa-video"></i> Zoom Meeting</span>
+                                </div>
+                            </div>
+                            <a href="https://zoom.us/" target="_blank" class="btn-event-link">Join Zoom ➔</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. NEWS & UPDATE SECTION -->
+        <section class="news-section" id="news">
+            <div class="news-section-header">
+                <div class="news-header-title">
+                    <i class="fa-solid fa-bullhorn"></i>
+                    <div>
+                        <h2 class="news-title-main">NEWS & UPDATE</h2>
+                    </div>
+                </div>
+                <a href="#" class="btn-see-all-news">Lihat Semua Berita <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+
+            <!-- BANNER KAIZEN DENGAN FOTO PIALA & MAHKOTA ASLI -->
+            <div class="kaizen-hero-banner" id="kaizenBanner">
+                <!-- CANVAS GOLD CONFETTI PITA MELAYANG -->
+                <canvas id="confettiCanvas"></canvas>
+
+                <!-- Frame Polaroid Pemenang (Kiri) -->
+                <div class="kaizen-polaroid-wrapper">
+                    <div class="polaroid-frame">
+                        <img src="pemenang.png" alt="Pemenang Kaizen 2026" class="polaroid-img" onerror="this.src='https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600'">
+
+                        <!-- Seal Medali Emas Emboss Dipindahkan Menimpa Pojok Polaroid -->
+                        <div class="gold-seal-emboss">
+                            <div class="gold-seal-inner">
+                                <img src="piala.png" alt="Piala Kaizen" class="seal-piala-img" onerror="this.src='https://cdn-icons-png.flaticon.com/512/3112/3112903.png'">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Detail Ucapan Selamat & Info Tim Pemenang (Kanan) -->
+                <div class="kaizen-details-side">
+                    <div>
+                        <!-- Foto Mahkota Asli mahkota.png -->
+                        <img src="mahkota.png" alt="Mahkota Kaizen" class="mahkota-img-3d" onerror="this.src='https://cdn-icons-png.flaticon.com/512/2825/2825102.png'">
+                        <div class="kaizen-cursive-title">Selamat & Sukses!</div>
+                        <div class="kaizen-subtext">Kepada Pemenang</div>
+                    </div>
+
+                    <h2 class="kaizen-main-title">KAIZEN 2026</h2>
+
+                    <div class="kaizen-quote-box">
+                        <i class="fa-solid fa-quote-left"></i>
+                        Terima kasih atas ide, inovasi, dan semangat perbaikan berkelanjutan yang membawa perubahan positif bagi Gadai MAS Nusantara.
+                        <i class="fa-solid fa-quote-right"></i>
+                    </div>
+
+                    <div class="kaizen-category-pill">Kategori: Operational Excellence</div>
+
+                    <div class="winner-card-box">
+                        <!-- Foto Piala Asli Tanpa Kotak Background -->
+                        <img src="piala.png" alt="Piala Kaizen" class="piala-card-img" onerror="this.src='https://cdn-icons-png.flaticon.com/512/3112/3112903.png'">
+                        <div>
+                            <div class="winner-info-title">Tim Kaizen Juara 1</div>
+                            <div class="winner-info-sub">Area NTB – MAS AMPENAN</div>
+                            <div class="winner-info-desc">Inovasi: Optimalisasi Proses Gadai Cepat</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3 KARTU BERITA DI BAWAH -->
+            <div class="news-grid-3">
+                <div class="news-card-single">
+                    <div class="news-card-img-wrap">
+                        <span class="news-badge bg-blue">HC UPDATE</span>
+                        <img src="news.jpg" alt="News 1">
+                    </div>
+                    <div class="news-card-body">
+                        <div>
+                            <h3 class="news-card-title">HC CONNECT: Fitur Baru Segera Hadir!</h3>
+                            <p class="news-card-snippet">Kami terus berinovasi untuk memberikan pengalaman terbaik bagi Sobat GadaiMAS.</p>
+                        </div>
+                        <div class="news-card-footer">
+                            <span class="news-meta">22 Agustus 2026 • HC Team</span>
+                            <a href="#" class="news-read-more">Baca Selengkapnya ➔</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="news-card-single">
+                    <div class="news-card-img-wrap">
+                        <span class="news-badge bg-purple">LEARNING</span>
+                        <img src="news.jpg" alt="News 2">
+                    </div>
+                    <div class="news-card-body">
+                        <div>
+                            <h3 class="news-card-title">Program Training Leadership Batch 3</h3>
+                            <p class="news-card-snippet">Tingkatkan kemampuan leadership Anda bersama program terbaik dari GadaiMAS Learning Center.</p>
+                        </div>
+                        <div class="news-card-footer">
+                            <span class="news-meta">21 Agustus 2026 • Learning Center</span>
+                            <a href="#" class="news-read-more">Baca Selengkapnya ➔</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="news-card-single">
+                    <div class="news-card-img-wrap">
+                        <span class="news-badge bg-teal">ACHIEVEMENT</span>
+                        <img src="news.jpg" alt="News 3">
+                    </div>
+                    <div class="news-card-body">
+                        <div>
+                            <h3 class="news-card-title">GadaiMAS Raih Penghargaan Indonesia Best Workplace 2026</h3>
+                            <p class="news-card-snippet">Bangga menjadi bagian dari perusahaan yang terus bertumbuh dan berprestasi.</p>
+                        </div>
+                        <div class="news-card-footer">
+                            <span class="news-meta">20 Agustus 2026 • Corporate</span>
+                            <a href="#" class="news-read-more">Baca Selengkapnya ➔</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CHAT WITH HC BANNER -->
+            <div class="hc-help-banner">
+                <div class="hc-help-left">
+                    <div class="hc-help-avatar"><i class="fa-solid fa-headset"></i></div>
+                    <div class="hc-help-text">
+                        <h4>Butuh bantuan atau informasi lebih lanjut?</h4>
+                        <p>Tim HC siap membantu Anda!</p>
+                    </div>
+                </div>
+                <a href="https://wa.me/6281220002964" target="_blank" class="btn-chat-hc">
+                    <i class="fa-solid fa-comments"></i> Chat dengan HC
+                </a>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- ==================== HALAMAN HUB: FORM & MONITORING ADMINISTRASI ==================== -->
+    <div class="modal-overlay" id="pageFormAdministrasi">
+        <div class="modal-box">
+            <button class="modal-close" onclick="closeModal('pageFormAdministrasi')">&times;</button>
+            <h2 class="form-section-title">Form Administrasi</h2>
+            <p class="form-section-subtitle">Pilih jenis pengajuan administrasi yang ingin Anda ajukan di bawah ini:</p>
+
+            <div class="hub-grid">
+                <div class="hub-item-card" onclick="openModal('modalTenagaKerja')">
+                    <div class="hub-item-title">
+                        <i class="fa-solid fa-user-plus" style="color:var(--brand-blue);"></i>
+                        Form Pengajuan Tenaga Kerja
+                    </div>
+                    <p style="font-size:0.8rem; color:var(--text-muted);">Pengajuan kebutuhan penambahan/pergantian personel.</p>
+                    <span style="font-size:0.8rem; font-weight:700; color:var(--brand-blue);">Buka Form ➔</span>
+                </div>
+
+                <div class="hub-item-card" onclick="openModal('modalIzinCuti')">
+                    <div class="hub-item-title">
+                        <i class="fa-solid fa-calendar-check" style="color:var(--brand-blue);"></i>
+                        Form Pergantian - Izin/Cuti
+                    </div>
+                    <p style="font-size:0.8rem; color:var(--text-muted);">Pengajuan pergantian sementara karyawan izin/cuti.</p>
+                    <span style="font-size:0.8rem; font-weight:700; color:var(--brand-blue);">Buka Form ➔</span>
+                </div>
+
+                <div class="hub-item-card" onclick="openModal('modalDokumen')">
+                    <div class="hub-item-title">
+                        <i class="fa-solid fa-file-lines" style="color:var(--brand-blue);"></i>
+                        Form Pengajuan Dokumen/Surat
+                    </div>
+                    <p style="font-size:0.8rem; color:var(--text-muted);">Permohonan Surat Keterangan Kerja (Paklaring), SK, dll.</p>
+                    <span style="font-size:0.8rem; font-weight:700; color:var(--brand-blue);">Buka Form ➔</span>
+                </div>
             </div>
         </div>
     </div>
 
-    <!-- 3. QUICK ACCESS SECTION (4 CARDS GLASSMORPHISM) -->
-    <section class="quick-access-section" id="quick-access">
-        <div class="section-header">
-            <h2 class="section-title-main">Quick Access Services</h2>
-        </div>
-        
-        <div class="qa-grid-4">
-            
-            <!-- KARTU 1: EMPLOYEE VOICE -->
-            <div class="qa-card card-dark">
-                <div>
-                    <div class="card-icon">🗣️</div>
-                    <h3 class="card-title">Employee Voice</h3>
-                    <p class="card-desc">Wadah resmi menyampaikan gagasan, ide, dan masukan untuk kemajuan perusahaan.</p>
-                </div>
-                <div class="sub-btn-group">
-                    <button onclick="openModal('modalFormVoice')" class="btn-sub">
-                        <span>📝 Form Employee Voice</span>
-                        <span>➔</span>
-                    </button>
-                    <button onclick="openModal('modalTrackVoice')" class="btn-sub">
-                        <span>📊 Track Your Voice</span>
-                        <span>➔</span>
-                    </button>
-                </div>
-            </div>
+    <div class="modal-overlay" id="pageMonitoringAdministrasi">
+        <div class="modal-box">
+            <button class="modal-close" onclick="closeModal('pageMonitoringAdministrasi')">&times;</button>
+            <h2 class="form-section-title">Pusat Monitoring Status Administrasi</h2>
+            <p class="form-section-subtitle">Pantau status progress dari pengajuan administrasi Anda di bawah ini:</p>
 
-            <!-- KARTU 2: FORM ADMINISTRASI -->
-            <div class="qa-card card-gold">
-                <div>
-                    <div class="card-icon">📋</div>
-                    <h3 class="card-title">Form Administrasi</h3>
-                    <p class="card-desc">Layanan administrasi Human Capital terintegrasi secara praktis dan serba digital.</p>
-                </div>
-                <div class="sub-btn-group">
-                    <a href="https://forms.google.com/YOUR_FORM_TENAGA_KERJA" target="_blank" class="btn-sub">
-                        <span>👤 Form Pengajuan Tenaga Kerja</span>
-                        <span>➔</span>
-                    </a>
-                    <a href="https://forms.google.com/YOUR_FORM_IZIN_CUTI" target="_blank" class="btn-sub">
-                        <span>🗓️ Form Izin / Cuti</span>
-                        <span>➔</span>
-                    </a>
-                    <button onclick="openModal('modalCuti')" class="btn-sub">
-                        <span>📈 Monitoring Izin / Cuti</span>
-                        <span>➔</span>
-                    </button>
-                </div>
-            </div>
-
-            <!-- KARTU 3: LEARNING & DEVELOPMENT -->
-            <div class="qa-card card-dark">
-                <div>
-                    <div class="card-icon">🎓</div>
-                    <h3 class="card-title">Learning & Development</h3>
-                    <p class="card-desc">Pusat pengembangan kompetensi, panduan operasional, dan materi pembelajaran.</p>
-                </div>
-                <div class="sub-btn-group">
-                    <a href="https://lms.perusahaan.com/sop-policy" target="_blank" class="btn-sub">
-                        <span>📚 SOP & Policy</span>
-                        <span>➔</span>
-                    </a>
-                    <a href="https://lms.perusahaan.com/knowledge-center" target="_blank" class="btn-sub">
-                        <span>💡 Knowledge Center</span>
-                        <span>➔</span>
-                    </a>
-                </div>
-            </div>
-
-            <!-- KARTU 4: DASHBOARD & REPORT -->
-            <div class="qa-card card-gold">
-                <div>
-                    <div class="card-icon">📊</div>
-                    <h3 class="card-title">Dashboard & Report</h3>
-                    <p class="card-desc">Akses data analitik, statistik HR, serta laporan performa operasional HC secara terpusat.</p>
-                </div>
-                <div class="sub-btn-group">
-                    <a href="https://lookerstudio.google.com/" target="_blank" class="btn-sub">
-                        <span>📈 Buka Dashboard Utama</span>
-                        <span>➔</span>
-                    </a>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- 4. UPCOMING EVENT SECTION -->
-    <section class="event-section">
-        <div class="event-wrapper">
-            <div class="section-header">
-                <h2 class="section-title-main">Upcoming Events</h2>
-                <p style="color: var(--text-muted); font-size: 0.92rem; margin-top: 6px;">Jadwal kegiatan, pelatihan, dan pertemuan penting perusahaan yang sedang & akan berlangsung.</p>
-            </div>
-
-            <div class="event-grid">
-                <!-- Mini Kalender -->
-                <div class="mini-calendar">
-                    <div class="cal-header">
-                        <span>&lt;</span>
-                        <span>Agustus 2026</span>
-                        <span>&gt;</span>
+            <div class="hub-grid">
+                <div class="hub-item-card" onclick="openModal('modalMonTenagaKerja')">
+                    <div class="hub-item-title">
+                        <i class="fa-solid fa-chart-line" style="color:#b45309;"></i>
+                        Monitoring Tenaga Kerja
                     </div>
-                    <div class="cal-days">
-                        <span>M</span><span>S</span><span>S</span><span>R</span><span>K</span><span>J</span><span>S</span>
-                    </div>
-                    <div class="cal-dates">
-                        <span class="cal-date" style="opacity:0.3">26</span>
-                        <span class="cal-date" style="opacity:0.3">27</span>
-                        <span class="cal-date" style="opacity:0.3">28</span>
-                        <span class="cal-date" style="opacity:0.3">29</span>
-                        <span class="cal-date" style="opacity:0.3">30</span>
-                        <span class="cal-date" style="opacity:0.3">31</span>
-                        <span class="cal-date">1</span>
-                        <span class="cal-date">2</span><span class="cal-date">3</span><span class="cal-date">4</span>
-                        <span class="cal-date">5</span><span class="cal-date">6</span><span class="cal-date">7</span>
-                        <span class="cal-date">8</span><span class="cal-date">9</span><span class="cal-date">10</span>
-                        <span class="cal-date">11</span><span class="cal-date">12</span><span class="cal-date">13</span>
-                        <span class="cal-date">14</span><span class="cal-date">15</span><span class="cal-date">16</span>
-                        <span class="cal-date">17</span><span class="cal-date active">18</span><span class="cal-date has-event">19</span>
-                        <span class="cal-date has-event">20</span><span class="cal-date">21</span><span class="cal-date has-event">22</span>
-                        <span class="cal-date">23</span><span class="cal-date">24</span><span class="cal-date">25</span>
-                        <span class="cal-date">26</span><span class="cal-date">27</span><span class="cal-date">28</span>
-                        <span class="cal-date">29</span><span class="cal-date">30</span><span class="cal-date">31</span>
-                    </div>
+                    <p style="font-size:0.8rem; color:var(--text-muted);">Lihat progress pengajuan penambahan tenaga kerja.</p>
+                    <span style="font-size:0.8rem; font-weight:700; color:#b45309;">Lihat Status ➔</span>
                 </div>
 
-                <!-- Event Cards List Realtime Links -->
-                <div class="events-list">
-                    <div class="event-card-item">
-                        <div class="event-date-badge">
-                            <div class="day">19</div>
-                            <div class="month">AGU</div>
-                        </div>
-                        <div class="event-details">
-                            <span class="event-tag tag-training">Training & Workshop</span>
-                            <h4 class="event-title">Sosialisasi SOP Operasional & Service Excellence 2026</h4>
-                            <div class="event-time-loc">
-                                <span>🕒 09:00 - 12:00 WIB</span>
-                                <span>📍 Zoom Meeting</span>
-                            </div>
-                        </div>
-                        <a href="https://zoom.us/j/YOUR_MEETING_ID" target="_blank" class="btn-event-link">Join Zoom Meeting ➔</a>
+                <div class="hub-item-card" onclick="openModal('modalMonCuti')">
+                    <div class="hub-item-title">
+                        <i class="fa-solid fa-chart-line" style="color:#b45309;"></i>
+                        Monitoring Izin / Cuti
                     </div>
-
-                    <div class="event-card-item">
-                        <div class="event-date-badge">
-                            <div class="day">20</div>
-                            <div class="month">AGU</div>
-                        </div>
-                        <div class="event-details">
-                            <span class="event-tag tag-meeting">Townhall Meeting</span>
-                            <h4 class="event-title">Monthly Business Review Q3 - PT Gadai MAS Nusantara</h4>
-                            <div class="event-time-loc">
-                                <span>🕒 14:00 - 16:00 WIB</span>
-                                <span>📍 Ruang Rapat Utama & Online</span>
-                            </div>
-                        </div>
-                        <a href="https://forms.google.com/YOUR_REGISTER_FORM" target="_blank" class="btn-event-link">Daftar Kehadiran ➔</a>
-                    </div>
-
-                    <div class="event-card-item">
-                        <div class="event-date-badge">
-                            <div class="day">22</div>
-                            <div class="month">AGU</div>
-                        </div>
-                        <div class="event-details">
-                            <span class="event-tag tag-event">Internal Event</span>
-                            <h4 class="event-title">HC Sharing Session: Managing Career Growth in Financial Services</h4>
-                            <div class="event-time-loc">
-                                <span>🕒 10:00 - 11:30 WIB</span>
-                                <span>📍 Google Meet</span>
-                            </div>
-                        </div>
-                        <a href="https://meet.google.com/abc-defg-hij" target="_blank" class="btn-event-link">Join Meeting ➔</a>
-                    </div>
+                    <p style="font-size:0.8rem; color:var(--text-muted);">Lihat progress pergantian karyawan izin/cuti.</p>
+                    <span style="font-size:0.8rem; font-weight:700; color:#b45309;">Lihat Status ➔</span>
                 </div>
-            </div>
 
-            <div class="integration-info-box">
-                <span style="font-size:1.3rem;">💡</span>
-                <span><b>Tips Integrasi Realtime:</b> Kalender ini dapat disinkronkan secara otomatis menggunakan **Google Calendar API** / **Microsoft Outlook Calendar**. Perubahan jadwal di pusat HCBP akan otomatis di-update.</span>
+                <div class="hub-item-card" onclick="openModal('modalMonDokumen')">
+                    <div class="hub-item-title">
+                        <i class="fa-solid fa-chart-line" style="color:#b45309;"></i>
+                        Monitoring Dokumen/Surat
+                    </div>
+                    <p style="font-size:0.8rem; color:var(--text-muted);">Lihat progress penerbitan surat/dokumen HC.</p>
+                    <span style="font-size:0.8rem; font-weight:700; color:#b45309;">Lihat Status ➔</span>
+                </div>
             </div>
         </div>
-    </section>
+    </div>
 
-    <!-- 5. POPUP MODAL 1: FORM EMPLOYEE VOICE -->
+    <!-- ==================== FORM EMPLOYEE VOICE ==================== -->
     <div class="modal-overlay" id="modalFormVoice">
         <div class="modal-box">
             <button class="modal-close" onclick="closeModal('modalFormVoice')">&times;</button>
-            <h2 class="form-section-title">Form Input Aspirasi — Employee Voice</h2>
+            <h2 class="form-section-title">Form Employee Voice</h2>
             <p class="form-section-subtitle">Sampaikan aspirasi, ide, atau permasalahan Anda secara langsung kepada tim HCBP.</p>
 
-            <form id="employeeVoiceForm" onsubmit="handleFormSubmit(event)">
+            <form onsubmit="handleSpreadsheetSubmit(event, 'URL_SPREADSHEET_EMPLOYEE_VOICE', 'modalFormVoice')">
                 <div class="form-group">
                     <label class="form-label">1. Email <span>*</span></label>
                     <input type="email" name="email" class="form-control" placeholder="nama@gadaimas.co.id" required>
@@ -1238,7 +1580,7 @@
 
                 <div class="form-group">
                     <label class="form-label">2. Nama Lengkap <span>*</span></label>
-                    <input type="text" name="nama" class="form-control" placeholder="Masukkan nama lengkap Anda" required>
+                    <input type="text" name="nama_lengkap" class="form-control" placeholder="Contoh: CHINTYA KHARISMA SHANTI" required>
                 </div>
 
                 <div class="form-group">
@@ -1266,14 +1608,13 @@
 
                 <div class="form-group">
                     <label class="form-label">4. Unit Kerja <span>*</span></label>
-                    <input type="text" name="unit_kerja" class="form-control" placeholder="Contoh: MAS OEBOBO" required>
+                    <input type="text" name="unit_kerja" class="form-control" placeholder="Contoh: MAS OEBOBO/Head Office" required>
                 </div>
 
                 <div class="form-group">
                     <label class="form-label">5. Jenis Suara <span>*</span></label>
                     <select name="jenis_suara" class="form-control" required>
                         <option value="" disabled selected>-- Pilih Jenis Suara --</option>
-                        <option value="Ide/Saran">Ide/Saran</option>
                         <option value="Keluhan">Keluhan</option>
                         <option value="Permasalahan">Permasalahan</option>
                         <option value="Apresiasi">Apresiasi</option>
@@ -1285,7 +1626,7 @@
 
                 <div class="form-group">
                     <label class="form-label">6. Topik Terkait <span>*</span></label>
-                    <select name="topik" id="topikSelect" class="form-control" onchange="toggleLainnya('topikSelect', 'topikLainnyaInput')" required>
+                    <select name="topik" id="topikVoiceSelect" class="form-control" onchange="toggleLainnyaSelect('topikVoiceSelect', 'topikLainnyaVoiceInput')" required>
                         <option value="" disabled selected>-- Pilih Topik --</option>
                         <option value="Atasan / Leadership">Atasan / Leadership</option>
                         <option value="Rekan Kerja">Rekan Kerja</option>
@@ -1303,31 +1644,31 @@
                         <option value="Work Environment">Work Environment</option>
                         <option value="Lainnya">Lainnya...</option>
                     </select>
-                    <input type="text" name="topik_lainnya" id="topikLainnyaInput" class="form-control input-lainnya" placeholder="Tuliskan topik lainnya di sini...">
+                    <input type="text" name="topik_lainnya" id="topikLainnyaVoiceInput" class="form-control input-lainnya" placeholder="Tuliskan topik lainnya di sini...">
                 </div>
 
                 <div class="form-group">
                     <label class="form-label">7. Ceritakan yang terjadi pada Anda <span>*</span></label>
-                    <textarea name="cerita" class="form-control" rows="3" placeholder="Jelaskan kronologi atau detail aspirasi Anda..." required></textarea>
+                    <textarea name="cerita" class="form-control" rows="3" placeholder="Jelaskan detail kronologi atau aspirasi Anda..." required></textarea>
                 </div>
 
                 <div class="form-group">
                     <label class="form-label">8. Apa dampak dari kondisi tersebut? <span>*</span></label>
                     <div class="radio-list">
-                        <label class="radio-item"><input type="radio" name="dampak" value="Tidak berdampak signifikan" onclick="toggleRadioLainnya(false, 'dampakLainnyaInput')" checked> Tidak berdampak signifikan</label>
-                        <label class="radio-item"><input type="radio" name="dampak" value="Mengganggu pekerjaan saya" onclick="toggleRadioLainnya(false, 'dampakLainnyaInput')"> Mengganggu pekerjaan saya</label>
-                        <label class="radio-item"><input type="radio" name="dampak" value="Mengganggu produktivitas tim" onclick="toggleRadioLainnya(false, 'dampakLainnyaInput')"> Mengganggu produktivitas tim</label>
-                        <label class="radio-item"><input type="radio" name="dampak" value="Mempengaruhi employee experience" onclick="toggleRadioLainnya(false, 'dampakLainnyaInput')"> Mempengaruhi employee experience</label>
-                        <label class="radio-item"><input type="radio" name="dampak" value="Mempengaruhi pelayanan kepada nasabah" onclick="toggleRadioLainnya(false, 'dampakLainnyaInput')"> Mempengaruhi pelayanan kepada nasabah</label>
-                        <label class="radio-item"><input type="radio" name="dampak" value="Berpotensi menimbulkan risiko bagi perusahaan" onclick="toggleRadioLainnya(false, 'dampakLainnyaInput')"> Berpotensi menimbulkan risiko bagi perusahaan</label>
-                        <label class="radio-item"><input type="radio" name="dampak" value="Lainnya" onclick="toggleRadioLainnya(true, 'dampakLainnyaInput')"> Lainnya...</label>
+                        <label class="radio-item"><input type="radio" name="dampak" value="Tidak berdampak signifikan" onclick="toggleRadioLainnya(false, 'dampakLainnyaVoiceInput')" checked> Tidak berdampak signifikan</label>
+                        <label class="radio-item"><input type="radio" name="dampak" value="Mengganggu pekerjaan saya" onclick="toggleRadioLainnya(false, 'dampakLainnyaVoiceInput')"> Mengganggu pekerjaan saya</label>
+                        <label class="radio-item"><input type="radio" name="dampak" value="Mengganggu produktivitas tim" onclick="toggleRadioLainnya(false, 'dampakLainnyaVoiceInput')"> Mengganggu produktivitas tim</label>
+                        <label class="radio-item"><input type="radio" name="dampak" value="Mempengaruhi employee experience" onclick="toggleRadioLainnya(false, 'dampakLainnyaVoiceInput')"> Mempenguaruhi employee experience</label>
+                        <label class="radio-item"><input type="radio" name="dampak" value="Mempengaruhi pelayanan kepada nasabah" onclick="toggleRadioLainnya(false, 'dampakLainnyaVoiceInput')"> Mempengaruhi pelayanan kepada nasabah</label>
+                        <label class="radio-item"><input type="radio" name="dampak" value="Berpotensi menimbulkan risiko bagi perusahaan" onclick="toggleRadioLainnya(false, 'dampakLainnyaVoiceInput')"> Berpotensi menimbulkan risiko bagi perusahaan</label>
+                        <label class="radio-item"><input type="radio" name="dampak" value="Lainnya" onclick="toggleRadioLainnya(true, 'dampakLainnyaVoiceInput')"> Lainnya...</label>
                     </div>
-                    <input type="text" name="dampak_lainnya" id="dampakLainnyaInput" class="form-control input-lainnya" placeholder="Tuliskan dampak lainnya di sini...">
+                    <input type="text" name="dampak_lainnya" id="dampakLainnyaVoiceInput" class="form-control input-lainnya" placeholder="Tuliskan dampak lainnya di sini...">
                 </div>
 
                 <div class="form-group">
-                    <label class="form-label">9. Apa Solusi / Perbaikan yang dapat dilakukan? <span>*</span></label>
-                    <textarea name="solusi" class="form-control" rows="2" placeholder="Tuliskan ide atau perbaikan yang disarankan..." required></textarea>
+                    <label class="form-label">9. Apa Solusi/Perbaikan yang dapat dilakukan? <span>*</span></label>
+                    <textarea name="solusi" class="form-control" rows="2" placeholder="Tuliskan saran perbaikan Anda..." required></textarea>
                 </div>
 
                 <div class="form-group">
@@ -1342,169 +1683,411 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="form-label">11. Upload Dokumen / Bukti Pendukung (Foto/PDF)</label>
-                    <input type="file" id="fileInput" class="form-control" accept="image/*,.pdf,.docx,.xlsx">
+                    <label class="form-label">11. Apakah Anda memiliki dokumen/bukti pendukung?</label>
+                    <input type="file" name="bukti_dokumen" class="form-control" accept="image/*,.pdf,.docx,.xlsx">
                 </div>
 
                 <div class="form-group">
-                    <label class="form-label">12. Bagaimana Anda ingin identitas Anda ditangani? <span>*</span></label>
-                    <select name="penanganan_identitas" class="form-control" required>
-                        <option value="" disabled selected>-- Pilih Penanganan Identitas --</option>
-                        <option value="Terbuka">Terbuka (Identitas dapat diketahui tim terkait)</option>
-                        <option value="Kerahasiaan Dijaga">Kerahasiaan Dijaga (Hanya diketahui tim HCBP)</option>
-                        <option value="Anonim">Anonim (Sembunyikan identitas sepenuhnya)</option>
-                    </select>
+                    <label class="form-label">12. Bagaimana Anda ingin pengajuan ini ditangani? <span>*</span></label>
+                    <div class="radio-list">
+                        <label class="radio-item"><input type="radio" name="penanganan_identitas" value="Identitas dapat diketahui oleh HC" checked> Identitas dapat diketahui oleh HC</label>
+                        <label class="radio-item"><input type="radio" name="penanganan_identitas" value="Mohon identitas saya dirahasiakan"> Mohon identitas saya dirahasiakan</label>
+                    </div>
                 </div>
 
-                <button type="submit" class="btn-submit">🚀 Kirim Aspirasi Sekarang</button>
+                <div class="form-group">
+                    <label class="form-label">13. Secara keseluruhan, apakah Anda puas dengan kondisi saat ini? <span>*</span></label>
+                    <div class="scale-box">
+                        <div class="scale-options">
+                            <div class="scale-option"><label for="p1">1</label><input type="radio" id="p1" name="kepuasan_skala" value="1" required></div>
+                            <div class="scale-option"><label for="p2">2</label><input type="radio" id="p2" name="kepuasan_skala" value="2"></div>
+                            <div class="scale-option"><label for="p3">3</label><input type="radio" id="p3" name="kepuasan_skala" value="3"></div>
+                            <div class="scale-option"><label for="p4">4</label><input type="radio" id="p4" name="kepuasan_skala" value="4"></div>
+                            <div class="scale-option"><label for="p5">5</label><input type="radio" id="p5" name="kepuasan_skala" value="5"></div>
+                        </div>
+                        <div class="scale-labels">
+                            <span>Sangat Tidak Puas</span>
+                            <span>Sangat Puas</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">14. Apakah Anda merekomendasikan perusahaan ini sebagai tempat bekerja? <span>*</span></label>
+                    <div class="scale-box">
+                        <div class="scale-options">
+                            <div class="scale-option"><label for="r1">1</label><input type="radio" id="r1" name="rekomendasi_skala" value="1" required></div>
+                            <div class="scale-option"><label for="r2">2</label><input type="radio" id="r2" name="rekomendasi_skala" value="2"></div>
+                            <div class="scale-option"><label for="r3">3</label><input type="radio" id="r3" name="rekomendasi_skala" value="3"></div>
+                            <div class="scale-option"><label for="r4">4</label><input type="radio" id="r4" name="rekomendasi_skala" value="4"></div>
+                            <div class="scale-option"><label for="r5">5</label><input type="radio" id="r5" name="rekomendasi_skala" value="5"></div>
+                            <div class="scale-option"><label for="r6">6</label><input type="radio" id="r6" name="rekomendasi_skala" value="6"></div>
+                            <div class="scale-option"><label for="r7">7</label><input type="radio" id="r7" name="rekomendasi_skala" value="7"></div>
+                            <div class="scale-option"><label for="r8">8</label><input type="radio" id="r8" name="rekomendasi_skala" value="8"></div>
+                            <div class="scale-option"><label for="r9">9</label><input type="radio" id="r9" name="rekomendasi_skala" value="9"></div>
+                            <div class="scale-option"><label for="r10">10</label><input type="radio" id="r10" name="rekomendasi_skala" value="10"></div>
+                        </div>
+                        <div class="scale-labels">
+                            <span>Sangat Tidak Merekomendasikan</span>
+                            <span>Sangat Merekomendasikan</span>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-submit">SUBMIT</button>
             </form>
         </div>
     </div>
 
-    <!-- 6. POPUP MODAL 2: TRACK YOUR VOICE BOARD -->
-    <div class="modal-overlay" id="modalTrackVoice">
+    <!-- ==================== FORM PENGAJUAN TENAGA KERJA (UPDATED) ==================== -->
+    <div class="modal-overlay" id="modalTenagaKerja">
         <div class="modal-box">
-            <button class="modal-close" onclick="closeModal('modalTrackVoice')">&times;</button>
-            
-            <div class="ev-header">
-                <div>
-                    <span class="ev-title-badge">HC CONNECT</span>
-                    <h2 class="ev-title-main">Employee Voice — Status Monitoring</h2>
-                    <p style="color: #64748b; font-size: 0.88rem;">Transparansi tindak lanjut suara karyawan Gadai MAS Nusantara</p>
-                </div>
-            </div>
+            <button class="modal-close" onclick="closeModal('modalTenagaKerja')">&times;</button>
+            <h2 class="form-section-title">Form Pengajuan Tenaga Kerja</h2>
+            <p class="form-section-subtitle">Lengkapi detail pengajuan kebutuhan penambahan/pergantian personel di bawah ini.</p>
 
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="stat-label">Total Voice</div>
-                    <div class="stat-value color-total">1.248</div>
+            <form onsubmit="handleSpreadsheetSubmit(event, 'URL_SPREADSHEET_TENAGA_KERJA', 'modalTenagaKerja')">
+                <div class="form-group">
+                    <label class="form-label">1. Email <span>*</span></label>
+                    <input type="email" name="email" class="form-control" placeholder="nama@gadaimas.co.id" required>
                 </div>
-                <div class="stat-card">
-                    <div class="stat-label">Dalam Proses</div>
-                    <div class="stat-value color-process">57</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-label">Selesai</div>
-                    <div class="stat-value color-done">872</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-label">Perlu Perhatian</div>
-                    <div class="stat-value color-alert">12</div>
-                </div>
-            </div>
 
-            <div class="table-responsive">
-                <table class="voice-table">
-                    <thead>
-                        <tr>
-                            <th>Request ID</th>
-                            <th>Nama Pengaju</th>
-                            <th>Kategori</th>
-                            <th>Status</th>
-                            <th>Update Terakhir</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="data-row">
-                            <td style="font-weight:bold; color:#0f2b48;">EV-2026-00125</td>
-                            <td>Budi Santoso</td>
-                            <td>Fasilitas Kerja</td>
-                            <td><span class="badge-status bg-process">Dalam Tindak Lanjut</span></td>
-                            <td>12 Agustus 2026</td>
-                        </tr>
-                        <tr class="data-row">
-                            <td style="font-weight:bold; color:#0f2b48;">EV-2026-00118</td>
-                            <td>Siti Rahma</td>
-                            <td>Learning & Development</td>
-                            <td><span class="badge-status bg-done">Selesai</span></td>
-                            <td>10 Agustus 2026</td>
-                        </tr>
-                        <tr class="data-row">
-                            <td style="font-weight:bold; color:#0f2b48;">EV-2026-00107</td>
-                            <td>Andi Pratama</td>
-                            <td>Komunikasi Internal</td>
-                            <td><span class="badge-status bg-alert">Perlu Perhatian</span></td>
-                            <td>7 Agustus 2026</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div class="form-group">
+                    <label class="form-label">2. Nama Lengkap <span>*</span></label>
+                    <input type="text" name="nama_lengkap" class="form-control" placeholder="Contoh: CHINTYA KHARISMA SHANTI" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">3. NIK <span>*</span></label>
+                    <input type="text" name="nik" class="form-control" placeholder="Contoh: 2019.0183" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">4. Unit Kerja / Area <span>*</span></label>
+                    <input type="text" name="unit_kerja_area" class="form-control" placeholder="Contoh: MAS OEBOBO - NTB" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">5. Jenis Pengajuan <span>*</span></label>
+                    <div class="radio-list">
+                        <label class="radio-item"><input type="radio" name="jenis_pengajuan" value="Penambahan Tenaga Kerja" required> Penambahan Tenaga Kerja</label>
+                        <label class="radio-item"><input type="radio" name="jenis_pengajuan" value="Penggantian Tenaga Kerja"> Penggantian Tenaga Kerja</label>
+                        <label class="radio-item"><input type="radio" name="jenis_pengajuan" value="Penempatan/Mutasi"> Penempatan/Mutasi</label>
+                        <label class="radio-item"><input type="radio" name="jenis_pengajuan" value="Penugasan Sementara"> Penugasan Sementara</label>
+                        <label class="radio-item"><input type="radio" name="jenis_pengajuan" value="Kebutuhan Tenaga Kerja Lainnya"> Kebutuhan Tenaga Kerja Lainnya</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">6. Periode Penugasan <span>*</span></label>
+                    <div class="radio-list">
+                        <label class="radio-item"><input type="radio" name="periode_penugasan" value="Tetap" onclick="toggleRadioLainnya(false, 'periodeLainnyaInput')" required> Tetap</label>
+                        <label class="radio-item"><input type="radio" name="periode_penugasan" value="Sementara" onclick="toggleRadioLainnya(false, 'periodeLainnyaInput')"> Sementara</label>
+                        <label class="radio-item"><input type="radio" name="periode_penugasan" value="Kontrak" onclick="toggleRadioLainnya(false, 'periodeLainnyaInput')"> Kontrak</label>
+                        <label class="radio-item"><input type="radio" name="periode_penugasan" value="Lainnya" onclick="toggleRadioLainnya(true, 'periodeLainnyaInput')"> Lainnya...</label>
+                    </div>
+                    <input type="text" name="periode_penugasan_lainnya" id="periodeLainnyaInput" class="form-control input-lainnya" placeholder="Tuliskan periode penugasan lainnya di sini...">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">7. Alasan Pengajuan Tenaga Kerja <span>*</span></label>
+                    <div class="form-note">Jelaskan kebutuhan tenaga kerja, kondisi saat ini, serta alasan pengajuan.</div>
+                    <textarea name="alasan_pengajuan" class="form-control" rows="3" placeholder="Tuliskan alasan pengajuan secara jelas..." required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">8. Dampak Jika Kebutuhan Tidak Dipenuhi <span>*</span></label>
+                    <div class="form-note">Jelaskan dampak terhadap operasional, target, beban kerja, atau pelayanan.</div>
+                    <textarea name="dampak_tidak_dipenuhi" class="form-control" rows="3" placeholder="Tuliskan dampak yang dapat terjadi..." required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">9. Prioritas Kebutuhan <span>*</span></label>
+                    <select name="prioritas_kebutuhan" class="form-control" required>
+                        <option value="" disabled selected>-- Pilih Prioritas Kebutuhan --</option>
+                        <option value="URGENT — Membutuhkan segera">URGENT — Membutuhkan segera</option>
+                        <option value="HIGH — Dibutuhkan dalam waktu dekat">HIGH — Dibutuhkan dalam waktu dekat</option>
+                        <option value="MEDIUM — Dapat direncanakan">MEDIUM — Dapat direncanakan</option>
+                        <option value="LOW — Kebutuhan jangka panjang">LOW — Kebutuhan jangka panjang</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">10. Format Pengajuan <span>*</span></label>
+                    <div class="form-note">WAJIB: Upload Format Pengajuan Tenaga Kerja/ Surat Tugas Karyawan yang telah diisi dan ditanda tangani</div>
+                    <input type="file" name="file_format_pengajuan" class="form-control" accept="image/*,.pdf,.docx,.xlsx" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">11. Catatan Tambahan</label>
+                    <textarea name="catatan_tambahan" class="form-control" rows="2" placeholder="Tuliskan catatan tambahan (jika ada)..."></textarea>
+                </div>
+
+                <button type="submit" class="btn-submit">SUBMIT</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- ==================== FORM PERGANTIAN KARYAWAN - IZIN/CUTI (UPDATED) ==================== -->
+    <div class="modal-overlay" id="modalIzinCuti">
+        <div class="modal-box">
+            <button class="modal-close" onclick="closeModal('modalIzinCuti')">&times;</button>
+            <h2 class="form-section-title">Form Pergantian Karyawan - Izin/Cuti</h2>
+            <p class="form-section-subtitle">Pengajuan pergantian sementara untuk karyawan yang sedang izin/cuti.</p>
+
+            <form onsubmit="handleSpreadsheetSubmit(event, 'URL_SPREADSHEET_IZIN_CUTI', 'modalIzinCuti')">
+                <div class="form-group">
+                    <label class="form-label">1. Email <span>*</span></label>
+                    <input type="email" name="email_pengaju" class="form-control" placeholder="nama@gadaimas.co.id" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">2. Nama Lengkap Pengaju <span>*</span></label>
+                    <input type="text" name="nama_pengaju" class="form-control" placeholder="Contoh: CHINTYA KHARISMA SHANTI" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">3. NIK Pengaju <span>*</span></label>
+                    <input type="text" name="nik_pengaju" class="form-control" placeholder="Contoh: 2019.0183" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">4. Jabatan Pengaju <span>*</span></label>
+                    <select name="jabatan_pengaju" class="form-control" required>
+                        <option value="" disabled selected>-- Pilih Jabatan Pengaju --</option>
+                        <option value="C Level">C Level</option>
+                        <option value="Manager">Manager</option>
+                        <option value="Supervisor">Supervisor</option>
+                        <option value="Advisor">Advisor</option>
+                        <option value="Division Head">Division Head</option>
+                        <option value="Departement Head">Departement Head</option>
+                        <option value="Section Head">Section Head</option>
+                        <option value="Ka Unit">Ka Unit</option>
+                        <option value="Kepala Cabang">Kepala Cabang</option>
+                        <option value="Staff">Staff</option>
+                        <option value="Officer">Officer</option>
+                        <option value="Driver">Driver</option>
+                        <option value="Penaksir">Penaksir</option>
+                        <option value="Kasir">Kasir</option>
+                        <option value="Office Boy/Girl">Office Boy/Girl</option>
+                        <option value="Security">Security</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">5. Unit Kerja Pengaju <span>*</span></label>
+                    <input type="text" name="unit_kerja_pengaju" class="form-control" placeholder="Contoh: MAS OEBOBO" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">6. Nomor Handphone Pengaju <span>*</span></label>
+                    <input type="tel" name="no_hp_pengaju" class="form-control" placeholder="Contoh: 081234567890" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">7. Tanggal Pengajuan Izin/Cuti <span>*</span></label>
+                    <input type="date" name="tgl_pengajuan" class="form-control" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">8. Jenis Pengajuan <span>*</span></label>
+                    <input type="text" name="jenis_pengajuan_cuti" class="form-control" placeholder="Contoh: Cuti Tahunan / Izin Sakit / Izin Khusus" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">9. Tanggal Mulai <span>*</span></label>
+                    <input type="date" name="tgl_mulai" class="form-control" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">10. Tanggal Selesai <span>*</span></label>
+                    <input type="date" name="tgl_selesai" class="form-control" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">11. Upload Bukti Approval Pengajuan Izin/Cuti <span>*</span></label>
+                    <input type="file" name="bukti_approval" class="form-control" accept="image/*,.pdf" required>
+                    
+                    <!-- CONTOH GAMBAR CONTOH BUKTI APPROVAL -->
+                    <div class="sample-image-box">
+                        <p><i class="fa-solid fa-circle-info"></i> Contoh Format Bukti Approval yang Benar:</p>
+                        <img src="bukti-approval.png" alt="Contoh Bukti Approval" onerror="this.src='https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=500'">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">12. Nama Lengkap Karyawan Pengganti Sementara <span>*</span></label>
+                    <input type="text" name="nama_pengganti_sementara" class="form-control" placeholder="Contoh: CHINTYA KHARISMA SHANTI" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">13. NIK Karyawan Pengganti Sementara <span>*</span></label>
+                    <input type="text" name="nik_pengganti_sementara" class="form-control" placeholder="Contoh: 2019.0183" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">14. Jabatan Karyawan Pengganti Sementara <span>*</span></label>
+                    <select name="jabatan_pengganti_sementara" class="form-control" required>
+                        <option value="" disabled selected>-- Pilih Jabatan Pengganti --</option>
+                        <option value="C Level">C Level</option>
+                        <option value="Manager">Manager</option>
+                        <option value="Supervisor">Supervisor</option>
+                        <option value="Advisor">Advisor</option>
+                        <option value="Division Head">Division Head</option>
+                        <option value="Departement Head">Departement Head</option>
+                        <option value="Section Head">Section Head</option>
+                        <option value="Ka Unit">Ka Unit</option>
+                        <option value="Kepala Cabang">Kepala Cabang</option>
+                        <option value="Staff">Staff</option>
+                        <option value="Officer">Officer</option>
+                        <option value="Driver">Driver</option>
+                        <option value="Penaksir">Penaksir</option>
+                        <option value="Kasir">Kasir</option>
+                        <option value="Office Boy/Girl">Office Boy/Girl</option>
+                        <option value="Security">Security</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">15. Unit Kerja Asal Karyawan Pengganti <span>*</span></label>
+                    <input type="text" name="unit_kerja_pengganti" class="form-control" placeholder="Contoh: MAS KUPANG" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">16. Status Pengajuan Ke Atasan <span>*</span></label>
+                    <select name="status_pengajuan_atasan" class="form-control" required>
+                        <option value="" disabled selected>-- Pilih Status Pengajuan --</option>
+                        <option value="Pending">Pending</option>
+                        <option value="Perlu Perbaikan">Perlu Perbaikan</option>
+                        <option value="Approved">Approved</option>
+                        <option value="Surat Tugas Terbit">Surat Tugas Terbit</option>
+                        <option value="Selesai">Selesai</option>
+                        <option value="Ditolak">Ditolak</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn-submit">SUBMIT</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- MODAL DOKUMEN -->
+    <div class="modal-overlay" id="modalDokumen">
+        <div class="modal-box">
+            <button class="modal-close" onclick="closeModal('modalDokumen')">&times;</button>
+            <h2 class="form-section-title">Form Pengajuan Dokumen/Surat</h2>
+            <p class="form-section-subtitle">Permohonan penerbitan Surat Keterangan Kerja, SK, atau dokumen HC lainnya.</p>
+
+            <form onsubmit="handleSpreadsheetSubmit(event, 'URL_SPREADSHEET_DOKUMEN', 'modalDokumen')">
+                <div class="form-group">
+                    <label class="form-label">Nama Lengkap</label>
+                    <input type="text" name="nama" class="form-control" placeholder="Contoh: CHINTYA KHARISMA SHANTI" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Jenis Dokumen yang Diminta</label>
+                    <select name="jenis_dokumen" class="form-control" required>
+                        <option>Surat Keterangan Kerja (Paklaring)</option>
+                        <option>Surat Rekomendasi</option>
+                        <option>Dokumen Kepegawaian Lainnya</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Keperluan</label>
+                    <textarea name="keperluan" class="form-control" rows="2" placeholder="Tuliskan keperluan pengajuan..." required></textarea>
+                </div>
+                <button type="submit" class="btn-submit">SUBMIT</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="modalMonTenagaKerja">
+        <div class="modal-box">
+            <button class="modal-close" onclick="closeModal('modalMonTenagaKerja')">&times;</button>
+            <h2 class="form-section-title">Monitoring Pengajuan Tenaga Kerja</h2>
+            <p class="form-section-subtitle">Layar pemantauan status pengajuan tenaga kerja secara terintegrasi.</p>
+
+            <div class="sheet-container">
+                <iframe class="sheet-iframe" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQ_EXAMPLE_LINK_1/pubhtml?widget=true&amp;headers=false"></iframe>
             </div>
         </div>
     </div>
 
-    <!-- 7. POPUP MODAL 3: MONITORING IZIN / CUTI -->
-    <div class="modal-overlay" id="modalCuti">
+    <div class="modal-overlay" id="modalMonCuti">
         <div class="modal-box">
-            <button class="modal-close" onclick="closeModal('modalCuti')">&times;</button>
-            <h2 style="color:#0f2b48; margin-bottom: 6px;">Monitoring Pengajuan Izin & Cuti</h2>
-            <p style="color:#64748b; font-size: 0.88rem; margin-bottom: 20px;">
-                Data real-time pengajuan izin/cuti karyawan yang terhubung dari Google Spreadsheet / Form.
-            </p>
-            
-            <div style="width: 100%; height: 350px; background-color: #f8fafc; border: 2px dashed #cbd5e1; border-radius: 16px; display: flex; align-items: center; justify-content: center; color: #64748b; font-weight: 600; text-align: center; padding: 20px;">
-                <span>
-                    📋 [Sematkan Iframe Google Spreadsheet / Looker Studio di Sini]<br>
-                    <small style="font-weight: normal; opacity: 0.8;">Contoh: &lt;iframe src="LINK_SPREADSHEET_PUBLIC" width="100%" height="330"&gt;&lt;/iframe&gt;</small>
-                </span>
+            <button class="modal-close" onclick="closeModal('modalMonCuti')">&times;</button>
+            <h2 class="form-section-title">Monitoring Izin / Cuti Karyawan</h2>
+            <p class="form-section-subtitle">Layar pemantauan status pengajuan izin dan cuti karyawan secara terintegrasi.</p>
+
+            <div class="sheet-container">
+                <iframe class="sheet-iframe" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQ_EXAMPLE_LINK_2/pubhtml?widget=true&amp;headers=false"></iframe>
             </div>
         </div>
     </div>
 
-    <!-- 8. FOOTER -->
-    <footer id="contact">
+    <div class="modal-overlay" id="modalMonDokumen">
+        <div class="modal-box">
+            <button class="modal-close" onclick="closeModal('modalMonDokumen')">&times;</button>
+            <h2 class="form-section-title">Monitoring Pengajuan Dokumen/Surat</h2>
+            <p class="form-section-subtitle">Layar pemantauan status pengajuan dokumen dan surat resmi HCBP.</p>
+
+            <div class="sheet-container">
+                <iframe class="sheet-iframe" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQ_EXAMPLE_LINK_3/pubhtml?widget=true&amp;headers=false"></iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- 10. FOOTER -->
+    <footer>
         <div class="footer-container">
-            <div class="footer-col contact-info">
-                <h3>CONTACT</h3>
-                <p>📧 Email: <a href="mailto:hc.connect@hcbp.com">hc.connect@hcbp.com</a></p>
-                <p>📞 Phone: <a href="tel:+6281220002964">+62 812-2000-2964</a></p>
+            <!-- KIRI: LOGO & JUDUL HC CONNECT -->
+            <div>
+                <div class="logo-container">
+                    <img src="logo.png" alt="Logo Gadai MAS Nusantara" class="logo-img">
+                    <div class="brand-divider"></div>
+                    <div class="brand-title">HC <span>CONNECT</span></div>
+                </div>
+                <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 8px;">© Human Capital Business Partner (HCBP)</p>
             </div>
 
-            <div class="footer-col">
-                <h3>RESOURCES</h3>
-                <ul class="footer-links">
-                    <li><a href="#">Employee Handbook</a></li>
-                    <li><a href="#">HC Policies & SOP</a></li>
-                    <li><a href="#">Learning Center</a></li>
-                    <li><a href="#">Workforce Movement</a></li>
-                </ul>
+            <!-- KANAN: KONTAK WHATSAPP & EMAIL HC CONNECT -->
+            <div class="footer-contact-group">
+                <a href="https://wa.me/6281220002964" target="_blank" class="footer-contact-item">
+                    <i class="fa-brands fa-whatsapp" style="color: #25d366;"></i>
+                    <span>+62 812-2000-2964</span>
+                </a>
+                <a href="mailto:hcbp.gadaimas@gmail.com" class="footer-contact-item">
+                    <i class="fa-regular fa-envelope" style="color: var(--brand-blue);"></i>
+                    <span>hcbp.gadaimas@gmail.com</span>
+                </a>
             </div>
-        </div>
-
-        <div class="footer-bottom">
-            <p>&copy; 2026 PT Gadai MAS Nusantara - Divisi Human Capital Business Partner (HCBP).</p>
         </div>
     </footer>
 
-    <!-- INTERACTIVE JAVASCRIPT -->
+    <!-- INTERACTIVE JAVASCRIPT & EFEK GOLD CONFETTI PITA MELAYANG -->
     <script>
-        // Open Modal Function
+        function toggleDropdown(elementId) {
+            const card = document.getElementById(elementId);
+            card.classList.toggle('active');
+        }
+
         function openModal(modalId) {
             const modal = document.getElementById(modalId);
-            if(modal) {
-                modal.classList.add('show');
-            }
+            if(modal) modal.classList.add('show');
         }
 
-        // Close Modal Function
         function closeModal(modalId) {
             const modal = document.getElementById(modalId);
-            if(modal) {
-                modal.classList.remove('show');
-            }
+            if(modal) modal.classList.remove('show');
         }
 
-        // Close modal when clicking outside content box
         window.onclick = function(event) {
             const overlays = document.querySelectorAll('.modal-overlay');
             overlays.forEach(overlay => {
-                if (event.target === overlay) {
-                    overlay.classList.remove('show');
-                }
+                if (event.target === overlay) overlay.classList.remove('show');
             });
         }
 
-        // Dynamic Form Field (Select)
-        function toggleLainnya(selectId, inputId) {
+        function toggleLainnyaSelect(selectId, inputId) {
             const selectVal = document.getElementById(selectId).value;
             const inputEl = document.getElementById(inputId);
             if (selectVal === 'Lainnya') {
@@ -1516,7 +2099,6 @@
             }
         }
 
-        // Dynamic Form Field (Radio)
         function toggleRadioLainnya(isLainnya, inputId) {
             const inputEl = document.getElementById(inputId);
             if (isLainnya) {
@@ -1528,15 +2110,85 @@
             }
         }
 
-        // Form Submit Handler
-        function handleFormSubmit(event) {
+        function handleSpreadsheetSubmit(event, scriptUrl, modalId) {
             event.preventDefault();
-            alert('Aspirasi Anda berhasil dikirim! Tim HCBP akan segera menindaklanjutinya.');
-            document.getElementById('employeeVoiceForm').reset();
-            document.getElementById('topikLainnyaInput').style.display = 'none';
-            document.getElementById('dampakLainnyaInput').style.display = 'none';
-            closeModal('modalFormVoice');
+            const form = event.target;
+
+            alert('Aspirasi/Pengajuan Anda berhasil dikirim ke tim HCBP!');
+            form.reset();
+
+            const topicInput = document.getElementById('topikLainnyaVoiceInput');
+            const dampakInput = document.getElementById('dampakLainnyaVoiceInput');
+            const periodeInput = document.getElementById('periodeLainnyaInput');
+            if(topicInput) topicInput.style.display = 'none';
+            if(dampakInput) dampakInput.style.display = 'none';
+            if(periodeInput) periodeInput.style.display = 'none';
+
+            closeModal(modalId);
         }
+
+        /* ==================== ANIMASI GOLD CONFETTI PITA MELAYANG ==================== */
+        const canvas = document.getElementById('confettiCanvas');
+        const ctx = canvas.getContext('2d');
+        const banner = document.getElementById('kaizenBanner');
+
+        function resizeCanvas() {
+            canvas.width = banner.offsetWidth;
+            canvas.height = banner.offsetHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        class Particle {
+            constructor() {
+                this.reset();
+            }
+
+            reset() {
+                this.x = Math.random() * canvas.width;
+                this.y = -20 - Math.random() * 50;
+                this.width = 6 + Math.random() * 8;
+                this.height = 12 + Math.random() * 14;
+                this.speedY = 1 + Math.random() * 1.8;
+                this.speedX = (Math.random() - 0.5) * 1.2;
+                this.rotation = Math.random() * Math.PI * 2;
+                this.rotationSpeed = (Math.random() - 0.5) * 0.08;
+                this.alpha = 0.4 + Math.random() * 0.6;
+                this.color = ['#ffe285', '#f5a623', '#ffffff', '#fbbf24', '#d97706'][Math.floor(Math.random() * 5)];
+            }
+
+            update() {
+                this.y += this.speedY;
+                this.x += Math.sin(this.y * 0.05) * 0.8 + this.speedX;
+                this.rotation += this.rotationSpeed;
+                if (this.y > canvas.height + 30) this.reset();
+            }
+
+            draw() {
+                ctx.save();
+                ctx.translate(this.x, this.y);
+                ctx.rotate(this.rotation);
+                ctx.globalAlpha = this.alpha;
+                ctx.fillStyle = this.color;
+                ctx.shadowBlur = 8;
+                ctx.shadowColor = this.color;
+                ctx.fillRect(-this.width / 2, -this.height / 2, this.width, this.height);
+                ctx.restore();
+            }
+        }
+
+        const particles = Array.from({ length: 45 }, () => new Particle());
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => {
+                p.update();
+                p.draw();
+            });
+            requestAnimationFrame(animate);
+        }
+
+        animate();
     </script>
 </body>
 </html>
