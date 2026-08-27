@@ -1462,7 +1462,7 @@
                     </div>
                     <div class="news-card-body">
                         <div>
-                            <h3 class="news-card-title">GadaiMAS Raih Penghargaan Indonesia Best Workplace 2026</h3>
+                            <h3 class="news-card-title">Gadai MAS Raih Penghargaan Indonesia Best Workplace 2026</h3>
                             <p class="news-card-snippet">Bangga menjadi bagian dari perusahaan yang terus bertumbuh dan berprestasi.</p>
                         </div>
                         <div class="news-card-footer">
@@ -1547,7 +1547,7 @@
                 <div class="hub-item-card" onclick="openModal('modalMonCuti')">
                     <div class="hub-item-title">
                         <i class="fa-solid fa-chart-line" style="color:#b45309;"></i>
-                        Monitoring Izin / Cuti
+                        Monitoring Izin/Cuti
                     </div>
                     <p style="font-size:0.8rem; color:var(--text-muted);">Lihat progress pergantian karyawan izin/cuti.</p>
                     <span style="font-size:0.8rem; font-weight:700; color:#b45309;">Lihat Status ➔</span>
@@ -1556,7 +1556,7 @@
                 <div class="hub-item-card" onclick="openModal('modalMonDokumen')">
                     <div class="hub-item-title">
                         <i class="fa-solid fa-chart-line" style="color:#b45309;"></i>
-                        Monitoring Dokumen/Surat
+                        Monitoring Pengajuan Dokumen/Surat
                     </div>
                     <p style="font-size:0.8rem; color:var(--text-muted);">Lihat progress penerbitan surat/dokumen HC.</p>
                     <span style="font-size:0.8rem; font-weight:700; color:#b45309;">Lihat Status ➔</span>
@@ -1574,17 +1574,22 @@
 
             <form onsubmit="handleSpreadsheetSubmit(event, 'URL_SPREADSHEET_EMPLOYEE_VOICE', 'modalFormVoice')">
                 <div class="form-group">
-                    <label class="form-label">1. Email <span>*</span></label>
+                    <label class="form-label">Email <span>*</span></label>
                     <input type="email" name="email" class="form-control" placeholder="nama@gadaimas.co.id" required>
                 </div>
 
                 <div class="form-group">
-                    <label class="form-label">2. Nama Lengkap <span>*</span></label>
+                    <label class="form-label">Nama Lengkap <span>*</span></label>
                     <input type="text" name="nama_lengkap" class="form-control" placeholder="Contoh: CHINTYA KHARISMA SHANTI" required>
                 </div>
 
                 <div class="form-group">
-                    <label class="form-label">3. Jabatan <span>*</span></label>
+                    <label class="form-label">NIK <span>*</span></label>
+                    <input type="text" name="nik" class="form-control" placeholder="Contoh: 2019.0183" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Jabatan <span>*</span></label>
                     <select name="jabatan" class="form-control" required>
                         <option value="" disabled selected>-- Pilih Jabatan --</option>
                         <option value="C-Level">C-Level</option>
@@ -1607,12 +1612,12 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="form-label">4. Unit Kerja <span>*</span></label>
+                    <label class="form-label">Unit Kerja <span>*</span></label>
                     <input type="text" name="unit_kerja" class="form-control" placeholder="Contoh: MAS OEBOBO/Head Office" required>
                 </div>
 
                 <div class="form-group">
-                    <label class="form-label">5. Jenis Suara <span>*</span></label>
+                    <label class="form-label">Jenis Suara <span>*</span></label>
                     <select name="jenis_suara" class="form-control" required>
                         <option value="" disabled selected>-- Pilih Jenis Suara --</option>
                         <option value="Keluhan">Keluhan</option>
@@ -1625,7 +1630,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="form-label">6. Topik Terkait <span>*</span></label>
+                    <label class="form-label">Topik Terkait <span>*</span></label>
                     <select name="topik" id="topikVoiceSelect" class="form-control" onchange="toggleLainnyaSelect('topikVoiceSelect', 'topikLainnyaVoiceInput')" required>
                         <option value="" disabled selected>-- Pilih Topik --</option>
                         <option value="Atasan / Leadership">Atasan / Leadership</option>
@@ -1648,12 +1653,12 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="form-label">7. Ceritakan yang terjadi pada Anda <span>*</span></label>
+                    <label class="form-label">Ceritakan yang terjadi pada Anda <span>*</span></label>
                     <textarea name="cerita" class="form-control" rows="3" placeholder="Jelaskan detail kronologi atau aspirasi Anda..." required></textarea>
                 </div>
 
                 <div class="form-group">
-                    <label class="form-label">8. Apa dampak dari kondisi tersebut? <span>*</span></label>
+                    <label class="form-label">Apa dampak dari kondisi tersebut? <span>*</span></label>
                     <div class="radio-list">
                         <label class="radio-item"><input type="radio" name="dampak" value="Tidak berdampak signifikan" onclick="toggleRadioLainnya(false, 'dampakLainnyaVoiceInput')" checked> Tidak berdampak signifikan</label>
                         <label class="radio-item"><input type="radio" name="dampak" value="Mengganggu pekerjaan saya" onclick="toggleRadioLainnya(false, 'dampakLainnyaVoiceInput')"> Mengganggu pekerjaan saya</label>
@@ -1667,12 +1672,12 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="form-label">9. Apa Solusi/Perbaikan yang dapat dilakukan? <span>*</span></label>
+                    <label class="form-label">Apa Solusi/Perbaikan yang dapat dilakukan? <span>*</span></label>
                     <textarea name="solusi" class="form-control" rows="2" placeholder="Tuliskan saran perbaikan Anda..." required></textarea>
                 </div>
 
                 <div class="form-group">
-                    <label class="form-label">10. Seberapa Penting hal ini untuk ditindaklanjuti? <span>*</span></label>
+                    <label class="form-label">Seberapa Penting hal ini untuk ditindaklanjuti? <span>*</span></label>
                     <select name="urgensi" class="form-control" required>
                         <option value="" disabled selected>-- Pilih Tingkat Urgensi --</option>
                         <option value="Rendah - Tidak mendesak">Rendah - Tidak mendesak</option>
@@ -1683,12 +1688,12 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="form-label">11. Apakah Anda memiliki dokumen/bukti pendukung?</label>
+                    <label class="form-label">Apakah Anda memiliki dokumen/bukti pendukung?</label>
                     <input type="file" name="bukti_dokumen" class="form-control" accept="image/*,.pdf,.docx,.xlsx">
                 </div>
 
                 <div class="form-group">
-                    <label class="form-label">12. Bagaimana Anda ingin pengajuan ini ditangani? <span>*</span></label>
+                    <label class="form-label">Bagaimana Anda ingin pengajuan ini ditangani? <span>*</span></label>
                     <div class="radio-list">
                         <label class="radio-item"><input type="radio" name="penanganan_identitas" value="Identitas dapat diketahui oleh HC" checked> Identitas dapat diketahui oleh HC</label>
                         <label class="radio-item"><input type="radio" name="penanganan_identitas" value="Mohon identitas saya dirahasiakan"> Mohon identitas saya dirahasiakan</label>
@@ -1696,7 +1701,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="form-label">13. Secara keseluruhan, apakah Anda puas dengan kondisi saat ini? <span>*</span></label>
+                    <label class="form-label">Secara keseluruhan, apakah Anda puas dengan kondisi saat ini? <span>*</span></label>
                     <div class="scale-box">
                         <div class="scale-options">
                             <div class="scale-option"><label for="p1">1</label><input type="radio" id="p1" name="kepuasan_skala" value="1" required></div>
@@ -1713,7 +1718,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="form-label">14. Apakah Anda merekomendasikan perusahaan ini sebagai tempat bekerja? <span>*</span></label>
+                    <label class="form-label">Apakah Anda merekomendasikan perusahaan ini sebagai tempat bekerja? <span>*</span></label>
                     <div class="scale-box">
                         <div class="scale-options">
                             <div class="scale-option"><label for="r1">1</label><input type="radio" id="r1" name="rekomendasi_skala" value="1" required></div>
@@ -1748,27 +1753,27 @@
 
             <form onsubmit="handleSpreadsheetSubmit(event, 'URL_SPREADSHEET_TENAGA_KERJA', 'modalTenagaKerja')">
                 <div class="form-group">
-                    <label class="form-label">1. Email <span>*</span></label>
+                    <label class="form-label">Email <span>*</span></label>
                     <input type="email" name="email" class="form-control" placeholder="nama@gadaimas.co.id" required>
                 </div>
 
                 <div class="form-group">
-                    <label class="form-label">2. Nama Lengkap <span>*</span></label>
+                    <label class="form-label">Nama Lengkap <span>*</span></label>
                     <input type="text" name="nama_lengkap" class="form-control" placeholder="Contoh: CHINTYA KHARISMA SHANTI" required>
                 </div>
 
                 <div class="form-group">
-                    <label class="form-label">3. NIK <span>*</span></label>
+                    <label class="form-label">NIK <span>*</span></label>
                     <input type="text" name="nik" class="form-control" placeholder="Contoh: 2019.0183" required>
                 </div>
 
                 <div class="form-group">
-                    <label class="form-label">4. Unit Kerja / Area <span>*</span></label>
+                    <label class="form-label">Unit Kerja / Area <span>*</span></label>
                     <input type="text" name="unit_kerja_area" class="form-control" placeholder="Contoh: MAS OEBOBO - NTB" required>
                 </div>
 
                 <div class="form-group">
-                    <label class="form-label">5. Jenis Pengajuan <span>*</span></label>
+                    <label class="form-label">Jenis Pengajuan <span>*</span></label>
                     <div class="radio-list">
                         <label class="radio-item"><input type="radio" name="jenis_pengajuan" value="Penambahan Tenaga Kerja" required> Penambahan Tenaga Kerja</label>
                         <label class="radio-item"><input type="radio" name="jenis_pengajuan" value="Penggantian Tenaga Kerja"> Penggantian Tenaga Kerja</label>
@@ -1779,7 +1784,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="form-label">6. Periode Penugasan <span>*</span></label>
+                    <label class="form-label">Periode Penugasan <span>*</span></label>
                     <div class="radio-list">
                         <label class="radio-item"><input type="radio" name="periode_penugasan" value="Tetap" onclick="toggleRadioLainnya(false, 'periodeLainnyaInput')" required> Tetap</label>
                         <label class="radio-item"><input type="radio" name="periode_penugasan" value="Sementara" onclick="toggleRadioLainnya(false, 'periodeLainnyaInput')"> Sementara</label>
@@ -1790,19 +1795,19 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="form-label">7. Alasan Pengajuan Tenaga Kerja <span>*</span></label>
+                    <label class="form-label">Alasan Pengajuan Tenaga Kerja <span>*</span></label>
                     <div class="form-note">Jelaskan kebutuhan tenaga kerja, kondisi saat ini, serta alasan pengajuan.</div>
                     <textarea name="alasan_pengajuan" class="form-control" rows="3" placeholder="Tuliskan alasan pengajuan secara jelas..." required></textarea>
                 </div>
 
                 <div class="form-group">
-                    <label class="form-label">8. Dampak Jika Kebutuhan Tidak Dipenuhi <span>*</span></label>
+                    <label class="form-label">Dampak Jika Kebutuhan Tidak Dipenuhi <span>*</span></label>
                     <div class="form-note">Jelaskan dampak terhadap operasional, target, beban kerja, atau pelayanan.</div>
                     <textarea name="dampak_tidak_dipenuhi" class="form-control" rows="3" placeholder="Tuliskan dampak yang dapat terjadi..." required></textarea>
                 </div>
 
                 <div class="form-group">
-                    <label class="form-label">9. Prioritas Kebutuhan <span>*</span></label>
+                    <label class="form-label">Prioritas Kebutuhan <span>*</span></label>
                     <select name="prioritas_kebutuhan" class="form-control" required>
                         <option value="" disabled selected>-- Pilih Prioritas Kebutuhan --</option>
                         <option value="URGENT — Membutuhkan segera">URGENT — Membutuhkan segera</option>
@@ -1813,13 +1818,13 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="form-label">10. Format Pengajuan <span>*</span></label>
+                    <label class="form-label">Format Pengajuan <span>*</span></label>
                     <div class="form-note">WAJIB: Upload Format Pengajuan Tenaga Kerja/ Surat Tugas Karyawan yang telah diisi dan ditanda tangani</div>
                     <input type="file" name="file_format_pengajuan" class="form-control" accept="image/*,.pdf,.docx,.xlsx" required>
                 </div>
 
                 <div class="form-group">
-                    <label class="form-label">11. Catatan Tambahan</label>
+                    <label class="form-label">Catatan Tambahan</label>
                     <textarea name="catatan_tambahan" class="form-control" rows="2" placeholder="Tuliskan catatan tambahan (jika ada)..."></textarea>
                 </div>
 
@@ -1837,22 +1842,22 @@
 
             <form onsubmit="handleSpreadsheetSubmit(event, 'URL_SPREADSHEET_IZIN_CUTI', 'modalIzinCuti')">
                 <div class="form-group">
-                    <label class="form-label">1. Email <span>*</span></label>
+                    <label class="form-label">Email <span>*</span></label>
                     <input type="email" name="email_pengaju" class="form-control" placeholder="nama@gadaimas.co.id" required>
                 </div>
 
                 <div class="form-group">
-                    <label class="form-label">2. Nama Lengkap Pengaju <span>*</span></label>
+                    <label class="form-label">Nama Lengkap Pengaju <span>*</span></label>
                     <input type="text" name="nama_pengaju" class="form-control" placeholder="Contoh: CHINTYA KHARISMA SHANTI" required>
                 </div>
 
                 <div class="form-group">
-                    <label class="form-label">3. NIK Pengaju <span>*</span></label>
+                    <label class="form-label">NIK Pengaju <span>*</span></label>
                     <input type="text" name="nik_pengaju" class="form-control" placeholder="Contoh: 2019.0183" required>
                 </div>
 
                 <div class="form-group">
-                    <label class="form-label">4. Jabatan Pengaju <span>*</span></label>
+                    <label class="form-label">Jabatan Pengaju <span>*</span></label>
                     <select name="jabatan_pengaju" class="form-control" required>
                         <option value="" disabled selected>-- Pilih Jabatan Pengaju --</option>
                         <option value="C Level">C Level</option>
@@ -1875,37 +1880,37 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="form-label">5. Unit Kerja Pengaju <span>*</span></label>
+                    <label class="form-label">Unit Kerja Pengaju <span>*</span></label>
                     <input type="text" name="unit_kerja_pengaju" class="form-control" placeholder="Contoh: MAS OEBOBO" required>
                 </div>
 
                 <div class="form-group">
-                    <label class="form-label">6. Nomor Handphone Pengaju <span>*</span></label>
+                    <label class="form-label">Nomor Handphone Pengaju <span>*</span></label>
                     <input type="tel" name="no_hp_pengaju" class="form-control" placeholder="Contoh: 081234567890" required>
                 </div>
 
                 <div class="form-group">
-                    <label class="form-label">7. Tanggal Pengajuan Izin/Cuti <span>*</span></label>
+                    <label class="form-label">Tanggal Pengajuan Izin/Cuti <span>*</span></label>
                     <input type="date" name="tgl_pengajuan" class="form-control" required>
                 </div>
 
                 <div class="form-group">
-                    <label class="form-label">8. Jenis Pengajuan <span>*</span></label>
+                    <label class="form-label">Jenis Pengajuan <span>*</span></label>
                     <input type="text" name="jenis_pengajuan_cuti" class="form-control" placeholder="Contoh: Cuti Tahunan / Izin Sakit / Izin Khusus" required>
                 </div>
 
                 <div class="form-group">
-                    <label class="form-label">9. Tanggal Mulai <span>*</span></label>
+                    <label class="form-label">Tanggal Mulai <span>*</span></label>
                     <input type="date" name="tgl_mulai" class="form-control" required>
                 </div>
 
                 <div class="form-group">
-                    <label class="form-label">10. Tanggal Selesai <span>*</span></label>
+                    <label class="form-label">Tanggal Selesai <span>*</span></label>
                     <input type="date" name="tgl_selesai" class="form-control" required>
                 </div>
 
                 <div class="form-group">
-                    <label class="form-label">11. Upload Bukti Approval Pengajuan Izin/Cuti <span>*</span></label>
+                    <label class="form-label">Upload Bukti Approval Pengajuan Izin/Cuti <span>*</span></label>
                     <input type="file" name="bukti_approval" class="form-control" accept="image/*,.pdf" required>
                     
                     <!-- CONTOH GAMBAR CONTOH BUKTI APPROVAL -->
@@ -1916,17 +1921,17 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="form-label">12. Nama Lengkap Karyawan Pengganti Sementara <span>*</span></label>
+                    <label class="form-label">Nama Lengkap Karyawan Pengganti Sementara <span>*</span></label>
                     <input type="text" name="nama_pengganti_sementara" class="form-control" placeholder="Contoh: CHINTYA KHARISMA SHANTI" required>
                 </div>
 
                 <div class="form-group">
-                    <label class="form-label">13. NIK Karyawan Pengganti Sementara <span>*</span></label>
+                    <label class="form-label">NIK Karyawan Pengganti Sementara <span>*</span></label>
                     <input type="text" name="nik_pengganti_sementara" class="form-control" placeholder="Contoh: 2019.0183" required>
                 </div>
 
                 <div class="form-group">
-                    <label class="form-label">14. Jabatan Karyawan Pengganti Sementara <span>*</span></label>
+                    <label class="form-label">Jabatan Karyawan Pengganti Sementara <span>*</span></label>
                     <select name="jabatan_pengganti_sementara" class="form-control" required>
                         <option value="" disabled selected>-- Pilih Jabatan Pengganti --</option>
                         <option value="C Level">C Level</option>
@@ -1949,12 +1954,12 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="form-label">15. Unit Kerja Asal Karyawan Pengganti <span>*</span></label>
+                    <label class="form-label">Unit Kerja Asal Karyawan Pengganti <span>*</span></label>
                     <input type="text" name="unit_kerja_pengganti" class="form-control" placeholder="Contoh: MAS KUPANG" required>
                 </div>
 
                 <div class="form-group">
-                    <label class="form-label">16. Status Pengajuan Ke Atasan <span>*</span></label>
+                    <label class="form-label">Status Pengajuan Ke Atasan <span>*</span></label>
                     <select name="status_pengajuan_atasan" class="form-control" required>
                         <option value="" disabled selected>-- Pilih Status Pengajuan --</option>
                         <option value="Pending">Pending</option>
