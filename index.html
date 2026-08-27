@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HC Connect - PT Gadai MAS Nusantara</title>
 
-    <!-- Google Fonts: Great Vibes (Script), Plus Jakarta Sans, Playfair Display -->
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Playfair+Display:ital,wght@1,600;1,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
@@ -72,29 +71,6 @@
             height: 42px;
             width: auto;
             object-fit: contain;
-        }
-
-        .brand-text-stack {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            line-height: 1.1;
-        }
-
-        .text-line-1 { font-size: 1.25rem; font-weight: 900; white-space: nowrap; }
-        .text-gadai { color: var(--brand-blue); }
-        .text-mas { color: var(--brand-yellow); }
-
-        .text-nusantara {
-            font-size: 0.65rem;
-            font-weight: 800;
-            color: var(--brand-blue);
-            letter-spacing: 2px;
-            margin-top: 2px;
-            text-align: center;
-            width: 100%;
         }
 
         .brand-divider {
@@ -412,9 +388,83 @@
         .stat-label { font-size: 0.8rem; color: var(--text-muted); font-weight: 600; }
         .stat-value { font-size: 1.8rem; font-weight: 900; }
 
-        .table-responsive { width: 100%; overflow-x: auto; }
+        .table-search-bar {
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .search-input-box {
+            position: relative;
+            flex: 1;
+            min-width: 280px;
+            max-width: 420px;
+        }
+
+        .search-input-box i {
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .search-input-box input {
+            width: 100%;
+            padding: 10px 14px 10px 38px;
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            font-size: 0.88rem;
+            outline: none;
+            background: #f8fafc;
+        }
+
+        .search-input-box input:focus {
+            border-color: var(--brand-blue);
+            background: #ffffff;
+        }
+
+        .btn-see-all-table {
+            background: #f1f5f9;
+            color: var(--brand-blue);
+            border: 1px solid var(--border-color);
+            padding: 10px 18px;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: var(--transition);
+            white-space: nowrap;
+        }
+
+        .btn-see-all-table:hover {
+            background: var(--brand-blue);
+            color: #ffffff;
+        }
+
+        .table-responsive { 
+            width: 100%; 
+            overflow-x: auto; 
+            max-height: 380px; 
+            overflow-y: auto; 
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+        }
+
         .voice-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
-        .voice-table th { text-align: left; padding: 12px 14px; background: #f1f5f9; color: var(--text-muted); font-weight: 700; }
+        .voice-table th { 
+            text-align: left; 
+            padding: 12px 14px; 
+            background: #f1f5f9; 
+            color: var(--text-muted); 
+            font-weight: 700; 
+            position: sticky;
+            top: 0;
+            z-index: 2;
+        }
         .voice-table td { padding: 14px; border-bottom: 1px solid var(--border-color); }
 
         .badge-status {
@@ -548,12 +598,6 @@
             text-transform: uppercase;
         }
 
-        .news-title-sub {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            margin-top: 2px;
-        }
-
         .btn-see-all-news {
             display: inline-flex;
             align-items: center;
@@ -586,7 +630,6 @@
             margin-bottom: 30px;
         }
 
-        /* LIGHT SWEEP GLOW */
         .kaizen-hero-banner::after {
             content: '';
             position: absolute;
@@ -611,7 +654,6 @@
             30%, 100% { left: 140%; }
         }
 
-        /* CANVAS GOLD CONFETTI MELAYANG */
         #confettiCanvas {
             position: absolute;
             top: 0; left: 0;
@@ -620,7 +662,6 @@
             z-index: 1;
         }
 
-        /* FRAME FOTO POLAROID PEMENANG (KIRI) */
         .kaizen-polaroid-wrapper {
             position: relative;
             display: flex;
@@ -633,7 +674,6 @@
             background: #ffffff;
             padding: 12px 12px 18px 12px;
             border-radius: 24px;
-            /* GOLD SHADOW EFEK GLOWING */
             box-shadow: 0 15px 35px rgba(245, 166, 35, 0.4), 0 0 25px rgba(255, 226, 133, 0.6);
             transform: rotate(-3deg);
             max-width: 440px;
@@ -643,17 +683,16 @@
         }
 
         .polaroid-img {
-             width: 100%;
-             height: 340px; /* Tingkatkan tinggi kotak agar seragam lebih muat */
+            width: 100%;
+            height: 340px;
             object-fit: cover;
-            object-position: center 18%; /* Geser fokus agar seragam terbawa */
+            object-position: center 18%;
             border-radius: 16px;
         }
 
-        /* FOTO PIALA KECIL PADA SEAL MEDALI EMAS - DIPINDAHKAN KE POJOK (MERAH) */
         .gold-seal-emboss {
             position: absolute;
-            bottom: -40px; left: -30px; /* Disesuaikan persis menimpa pojok foto */
+            bottom: -40px; left: -30px;
             width: 150px; height: 150px;
             background: radial-gradient(circle at 30% 30%, #fff1b8 0%, #f5a623 45%, #b47a10 85%, #784e03 100%);
             border-radius: 50%;
@@ -683,7 +722,6 @@
             filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
         }
 
-        /* DETAIL KANAN (TULISAN & MAHKOTA FOTO) */
         .kaizen-details-side {
             display: flex;
             flex-direction: column;
@@ -693,7 +731,6 @@
             z-index: 3;
         }
 
-        /* FOTO MAHKOTA 3D ASLI DI ATAS TULISAN */
         .mahkota-img-3d {
             height: 70px;
             width: auto;
@@ -702,7 +739,6 @@
             margin-bottom: -5px;
         }
 
-        /* TULISAN KALIGRAFI / CURSIVE SELAMAT & SUKSES! */
         .kaizen-cursive-title {
             font-family: 'Great Vibes', cursive;
             font-size: 3.8rem;
@@ -730,13 +766,12 @@
             text-shadow: 0 4px 15px rgba(0,0,0,0.7);
         }
 
-        /* BOX KUTIPAN TRANSPARAN DENGAN PADDING & SPASING LENGKAP (BIRU) */
         .kaizen-quote-box {
             background: rgba(255, 255, 255, 0.08);
             backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.25);
             border-radius: 18px;
-            padding: 16px 36px; /* Padding samping diperlebar agar tidak menabrak ikon */
+            padding: 16px 36px;
             font-size: 0.86rem;
             color: #f8fafc;
             line-height: 1.5;
@@ -763,7 +798,6 @@
             right: 14px;
         }
 
-        /* PILL KATEGORI EMAS MEWAH */
         .kaizen-category-pill {
             background: linear-gradient(90deg, #f5a623 0%, #d97706 100%);
             color: #ffffff;
@@ -776,7 +810,6 @@
             margin-top: 2px;
         }
 
-        /* --- KOTAK PEMENANG DENGAN ANIMATED GRADIENT BORDER --- */
         .winner-card-box {
             background: #ffffff;
             color: var(--text-main);
@@ -787,15 +820,12 @@
             gap: 18px;
             width: 100%;
             text-align: left;
-
-            /* Properti Wajib untuk Animated Border */
             position: relative;
             overflow: hidden;
             box-shadow: 0 12px 30px rgba(245, 166, 35, 0.35), 0 0 15px rgba(255, 226, 133, 0.5);
             z-index: 1;
         }
 
-        /* KOTAK BORDER ANIMASI BERJALAN (LAYER BELAKANG) */
         .winner-card-box::before {
             content: '';
             position: absolute;
@@ -803,7 +833,6 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            /* Gradasi warna dibuat menyebar seimbang agar perputaran konstan */
             background: conic-gradient(
                 transparent 0deg,
                 transparent 180deg,
@@ -812,33 +841,24 @@
                 transparent 360deg
             );
             filter: drop-shadow(0 0 12px #f5a623);
-
-            /* 'linear' memastikan rotasi fisik berjalan konstan tanpa acceleration/deceleration */
             animation: rotateBorder 4s linear infinite;
             z-index: -2;
         }
 
-        /* LAYER PUTIH DALAM (AGAR ISI TEKS TETAP BERSIH) */
         .winner-card-box::after {
             content: '';
             position: absolute;
-            inset: 4px; /* Ketebalan garis border (3px) */
+            inset: 4px;
             background: #ffffff;
-            border-radius: 16px; /* Menyesuaikan kelengkungan dalam */
+            border-radius: 16px;
             z-index: -1;
         }
 
-        /* KEYFRAMES UNTUK ANIMASI BERPUTAR LOOPING */
         @keyframes rotateBorder {
-            0% {
-                transform: rotate(0deg);
-            }
-            100% {
-                transform: rotate(360deg);
-            }
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
 
-        /* GAMBAR PIALA LANGSUNG TANPA BACKGROUND WADAH KOTAK */
         .piala-card-img {
             height: 75px;
             width: auto;
@@ -851,7 +871,6 @@
         .winner-info-sub { font-size: 0.88rem; font-weight: 800; color: var(--brand-blue); }
         .winner-info-desc { font-size: 0.8rem; color: var(--text-muted); font-weight: 600; }
 
-        /* GRID BERITA LAINNYA */
         .news-grid-3 {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -951,7 +970,6 @@
 
         .news-read-more:hover { color: var(--brand-yellow); }
 
-        /* BANNER CHAT HC */
         .hc-help-banner {
             background: #040e30;
             border-radius: 20px;
@@ -997,7 +1015,7 @@
             gap: 8px;
         }
 
-        /* --- 9. MODALS --- */
+        /* --- 9. MODALS & FORMS --- */
         .modal-overlay {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -1020,6 +1038,7 @@
             position: relative;
             max-height: 88vh;
             overflow-y: auto;
+            scroll-behavior: smooth;
         }
 
         .modal-close {
@@ -1032,13 +1051,37 @@
 
         .form-section-title { font-size: 1.5rem; font-weight: 800; color: var(--brand-blue); margin-bottom: 4px; }
         .form-section-subtitle { color: var(--text-muted); font-size: 0.88rem; margin-bottom: 24px; }
-        .form-group { margin-bottom: 22px; }
+        .form-group { margin-bottom: 22px; transition: var(--transition); }
         .form-label { display: block; font-weight: 700; font-size: 0.9rem; color: var(--brand-blue); margin-bottom: 4px; }
         .form-label span { color: #dc2626; }
         .form-note { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 8px; font-style: italic; }
-        .form-control { width: 100%; padding: 12px 16px; border: 1px solid var(--border-color); border-radius: 10px; font-size: 0.9rem; background: #f8fafc; outline: none; }
+        .form-control { width: 100%; padding: 12px 16px; border: 1px solid var(--border-color); border-radius: 10px; font-size: 0.9rem; background: #f8fafc; outline: none; transition: var(--transition); }
         .form-control:focus { border-color: var(--brand-blue); background: #ffffff; box-shadow: 0 0 0 3px rgba(15, 44, 137, 0.1); }
         .input-lainnya { margin-top: 10px; display: none; }
+
+        .file-input-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-cancel-file {
+            display: none;
+            background: #ef4444;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 10px 14px;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 0.85rem;
+            transition: var(--transition);
+            white-space: nowrap;
+        }
+
+        .btn-cancel-file:hover {
+            background: #dc2626;
+        }
 
         .radio-list { display: flex; flex-direction: column; gap: 10px; }
         .radio-item {
@@ -1064,7 +1107,6 @@
         .sheet-container { width: 100%; height: 450px; background-color: #f8fafc; border: 2px dashed var(--border-color); border-radius: 16px; overflow: hidden; }
         .sheet-iframe { width: 100%; height: 100%; border: none; }
 
-        /* WADAH CONTOH APPROVAL (FOTO PANDUAN) */
         .sample-image-box {
             margin-top: 10px;
             background: #f1f5f9;
@@ -1087,16 +1129,94 @@
             border: 1px solid var(--border-color);
         }
 
+        /* --- STYLES KHUSUS STEP / SECTION FORM LEARNING & DEV --- */
+        .step-header-nav {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            margin-bottom: 20px;
+        }
+
+        .btn-nav-step {
+            background: var(--brand-blue);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 10px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-nav-step:hover { background: var(--brand-blue-hover); }
+
+        .btn-nav-secondary {
+            background: #e2e8f0;
+            color: var(--text-main);
+            border: none;
+            padding: 10px 18px;
+            border-radius: 10px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .btn-nav-secondary:hover { background: #cbd5e1; }
+
+        .declaration-box {
+            background: #fff8eb;
+            border: 1px solid #fde68a;
+            border-radius: 14px;
+            padding: 18px;
+            margin-bottom: 24px;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 12px;
+            font-size: 0.88rem;
+            color: #1e293b;
+            cursor: pointer;
+        }
+
+        .checkbox-item input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            accent-color: var(--brand-blue);
+            margin-top: 2px;
+            cursor: pointer;
+        }
+
+        .btn-submit:disabled {
+            background: #cbd5e1;
+            cursor: not-allowed;
+            color: #64748b;
+        }
+
+        /* EFEK SOROTAN BILA KOSONG (ERROR HIGHLIGHT) */
+        .input-error {
+            border-color: #ef4444 !important;
+            background-color: #fef2f2 !important;
+            box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.2) !important;
+        }
+
         /* --- 10. FOOTER --- */
         footer { background: #e1e6f0; padding: 40px 5% 20px; border-top: 1px solid var(--border-color); }
         .footer-container { max-width: 1300px; margin: 0 auto; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 20px; }
 
-        /* --- UPDATE STYLES FOOTER --- */
         .footer-contact-group {
             display: flex;
             flex-direction: column;
             gap: 10px;
-            align-items: flex-end; /* Memosisikan kontak di sebelah kanan */
+            align-items: flex-end;
         }
 
         .footer-contact-item {
@@ -1131,7 +1251,6 @@
             .news-grid-3 { grid-template-columns: 1fr; }
             .hc-help-banner { flex-direction: column; gap: 14px; text-align: center; }
 
-            /* Penyesuaian responsif layar HP */
             .footer-contact-group {
                 align-items: flex-start;
                 margin-top: 15px;
@@ -1141,7 +1260,6 @@
 </head>
 <body>
 
-    <!-- DEFINISI GRADIENT EMAS SVG -->
     <svg style="width:0;height:0;position:absolute;" aria-hidden="true" focusable="false">
       <linearGradient id="goldGradient3D" x1="0%" y1="0%" x2="100%" y2="100%">
         <stop offset="0%" stop-color="#fff8d6" />
@@ -1151,7 +1269,6 @@
       </linearGradient>
     </svg>
 
-    <!-- 1. NAVBAR -->
     <nav>
         <div class="brand-group">
             <div class="logo-container">
@@ -1170,7 +1287,6 @@
         </ul>
     </nav>
 
-    <!-- 2. HERO BANNER -->
     <section class="hero-banner">
         <div class="hero-left">
             <h2 class="hero-sub">Selamat datang di</h2>
@@ -1191,7 +1307,6 @@
 
     <div class="container">
 
-        <!-- 3. QUICK ACCESS SECTION -->
         <section class="quick-access-section" id="quick-access">
             <div class="section-header">
                 <h2 class="section-title-main">Quick Access</h2>
@@ -1232,7 +1347,7 @@
                     <div class="dropdown-header" onclick="toggleDropdown('dropdownLearning')">
                         <div class="dropdown-header-left">
                             <div class="card-icon-small" style="background:#f0fdf4; color:#16a34a;"><i class="fa-solid fa-graduation-cap"></i></div>
-                            <h3 class="card-title-sub">Learning & Dev</h3>
+                            <h3 class="card-title-sub">Learning & Development</h3>
                         </div>
                         <i class="fa-solid fa-chevron-down dropdown-icon-arrow"></i>
                     </div>
@@ -1260,7 +1375,6 @@
             </div>
         </section>
 
-        <!-- 4. TRACK YOUR VOICE BOARD -->
         <section class="track-voice-section" id="track-voice">
             <div class="section-header">
                 <h2 class="section-title-main">Track Your Voice</h2>
@@ -1281,8 +1395,16 @@
                 </div>
             </div>
 
+            <div class="table-search-bar">
+                <div class="search-input-box">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" id="searchVoiceInput" onkeyup="filterVoiceTable()" placeholder="Cari Berdasarkan ID Request, Nama, atau Kategori">
+                </div>
+                <button type="button" class="btn-see-all-table" onclick="resetVoiceSearch()">Reset</button>
+            </div>
+
             <div class="table-responsive">
-                <table class="voice-table">
+                <table class="voice-table" id="voiceTable">
                     <thead>
                         <tr>
                             <th>ID Request</th>
@@ -1294,16 +1416,16 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td><b>EV-2026-0018</b></td>
-                            <td>Budi Santoso</td>
-                            <td>Fasilitas Kerja</td>
+                            <td class="id-cell"><b>EV-2026-0018</b></td>
+                            <td class="nama-cell">Budi Santoso</td>
+                            <td class="kategori-cell">Fasilitas Kerja</td>
                             <td><span class="badge-status bg-process">Diproses</span></td>
                             <td>12 Agustus 2026</td>
                         </tr>
                         <tr>
-                            <td><b>EV-2026-0017</b></td>
-                            <td>Siti Rahma</td>
-                            <td>Learning & Dev</td>
+                            <td class="id-cell"><b>EV-2026-0017</b></td>
+                            <td class="nama-cell">Siti Rahma</td>
+                            <td class="kategori-cell">Learning & Dev</td>
                             <td><span class="badge-status bg-done">Selesai</span></td>
                             <td>10 Agustus 2026</td>
                         </tr>
@@ -1312,7 +1434,6 @@
             </div>
         </section>
 
-        <!-- 5. UPCOMING EVENT SECTION -->
         <section class="event-section" id="events">
             <div class="event-wrapper">
                 <div class="section-header">
@@ -1357,7 +1478,6 @@
             </div>
         </section>
 
-        <!-- 6. NEWS & UPDATE SECTION -->
         <section class="news-section" id="news">
             <div class="news-section-header">
                 <div class="news-header-title">
@@ -1369,17 +1489,13 @@
                 <a href="#" class="btn-see-all-news">Lihat Semua Berita <i class="fa-solid fa-arrow-right"></i></a>
             </div>
 
-            <!-- BANNER KAIZEN DENGAN FOTO PIALA & MAHKOTA ASLI -->
             <div class="kaizen-hero-banner" id="kaizenBanner">
-                <!-- CANVAS GOLD CONFETTI PITA MELAYANG -->
                 <canvas id="confettiCanvas"></canvas>
 
-                <!-- Frame Polaroid Pemenang (Kiri) -->
                 <div class="kaizen-polaroid-wrapper">
                     <div class="polaroid-frame">
                         <img src="pemenang.png" alt="Pemenang Kaizen 2026" class="polaroid-img" onerror="this.src='https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600'">
 
-                        <!-- Seal Medali Emas Emboss Dipindahkan Menimpa Pojok Polaroid -->
                         <div class="gold-seal-emboss">
                             <div class="gold-seal-inner">
                                 <img src="piala.png" alt="Piala Kaizen" class="seal-piala-img" onerror="this.src='https://cdn-icons-png.flaticon.com/512/3112/3112903.png'">
@@ -1388,10 +1504,8 @@
                     </div>
                 </div>
 
-                <!-- Detail Ucapan Selamat & Info Tim Pemenang (Kanan) -->
                 <div class="kaizen-details-side">
                     <div>
-                        <!-- Foto Mahkota Asli mahkota.png -->
                         <img src="mahkota.png" alt="Mahkota Kaizen" class="mahkota-img-3d" onerror="this.src='https://cdn-icons-png.flaticon.com/512/2825/2825102.png'">
                         <div class="kaizen-cursive-title">Selamat & Sukses!</div>
                         <div class="kaizen-subtext">Kepada Pemenang</div>
@@ -1408,7 +1522,6 @@
                     <div class="kaizen-category-pill">Kategori: Operational Excellence</div>
 
                     <div class="winner-card-box">
-                        <!-- Foto Piala Asli Tanpa Kotak Background -->
                         <img src="piala.png" alt="Piala Kaizen" class="piala-card-img" onerror="this.src='https://cdn-icons-png.flaticon.com/512/3112/3112903.png'">
                         <div>
                             <div class="winner-info-title">Tim Kaizen Juara 1</div>
@@ -1419,7 +1532,6 @@
                 </div>
             </div>
 
-            <!-- 3 KARTU BERITA DI BAWAH -->
             <div class="news-grid-3">
                 <div class="news-card-single">
                     <div class="news-card-img-wrap">
@@ -1473,7 +1585,6 @@
                 </div>
             </div>
 
-            <!-- CHAT WITH HC BANNER -->
             <div class="hc-help-banner">
                 <div class="hc-help-left">
                     <div class="hc-help-avatar"><i class="fa-solid fa-headset"></i></div>
@@ -1490,7 +1601,6 @@
 
     </div>
 
-    <!-- ==================== HALAMAN HUB: FORM & MONITORING ADMINISTRASI ==================== -->
     <div class="modal-overlay" id="pageFormAdministrasi">
         <div class="modal-box">
             <button class="modal-close" onclick="closeModal('pageFormAdministrasi')">&times;</button>
@@ -1510,7 +1620,7 @@
                 <div class="hub-item-card" onclick="openModal('modalIzinCuti')">
                     <div class="hub-item-title">
                         <i class="fa-solid fa-calendar-check" style="color:var(--brand-blue);"></i>
-                        Form Pergantian - Izin/Cuti
+                        Form Pergantian Karyawan - Izin/Cuti
                     </div>
                     <p style="font-size:0.8rem; color:var(--text-muted);">Pengajuan pergantian sementara karyawan izin/cuti.</p>
                     <span style="font-size:0.8rem; font-weight:700; color:var(--brand-blue);">Buka Form ➔</span>
@@ -1522,6 +1632,15 @@
                         Form Pengajuan Dokumen/Surat
                     </div>
                     <p style="font-size:0.8rem; color:var(--text-muted);">Permohonan Surat Keterangan Kerja (Paklaring), SK, dll.</p>
+                    <span style="font-size:0.8rem; font-weight:700; color:var(--brand-blue);">Buka Form ➔</span>
+                </div>
+
+                <div class="hub-item-card" onclick="openModal('modalLearningDev')">
+                    <div class="hub-item-title">
+                        <i class="fa-solid fa-graduation-cap" style="color:var(--brand-blue);"></i>
+                        Permintaan Learning & Development
+                    </div>
+                    <p style="font-size:0.8rem; color:var(--text-muted);">Pengajuan kebutuhan pelatihan/training dan pengembangan skill.</p>
                     <span style="font-size:0.8rem; font-weight:700; color:var(--brand-blue);">Buka Form ➔</span>
                 </div>
             </div>
@@ -1561,11 +1680,19 @@
                     <p style="font-size:0.8rem; color:var(--text-muted);">Lihat progress penerbitan surat/dokumen HC.</p>
                     <span style="font-size:0.8rem; font-weight:700; color:#b45309;">Lihat Status ➔</span>
                 </div>
+
+                <div class="hub-item-card" onclick="openModal('modalMonLearningDev')">
+                    <div class="hub-item-title">
+                        <i class="fa-solid fa-chart-line" style="color:#b45309;"></i>
+                        Monitoring Learning & Development
+                    </div>
+                    <p style="font-size:0.8rem; color:var(--text-muted);">Lihat status pengajuan program pelatihan & training.</p>
+                    <span style="font-size:0.8rem; font-weight:700; color:#b45309;">Lihat Status ➔</span>
+                </div>
             </div>
         </div>
     </div>
 
-    <!-- ==================== FORM EMPLOYEE VOICE ==================== -->
     <div class="modal-overlay" id="modalFormVoice">
         <div class="modal-box">
             <button class="modal-close" onclick="closeModal('modalFormVoice')">&times;</button>
@@ -1664,7 +1791,7 @@
                         <label class="radio-item"><input type="radio" name="dampak" value="Mengganggu pekerjaan saya" onclick="toggleRadioLainnya(false, 'dampakLainnyaVoiceInput')"> Mengganggu pekerjaan saya</label>
                         <label class="radio-item"><input type="radio" name="dampak" value="Mengganggu produktivitas tim" onclick="toggleRadioLainnya(false, 'dampakLainnyaVoiceInput')"> Mengganggu produktivitas tim</label>
                         <label class="radio-item"><input type="radio" name="dampak" value="Mempengaruhi employee experience" onclick="toggleRadioLainnya(false, 'dampakLainnyaVoiceInput')"> Mempenguaruhi employee experience</label>
-                        <label class="radio-item"><input type="radio" name="dampak" value="Mempengaruhi pelayanan kepada nasabah" onclick="toggleRadioLainnya(false, 'dampakLainnyaVoiceInput')"> Mempengaruhi pelayanan kepada nasabah</label>
+                        <label class="radio-item"><input type="radio" name="dampak" value="Mempengaruhi pelayanan kepada nasabah" onclick="toggleRadioLainnya(false, 'dampakLainnyaVoiceInput')"> Mempengaruh pelayanan kepada nasabah</label>
                         <label class="radio-item"><input type="radio" name="dampak" value="Berpotensi menimbulkan risiko bagi perusahaan" onclick="toggleRadioLainnya(false, 'dampakLainnyaVoiceInput')"> Berpotensi menimbulkan risiko bagi perusahaan</label>
                         <label class="radio-item"><input type="radio" name="dampak" value="Lainnya" onclick="toggleRadioLainnya(true, 'dampakLainnyaVoiceInput')"> Lainnya...</label>
                     </div>
@@ -1689,7 +1816,10 @@
 
                 <div class="form-group">
                     <label class="form-label">Apakah Anda memiliki dokumen/bukti pendukung?</label>
-                    <input type="file" name="bukti_dokumen" class="form-control" accept="image/*,.pdf,.docx,.xlsx">
+                    <div class="file-input-wrapper">
+                        <input type="file" name="bukti_dokumen" id="fileVoice" class="form-control" accept="image/*,.pdf,.docx,.xlsx" onchange="handleFileChange('fileVoice', 'btnCancelVoice')">
+                        <button type="button" id="btnCancelVoice" class="btn-cancel-file" onclick="resetFileInput('fileVoice', 'btnCancelVoice')">✕ Batal</button>
+                    </div>
                 </div>
 
                 <div class="form-group">
@@ -1744,7 +1874,6 @@
         </div>
     </div>
 
-    <!-- ==================== FORM PENGAJUAN TENAGA KERJA (UPDATED) ==================== -->
     <div class="modal-overlay" id="modalTenagaKerja">
         <div class="modal-box">
             <button class="modal-close" onclick="closeModal('modalTenagaKerja')">&times;</button>
@@ -1820,7 +1949,10 @@
                 <div class="form-group">
                     <label class="form-label">Format Pengajuan <span>*</span></label>
                     <div class="form-note">WAJIB: Upload Format Pengajuan Tenaga Kerja/ Surat Tugas Karyawan yang telah diisi dan ditanda tangani</div>
-                    <input type="file" name="file_format_pengajuan" class="form-control" accept="image/*,.pdf,.docx,.xlsx" required>
+                    <div class="file-input-wrapper">
+                        <input type="file" name="file_format_pengajuan" id="fileTK" class="form-control" accept="image/*,.pdf,.docx,.xlsx" required onchange="handleFileChange('fileTK', 'btnCancelTK')">
+                        <button type="button" id="btnCancelTK" class="btn-cancel-file" onclick="resetFileInput('fileTK', 'btnCancelTK')">✕ Batal</button>
+                    </div>
                 </div>
 
                 <div class="form-group">
@@ -1833,7 +1965,6 @@
         </div>
     </div>
 
-    <!-- ==================== FORM PERGANTIAN KARYAWAN - IZIN/CUTI (UPDATED) ==================== -->
     <div class="modal-overlay" id="modalIzinCuti">
         <div class="modal-box">
             <button class="modal-close" onclick="closeModal('modalIzinCuti')">&times;</button>
@@ -1911,9 +2042,11 @@
 
                 <div class="form-group">
                     <label class="form-label">Upload Bukti Approval Pengajuan Izin/Cuti <span>*</span></label>
-                    <input type="file" name="bukti_approval" class="form-control" accept="image/*,.pdf" required>
-                    
-                    <!-- CONTOH GAMBAR CONTOH BUKTI APPROVAL -->
+                    <div class="file-input-wrapper">
+                        <input type="file" name="bukti_approval" id="fileCuti" class="form-control" accept="image/*,.pdf" required onchange="handleFileChange('fileCuti', 'btnCancelCuti')">
+                        <button type="button" id="btnCancelCuti" class="btn-cancel-file" onclick="resetFileInput('fileCuti', 'btnCancelCuti')">✕ Batal</button>
+                    </div>
+
                     <div class="sample-image-box">
                         <p><i class="fa-solid fa-circle-info"></i> Contoh Format Bukti Approval yang Benar:</p>
                         <img src="bukti-approval.png" alt="Contoh Bukti Approval" onerror="this.src='https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=500'">
@@ -1976,7 +2109,6 @@
         </div>
     </div>
 
-    <!-- MODAL DOKUMEN -->
     <div class="modal-overlay" id="modalDokumen">
         <div class="modal-box">
             <button class="modal-close" onclick="closeModal('modalDokumen')">&times;</button>
@@ -1985,22 +2117,405 @@
 
             <form onsubmit="handleSpreadsheetSubmit(event, 'URL_SPREADSHEET_DOKUMEN', 'modalDokumen')">
                 <div class="form-group">
-                    <label class="form-label">Nama Lengkap</label>
+                    <label class="form-label">Nama Lengkap <span>*</span></label>
                     <input type="text" name="nama" class="form-control" placeholder="Contoh: CHINTYA KHARISMA SHANTI" required>
                 </div>
                 <div class="form-group">
-                    <label class="form-label">Jenis Dokumen yang Diminta</label>
+                    <label class="form-label">Jenis Dokumen yang Diminta <span>*</span></label>
                     <select name="jenis_dokumen" class="form-control" required>
-                        <option>Surat Keterangan Kerja (Paklaring)</option>
-                        <option>Surat Rekomendasi</option>
-                        <option>Dokumen Kepegawaian Lainnya</option>
+                        <option value="" disabled selected>-- Pilih Jenis Dokumen --</option>
+                        <option value="Surat Keterangan Kerja (Paklaring)">Surat Keterangan Kerja (Paklaring)</option>
+                        <option value="Surat Rekomendasi">Surat Rekomendasi</option>
+                        <option value="Dokumen Kepegawaian Lainnya">Dokumen Kepegawaian Lainnya</option>
                     </select>
                 </div>
                 <div class="form-group">
-                    <label class="form-label">Keperluan</label>
+                    <label class="form-label">Keperluan <span>*</span></label>
                     <textarea name="keperluan" class="form-control" rows="2" placeholder="Tuliskan keperluan pengajuan..." required></textarea>
                 </div>
                 <button type="submit" class="btn-submit">SUBMIT</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- ==================== FORM PERMINTAAN LEARNING & DEVELOPMENT (MULTI-STEP) ==================== -->
+    <div class="modal-overlay" id="modalLearningDev">
+        <div class="modal-box" id="boxLearningDev">
+            <button class="modal-close" onclick="closeModal('modalLearningDev')">&times;</button>
+            <h2 class="form-section-title">Form Permintaan Learning & Development</h2>
+            <p class="form-section-subtitle">Pengajuan kebutuhan program pelatihan, workshop, atau sertifikasi karyawan.</p>
+
+            <form id="formLearningDev" onsubmit="handleSpreadsheetSubmit(event, 'URL_SPREADSHEET_LEARNING_DEV', 'modalLearningDev')">
+                
+                <!-- STEP 1 -->
+                <div id="ldSection1">
+
+                    <div class="form-group">
+                        <label class="form-label">Email <span>*</span></label>
+                        <input type="email" name="email_pengaju" class="form-control" placeholder="nama@gadaimas.co.id" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Nama Lengkap <span>*</span></label>
+                        <input type="text" name="nama_lengkap" class="form-control" placeholder="Contoh: CHINTYA KHARISMA SHANTI" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">NIK <span>*</span></label>
+                        <input type="text" name="nik" class="form-control" placeholder="Contoh: 2019.0183" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Jabatan <span>*</span></label>
+                        <select name="jabatan" class="form-control" required>
+                            <option value="" disabled selected>-- Pilih Jabatan --</option>
+                            <option value="C-Level">C-Level</option>
+                            <option value="Division Head">Division Head</option>
+                            <option value="Department Head">Department Head</option>
+                            <option value="Section Head">Section Head</option>
+                            <option value="Manager">Manager</option>
+                            <option value="Supervisor">Supervisor</option>
+                            <option value="Advisor">Advisor</option>
+                            <option value="Kepala Cabang">Kepala Cabang</option>
+                            <option value="Ka Unit">Ka Unit</option>
+                            <option value="Kasir">Kasir</option>
+                            <option value="Penaksir">Penaksir</option>
+                            <option value="Staff">Staff</option>
+                            <option value="Officer">Officer</option>
+                            <option value="Driver">Driver</option>
+                            <option value="Office Boy/Girl">Office Boy/Girl</option>
+                            <option value="Security">Security</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Unit Kerja/Cabang <span>*</span></label>
+                        <input type="text" name="unit_kerja" class="form-control" placeholder="Contoh: MAS OEBOBO" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Area <span>*</span></label>
+                        <select name="area" class="form-control" required>
+                            <option value="" disabled selected>-- Pilih Area --</option>
+                            <option value="JATIM 1">JATIM 1</option>
+                            <option value="JATIM 2">JATIM 2</option>
+                            <option value="SULAWESI 1">SULAWESI 1</option>
+                            <option value="SULAWESI 2">SULAWESI 2</option>
+                            <option value="SULAWESI 3">SULAWESI 3</option>
+                            <option value="NTB">NTB</option>
+                            <option value="NTT">NTT</option>
+                            <option value="KALTIM">KALTIM</option>
+                            <option value="SUMBAGUT & DKI">SUMBAGUT & DKI</option>
+                            <option value="HO">HO</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Atasan Langsung <span>*</span></label>
+                        <input type="text" name="atasan_langsung" class="form-control" placeholder="Nama Atasan Langsung" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Nomor Whatsapp <span>*</span></label>
+                        <input type="tel" name="no_whatsapp" class="form-control" placeholder="Contoh: 081234567890" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Jenis Pengajuan <span>*</span></label>
+                        <select name="jenis_pengajuan" id="jenisPengajuanLD" class="form-control" required>
+                            <option value="" disabled selected>-- Pilih Jenis Pengajuan --</option>
+                            <option value="Training">Training</option>
+                            <option value="Sertifikasi">Sertifikasi</option>
+                            <option value="Learning Program">Learning Program</option>
+                        </select>
+                    </div>
+
+                    <button type="button" class="btn-nav-step" style="width: 100%; justify-content: center;" onclick="goToLDSection2()">NEXT ➔</button>
+                </div>
+
+                <!-- STEP 2 -->
+                <div id="ldSection2" style="display: none;">
+                    <div class="step-header-nav">
+                        <button type="button" class="btn-nav-secondary" onclick="backToLDSection1()">← Kembali</button>
+                    </div>
+
+                    <!-- SUB SECTION: TRAINING -->
+                    <div id="subSectionTraining" style="display: none;">
+                        <div class="form-group">
+                            <label class="form-label">Nama Training yang Diajukan <span>*</span></label>
+                            <input type="text" name="nama_training" class="form-control" placeholder="Masukkan nama training..." required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Topik/Kompetensi yang Ingin Dikembangkan <span>*</span></label>
+                            <textarea name="topik_kompetensi_training" class="form-control" rows="2" placeholder="Jelaskan topik/kompetensi..." required></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Penyelenggara Training <span>*</span></label>
+                            <input type="text" name="penyelenggara_training" class="form-control" placeholder="Nama vendor/lembaga penyelenggara..." required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Metode Training <span>*</span></label>
+                            <select name="metode_training" class="form-control" required>
+                                <option value="" disabled selected>-- Pilih Metode Training --</option>
+                                <option value="Offline">Offline</option>
+                                <option value="Online">Online</option>
+                                <option value="Hybrid">Hybrid</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Rencana Pelaksanaan Training <span>*</span></label>
+                            <input type="date" name="rencana_pelaksanaan_training" class="form-control" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Durasi Training <span>*</span></label>
+                            <select name="durasi_training" id="durasiTrainingSelect" class="form-control" onchange="toggleLainnyaSelect('durasiTrainingSelect', 'durasiTrainingLainnyaInput')" required>
+                                <option value="" disabled selected>-- Pilih Durasi Training --</option>
+                                <option value="Kurang dari 1 hari">Kurang dari 1 hari</option>
+                                <option value="1 hari">1 hari</option>
+                                <option value="2 - 3 hari">2 - 3 hari</option>
+                                <option value="Lainnya">Lainnya...</option>
+                            </select>
+                            <input type="text" name="durasi_training_lainnya" id="durasiTrainingLainnyaInput" class="form-control input-lainnya" placeholder="Tuliskan durasi training lainnya di sini...">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Estimasi Biaya Training <span>*</span></label>
+                            <input type="text" name="estimasi_biaya_training" class="form-control" placeholder="Contoh: Rp 2.500.000" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Link Proposal atau Brosur Training <span>*</span></label>
+                            <div class="form-note">Pastikan link yang di upload aksesnya dapat dilihat untuk semua orang</div>
+                            <input type="url" name="link_proposal_training" class="form-control" placeholder="https://drive.google.com/..." required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Alasan Pengajuan Training <span>*</span></label>
+                            <textarea name="alasan_pengajuan_training" class="form-control" rows="2" placeholder="Jelaskan alasan pengajuan..." required></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Manfaat untuk Pekerjaan <span>*</span></label>
+                            <textarea name="manfaat_pekerjaan_training" class="form-control" rows="2" placeholder="Jelaskan manfaat untuk pekerjaan..." required></textarea>
+                        </div>
+                    </div>
+
+                    <!-- SUB SECTION: SERTIFIKASI -->
+                    <div id="subSectionSertifikasi" style="display: none;">
+                        <div class="form-group">
+                            <label class="form-label">Nama Sertifikasi <span>*</span></label>
+                            <input type="text" name="nama_sertifikasi" class="form-control" placeholder="Masukkan nama sertifikasi..." required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Lembaga atau Provider Sertifikasi <span>*</span></label>
+                            <input type="text" name="lembaga_sertifikasi" class="form-control" placeholder="Masukkan nama lembaga/provider..." required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Kompetensi yang Divalidasi <span>*</span></label>
+                            <textarea name="kompetensi_divalidasi" class="form-control" rows="2" placeholder="Jelaskan kompetensi yang divalidasi..." required></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Alasan Sertifikasi Dibutuhkan <span>*</span></label>
+                            <textarea name="alasan_sertifikasi" class="form-control" rows="2" placeholder="Jelaskan alasan sertifikasi dibutuhkan..." required></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Relevansi dengan Jabatan atau Pekerjaan <span>*</span></label>
+                            <textarea name="relevansi_sertifikasi" class="form-control" rows="2" placeholder="Jelaskan relevansi dengan pekerjaan..." required></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Jadwal Sertifikasi <span>*</span></label>
+                            <input type="date" name="jadwal_sertifikasi" class="form-control" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Masa Berlaku Sertifikasi <span>*</span></label>
+                            <input type="text" name="masa_berlaku_sertifikasi" class="form-control" placeholder="Contoh: 3 Tahun / Seumur Hidup" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Estimasi Biaya Sertifikasi <span>*</span></label>
+                            <input type="text" name="estimasi_biaya_sertifikasi" class="form-control" placeholder="Contoh: Rp 5.000.000" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Proposal atau Brosur Sertifikasi <span>*</span></label>
+                            <div class="file-input-wrapper">
+                                <input type="file" name="proposal_sertifikasi" id="fileSertifikasi" class="form-control" accept="image/*,.pdf,.docx,.xlsx" required onchange="handleFileChangeLarge('fileSertifikasi', 'btnCancelSertifikasi')">
+                                <button type="button" id="btnCancelSertifikasi" class="btn-cancel-file" onclick="resetFileInput('fileSertifikasi', 'btnCancelSertifikasi')">✕ Batal</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SUB SECTION: LEARNING PROGRAM -->
+                    <div id="subSectionLearningProgram" style="display: none;">
+                        <div class="form-group">
+                            <label class="form-label">Nama Learning Program <span>*</span></label>
+                            <input type="text" name="nama_learning_program" class="form-control" placeholder="Masukkan nama program..." required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Bentuk Program <span>*</span></label>
+                            <select name="bentuk_program" id="bentukProgramSelect" class="form-control" onchange="toggleLainnyaSelect('bentukProgramSelect', 'bentukProgramLainnyaInput')" required>
+                                <option value="" disabled selected>-- Pilih Bentuk Program --</option>
+                                <option value="Workshop">Workshop</option>
+                                <option value="Seminar">Seminar</option>
+                                <option value="Coaching">Coaching</option>
+                                <option value="Mentoring">Mentoring</option>
+                                <option value="Webinar">Webinar</option>
+                                <option value="Sharing Session">Sharing Session</option>
+                                <option value="Knowledge Sharing">Knowledge Sharing</option>
+                                <option value="Lainnya">Lainnya...</option>
+                            </select>
+                            <input type="text" name="bentuk_program_lainnya" id="bentukProgramLainnyaInput" class="form-control input-lainnya" placeholder="Tuliskan bentuk program lainnya di sini...">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Topik atau Kompetensi <span>*</span></label>
+                            <textarea name="topik_kompetensi_program" class="form-control" rows="2" placeholder="Jelaskan topik/kompetensi..." required></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Target Peserta <span>*</span></label>
+                            <select name="target_peserta_program" id="targetPesertaSelect" class="form-control" onchange="toggleLainnyaSelect('targetPesertaSelect', 'targetPesertaLainnyaInput')" required>
+                                <option value="" disabled selected>-- Pilih Target Peserta --</option>
+                                <option value="Individu">Individu</option>
+                                <option value="Tim">Tim</option>
+                                <option value="Unit">Unit</option>
+                                <option value="Area">Area</option>
+                                <option value="Nasional">Nasional</option>
+                                <option value="Lainnya">Lainnya...</option>
+                            </select>
+                            <input type="text" name="target_peserta_lainnya" id="targetPesertaLainnyaInput" class="form-control input-lainnya" placeholder="Tuliskan target peserta lainnya di sini...">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Estimasi Jumlah Peserta <span>*</span></label>
+                            <input type="number" name="estimasi_jumlah_peserta" class="form-control" placeholder="Contoh: 15" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Rencana Pelaksanaan Program <span>*</span></label>
+                            <input type="date" name="rencana_pelaksanaan_program" class="form-control" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Estimasi Biaya Program <span>*</span></label>
+                            <input type="text" name="estimasi_biaya_program" class="form-control" placeholder="Contoh: Rp 3.000.000" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Proposal/ToR/Materi Program <span>*</span></label>
+                            <div class="file-input-wrapper">
+                                <input type="file" name="proposal_program" id="fileProgram" class="form-control" accept="image/*,.pdf,.docx,.xlsx" required onchange="handleFileChangeLarge('fileProgram', 'btnCancelProgram')">
+                                <button type="button" id="btnCancelProgram" class="btn-cancel-file" onclick="resetFileInput('fileProgram', 'btnCancelProgram')">✕ Batal</button>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Tujuan dan Expected Outcome <span>*</span></label>
+                            <textarea name="tujuan_expected_outcome" class="form-control" rows="2" placeholder="Jelaskan tujuan & outcome..." required></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Apa Gap Kompetensi yang Ingin Diselesaikan <span>*</span></label>
+                            <textarea name="gap_kompetensi" class="form-control" rows="2" placeholder="Jelaskan gap kompetensi..." required></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Apa Dampak terhadap Pekerjaan Jika Pengembangan Dilakukan? <span>*</span></label>
+                            <textarea name="dampak_pengembangan" class="form-control" rows="2" placeholder="Jelaskan dampak terhadap pekerjaan..." required></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Outcome yang diharapkan setelah Program Selesai? <span>*</span></label>
+                            <textarea name="outcome_selesai_program" class="form-control" rows="2" placeholder="Jelaskan outcome yang diharapkan..." required></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Bagaimana Keberhasilan akan Diukur? <span>*</span></label>
+                            <select name="pengukuran_keberhasilan" id="pengukuranKeberhasilanSelect" class="form-control" onchange="toggleLainnyaSelect('pengukuranKeberhasilanSelect', 'pengukuranLainnyaInput')" required>
+                                <option value="" disabled selected>-- Pilih Pengukuran Keberhasilan --</option>
+                                <option value="Knowledge improvement">Knowledge improvement</option>
+                                <option value="Skill improvement">Skill improvement</option>
+                                <option value="Productivity">Productivity</option>
+                                <option value="Performance atau KPI">Performance atau KPI</option>
+                                <option value="Revenue">Revenue</option>
+                                <option value="Customer service">Customer service</option>
+                                <option value="Compliance">Compliance</option>
+                                <option value="Lainnya">Lainnya...</option>
+                            </select>
+                            <input type="text" name="pengukuran_keberhasilan_lainnya" id="pengukuranLainnyaInput" class="form-control input-lainnya" placeholder="Tuliskan pengukuran lainnya di sini...">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Sumber Budget <span>*</span></label>
+                            <select name="sumber_budget" id="sumberBudgetSelect" class="form-control" onchange="toggleLainnyaSelect('sumberBudgetSelect', 'sumberBudgetLainnyaInput')" required>
+                                <option value="" disabled selected>-- Pilih Sumber Budget --</option>
+                                <option value="Budget Training Unit">Budget Training Unit</option>
+                                <option value="Budget HC">Budget HC</option>
+                                <option value="Budget Area">Budget Area</option>
+                                <option value="Lainnya">Lainnya...</option>
+                            </select>
+                            <input type="text" name="sumber_budget_lainnya" id="sumberBudgetLainnyaInput" class="form-control input-lainnya" placeholder="Tuliskan sumber budget lainnya di sini...">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Estimasi Total Biaya <span>*</span></label>
+                            <input type="text" name="estimasi_total_biaya" class="form-control" placeholder="Contoh: Rp 10.000.000" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Apakah sudah mendapatkan persetujuan atasan? <span>*</span></label>
+                            <select name="persetujuan_atasan" class="form-control" required>
+                                <option value="" disabled selected>-- Pilih Persetujuan Atasan --</option>
+                                <option value="YA">YA</option>
+                                <option value="TIDAK">TIDAK</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Upload Bukti Approval Atasan</label>
+                            <div class="form-note">Jika pertanyaan di atas Anda menjawab “Ya”, wajib upload bukti approval dari atasan.</div>
+                            <div class="file-input-wrapper">
+                                <input type="file" name="bukti_approval_atasan_ld" id="fileApprovalLD" class="form-control" accept="image/*,.pdf,.docx,.xlsx" onchange="handleFileChange('fileApprovalLD', 'btnCancelApprovalLD')">
+                                <button type="button" id="btnCancelApprovalLD" class="btn-cancel-file" onclick="resetFileInput('fileApprovalLD', 'btnCancelApprovalLD')">✕ Batal</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="button" class="btn-nav-step" style="width: 100%; justify-content: center; margin-top: 20px;" onclick="goToLDSection3()">NEXT ➔</button>
+                </div>
+
+                <!-- STEP 3 -->
+                <div id="ldSection3" style="display: none;">
+                    <div class="step-header-nav">
+                        <button type="button" class="btn-nav-secondary" onclick="backToLDSection2()">← Kembali</button>
+                    </div>
+
+                    <div class="declaration-box">
+                        <label class="checkbox-item">
+                            <input type="checkbox" id="dec1" onchange="validateLDDeclaration()">
+                            <span>Saya memastikan informasi yang diberikan benar dan dapat dipertanggungjawabkan.</span>
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" id="dec2" onchange="validateLDDeclaration()">
+                            <span>Pengajuan ini relevan dengan kebutuhan pekerjaan dan pengembangan kompetensi.</span>
+                        </label>
+                    </div>
+
+                    <button type="submit" id="btnSubmitLD" class="btn-submit" disabled>SUBMIT</button>
+                </div>
+
             </form>
         </div>
     </div>
@@ -2011,8 +2526,12 @@
             <h2 class="form-section-title">Monitoring Pengajuan Tenaga Kerja</h2>
             <p class="form-section-subtitle">Layar pemantauan status pengajuan tenaga kerja secara terintegrasi.</p>
 
+            <p style="font-size: 0.8rem; color: #b45309; background: #fff8eb; padding: 8px 12px; border-radius: 8px; margin-bottom: 12px; font-weight: 600;">
+                ⏳ <b>Catatan:</b> Data pengajuan baru memerlukan waktu sinkronisasi sekitar 1–5 menit untuk muncul di tabel ini.
+            </p>
+
             <div class="sheet-container">
-                <iframe class="sheet-iframe" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQ_EXAMPLE_LINK_1/pubhtml?widget=true&amp;headers=false"></iframe>
+                <iframe class="sheet-iframe" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTHswZsNz5_Y4VUmifagpXSwu6mLCsrDQoFupTgReUgXoA4ZfElKc-LgTSmuKx7ptKaqyDvF5Wgdd-e/pubhtml?gid=0&single=true"></iframe>
             </div>
         </div>
     </div>
@@ -2022,6 +2541,10 @@
             <button class="modal-close" onclick="closeModal('modalMonCuti')">&times;</button>
             <h2 class="form-section-title">Monitoring Izin / Cuti Karyawan</h2>
             <p class="form-section-subtitle">Layar pemantauan status pengajuan izin dan cuti karyawan secara terintegrasi.</p>
+
+            <p style="font-size: 0.8rem; color: #b45309; background: #fff8eb; padding: 8px 12px; border-radius: 8px; margin-bottom: 12px; font-weight: 600;">
+                ⏳ <b>Catatan:</b> Data pengajuan baru memerlukan waktu sinkronisasi sekitar 1–5 menit untuk muncul di tabel ini.
+            </p>
 
             <div class="sheet-container">
                 <iframe class="sheet-iframe" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQ_EXAMPLE_LINK_2/pubhtml?widget=true&amp;headers=false"></iframe>
@@ -2035,16 +2558,34 @@
             <h2 class="form-section-title">Monitoring Pengajuan Dokumen/Surat</h2>
             <p class="form-section-subtitle">Layar pemantauan status pengajuan dokumen dan surat resmi HCBP.</p>
 
+            <p style="font-size: 0.8rem; color: #b45309; background: #fff8eb; padding: 8px 12px; border-radius: 8px; margin-bottom: 12px; font-weight: 600;">
+                ⏳ <b>Catatan:</b> Data pengajuan baru memerlukan waktu sinkronisasi sekitar 1–5 menit untuk muncul di tabel ini.
+            </p>
+
             <div class="sheet-container">
                 <iframe class="sheet-iframe" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQ_EXAMPLE_LINK_3/pubhtml?widget=true&amp;headers=false"></iframe>
             </div>
         </div>
     </div>
 
-    <!-- 10. FOOTER -->
+    <div class="modal-overlay" id="modalMonLearningDev">
+        <div class="modal-box">
+            <button class="modal-close" onclick="closeModal('modalMonLearningDev')">&times;</button>
+            <h2 class="form-section-title">Monitoring Learning & Development</h2>
+            <p class="form-section-subtitle">Layar pemantauan status pengajuan program pelatihan dan pengembangan karyawan.</p>
+
+            <p style="font-size: 0.8rem; color: #b45309; background: #fff8eb; padding: 8px 12px; border-radius: 8px; margin-bottom: 12px; font-weight: 600;">
+                ⏳ <b>Catatan:</b> Data pengajuan baru memerlukan waktu sinkronisasi sekitar 1–5 menit untuk muncul di tabel ini.
+            </p>
+
+            <div class="sheet-container">
+                <iframe class="sheet-iframe" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQ_EXAMPLE_LINK_LEARNING_DEV/pubhtml?widget=true&amp;headers=false"></iframe>
+            </div>
+        </div>
+    </div>
+
     <footer>
         <div class="footer-container">
-            <!-- KIRI: LOGO & JUDUL HC CONNECT -->
             <div>
                 <div class="logo-container">
                     <img src="logo.png" alt="Logo Gadai MAS Nusantara" class="logo-img">
@@ -2054,7 +2595,6 @@
                 <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 8px;">© Human Capital Business Partner (HCBP)</p>
             </div>
 
-            <!-- KANAN: KONTAK WHATSAPP & EMAIL HC CONNECT -->
             <div class="footer-contact-group">
                 <a href="https://wa.me/6281220002964" target="_blank" class="footer-contact-item">
                     <i class="fa-brands fa-whatsapp" style="color: #25d366;"></i>
@@ -2068,7 +2608,6 @@
         </div>
     </footer>
 
-    <!-- INTERACTIVE JAVASCRIPT & EFEK GOLD CONFETTI PITA MELAYANG -->
     <script>
         function toggleDropdown(elementId) {
             const card = document.getElementById(elementId);
@@ -2115,12 +2654,172 @@
             }
         }
 
+        /* --- FITUR CEK UKURAN FILE (MAX 10 MB) --- */
+        function handleFileChange(inputId, btnId) {
+            const fileInput = document.getElementById(inputId);
+            const cancelBtn = document.getElementById(btnId);
+            const maxMB = 10;
+
+            if (fileInput.files && fileInput.files[0]) {
+                const fileSizeMB = fileInput.files[0].size / 1024 / 1024;
+                if (fileSizeMB > maxMB) {
+                    alert('Ukuran file terlalu besar! Maksimal ukuran file adalah ' + maxMB + ' MB. Silakan pilih file yang lebih kecil.');
+                    fileInput.value = '';
+                    if (cancelBtn) cancelBtn.style.display = 'none';
+                    return;
+                }
+                if (cancelBtn) cancelBtn.style.display = 'inline-block';
+            }
+        }
+
+        /* --- FITUR CEK UKURAN FILE KHUSUS PROPOSAL / SERTIFIKASI (MAX 50 MB) --- */
+        function handleFileChangeLarge(inputId, btnId) {
+            const fileInput = document.getElementById(inputId);
+            const cancelBtn = document.getElementById(btnId);
+            const maxMB = 50;
+
+            if (fileInput.files && fileInput.files[0]) {
+                const fileSizeMB = fileInput.files[0].size / 1024 / 1024;
+                if (fileSizeMB > maxMB) {
+                    alert('Ukuran file terlalu besar! Maksimal ukuran file adalah ' + maxMB + ' MB. Silakan pilih file yang lebih kecil.');
+                    fileInput.value = '';
+                    if (cancelBtn) cancelBtn.style.display = 'none';
+                    return;
+                }
+                if (cancelBtn) cancelBtn.style.display = 'inline-block';
+            }
+        }
+
+        function resetFileInput(inputId, btnId) {
+            const fileInput = document.getElementById(inputId);
+            const cancelBtn = document.getElementById(btnId);
+            fileInput.value = '';
+            cancelBtn.style.display = 'none';
+        }
+
+        /* --- FUNGSI KHUSUS CEK INPUT & AUTO SCROLL KE PERTANYAAN KOSONG --- */
+        function validateAndScroll(containerElement) {
+            const requiredFields = containerElement.querySelectorAll('input[required], select[required], textarea[required]');
+            let firstInvalidField = null;
+
+            // Bersihkan error terdahulu
+            requiredFields.forEach(field => field.classList.remove('input-error'));
+
+            for (let field of requiredFields) {
+                let isInvalid = false;
+
+                if (field.type === 'radio') {
+                    const radioGroup = containerElement.querySelectorAll(`input[name="${field.name}"]`);
+                    const isChecked = Array.from(radioGroup).some(r => r.checked);
+                    if (!isChecked) isInvalid = true;
+                } else if (!field.value.trim()) {
+                    isInvalid = true;
+                }
+
+                if (isInvalid) {
+                    field.classList.add('input-error');
+                    if (!firstInvalidField) {
+                        firstInvalidField = field;
+                    }
+                }
+            }
+
+            if (firstInvalidField) {
+                // Cari modal box induk untuk mengatur scroll internal
+                const modalBox = containerElement.closest('.modal-box');
+                const formGroup = firstInvalidField.closest('.form-group') || firstInvalidField;
+                
+                if (modalBox) {
+                    modalBox.scrollTo({
+                        top: formGroup.offsetTop - 30,
+                        behavior: 'smooth'
+                    });
+                } else {
+                    formGroup.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+
+                firstInvalidField.focus();
+                alert('Mohon isi terlebih dahulu pertanyaan yang wajib diisi (*) sebelum melanjutkan.');
+                return false;
+            }
+            return true;
+        }
+
+        /* --- LOGIK NAVIGASI MULTI-STEP FORM LEARNING & DEV --- */
+        function goToLDSection2() {
+            const section1 = document.getElementById('ldSection1');
+            if (!validateAndScroll(section1)) return;
+
+            const jenis = document.getElementById('jenisPengajuanLD').value;
+
+            document.getElementById('ldSection1').style.display = 'none';
+            document.getElementById('ldSection2').style.display = 'block';
+
+            document.getElementById('subSectionTraining').style.display = 'none';
+            document.getElementById('subSectionSertifikasi').style.display = 'none';
+            document.getElementById('subSectionLearningProgram').style.display = 'none';
+
+            if (jenis === 'Training') {
+                document.getElementById('subSectionTraining').style.display = 'block';
+            } else if (jenis === 'Sertifikasi') {
+                document.getElementById('subSectionSertifikasi').style.display = 'block';
+            } else if (jenis === 'Learning Program') {
+                document.getElementById('subSectionLearningProgram').style.display = 'block';
+            }
+
+            // Scroll modal ke posisi paling atas saat pindah section baru
+            document.getElementById('boxLearningDev').scrollTop = 0;
+        }
+
+        function backToLDSection1() {
+            document.getElementById('ldSection2').style.display = 'none';
+            document.getElementById('ldSection1').style.display = 'block';
+            document.getElementById('boxLearningDev').scrollTop = 0;
+        }
+
+        function goToLDSection3() {
+            const jenis = document.getElementById('jenisPengajuanLD').value;
+            let activeSubSection;
+
+            if (jenis === 'Training') activeSubSection = document.getElementById('subSectionTraining');
+            else if (jenis === 'Sertifikasi') activeSubSection = document.getElementById('subSectionSertifikasi');
+            else if (jenis === 'Learning Program') activeSubSection = document.getElementById('subSectionLearningProgram');
+
+            if (activeSubSection && !validateAndScroll(activeSubSection)) return;
+
+            document.getElementById('ldSection2').style.display = 'none';
+            document.getElementById('ldSection3').style.display = 'block';
+            document.getElementById('boxLearningDev').scrollTop = 0;
+        }
+
+        function backToLDSection2() {
+            document.getElementById('ldSection3').style.display = 'none';
+            document.getElementById('ldSection2').style.display = 'block';
+            document.getElementById('boxLearningDev').scrollTop = 0;
+        }
+
+        function validateLDDeclaration() {
+            const dec1 = document.getElementById('dec1').checked;
+            const dec2 = document.getElementById('dec2').checked;
+            const btnSubmit = document.getElementById('btnSubmitLD');
+            btnSubmit.disabled = !(dec1 && dec2);
+        }
+
+        /* PERBAIKAN VALIDASI SEMUA FORM SEBELUM SUBMIT SPREADSHEET */
         function handleSpreadsheetSubmit(event, scriptUrl, modalId) {
             event.preventDefault();
             const form = event.target;
 
+            // Jalankan pencarian pertanyaan kosong + auto scroll sebelum dikirim
+            if (!validateAndScroll(form)) {
+                return false;
+            }
+
             alert('Aspirasi/Pengajuan Anda berhasil dikirim ke tim HCBP!');
             form.reset();
+
+            const cancelBtns = form.querySelectorAll('.btn-cancel-file');
+            cancelBtns.forEach(btn => btn.style.display = 'none');
 
             const topicInput = document.getElementById('topikLainnyaVoiceInput');
             const dampakInput = document.getElementById('dampakLainnyaVoiceInput');
@@ -2129,7 +2828,50 @@
             if(dampakInput) dampakInput.style.display = 'none';
             if(periodeInput) periodeInput.style.display = 'none';
 
+            // Reset Form Multi-step L&D ke posisi awal jika form L&D yang di-submit
+            if(modalId === 'modalLearningDev') {
+                document.getElementById('ldSection1').style.display = 'block';
+                document.getElementById('ldSection2').style.display = 'none';
+                document.getElementById('ldSection3').style.display = 'none';
+                document.getElementById('btnSubmitLD').disabled = true;
+            }
+
             closeModal(modalId);
+        }
+
+        /* --- FITUR CARI ID REQUEST, NAMA PENGAJU, ATAU KATEGORI --- */
+        function filterVoiceTable() {
+            const input = document.getElementById("searchVoiceInput");
+            const filter = input.value.toUpperCase();
+            const table = document.getElementById("voiceTable");
+            const tr = table.getElementsByTagName("tr");
+
+            for (let i = 1; i < tr.length; i++) {
+                let idTd = tr[i].getElementsByClassName("id-cell")[0];
+                let namaTd = tr[i].getElementsByClassName("nama-cell")[0];
+                let kategoriTd = tr[i].getElementsByClassName("kategori-cell")[0];
+
+                if (idTd || namaTd || kategoriTd) {
+                    let idVal = idTd ? (idTd.textContent || idTd.innerText) : "";
+                    let namaVal = namaTd ? (namaTd.textContent || namaTd.innerText) : "";
+                    let kategoriVal = kategoriTd ? (kategoriTd.textContent || kategoriTd.innerText) : "";
+
+                    if (
+                        idVal.toUpperCase().indexOf(filter) > -1 ||
+                        namaVal.toUpperCase().indexOf(filter) > -1 ||
+                        kategoriVal.toUpperCase().indexOf(filter) > -1
+                    ) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
+
+        function resetVoiceSearch() {
+            document.getElementById("searchVoiceInput").value = "";
+            filterVoiceTable();
         }
 
         /* ==================== ANIMASI GOLD CONFETTI PITA MELAYANG ==================== */
