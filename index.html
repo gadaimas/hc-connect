@@ -1398,7 +1398,7 @@
             <div class="table-search-bar">
                 <div class="search-input-box">
                     <i class="fa-solid fa-magnifying-glass"></i>
-                    <input type="text" id="searchVoiceInput" onkeyup="filterVoiceTable()" placeholder="Cari Berdasarkan ID Request, Nama, atau Kategori">
+                    <input type="text" id="searchVoiceInput" onkeyup="filterVoiceTable()" placeholder="Cari Berdasarkan ID Request, Nama, atau Topik">
                 </div>
                 <button type="button" class="btn-see-all-table" onclick="resetVoiceSearch()">Reset</button>
             </div>
@@ -1409,8 +1409,8 @@
                         <tr>
                             <th>ID Request</th>
                             <th>Nama Pengaju</th>
-                            <th>Kategori</th>
-                            <th>Status Tindak Lanjut</th>
+                            <th>Topik</th>
+                            <th>Status</th>
                             <th>Update Terakhir</th>
                         </tr>
                     </thead>
@@ -2822,7 +2822,7 @@
 
             const formData = new FormData(form);
             const fileInput = form.querySelector('input[type="file"]');
-    
+        
             // Fungsi pembantu eksekusi AJAX kirim data
             const sendData = (fileData = "", fileName = "", fileMimeType = "") => {
                 const payload = new URLSearchParams();
