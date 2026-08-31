@@ -1383,15 +1383,15 @@
             <div class="stats-grid">
                 <div class="stat-card">
                     <div class="stat-label">Total Aspirasi</div>
-                    <div class="stat-value" style="color:var(--brand-blue);">18</div>
+                    <div class="stat-value" id="totalAspirasiCount" style="color:var(--brand-blue);">0</div>
                 </div>
                 <div class="stat-card">
                     <div class="stat-label">Dalam Proses</div>
-                    <div class="stat-value" style="color:#d97706;">7</div>
+                    <div class="stat-value" id="prosesAspirasiCount" style="color:#d97706;">0</div>
                 </div>
                 <div class="stat-card">
                     <div class="stat-label">Selesai Ditindaklanjuti</div>
-                    <div class="stat-value" style="color:#16a34a;">11</div>
+                    <div class="stat-value" id="selesaiAspirasiCount" style="color:#16a34a;">0</div>
                 </div>
             </div>
 
@@ -1414,20 +1414,9 @@
                             <th>Update Terakhir</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="voiceTableBody">
                         <tr>
-                            <td class="id-cell"><b>EV-2026-0018</b></td>
-                            <td class="nama-cell">Budi Santoso</td>
-                            <td class="kategori-cell">Fasilitas Kerja</td>
-                            <td><span class="badge-status bg-process">Diproses</span></td>
-                            <td>12 Agustus 2026</td>
-                        </tr>
-                        <tr>
-                            <td class="id-cell"><b>EV-2026-0017</b></td>
-                            <td class="nama-cell">Siti Rahma</td>
-                            <td class="kategori-cell">Learning & Dev</td>
-                            <td><span class="badge-status bg-done">Selesai</span></td>
-                            <td>10 Agustus 2026</td>
+                            <td colspan="5" style="text-align: center; color: var(--text-muted);">Memuat data aspirasi...</td>
                         </tr>
                     </tbody>
                 </table>
@@ -2609,6 +2598,80 @@
     </footer>
 
     <script>
+        const APPS_SCRIPT_VOICE_URL = 'https://script.google.com/macros/s/AKfycbxKi5DIGtt6LqyFx6VUcE-xRJ3xakmW_3BvxbDXwH058zBIHb0g4ZlQd2f8uWvfH1a9/exec';
+
+        // Load data otomatis saat halaman selesai dimuat
+        window.addEventListener('DOMContentLoaded', () => {
+            fetchVoiceData();
+        });
+
+        function fetchVoiceData() {
+            const tableBody = idElement("voiceTableBody");
+            tableBody.innerHTML = `<tr><td colspan="5" style="text-align: center; color: var(--text-muted);">Memuat data aspirasi...</td></tr>`;
+
+            fetch(APPS_SCRIPT_VOICE_URL)
+                .then(response => response.json())
+                .then(res => {
+                    if (res.result === 'success' && res.data) {
+                        renderVoiceTable(res.data);
+                    } else {
+                        tableBody.innerHTML = `<tr><td colspan="5" style="text-align: center; color: #ef4444;">Gagal memuat data aspirasi.</td></tr>`;
+                    }
+                })
+                .catch(err => {
+                    tableBody.innerHTML = `<tr><td colspan="5" style="text-align: center; color: #ef4444;">Terjadi kesalahan saat memuat data.</td></tr>`;
+                });
+        }
+
+        function renderVoiceTable(dataList) {
+            const tableBody = idElement("voiceTableBody");
+            let total = dataList.length;
+            let diproses = 0;
+            let selesai = 0;
+
+            if (total === 0) {
+                tableBody.innerHTML = `<tr><td colspan="5" style="text-align: center; color: var(--text-muted);">Belum ada data aspirasi yang masuk.</td></tr>`;
+                idElement("totalAspirasiCount").innerText = 0;
+                idElement("prosesAspirasiCount").innerText = 0;
+                idElement("selesaiAspirasiCount").innerText = 0;
+                return;
+            }
+
+            let htmlStr = "";
+            // Tampilkan dari yang terbaru (reverse)
+            dataList.slice().reverse().forEach(item => {
+                let isSelesai = item.status.toString().toLowerCase() === "selesai";
+                if (isSelesai) {
+                    selesai++;
+                } else {
+                    diproses++;
+                }
+
+                let statusBadge = isSelesai 
+                    ? `<span class="badge-status bg-done">Selesai</span>` 
+                    : `<span class="badge-status bg-process">${item.status}</span>`;
+
+                htmlStr += `
+                    <tr>
+                        <td class="id-cell"><b>${item.id}</b></td>
+                        <td class="nama-cell">${item.nama}</td>
+                        <td class="kategori-cell">${item.topik}</td>
+                        <td>${statusBadge}</td>
+                        <td>${item.update}</td>
+                    </tr>
+                `;
+            });
+
+            tableBody.innerHTML = htmlStr;
+            idElement("totalAspirasiCount").innerText = total;
+            idElement("prosesAspirasiCount").innerText = diproses;
+            idElement("selesaiAspirasiCount").innerText = selesai;
+        }
+
+        function idElement(id) {
+            return document.getElementById(id);
+        }
+
         function toggleDropdown(elementId) {
             const card = document.getElementById(elementId);
             card.classList.toggle('active');
@@ -2863,6 +2926,11 @@
                             document.getElementById('btnSubmitLD').disabled = true;
                         }
                         closeModal(modalId);
+
+                        // Apabila submit form Employee Voice, perbarui tabel & statistik otomatis
+                        if (modalId === 'modalFormVoice') {
+                            fetchVoiceData();
+                        }
                     } else {
                         alert('Gagal mengirim data: ' + data.error);
                     }
