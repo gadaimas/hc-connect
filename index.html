@@ -2810,33 +2810,84 @@
             event.preventDefault();
             const form = event.target;
 
-            // Jalankan pencarian pertanyaan kosong + auto scroll sebelum dikirim
+            // 1. Validasi Input Kosong
             if (!validateAndScroll(form)) {
                 return false;
             }
 
-            alert('Aspirasi/Pengajuan Anda berhasil dikirim ke tim HCBP!');
-            form.reset();
+            const submitBtn = form.querySelector('button[type="submit"]');
+            const originalBtnText = submitBtn.innerText;
+            submitBtn.innerText = "Mengirim...";
+            submitBtn.disabled = true;
 
-            const cancelBtns = form.querySelectorAll('.btn-cancel-file');
-            cancelBtns.forEach(btn => btn.style.display = 'none');
+            const formData = new FormData(form);
+            const fileInput = form.querySelector('input[type="file"]');
+    
+            // Fungsi pembantu eksekusi AJAX kirim data
+            const sendData = (fileData = "", fileName = "", fileMimeType = "") => {
+                const payload = new URLSearchParams();
+        
+                for (let [key, value] of formData.entries()) {
+                    if (key !== fileInput?.name) {
+                        payload.append(key, value);
+                    }
+                }
+        
+                if (fileData) {
+                    payload.append('fileData', fileData);
+                    payload.append('fileName', fileName);
+                    payload.append('fileMimeType', fileMimeType);
+                }
 
-            const topicInput = document.getElementById('topikLainnyaVoiceInput');
-            const dampakInput = document.getElementById('dampakLainnyaVoiceInput');
-            const periodeInput = document.getElementById('periodeLainnyaInput');
-            if(topicInput) topicInput.style.display = 'none';
-            if(dampakInput) dampakInput.style.display = 'none';
-            if(periodeInput) periodeInput.style.display = 'none';
+                fetch(scriptUrl, {
+                    method: 'POST',
+                    body: payload
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.result === 'success') {
+                        alert('Aspirasi/Pengajuan Anda berhasil dikirim ke tim HCBP!');
+                        form.reset();
+                
+                        // Reset elemen tampilan tambahan
+                        const cancelBtns = form.querySelectorAll('.btn-cancel-file');
+                        cancelBtns.forEach(btn => btn.style.display = 'none');
+                
+                        const inputsLainnya = form.querySelectorAll('.input-lainnya');
+                        inputsLainnya.forEach(input => input.style.display = 'none');
 
-            // Reset Form Multi-step L&D ke posisi awal jika form L&D yang di-submit
-            if(modalId === 'modalLearningDev') {
-                document.getElementById('ldSection1').style.display = 'block';
-                document.getElementById('ldSection2').style.display = 'none';
-                document.getElementById('ldSection3').style.display = 'none';
-                document.getElementById('btnSubmitLD').disabled = true;
+                        if (modalId === 'modalLearningDev') {
+                            document.getElementById('ldSection1').style.display = 'block';
+                            document.getElementById('ldSection2').style.display = 'none';
+                            document.getElementById('ldSection3').style.display = 'none';
+                            document.getElementById('btnSubmitLD').disabled = true;
+                        }
+                        closeModal(modalId);
+                    } else {
+                        alert('Gagal mengirim data: ' + data.error);
+                    }
+                })
+                .catch(err => {
+                    alert('Terjadi kesalahan koneksi. Pastikan URL Web App sudah benar.');
+                })
+                .finally(() => {
+                    submitBtn.innerText = originalBtnText;
+                    submitBtn.disabled = false;
+                });
+            };
+
+            // 2. Baca File Jika Ada Lampiran
+            if (fileInput && fileInput.files.length > 0) {
+                const file = fileInput.files[0];
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const base64Data = e.target.result.split(',')[1];
+                    sendData(base64Data, file.name, file.type);
+                };
+                reader.readAsDataURL(file);
+            } else {
+                sendData();
             }
-
-            closeModal(modalId);
         }
 
         /* --- FITUR CARI ID REQUEST, NAMA PENGAJU, ATAU KATEGORI --- */
