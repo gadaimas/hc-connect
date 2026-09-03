@@ -454,7 +454,7 @@
             border-radius: 12px;
         }
 
-        .voice-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+        .voice-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; white-space: nowrap; }
         .voice-table th { 
             text-align: left; 
             padding: 12px 14px; 
@@ -472,10 +472,12 @@
             border-radius: 20px;
             font-size: 0.75rem;
             font-weight: 800;
+            display: inline-block;
         }
 
-        .bg-process { background-color: #fef3c7; color: #d97706; }
-        .bg-done { background-color: #dcfce7; color: #15803d; }
+        .bg-pending { background-color: #fee2e2; color: #dc2626; } 
+        .bg-process { background-color: #fef3c7; color: #d97706; } 
+        .bg-done { background-color: #dcfce7; color: #15803d; }    
 
         /* --- 7. UPCOMING EVENT SECTION --- */
         .event-section { margin-bottom: 50px; }
@@ -611,7 +613,6 @@
 
         .btn-see-all-news:hover { color: var(--brand-yellow); }
 
-        /* ==================== BANNER KAIZEN ==================== */
         .kaizen-hero-banner {
             background: 
                 radial-gradient(circle at 85% 20%, rgba(245, 166, 35, 0.28) 0%, transparent 40%),
@@ -1104,9 +1105,6 @@
         .btn-submit { width: 100%; background: var(--brand-blue); color: white; padding: 14px; border: none; border-radius: 12px; font-weight: 800; cursor: pointer; transition: var(--transition); }
         .btn-submit:hover { background: var(--brand-blue-hover); }
 
-        .sheet-container { width: 100%; height: 450px; background-color: #f8fafc; border: 2px dashed var(--border-color); border-radius: 16px; overflow: hidden; }
-        .sheet-iframe { width: 100%; height: 100%; border: none; }
-
         .sample-image-box {
             margin-top: 10px;
             background: #f1f5f9;
@@ -1129,7 +1127,6 @@
             border: 1px solid var(--border-color);
         }
 
-        /* --- STYLES KHUSUS STEP / SECTION FORM LEARNING & DEV --- */
         .step-header-nav {
             display: flex;
             align-items: center;
@@ -1201,7 +1198,6 @@
             color: #64748b;
         }
 
-        /* EFEK SOROTAN BILA KOSONG (ERROR HIGHLIGHT) */
         .input-error {
             border-color: #ef4444 !important;
             background-color: #fef2f2 !important;
@@ -1643,7 +1639,7 @@
             <p class="form-section-subtitle">Pantau status progress dari pengajuan administrasi Anda di bawah ini:</p>
 
             <div class="hub-grid">
-                <div class="hub-item-card" onclick="openModal('modalMonTenagaKerja')">
+                <div class="hub-item-card" onclick="openModal('modalMonTenagaKerja'); fetchMonTK();">
                     <div class="hub-item-title">
                         <i class="fa-solid fa-chart-line" style="color:#b45309;"></i>
                         Monitoring Tenaga Kerja
@@ -1652,7 +1648,7 @@
                     <span style="font-size:0.8rem; font-weight:700; color:#b45309;">Lihat Status ➔</span>
                 </div>
 
-                <div class="hub-item-card" onclick="openModal('modalMonCuti')">
+                <div class="hub-item-card" onclick="openModal('modalMonCuti'); fetchMonCuti();">
                     <div class="hub-item-title">
                         <i class="fa-solid fa-chart-line" style="color:#b45309;"></i>
                         Monitoring Izin/Cuti
@@ -1661,7 +1657,7 @@
                     <span style="font-size:0.8rem; font-weight:700; color:#b45309;">Lihat Status ➔</span>
                 </div>
 
-                <div class="hub-item-card" onclick="openModal('modalMonDokumen')">
+                <div class="hub-item-card" onclick="openModal('modalMonDokumen'); fetchMonDokumen();">
                     <div class="hub-item-title">
                         <i class="fa-solid fa-chart-line" style="color:#b45309;"></i>
                         Monitoring Pengajuan Dokumen/Surat
@@ -1670,7 +1666,7 @@
                     <span style="font-size:0.8rem; font-weight:700; color:#b45309;">Lihat Status ➔</span>
                 </div>
 
-                <div class="hub-item-card" onclick="openModal('modalMonLearningDev')">
+                <div class="hub-item-card" onclick="openModal('modalMonLearningDev'); fetchMonLD();">
                     <div class="hub-item-title">
                         <i class="fa-solid fa-chart-line" style="color:#b45309;"></i>
                         Monitoring Learning & Development
@@ -1682,6 +1678,7 @@
         </div>
     </div>
 
+    <!-- ==================== FORM EMPLOYEE VOICE ==================== -->
     <div class="modal-overlay" id="modalFormVoice">
         <div class="modal-box">
             <button class="modal-close" onclick="closeModal('modalFormVoice')">&times;</button>
@@ -1765,7 +1762,7 @@
                         <option value="Work Environment">Work Environment</option>
                         <option value="Lainnya">Lainnya...</option>
                     </select>
-                    <input type="text" name="topik_lainnya" id="topikLainnyaVoiceInput" class="form-control input-lainnya" placeholder="Tuliskan topik lainnya di sini...">
+                    <input type="text" name="topik_lainnya" id="topikLainnyaVoiceInput" class="form-control input-lainnya" placeholder="Sebutkan topik lainnya yang Anda maksud...">
                 </div>
 
                 <div class="form-group">
@@ -1779,12 +1776,12 @@
                         <label class="radio-item"><input type="radio" name="dampak" value="Tidak berdampak signifikan" onclick="toggleRadioLainnya(false, 'dampakLainnyaVoiceInput')" checked> Tidak berdampak signifikan</label>
                         <label class="radio-item"><input type="radio" name="dampak" value="Mengganggu pekerjaan saya" onclick="toggleRadioLainnya(false, 'dampakLainnyaVoiceInput')"> Mengganggu pekerjaan saya</label>
                         <label class="radio-item"><input type="radio" name="dampak" value="Mengganggu produktivitas tim" onclick="toggleRadioLainnya(false, 'dampakLainnyaVoiceInput')"> Mengganggu produktivitas tim</label>
-                        <label class="radio-item"><input type="radio" name="dampak" value="Mempengaruhi employee experience" onclick="toggleRadioLainnya(false, 'dampakLainnyaVoiceInput')"> Mempenguaruhi employee experience</label>
-                        <label class="radio-item"><input type="radio" name="dampak" value="Mempengaruhi pelayanan kepada nasabah" onclick="toggleRadioLainnya(false, 'dampakLainnyaVoiceInput')"> Mempengaruh pelayanan kepada nasabah</label>
+                        <label class="radio-item"><input type="radio" name="dampak" value="Mempengaruhi employee experience" onclick="toggleRadioLainnya(false, 'dampakLainnyaVoiceInput')"> MempengaUrhi employee experience</label>
+                        <label class="radio-item"><input type="radio" name="dampak" value="Mempengaruhi pelayanan kepada nasabah" onclick="toggleRadioLainnya(false, 'dampakLainnyaVoiceInput')"> Mempengaruhi pelayanan kepada nasabah</label>
                         <label class="radio-item"><input type="radio" name="dampak" value="Berpotensi menimbulkan risiko bagi perusahaan" onclick="toggleRadioLainnya(false, 'dampakLainnyaVoiceInput')"> Berpotensi menimbulkan risiko bagi perusahaan</label>
                         <label class="radio-item"><input type="radio" name="dampak" value="Lainnya" onclick="toggleRadioLainnya(true, 'dampakLainnyaVoiceInput')"> Lainnya...</label>
                     </div>
-                    <input type="text" name="dampak_lainnya" id="dampakLainnyaVoiceInput" class="form-control input-lainnya" placeholder="Tuliskan dampak lainnya di sini...">
+                    <input type="text" name="dampak_lainnya" id="dampakLainnyaVoiceInput" class="form-control input-lainnya" placeholder="Sebutkan dampak lainnya yang Anda maksud...">
                 </div>
 
                 <div class="form-group">
@@ -1806,7 +1803,7 @@
                 <div class="form-group">
                     <label class="form-label">Apakah Anda memiliki dokumen/bukti pendukung?</label>
                     <div class="file-input-wrapper">
-                        <input type="file" name="bukti_dokumen" id="fileVoice" class="form-control" accept="image/*,.pdf,.docx,.xlsx" onchange="handleFileChange('fileVoice', 'btnCancelVoice')">
+                        <input type="file" id="fileVoice" class="form-control" accept="image/*,.pdf,.docx,.xlsx" onchange="handleFileChange('fileVoice', 'btnCancelVoice')">
                         <button type="button" id="btnCancelVoice" class="btn-cancel-file" onclick="resetFileInput('fileVoice', 'btnCancelVoice')">✕ Batal</button>
                     </div>
                 </div>
@@ -1863,13 +1860,14 @@
         </div>
     </div>
 
+    <!-- ==================== FORM PENGAJUAN TENAGA KERJA ==================== -->
     <div class="modal-overlay" id="modalTenagaKerja">
         <div class="modal-box">
             <button class="modal-close" onclick="closeModal('modalTenagaKerja')">&times;</button>
             <h2 class="form-section-title">Form Pengajuan Tenaga Kerja</h2>
             <p class="form-section-subtitle">Lengkapi detail pengajuan kebutuhan penambahan/pergantian personel di bawah ini.</p>
 
-            <form onsubmit="handleSpreadsheetSubmit(event, 'URL_SPREADSHEET_TENAGA_KERJA', 'modalTenagaKerja')">
+            <form onsubmit="handleSpreadsheetSubmit(event, 'https://script.google.com/macros/s/AKfycbzZDUrbSoP3AJcxeIIWcmF-ZxASJkb9IvtapqHX-4kj8zE222Tww63z7iEC9eH15W8v/exec', 'modalTenagaKerja')">
                 <div class="form-group">
                     <label class="form-label">Email <span>*</span></label>
                     <input type="email" name="email" class="form-control" placeholder="nama@gadaimas.co.id" required>
@@ -1909,7 +1907,7 @@
                         <label class="radio-item"><input type="radio" name="periode_penugasan" value="Kontrak" onclick="toggleRadioLainnya(false, 'periodeLainnyaInput')"> Kontrak</label>
                         <label class="radio-item"><input type="radio" name="periode_penugasan" value="Lainnya" onclick="toggleRadioLainnya(true, 'periodeLainnyaInput')"> Lainnya...</label>
                     </div>
-                    <input type="text" name="periode_penugasan_lainnya" id="periodeLainnyaInput" class="form-control input-lainnya" placeholder="Tuliskan periode penugasan lainnya di sini...">
+                    <input type="text" name="periode_penugasan_lainnya" id="periodeLainnyaInput" class="form-control input-lainnya" placeholder="Sebutkan periode penugasan lainnya yang Anda maksud...">
                 </div>
 
                 <div class="form-group">
@@ -1939,7 +1937,7 @@
                     <label class="form-label">Format Pengajuan <span>*</span></label>
                     <div class="form-note">WAJIB: Upload Format Pengajuan Tenaga Kerja/ Surat Tugas Karyawan yang telah diisi dan ditanda tangani</div>
                     <div class="file-input-wrapper">
-                        <input type="file" name="file_format_pengajuan" id="fileTK" class="form-control" accept="image/*,.pdf,.docx,.xlsx" required onchange="handleFileChange('fileTK', 'btnCancelTK')">
+                        <input type="file" id="fileTK" class="form-control" accept="image/*,.pdf,.docx,.xlsx" required onchange="handleFileChange('fileTK', 'btnCancelTK')">
                         <button type="button" id="btnCancelTK" class="btn-cancel-file" onclick="resetFileInput('fileTK', 'btnCancelTK')">✕ Batal</button>
                     </div>
                 </div>
@@ -1954,13 +1952,14 @@
         </div>
     </div>
 
+    <!-- ==================== FORM PERGANTIAN KARYAWAN IZIN/CUTI ==================== -->
     <div class="modal-overlay" id="modalIzinCuti">
         <div class="modal-box">
             <button class="modal-close" onclick="closeModal('modalIzinCuti')">&times;</button>
             <h2 class="form-section-title">Form Pergantian Karyawan - Izin/Cuti</h2>
             <p class="form-section-subtitle">Pengajuan pergantian sementara untuk karyawan yang sedang izin/cuti.</p>
 
-            <form onsubmit="handleSpreadsheetSubmit(event, 'URL_SPREADSHEET_IZIN_CUTI', 'modalIzinCuti')">
+            <form onsubmit="handleSpreadsheetSubmit(event, 'https://script.google.com/macros/s/AKfycbzZDUrbSoP3AJcxeIIWcmF-ZxASJkb9IvtapqHX-4kj8zE222Tww63z7iEC9eH15W8v/exec', 'modalIzinCuti')">
                 <div class="form-group">
                     <label class="form-label">Email <span>*</span></label>
                     <input type="email" name="email_pengaju" class="form-control" placeholder="nama@gadaimas.co.id" required>
@@ -2032,7 +2031,7 @@
                 <div class="form-group">
                     <label class="form-label">Upload Bukti Approval Pengajuan Izin/Cuti <span>*</span></label>
                     <div class="file-input-wrapper">
-                        <input type="file" name="bukti_approval" id="fileCuti" class="form-control" accept="image/*,.pdf" required onchange="handleFileChange('fileCuti', 'btnCancelCuti')">
+                        <input type="file" id="fileCuti" class="form-control" accept="image/*,.pdf" required onchange="handleFileChange('fileCuti', 'btnCancelCuti')">
                         <button type="button" id="btnCancelCuti" class="btn-cancel-file" onclick="resetFileInput('fileCuti', 'btnCancelCuti')">✕ Batal</button>
                     </div>
 
@@ -2098,31 +2097,295 @@
         </div>
     </div>
 
+    <!-- ==================== FORM PENGAJUAN DOKUMEN/SURAT (MULTI-STEP) ==================== -->
     <div class="modal-overlay" id="modalDokumen">
-        <div class="modal-box">
+        <div class="modal-box" id="boxDokumen">
             <button class="modal-close" onclick="closeModal('modalDokumen')">&times;</button>
             <h2 class="form-section-title">Form Pengajuan Dokumen/Surat</h2>
-            <p class="form-section-subtitle">Permohonan penerbitan Surat Keterangan Kerja, SK, atau dokumen HC lainnya.</p>
+            <p class="form-section-subtitle">Permohonan penerbitan Surat Keterangan Kerja, Surat Pengalaman Kerja, Surat Rekomendasi, atau Surat lainnya.</p>
 
-            <form onsubmit="handleSpreadsheetSubmit(event, 'URL_SPREADSHEET_DOKUMEN', 'modalDokumen')">
-                <div class="form-group">
-                    <label class="form-label">Nama Lengkap <span>*</span></label>
-                    <input type="text" name="nama" class="form-control" placeholder="Contoh: CHINTYA KHARISMA SHANTI" required>
+            <form id="formDokumen" onsubmit="handleSpreadsheetSubmit(event, 'https://script.google.com/macros/s/AKfycbzZDUrbSoP3AJcxeIIWcmF-ZxASJkb9IvtapqHX-4kj8zE222Tww63z7iEC9eH15W8v/exec', 'modalDokumen')">
+
+                <!-- SECTION 1 -->
+                <div id="docSection1">
+                    <div class="form-group">
+                        <label class="form-label">Email Perusahaan <span>*</span></label>
+                        <input type="email" name="email_perusahaan" class="form-control" placeholder="nama@gadaimas.co.id" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Nama Lengkap <span>*</span></label>
+                        <input type="text" name="nama_lengkap" class="form-control" placeholder="Contoh: CHINTYA KHARISMA SHANTI" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">NIK <span>*</span></label>
+                        <input type="text" name="nik" class="form-control" placeholder="Contoh: 2019.0183" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Jabatan <span>*</span></label>
+                        <select name="jabatan" class="form-control" required>
+                            <option value="" disabled selected>-- Pilih Jabatan --</option>
+                            <option value="C-Level">C-Level</option>
+                            <option value="Division Head">Division Head</option>
+                            <option value="Department Head">Department Head</option>
+                            <option value="Section Head">Section Head</option>
+                            <option value="Manager">Manager</option>
+                            <option value="Supervisor">Supervisor</option>
+                            <option value="Advisor">Advisor</option>
+                            <option value="Kepala Cabang">Kepala Cabang</option>
+                            <option value="Ka Unit">Ka Unit</option>
+                            <option value="Kasir">Kasir</option>
+                            <option value="Penaksir">Penaksir</option>
+                            <option value="Staff">Staff</option>
+                            <option value="Officer">Officer</option>
+                            <option value="Driver">Driver</option>
+                            <option value="Office Boy/Girl">Office Boy/Girl</option>
+                            <option value="Security">Security</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Divisi / Business Unit <span>*</span></label>
+                        <select name="divisi_bu" id="divisiBuDocSelect" class="form-control" onchange="toggleLainnyaSelect('divisiBuDocSelect', 'divisiBuDocLainnyaInput')" required>
+                            <option value="" disabled selected>-- Pilih Divisi / Business Unit --</option>
+                            <option value="Operasional & GA">Operasional & GA</option>
+                            <option value="Pemasaran">Pemasaran</option>
+                            <option value="Keuangan">Keuangan</option>
+                            <option value="IT & Digital">IT & Digital</option>
+                            <option value="HC">HC</option>
+                            <option value="Lainnya">Lainnya</option>
+                        </select>
+                        <input type="text" name="divisi_bu_lainnya" id="divisiBuDocLainnyaInput" class="form-control input-lainnya" placeholder="Sebutkan divisi / business unit lainnya yang Anda maksud...">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Unit Kerja <span>*</span></label>
+                        <input type="text" name="unit_kerja" class="form-control" placeholder="Contoh: MAS OEBOBO" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Area <span>*</span></label>
+                        <select name="area" class="form-control" required>
+                            <option value="" disabled selected>-- Pilih Area --</option>
+                            <option value="JATIM 1">JATIM 1</option>
+                            <option value="JATIM 2">JATIM 2</option>
+                            <option value="SULAWESI 1">SULAWESI 1</option>
+                            <option value="SULAWESI 2">SULAWESI 2</option>
+                            <option value="SULAWESI 3">SULAWESI 3</option>
+                            <option value="NTB">NTB</option>
+                            <option value="NTT">NTT</option>
+                            <option value="KALTIM">KALTIM</option>
+                            <option value="SUMBAGUT & DKI">SUMBAGUT & DKI</option>
+                            <option value="HO">HO</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Nomor Whatsapp <span>*</span></label>
+                        <input type="tel" name="no_whatsapp" class="form-control" placeholder="Contoh: 081234567890" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Jenis Surat yang Dibutuhkan <span>*</span></label>
+                        <select name="jenis_surat" id="jenisSuratDokumen" class="form-control" required>
+                            <option value="" disabled selected>-- Pilih Jenis Surat --</option>
+                            <option value="Surat Keterangan Kerja">Surat Keterangan Kerja</option>
+                            <option value="Surat Pengalaman Kerja">Surat Pengalaman Kerja</option>
+                            <option value="Surat Rekomendasi">Surat Rekomendasi</option>
+                            <option value="Surat Lainnya">Surat Lainnya</option>
+                        </select>
+                    </div>
+
+                    <button type="button" class="btn-nav-step" style="width: 100%; justify-content: center;" onclick="goToDocSection2()">NEXT ➔</button>
                 </div>
-                <div class="form-group">
-                    <label class="form-label">Jenis Dokumen yang Diminta <span>*</span></label>
-                    <select name="jenis_dokumen" class="form-control" required>
-                        <option value="" disabled selected>-- Pilih Jenis Dokumen --</option>
-                        <option value="Surat Keterangan Kerja (Paklaring)">Surat Keterangan Kerja (Paklaring)</option>
-                        <option value="Surat Rekomendasi">Surat Rekomendasi</option>
-                        <option value="Dokumen Kepegawaian Lainnya">Dokumen Kepegawaian Lainnya</option>
-                    </select>
+
+                <!-- SECTION 2 -->
+                <div id="docSection2" style="display: none;">
+                    <div class="step-header-nav">
+                        <button type="button" class="btn-nav-secondary" onclick="backToDocSection1()">← Kembali</button>
+                    </div>
+
+                    <!-- SUB SECTION: SURAT KETERANGAN KERJA -->
+                    <div id="subDocKeteranganKerja" style="display: none;">
+                        <div class="form-group">
+                            <label class="form-label">Keperluan Surat <span>*</span></label>
+                            <select name="keperluan_ket_kerja" id="keperluanKetKerjaSelect" class="form-control" onchange="toggleLainnyaSelect('keperluanKetKerjaSelect', 'keperluanKetKerjaLainnyaInput')">
+                                <option value="" disabled selected>-- Pilih Keperluan Surat --</option>
+                                <option value="Pengajuan Visa">Pengajuan Visa</option>
+                                <option value="Kredit/Pinjaman">Kredit/Pinjaman</option>
+                                <option value="Pembukaan Rekening">Pembukaan Rekening</option>
+                                <option value="Administrasi">Administrasi</option>
+                                <option value="Pendidikan">Pendidikan</option>
+                                <option value="Perjalanan">Perjalanan</option>
+                                <option value="Lainnya">Lainnya</option>
+                            </select>
+                            <input type="text" name="keperluan_ket_kerja_lainnya" id="keperluanKetKerjaLainnyaInput" class="form-control input-lainnya" placeholder="Sebutkan keperluan surat lainnya yang Anda maksud...">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Ditujukan Kepada <span>*</span></label>
+                            <input type="text" name="ditujukan_kepada_ket" class="form-control" placeholder="Contoh: Bank BCA / Kedutaan Besar">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Bahasa Surat <span>*</span></label>
+                            <select name="bahasa_surat" class="form-control">
+                                <option value="" disabled selected>-- Pilih Bahasa Surat --</option>
+                                <option value="Indonesia">Indonesia</option>
+                                <option value="Inggris">Inggris</option>
+                                <option value="Inggris dan Indonesia">Inggris dan Indonesia</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Apakah ada format Khusus? <span>*</span></label>
+                            <select name="ada_format_khusus" id="selectFormatKhusus" class="form-control" onchange="toggleFormatKhusus()">
+                                <option value="" disabled selected>-- Pilih Opsi --</option>
+                                <option value="Ya">Ya</option>
+                                <option value="Tidak">Tidak</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group" id="groupFormatKhususKet" style="display: none;">
+                            <label class="form-label">Jelaskan dan berikan format khusus yang dimaksud <span>*</span></label>
+                            <textarea name="penjelasan_format_khusus" id="inputFormatKhususKet" class="form-control" rows="3" placeholder="Tuliskan detail format khusus yang Anda perlukan..."></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Tanggal Surat Dibutuhkan <span>*</span></label>
+                            <input type="date" name="tgl_surat_dibutuhkan_ket" class="form-control">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Upload Format/Dokumen Pendukung</label>
+                            <div class="file-input-wrapper">
+                                <input type="file" id="fileDocKet" class="form-control" accept="image/*,.pdf,.docx,.xlsx" onchange="handleFileChange('fileDocKet', 'btnCancelDocKet')">
+                                <button type="button" id="btnCancelDocKet" class="btn-cancel-file" onclick="resetFileInput('fileDocKet', 'btnCancelDocKet')">✕ Batal</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SUB SECTION: SURAT PENGALAMAN KERJA -->
+                    <div id="subDocPengalamanKerja" style="display: none;">
+                        <div class="form-group">
+                            <label class="form-label">Keperluan Surat <span>*</span></label>
+                            <select name="keperluan_pengalaman" id="keperluanPengalamanSelect" class="form-control" onchange="toggleLainnyaSelect('keperluanPengalamanSelect', 'keperluanPengalamanLainnyaInput')">
+                                <option value="" disabled selected>-- Pilih Keperluan Surat --</option>
+                                <option value="Melamar Pekerjaan">Melamar Pekerjaan</option>
+                                <option value="Administrasi">Administrasi</option>
+                                <option value="Pendidikan">Pendidikan</option>
+                                <option value="Lainnya">Lainnya</option>
+                            </select>
+                            <input type="text" name="keperluan_pengalaman_lainnya" id="keperluanPengalamanLainnyaInput" class="form-control input-lainnya" placeholder="Sebutkan keperluan surat lainnya yang Anda maksud...">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Nama Perusahaan/Instansi Tujuan <span>*</span></label>
+                            <input type="text" name="nama_instansi_tujuan_pengalaman" class="form-control" placeholder="Tuliskan nama perusahaan/instansi tujuan...">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Posisi/Jabatan yang Dilamar <span>*</span></label>
+                            <input type="text" name="posisi_dilamar_pengalaman" class="form-control" placeholder="Tuliskan posisi/jabatan yang dilamar...">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Upload Dokumen Pendukung</label>
+                            <div class="file-input-wrapper">
+                                <input type="file" id="fileDocPengalaman" class="form-control" accept="image/*,.pdf,.docx,.xlsx" onchange="handleFileChange('fileDocPengalaman', 'btnCancelDocPengalaman')">
+                                <button type="button" id="btnCancelDocPengalaman" class="btn-cancel-file" onclick="resetFileInput('fileDocPengalaman', 'btnCancelDocPengalaman')">✕ Batal</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SUB SECTION: SURAT REKOMENDASI -->
+                    <div id="subDocRekomendasi" style="display: none;">
+                        <div class="form-group">
+                            <label class="form-label">Keperluan Surat <span>*</span></label>
+                            <select name="keperluan_rekomendasi" id="keperluanRekomendasiSelect" class="form-control" onchange="toggleLainnyaSelect('keperluanRekomendasiSelect', 'keperluanRekomendasiLainnyaInput')">
+                                <option value="" disabled selected>-- Pilih Keperluan Surat --</option>
+                                <option value="Melamar pekerjaan">Melamar pekerjaan</option>
+                                <option value="Beasiswa">Beasiswa</option>
+                                <option value="Pendidikan">Pendidikan</option>
+                                <option value="Visa">Visa</option>
+                                <option value="Program/Organisasi">Program/Organisasi</option>
+                                <option value="Profesional">Profesional</option>
+                                <option value="Lainnya">Lainnya</option>
+                            </select>
+                            <input type="text" name="keperluan_rekomendasi_lainnya" id="keperluanRekomendasiLainnyaInput" class="form-control input-lainnya" placeholder="Sebutkan keperluan surat lainnya yang Anda maksud...">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Nama Perusahaan/Institusi/Organisasi Tujuan <span>*</span></label>
+                            <input type="text" name="nama_organisasi_tujuan_rekomendasi" class="form-control" placeholder="Tuliskan nama institusi/organisasi tujuan...">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Posisi/Program yang Ditujukan <span>*</span></label>
+                            <input type="text" name="posisi_program_rekomendasi" class="form-control" placeholder="Tuliskan posisi/program yang ditujukan...">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Nama Pihak yang Ditujukan <span>*</span></label>
+                            <input type="text" name="nama_pihak_ditujukan_rekomendasi" class="form-control" placeholder="Tuliskan nama pihak/pejabat yang ditujukan...">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Upload Dokumen Pendukung</label>
+                            <div class="file-input-wrapper">
+                                <input type="file" id="fileDocRekomendasi" class="form-control" accept="image/*,.pdf,.docx,.xlsx" onchange="handleFileChange('fileDocRekomendasi', 'btnCancelDocRekomendasi')">
+                                <button type="button" id="btnCancelDocRekomendasi" class="btn-cancel-file" onclick="resetFileInput('fileDocRekomendasi', 'btnCancelDocRekomendasi')">✕ Batal</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SUB SECTION: SURAT LAINNYA -->
+                    <div id="subDocLainnya" style="display: none;">
+                        <div class="form-group">
+                            <label class="form-label">Jenis Surat yang Dibutuhkan <span>*</span></label>
+                            <input type="text" name="jenis_surat_lainnya_detail" class="form-control" placeholder="Sebutkan jenis surat yang Anda butuhkan...">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Keperluan Surat <span>*</span></label>
+                            <textarea name="keperluan_surat_lainnya" class="form-control" rows="2" placeholder="Tuliskan keperluan pengajuan surat..."></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Informasi/Isi Khusus yang Dibutuhkan <span>*</span></label>
+                            <textarea name="informasi_khusus_lainnya" class="form-control" rows="3" placeholder="Jelaskan detail poin/isi khusus yang harus tercantum..."></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Upload Dokumen Pendukung</label>
+                            <div class="file-input-wrapper">
+                                <input type="file" id="fileDocLainnya" class="form-control" accept="image/*,.pdf,.docx,.xlsx" onchange="handleFileChange('fileDocLainnya', 'btnCancelDocLainnya')">
+                                <button type="button" id="btnCancelDocLainnya" class="btn-cancel-file" onclick="resetFileInput('fileDocLainnya', 'btnCancelDocLainnya')">✕ Batal</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="button" class="btn-nav-step" style="width: 100%; justify-content: center; margin-top: 20px;" onclick="goToDocSection3()">NEXT ➔</button>
                 </div>
-                <div class="form-group">
-                    <label class="form-label">Keperluan <span>*</span></label>
-                    <textarea name="keperluan" class="form-control" rows="2" placeholder="Tuliskan keperluan pengajuan..." required></textarea>
+
+                <!-- SECTION 3 -->
+                <div id="docSection3" style="display: none;">
+                    <div class="step-header-nav">
+                        <button type="button" class="btn-nav-secondary" onclick="backToDocSection2()">← Kembali</button>
+                    </div>
+
+                    <div class="declaration-box">
+                        <label class="checkbox-item">
+                            <input type="checkbox" id="decDoc" onchange="validateDocDeclaration()">
+                            <span>Saya menyatakan bahwa data yang diberikan benar dan dapat dipertanggungjawabkan, bersedia melengkapi dokumen/informasi tambahan jika diperlukan, dan memahami bahwa pengajuan diproses sesuai ketentuan serta SLA Human Capital.</span>
+                        </label>
+                    </div>
+
+                    <button type="submit" id="btnSubmitDoc" class="btn-submit" disabled>SUBMIT</button>
                 </div>
-                <button type="submit" class="btn-submit">SUBMIT</button>
+
             </form>
         </div>
     </div>
@@ -2134,8 +2397,8 @@
             <h2 class="form-section-title">Form Permintaan Learning & Development</h2>
             <p class="form-section-subtitle">Pengajuan kebutuhan program pelatihan, workshop, atau sertifikasi karyawan.</p>
 
-            <form id="formLearningDev" onsubmit="handleSpreadsheetSubmit(event, 'URL_SPREADSHEET_LEARNING_DEV', 'modalLearningDev')">
-                
+            <form id="formLearningDev" onsubmit="handleSpreadsheetSubmit(event, 'https://script.google.com/macros/s/AKfycbzZDUrbSoP3AJcxeIIWcmF-ZxASJkb9IvtapqHX-4kj8zE222Tww63z7iEC9eH15W8v/exec', 'modalLearningDev')">
+
                 <!-- STEP 1 -->
                 <div id="ldSection1">
 
@@ -2232,22 +2495,22 @@
                     <div id="subSectionTraining" style="display: none;">
                         <div class="form-group">
                             <label class="form-label">Nama Training yang Diajukan <span>*</span></label>
-                            <input type="text" name="nama_training" class="form-control" placeholder="Masukkan nama training..." required>
+                            <input type="text" name="nama_training" class="form-control" placeholder="Masukkan nama training...">
                         </div>
 
                         <div class="form-group">
                             <label class="form-label">Topik/Kompetensi yang Ingin Dikembangkan <span>*</span></label>
-                            <textarea name="topik_kompetensi_training" class="form-control" rows="2" placeholder="Jelaskan topik/kompetensi..." required></textarea>
+                            <textarea name="topik_kompetensi_training" class="form-control" rows="2" placeholder="Jelaskan topik/kompetensi..."></textarea>
                         </div>
 
                         <div class="form-group">
                             <label class="form-label">Penyelenggara Training <span>*</span></label>
-                            <input type="text" name="penyelenggara_training" class="form-control" placeholder="Nama vendor/lembaga penyelenggara..." required>
+                            <input type="text" name="penyelenggara_training" class="form-control" placeholder="Nama vendor/lembaga penyelenggara...">
                         </div>
 
                         <div class="form-group">
                             <label class="form-label">Metode Training <span>*</span></label>
-                            <select name="metode_training" class="form-control" required>
+                            <select name="metode_training" class="form-control">
                                 <option value="" disabled selected>-- Pilih Metode Training --</option>
                                 <option value="Offline">Offline</option>
                                 <option value="Online">Online</option>
@@ -2257,40 +2520,40 @@
 
                         <div class="form-group">
                             <label class="form-label">Rencana Pelaksanaan Training <span>*</span></label>
-                            <input type="date" name="rencana_pelaksanaan_training" class="form-control" required>
+                            <input type="date" name="rencana_pelaksanaan_training" class="form-control">
                         </div>
 
                         <div class="form-group">
                             <label class="form-label">Durasi Training <span>*</span></label>
-                            <select name="durasi_training" id="durasiTrainingSelect" class="form-control" onchange="toggleLainnyaSelect('durasiTrainingSelect', 'durasiTrainingLainnyaInput')" required>
+                            <select name="durasi_training" id="durasiTrainingSelect" class="form-control" onchange="toggleLainnyaSelect('durasiTrainingSelect', 'durasiTrainingLainnyaInput')">
                                 <option value="" disabled selected>-- Pilih Durasi Training --</option>
                                 <option value="Kurang dari 1 hari">Kurang dari 1 hari</option>
                                 <option value="1 hari">1 hari</option>
                                 <option value="2 - 3 hari">2 - 3 hari</option>
                                 <option value="Lainnya">Lainnya...</option>
                             </select>
-                            <input type="text" name="durasi_training_lainnya" id="durasiTrainingLainnyaInput" class="form-control input-lainnya" placeholder="Tuliskan durasi training lainnya di sini...">
+                            <input type="text" name="durasi_training_lainnya" id="durasiTrainingLainnyaInput" class="form-control input-lainnya" placeholder="Sebutkan durasi training lainnya yang Anda maksud...">
                         </div>
 
                         <div class="form-group">
                             <label class="form-label">Estimasi Biaya Training <span>*</span></label>
-                            <input type="text" name="estimasi_biaya_training" class="form-control" placeholder="Contoh: Rp 2.500.000" required>
+                            <input type="text" name="estimasi_biaya_training" class="form-control" placeholder="Contoh: Rp 2.500.000">
                         </div>
 
                         <div class="form-group">
                             <label class="form-label">Link Proposal atau Brosur Training <span>*</span></label>
                             <div class="form-note">Pastikan link yang di upload aksesnya dapat dilihat untuk semua orang</div>
-                            <input type="url" name="link_proposal_training" class="form-control" placeholder="https://drive.google.com/..." required>
+                            <input type="text" name="link_proposal_training" class="form-control" placeholder="Contoh: https://drive.google.com/...">
                         </div>
 
                         <div class="form-group">
                             <label class="form-label">Alasan Pengajuan Training <span>*</span></label>
-                            <textarea name="alasan_pengajuan_training" class="form-control" rows="2" placeholder="Jelaskan alasan pengajuan..." required></textarea>
+                            <textarea name="alasan_pengajuan_training" class="form-control" rows="2" placeholder="Jelaskan alasan pengajuan..."></textarea>
                         </div>
 
                         <div class="form-group">
                             <label class="form-label">Manfaat untuk Pekerjaan <span>*</span></label>
-                            <textarea name="manfaat_pekerjaan_training" class="form-control" rows="2" placeholder="Jelaskan manfaat untuk pekerjaan..." required></textarea>
+                            <textarea name="manfaat_pekerjaan_training" class="form-control" rows="2" placeholder="Jelaskan manfaat untuk pekerjaan..."></textarea>
                         </div>
                     </div>
 
@@ -2298,48 +2561,48 @@
                     <div id="subSectionSertifikasi" style="display: none;">
                         <div class="form-group">
                             <label class="form-label">Nama Sertifikasi <span>*</span></label>
-                            <input type="text" name="nama_sertifikasi" class="form-control" placeholder="Masukkan nama sertifikasi..." required>
+                            <input type="text" name="nama_sertifikasi" class="form-control" placeholder="Masukkan nama sertifikasi...">
                         </div>
 
                         <div class="form-group">
                             <label class="form-label">Lembaga atau Provider Sertifikasi <span>*</span></label>
-                            <input type="text" name="lembaga_sertifikasi" class="form-control" placeholder="Masukkan nama lembaga/provider..." required>
+                            <input type="text" name="lembaga_sertifikasi" class="form-control" placeholder="Masukkan nama lembaga/provider...">
                         </div>
 
                         <div class="form-group">
                             <label class="form-label">Kompetensi yang Divalidasi <span>*</span></label>
-                            <textarea name="kompetensi_divalidasi" class="form-control" rows="2" placeholder="Jelaskan kompetensi yang divalidasi..." required></textarea>
+                            <textarea name="kompetensi_divalidasi" class="form-control" rows="2" placeholder="Jelaskan kompetensi yang divalidasi..."></textarea>
                         </div>
 
                         <div class="form-group">
                             <label class="form-label">Alasan Sertifikasi Dibutuhkan <span>*</span></label>
-                            <textarea name="alasan_sertifikasi" class="form-control" rows="2" placeholder="Jelaskan alasan sertifikasi dibutuhkan..." required></textarea>
+                            <textarea name="alasan_sertifikasi" class="form-control" rows="2" placeholder="Jelaskan alasan sertifikasi dibutuhkan..."></textarea>
                         </div>
 
                         <div class="form-group">
                             <label class="form-label">Relevansi dengan Jabatan atau Pekerjaan <span>*</span></label>
-                            <textarea name="relevansi_sertifikasi" class="form-control" rows="2" placeholder="Jelaskan relevansi dengan pekerjaan..." required></textarea>
+                            <textarea name="relevansi_sertifikasi" class="form-control" rows="2" placeholder="Jelaskan relevansi dengan pekerjaan..."></textarea>
                         </div>
 
                         <div class="form-group">
                             <label class="form-label">Jadwal Sertifikasi <span>*</span></label>
-                            <input type="date" name="jadwal_sertifikasi" class="form-control" required>
+                            <input type="date" name="jadwal_sertifikasi" class="form-control">
                         </div>
 
                         <div class="form-group">
                             <label class="form-label">Masa Berlaku Sertifikasi <span>*</span></label>
-                            <input type="text" name="masa_berlaku_sertifikasi" class="form-control" placeholder="Contoh: 3 Tahun / Seumur Hidup" required>
+                            <input type="text" name="masa_berlaku_sertifikasi" class="form-control" placeholder="Contoh: 3 Tahun / Seumur Hidup">
                         </div>
 
                         <div class="form-group">
                             <label class="form-label">Estimasi Biaya Sertifikasi <span>*</span></label>
-                            <input type="text" name="estimasi_biaya_sertifikasi" class="form-control" placeholder="Contoh: Rp 5.000.000" required>
+                            <input type="text" name="estimasi_biaya_sertifikasi" class="form-control" placeholder="Contoh: Rp 5.000.000">
                         </div>
 
                         <div class="form-group">
                             <label class="form-label">Proposal atau Brosur Sertifikasi <span>*</span></label>
                             <div class="file-input-wrapper">
-                                <input type="file" name="proposal_sertifikasi" id="fileSertifikasi" class="form-control" accept="image/*,.pdf,.docx,.xlsx" required onchange="handleFileChangeLarge('fileSertifikasi', 'btnCancelSertifikasi')">
+                                <input type="file" id="fileSertifikasi" class="form-control" accept="image/*,.pdf,.docx,.xlsx" onchange="handleFileChangeLarge('fileSertifikasi', 'btnCancelSertifikasi')">
                                 <button type="button" id="btnCancelSertifikasi" class="btn-cancel-file" onclick="resetFileInput('fileSertifikasi', 'btnCancelSertifikasi')">✕ Batal</button>
                             </div>
                         </div>
@@ -2349,12 +2612,12 @@
                     <div id="subSectionLearningProgram" style="display: none;">
                         <div class="form-group">
                             <label class="form-label">Nama Learning Program <span>*</span></label>
-                            <input type="text" name="nama_learning_program" class="form-control" placeholder="Masukkan nama program..." required>
+                            <input type="text" name="nama_learning_program" class="form-control" placeholder="Masukkan nama program...">
                         </div>
 
                         <div class="form-group">
                             <label class="form-label">Bentuk Program <span>*</span></label>
-                            <select name="bentuk_program" id="bentukProgramSelect" class="form-control" onchange="toggleLainnyaSelect('bentukProgramSelect', 'bentukProgramLainnyaInput')" required>
+                            <select name="bentuk_program" id="bentukProgramSelect" class="form-control" onchange="toggleLainnyaSelect('bentukProgramSelect', 'bentukProgramLainnyaInput')">
                                 <option value="" disabled selected>-- Pilih Bentuk Program --</option>
                                 <option value="Workshop">Workshop</option>
                                 <option value="Seminar">Seminar</option>
@@ -2365,17 +2628,18 @@
                                 <option value="Knowledge Sharing">Knowledge Sharing</option>
                                 <option value="Lainnya">Lainnya...</option>
                             </select>
-                            <input type="text" name="bentuk_program_lainnya" id="bentukProgramLainnyaInput" class="form-control input-lainnya" placeholder="Tuliskan bentuk program lainnya di sini...">
+                            <input type="text" name="bentuk_program_lainnya" id="bentukProgramLainnyaInput" class="form-control input-lainnya" placeholder="Sebutkan bentuk program lainnya yang Anda maksud...">
                         </div>
 
                         <div class="form-group">
                             <label class="form-label">Topik atau Kompetensi <span>*</span></label>
-                            <textarea name="topik_kompetensi_program" class="form-control" rows="2" placeholder="Jelaskan topik/kompetensi..." required></textarea>
+                            <textarea name="topik_kompetensi_program" class="form-control" rows="2" placeholder="Jelaskan topik/kompetensi..."></textarea>
                         </div>
 
                         <div class="form-group">
                             <label class="form-label">Target Peserta <span>*</span></label>
-                            <select name="target_peserta_program" id="targetPesertaSelect" class="form-control" onchange="toggleLainnyaSelect('targetPesertaSelect', 'targetPesertaLainnyaInput')" required>
+                            <!-- KOREKSI: Atribut name disesuaikan menjadi "target_peserta" agar terbaca di Apps Script -->
+                            <select name="target_peserta" id="targetPesertaSelect" class="form-control" onchange="toggleLainnyaSelect('targetPesertaSelect', 'targetPesertaLainnyaInput')">
                                 <option value="" disabled selected>-- Pilih Target Peserta --</option>
                                 <option value="Individu">Individu</option>
                                 <option value="Tim">Tim</option>
@@ -2384,55 +2648,55 @@
                                 <option value="Nasional">Nasional</option>
                                 <option value="Lainnya">Lainnya...</option>
                             </select>
-                            <input type="text" name="target_peserta_lainnya" id="targetPesertaLainnyaInput" class="form-control input-lainnya" placeholder="Tuliskan target peserta lainnya di sini...">
+                            <input type="text" name="target_peserta_lainnya" id="targetPesertaLainnyaInput" class="form-control input-lainnya" placeholder="Sebutkan target peserta lainnya yang Anda maksud...">
                         </div>
 
                         <div class="form-group">
                             <label class="form-label">Estimasi Jumlah Peserta <span>*</span></label>
-                            <input type="number" name="estimasi_jumlah_peserta" class="form-control" placeholder="Contoh: 15" required>
+                            <input type="number" name="estimasi_jumlah_peserta" class="form-control" placeholder="Contoh: 15">
                         </div>
 
                         <div class="form-group">
                             <label class="form-label">Rencana Pelaksanaan Program <span>*</span></label>
-                            <input type="date" name="rencana_pelaksanaan_program" class="form-control" required>
+                            <input type="date" name="rencana_pelaksanaan_program" class="form-control">
                         </div>
 
                         <div class="form-group">
                             <label class="form-label">Estimasi Biaya Program <span>*</span></label>
-                            <input type="text" name="estimasi_biaya_program" class="form-control" placeholder="Contoh: Rp 3.000.000" required>
+                            <input type="text" name="estimasi_biaya_program" class="form-control" placeholder="Contoh: Rp 3.000.000">
                         </div>
 
                         <div class="form-group">
                             <label class="form-label">Proposal/ToR/Materi Program <span>*</span></label>
                             <div class="file-input-wrapper">
-                                <input type="file" name="proposal_program" id="fileProgram" class="form-control" accept="image/*,.pdf,.docx,.xlsx" required onchange="handleFileChangeLarge('fileProgram', 'btnCancelProgram')">
+                                <input type="file" id="fileProgram" class="form-control" accept="image/*,.pdf,.docx,.xlsx" onchange="handleFileChangeLarge('fileProgram', 'btnCancelProgram')">
                                 <button type="button" id="btnCancelProgram" class="btn-cancel-file" onclick="resetFileInput('fileProgram', 'btnCancelProgram')">✕ Batal</button>
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label class="form-label">Tujuan dan Expected Outcome <span>*</span></label>
-                            <textarea name="tujuan_expected_outcome" class="form-control" rows="2" placeholder="Jelaskan tujuan & outcome..." required></textarea>
+                            <textarea name="tujuan_expected_outcome" class="form-control" rows="2" placeholder="Jelaskan tujuan & outcome..."></textarea>
                         </div>
 
                         <div class="form-group">
                             <label class="form-label">Apa Gap Kompetensi yang Ingin Diselesaikan <span>*</span></label>
-                            <textarea name="gap_kompetensi" class="form-control" rows="2" placeholder="Jelaskan gap kompetensi..." required></textarea>
+                            <textarea name="gap_kompetensi" class="form-control" rows="2" placeholder="Jelaskan gap kompetensi..."></textarea>
                         </div>
 
                         <div class="form-group">
                             <label class="form-label">Apa Dampak terhadap Pekerjaan Jika Pengembangan Dilakukan? <span>*</span></label>
-                            <textarea name="dampak_pengembangan" class="form-control" rows="2" placeholder="Jelaskan dampak terhadap pekerjaan..." required></textarea>
+                            <textarea name="dampak_pengembangan" class="form-control" rows="2" placeholder="Jelaskan dampak terhadap pekerjaan..."></textarea>
                         </div>
 
                         <div class="form-group">
                             <label class="form-label">Outcome yang diharapkan setelah Program Selesai? <span>*</span></label>
-                            <textarea name="outcome_selesai_program" class="form-control" rows="2" placeholder="Jelaskan outcome yang diharapkan..." required></textarea>
+                            <textarea name="outcome_selesai_program" class="form-control" rows="2" placeholder="Jelaskan outcome yang diharapkan..."></textarea>
                         </div>
 
                         <div class="form-group">
                             <label class="form-label">Bagaimana Keberhasilan akan Diukur? <span>*</span></label>
-                            <select name="pengukuran_keberhasilan" id="pengukuranKeberhasilanSelect" class="form-control" onchange="toggleLainnyaSelect('pengukuranKeberhasilanSelect', 'pengukuranLainnyaInput')" required>
+                            <select name="pengukuran_keberhasilan" id="pengukuranKeberhasilanSelect" class="form-control" onchange="toggleLainnyaSelect('pengukuranKeberhasilanSelect', 'pengukuranLainnyaInput')">
                                 <option value="" disabled selected>-- Pilih Pengukuran Keberhasilan --</option>
                                 <option value="Knowledge improvement">Knowledge improvement</option>
                                 <option value="Skill improvement">Skill improvement</option>
@@ -2443,29 +2707,29 @@
                                 <option value="Compliance">Compliance</option>
                                 <option value="Lainnya">Lainnya...</option>
                             </select>
-                            <input type="text" name="pengukuran_keberhasilan_lainnya" id="pengukuranLainnyaInput" class="form-control input-lainnya" placeholder="Tuliskan pengukuran lainnya di sini...">
+                            <input type="text" name="pengukuran_keberhasilan_lainnya" id="pengukuranLainnyaInput" class="form-control input-lainnya" placeholder="Sebutkan pengukuran lainnya yang Anda maksud...">
                         </div>
 
                         <div class="form-group">
                             <label class="form-label">Sumber Budget <span>*</span></label>
-                            <select name="sumber_budget" id="sumberBudgetSelect" class="form-control" onchange="toggleLainnyaSelect('sumberBudgetSelect', 'sumberBudgetLainnyaInput')" required>
+                            <select name="sumber_budget" id="sumberBudgetSelect" class="form-control" onchange="toggleLainnyaSelect('sumberBudgetSelect', 'sumberBudgetLainnyaInput')">
                                 <option value="" disabled selected>-- Pilih Sumber Budget --</option>
                                 <option value="Budget Training Unit">Budget Training Unit</option>
                                 <option value="Budget HC">Budget HC</option>
                                 <option value="Budget Area">Budget Area</option>
                                 <option value="Lainnya">Lainnya...</option>
                             </select>
-                            <input type="text" name="sumber_budget_lainnya" id="sumberBudgetLainnyaInput" class="form-control input-lainnya" placeholder="Tuliskan sumber budget lainnya di sini...">
+                            <input type="text" name="sumber_budget_lainnya" id="sumberBudgetLainnyaInput" class="form-control input-lainnya" placeholder="Sebutkan sumber budget lainnya yang Anda maksud...">
                         </div>
 
                         <div class="form-group">
                             <label class="form-label">Estimasi Total Biaya <span>*</span></label>
-                            <input type="text" name="estimasi_total_biaya" class="form-control" placeholder="Contoh: Rp 10.000.000" required>
+                            <input type="text" name="estimasi_total_biaya" class="form-control" placeholder="Contoh: Rp 10.000.000">
                         </div>
 
                         <div class="form-group">
                             <label class="form-label">Apakah sudah mendapatkan persetujuan atasan? <span>*</span></label>
-                            <select name="persetujuan_atasan" class="form-control" required>
+                            <select name="persetujuan_atasan" class="form-control">
                                 <option value="" disabled selected>-- Pilih Persetujuan Atasan --</option>
                                 <option value="YA">YA</option>
                                 <option value="TIDAK">TIDAK</option>
@@ -2476,7 +2740,7 @@
                             <label class="form-label">Upload Bukti Approval Atasan</label>
                             <div class="form-note">Jika pertanyaan di atas Anda menjawab “Ya”, wajib upload bukti approval dari atasan.</div>
                             <div class="file-input-wrapper">
-                                <input type="file" name="bukti_approval_atasan_ld" id="fileApprovalLD" class="form-control" accept="image/*,.pdf,.docx,.xlsx" onchange="handleFileChange('fileApprovalLD', 'btnCancelApprovalLD')">
+                                <input type="file" id="fileApprovalLD" class="form-control" accept="image/*,.pdf,.docx,.xlsx" onchange="handleFileChange('fileApprovalLD', 'btnCancelApprovalLD')">
                                 <button type="button" id="btnCancelApprovalLD" class="btn-cancel-file" onclick="resetFileInput('fileApprovalLD', 'btnCancelApprovalLD')">✕ Batal</button>
                             </div>
                         </div>
@@ -2509,66 +2773,112 @@
         </div>
     </div>
 
+    <!-- ==================== MODAL MONITORING (TANPA IFRAME) ==================== -->
+
+    <!-- 1. MONITORING TENAGA KERJA -->
     <div class="modal-overlay" id="modalMonTenagaKerja">
-        <div class="modal-box">
+        <div class="modal-box" style="max-width: 1000px;">
             <button class="modal-close" onclick="closeModal('modalMonTenagaKerja')">&times;</button>
             <h2 class="form-section-title">Monitoring Pengajuan Tenaga Kerja</h2>
-            <p class="form-section-subtitle">Layar pemantauan status pengajuan tenaga kerja secara terintegrasi.</p>
+            <p class="form-section-subtitle">Daftar pemantauan status pengajuan penambahan/pergantian tenaga kerja.</p>
 
-            <p style="font-size: 0.8rem; color: #b45309; background: #fff8eb; padding: 8px 12px; border-radius: 8px; margin-bottom: 12px; font-weight: 600;">
-                ⏳ <b>Catatan:</b> Data pengajuan baru memerlukan waktu sinkronisasi sekitar 1–5 menit untuk muncul di tabel ini.
-            </p>
-
-            <div class="sheet-container">
-                <iframe class="sheet-iframe" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTHswZsNz5_Y4VUmifagpXSwu6mLCsrDQoFupTgReUgXoA4ZfElKc-LgTSmuKx7ptKaqyDvF5Wgdd-e/pubhtml?gid=0&single=true"></iframe>
+            <div class="table-responsive">
+                <table class="voice-table">
+                    <thead>
+                        <tr>
+                            <th>Nama Lengkap</th>
+                            <th>NIK</th>
+                            <th>Unit Kerja/Area</th>
+                            <th>Jenis Pengajuan</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBodyMonTK">
+                        <tr><td colspan="5" style="text-align:center;">Memuat data...</td></tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
 
+    <!-- 2. MONITORING IZIN / CUTI -->
     <div class="modal-overlay" id="modalMonCuti">
-        <div class="modal-box">
+        <div class="modal-box" style="max-width: 1100px;">
             <button class="modal-close" onclick="closeModal('modalMonCuti')">&times;</button>
             <h2 class="form-section-title">Monitoring Izin / Cuti Karyawan</h2>
-            <p class="form-section-subtitle">Layar pemantauan status pengajuan izin dan cuti karyawan secara terintegrasi.</p>
+            <p class="form-section-subtitle">Daftar pemantauan status pergantian karyawan izin/cuti.</p>
 
-            <p style="font-size: 0.8rem; color: #b45309; background: #fff8eb; padding: 8px 12px; border-radius: 8px; margin-bottom: 12px; font-weight: 600;">
-                ⏳ <b>Catatan:</b> Data pengajuan baru memerlukan waktu sinkronisasi sekitar 1–5 menit untuk muncul di tabel ini.
-            </p>
-
-            <div class="sheet-container">
-                <iframe class="sheet-iframe" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQ_EXAMPLE_LINK_2/pubhtml?widget=true&amp;headers=false"></iframe>
+            <div class="table-responsive">
+                <table class="voice-table">
+                    <thead>
+                        <tr>
+                            <th>Pengaju (Nama/NIK)</th>
+                            <th>Unit Kerja</th>
+                            <th>Jenis</th>
+                            <th>Periode</th>
+                            <th>Pengganti (Nama/NIK)</th>
+                            <th>Unit Pengganti</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBodyMonCuti">
+                        <tr><td colspan="7" style="text-align:center;">Memuat data...</td></tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
 
+    <!-- 3. MONITORING DOKUMEN / SURAT -->
     <div class="modal-overlay" id="modalMonDokumen">
-        <div class="modal-box">
+        <div class="modal-box" style="max-width: 1100px;">
             <button class="modal-close" onclick="closeModal('modalMonDokumen')">&times;</button>
             <h2 class="form-section-title">Monitoring Pengajuan Dokumen/Surat</h2>
-            <p class="form-section-subtitle">Layar pemantauan status pengajuan dokumen dan surat resmi HCBP.</p>
+            <p class="form-section-subtitle">Daftar pemantauan status penerbitan dokumen dan surat resmi HCBP.</p>
 
-            <p style="font-size: 0.8rem; color: #b45309; background: #fff8eb; padding: 8px 12px; border-radius: 8px; margin-bottom: 12px; font-weight: 600;">
-                ⏳ <b>Catatan:</b> Data pengajuan baru memerlukan waktu sinkronisasi sekitar 1–5 menit untuk muncul di tabel ini.
-            </p>
-
-            <div class="sheet-container">
-                <iframe class="sheet-iframe" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQ_EXAMPLE_LINK_3/pubhtml?widget=true&amp;headers=false"></iframe>
+            <div class="table-responsive">
+                <table class="voice-table">
+                    <thead>
+                        <tr>
+                            <th>Nama / NIK</th>
+                            <th>Divisi / Unit</th>
+                            <th>Jenis Surat</th>
+                            <th>Keperluan Surat</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBodyMonDoc">
+                        <tr><td colspan="5" style="text-align:center;">Memuat data...</td></tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
 
+    <!-- 4. MONITORING LEARNING & DEVELOPMENT (DIPISAH SESUAI PERMINTAAN) -->
     <div class="modal-overlay" id="modalMonLearningDev">
-        <div class="modal-box">
+        <div class="modal-box" style="max-width: 1200px;">
             <button class="modal-close" onclick="closeModal('modalMonLearningDev')">&times;</button>
             <h2 class="form-section-title">Monitoring Learning & Development</h2>
-            <p class="form-section-subtitle">Layar pemantauan status pengajuan program pelatihan dan pengembangan karyawan.</p>
+            <p class="form-section-subtitle">Daftar pemantauan status pengajuan program pelatihan & sertifikasi.</p>
 
-            <p style="font-size: 0.8rem; color: #b45309; background: #fff8eb; padding: 8px 12px; border-radius: 8px; margin-bottom: 12px; font-weight: 600;">
-                ⏳ <b>Catatan:</b> Data pengajuan baru memerlukan waktu sinkronisasi sekitar 1–5 menit untuk muncul di tabel ini.
-            </p>
-
-            <div class="sheet-container">
-                <iframe class="sheet-iframe" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQ_EXAMPLE_LINK_LEARNING_DEV/pubhtml?widget=true&amp;headers=false"></iframe>
+            <div class="table-responsive">
+                <table class="voice-table">
+                    <thead>
+                        <tr>
+                            <th>Nama / NIK</th>
+                            <th>Jabatan</th>
+                            <th>Unit Kerja</th>
+                            <th>Jenis Pengajuan</th>
+                            <th>Program / Training / Sertifikasi</th>
+                            <th>Topik / Kompetensi</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBodyMonLD">
+                        <tr><td colspan="7" style="text-align:center;">Memuat data...</td></tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
@@ -2598,12 +2908,22 @@
     </footer>
 
     <script>
+        const MONITORING_FETCH_URL = "https://script.google.com/macros/s/AKfycbzZDUrbSoP3AJcxeIIWcmF-ZxASJkb9IvtapqHX-4kj8zE222Tww63z7iEC9eH15W8v/exec";
         const APPS_SCRIPT_VOICE_URL = 'https://script.google.com/macros/s/AKfycbxKi5DIGtt6LqyFx6VUcE-xRJ3xakmW_3BvxbDXwH058zBIHb0g4ZlQd2f8uWvfH1a9/exec';
 
-        // Load data otomatis saat halaman selesai dimuat
         window.addEventListener('DOMContentLoaded', () => {
             fetchVoiceData();
         });
+
+        /* HELPER: Memotong Jam/ISO String agar hanya menampilkan YYYY-MM-DD */
+        function formatOnlyDate(rawStr) {
+            if (!rawStr || rawStr === "-") return "-";
+            let str = rawStr.toString().trim();
+            if (str.includes("T")) {
+                return str.split("T")[0];
+            }
+            return str;
+        }
 
         function fetchVoiceData() {
             const tableBody = idElement("voiceTableBody");
@@ -2638,18 +2958,20 @@
             }
 
             let htmlStr = "";
-            // Tampilkan dari yang terbaru (reverse)
             dataList.slice().reverse().forEach(item => {
-                let isSelesai = item.status.toString().toLowerCase() === "selesai";
-                if (isSelesai) {
-                    selesai++;
-                } else {
-                    diproses++;
-                }
+                let statusText = (item.status || "").toString().trim();
+                let statusLower = statusText.toLowerCase();
+                let statusBadge = "";
 
-                let statusBadge = isSelesai 
-                    ? `<span class="badge-status bg-done">Selesai</span>` 
-                    : `<span class="badge-status bg-process">${item.status}</span>`;
+                if (statusLower === "selesai") {
+                    selesai++;
+                    statusBadge = `<span class="badge-status bg-done">${statusText}</span>`;
+                } else if (statusLower.includes("diproses")) {
+                    diproses++;
+                    statusBadge = `<span class="badge-status bg-process">${statusText}</span>`;
+                } else {
+                    statusBadge = `<span class="badge-status bg-pending">${statusText}</span>`;
+                }
 
                 htmlStr += `
                     <tr>
@@ -2657,7 +2979,7 @@
                         <td class="nama-cell">${item.nama}</td>
                         <td class="kategori-cell">${item.topik}</td>
                         <td>${statusBadge}</td>
-                        <td>${item.update}</td>
+                        <td>${formatOnlyDate(item.update)}</td>
                     </tr>
                 `;
             });
@@ -2666,6 +2988,157 @@
             idElement("totalAspirasiCount").innerText = total;
             idElement("prosesAspirasiCount").innerText = diproses;
             idElement("selesaiAspirasiCount").innerText = selesai;
+        }
+
+        function getStatusBadge(statusRaw) {
+            let statusText = statusRaw || "Menunggu proses";
+            let statusLower = statusText.toLowerCase();
+            let badgeClass = "bg-pending"; 
+
+            if (statusLower.includes("approved") || statusLower.includes("selesai")) {
+                badgeClass = "bg-done";
+            } else if (statusLower.includes("diproses") || statusLower.includes("pending")) {
+                badgeClass = "bg-process";
+            }
+
+            return `<span class="badge-status ${badgeClass}">${statusText}</span>`;
+        }
+
+        function fetchMonTK() {
+            const tbody = document.getElementById("tableBodyMonTK");
+            tbody.innerHTML = `<tr><td colspan="5" style="text-align:center;">Memuat data monitoring...</td></tr>`;
+
+            fetch(`${MONITORING_FETCH_URL}?sheet=Tenaga Kerja`)
+                .then(res => res.json())
+                .then(res => {
+                    if (res.result === 'success' && res.data) {
+                        if (res.data.length === 0) {
+                            tbody.innerHTML = `<tr><td colspan="5" style="text-align:center;">Belum ada pengajuan.</td></tr>`;
+                            return;
+                        }
+                        let html = "";
+                        res.data.slice().reverse().forEach(item => {
+                            html += `<tr>
+                                <td><b>${item.nama}</b></td>
+                                <td>${item.nik}</td>
+                                <td>${item.unit}</td>
+                                <td>${item.jenis}</td>
+                                <td>${getStatusBadge(item.status)}</td>
+                            </tr>`;
+                        });
+                        tbody.innerHTML = html;
+                    }
+                }).catch(err => { tbody.innerHTML = `<tr><td colspan="5" style="text-align:center; color:#dc2626;">Gagal memuat data.</td></tr>`; });
+        }
+
+        /* PERBAIKAN SOAL NO. 3: TANGGAL HANYA BERFORMAT YYYY-MM-DD */
+        function fetchMonCuti() {
+            const tbody = document.getElementById("tableBodyMonCuti");
+            tbody.innerHTML = `<tr><td colspan="7" style="text-align:center;">Memuat data monitoring...</td></tr>`;
+
+            fetch(`${MONITORING_FETCH_URL}?sheet=Izin Cuti`)
+                .then(res => res.json())
+                .then(res => {
+                    if (res.result === 'success' && res.data) {
+                        if (res.data.length === 0) {
+                            tbody.innerHTML = `<tr><td colspan="7" style="text-align:center;">Belum ada pengajuan.</td></tr>`;
+                            return;
+                        }
+                        let html = "";
+                        res.data.slice().reverse().forEach(item => {
+                            let tglAwalClean = formatOnlyDate(item.tglMulai);
+                            let tglAkhirClean = formatOnlyDate(item.tglSelesai);
+
+                            html += `<tr>
+                                <td><b>${item.nama}</b><br><small style="color:var(--text-muted);">${item.nik}</small></td>
+                                <td>${item.unit}</td>
+                                <td>${item.jenis}</td>
+                                <td>${tglAwalClean} s/d ${tglAkhirClean}</td>
+                                <td><b>${item.namaPengganti}</b><br><small style="color:var(--text-muted);">${item.nikPengganti}</small></td>
+                                <td>${item.unitPengganti}</td>
+                                <td>${getStatusBadge(item.status)}</td>
+                            </tr>`;
+                        });
+                        tbody.innerHTML = html;
+                    }
+                }).catch(err => { tbody.innerHTML = `<tr><td colspan="7" style="text-align:center; color:#dc2626;">Gagal memuat data.</td></tr>`; });
+        }
+
+        function fetchMonDokumen() {
+            const tbody = document.getElementById("tableBodyMonDoc");
+            tbody.innerHTML = `<tr><td colspan="5" style="text-align:center;">Memuat data monitoring...</td></tr>`;
+
+            fetch(`${MONITORING_FETCH_URL}?sheet=Dokumen Surat`)
+                .then(res => res.json())
+                .then(res => {
+                    if (res.result === 'success' && res.data) {
+                        if (res.data.length === 0) {
+                            tbody.innerHTML = `<tr><td colspan="5" style="text-align:center;">Belum ada pengajuan.</td></tr>`;
+                            return;
+                        }
+                        let html = "";
+                        res.data.slice().reverse().forEach(item => {
+                            let keperluan = (item.kepKet && item.kepKet !== "-") ? item.kepKet : 
+                                           ((item.kepPeng && item.kepPeng !== "-") ? item.kepPeng : 
+                                           ((item.kepRekom && item.kepRekom !== "-") ? item.kepRekom : item.kepLain));
+                            
+                            let jenisTampil = item.jenisSurat === "Surat Lainnya" ? item.jenisLain : item.jenisSurat;
+
+                            html += `<tr>
+                                <td><b>${item.nama}</b><br><small style="color:var(--text-muted);">${item.nik}</small></td>
+                                <td>${item.divisi} / ${item.unit}</td>
+                                <td><b>${jenisTampil}</b></td>
+                                <td>${keperluan}</td>
+                                <td>${getStatusBadge(item.status)}</td>
+                            </tr>`;
+                        });
+                        tbody.innerHTML = html;
+                    }
+                }).catch(err => { tbody.innerHTML = `<tr><td colspan="5" style="text-align:center; color:#dc2626;">Gagal memuat data.</td></tr>`; });
+        }
+
+        /* PERBAIKAN SOAL NO. 4: KOLOM TABEL DIBUAT TERPISAH KONSISTEN */
+        function fetchMonLD() {
+            const tbody = document.getElementById("tableBodyMonLD");
+            tbody.innerHTML = `<tr><td colspan="7" style="text-align:center;">Memuat data monitoring...</td></tr>`;
+
+            fetch(`${MONITORING_FETCH_URL}?sheet=Learning Dev`)
+                .then(res => res.json())
+                .then(res => {
+                    if (res.result === 'success' && res.data) {
+                        if (res.data.length === 0) {
+                            tbody.innerHTML = `<tr><td colspan="7" style="text-align:center;">Belum ada pengajuan.</td></tr>`;
+                            return;
+                        }
+                        let html = "";
+                        res.data.slice().reverse().forEach(item => {
+                            let namaProgram = "-";
+                            let topikKompetensi = "-";
+
+                            if (item.jenis === "Training") {
+                                namaProgram = item.namaTraining || "-";
+                                topikKompetensi = item.topikTraining || "-";
+                            } else if (item.jenis === "Sertifikasi") {
+                                namaProgram = item.namaSertifikasi || "-";
+                                topikKompetensi = item.kompetensiSert || "-";
+                            } else if (item.jenis === "Learning Program") {
+                                namaProgram = `${item.namaProgram || "-"} (${item.bentukProgram || "-"})`;
+                                topikKompetensi = item.topikProgram || "-";
+                            }
+
+                            html += `<tr>
+                                <td><b>${item.nama}</b><br><small style="color:var(--text-muted);">${item.nik}</small></td>
+                                <td>${item.jabatan || "-"}</td>
+                                <td>${item.unit || "-"}</td>
+                                <td><b>${item.jenis || "-"}</b></td>
+                                <td>${namaProgram}</td>
+                                <td>${topikKompetensi}</td>
+                                <td>${getStatusBadge(item.status)}</td>
+                            </tr>`;
+                        });
+                        tbody.innerHTML = html;
+                    }
+                }).catch(err => { tbody.innerHTML = `<tr><td colspan="7" style="text-align:center; color:#dc2626;">Gagal memuat data.</td></tr>`; });
         }
 
         function idElement(id) {
@@ -2703,6 +3176,8 @@
             } else {
                 inputEl.style.display = 'none';
                 inputEl.required = false;
+                inputEl.value = '';
+                inputEl.classList.remove('input-error');
             }
         }
 
@@ -2714,10 +3189,11 @@
             } else {
                 inputEl.style.display = 'none';
                 inputEl.required = false;
+                inputEl.value = '';
+                inputEl.classList.remove('input-error');
             }
         }
 
-        /* --- FITUR CEK UKURAN FILE (MAX 10 MB) --- */
         function handleFileChange(inputId, btnId) {
             const fileInput = document.getElementById(inputId);
             const cancelBtn = document.getElementById(btnId);
@@ -2735,7 +3211,6 @@
             }
         }
 
-        /* --- FITUR CEK UKURAN FILE KHUSUS PROPOSAL / SERTIFIKASI (MAX 50 MB) --- */
         function handleFileChangeLarge(inputId, btnId) {
             const fileInput = document.getElementById(inputId);
             const cancelBtn = document.getElementById(btnId);
@@ -2760,12 +3235,11 @@
             cancelBtn.style.display = 'none';
         }
 
-        /* --- FUNGSI KHUSUS CEK INPUT & AUTO SCROLL KE PERTANYAAN KOSONG --- */
         function validateAndScroll(containerElement) {
-            const requiredFields = containerElement.querySelectorAll('input[required], select[required], textarea[required]');
+            const requiredFields = Array.from(containerElement.querySelectorAll('input[required], select[required], textarea[required]'))
+                                         .filter(field => field.offsetParent !== null);
             let firstInvalidField = null;
 
-            // Bersihkan error terdahulu
             requiredFields.forEach(field => field.classList.remove('input-error'));
 
             for (let field of requiredFields) {
@@ -2788,10 +3262,9 @@
             }
 
             if (firstInvalidField) {
-                // Cari modal box induk untuk mengatur scroll internal
                 const modalBox = containerElement.closest('.modal-box');
                 const formGroup = firstInvalidField.closest('.form-group') || firstInvalidField;
-                
+
                 if (modalBox) {
                     modalBox.scrollTo({
                         top: formGroup.offsetTop - 30,
@@ -2808,7 +3281,90 @@
             return true;
         }
 
-        /* --- LOGIK NAVIGASI MULTI-STEP FORM LEARNING & DEV --- */
+        function goToDocSection2() {
+            const section1 = document.getElementById('docSection1');
+            if (!validateAndScroll(section1)) return;
+
+            const jenis = document.getElementById('jenisSuratDokumen').value;
+
+            document.getElementById('docSection1').style.display = 'none';
+            document.getElementById('docSection2').style.display = 'block';
+
+            const subSections = ['subDocKeteranganKerja', 'subDocPengalamanKerja', 'subDocRekomendasi', 'subDocLainnya'];
+            subSections.forEach(id => {
+                const el = document.getElementById(id);
+                el.style.display = 'none';
+                el.querySelectorAll('input, select, textarea').forEach(inp => inp.required = false);
+            });
+
+            let activeSub;
+            if (jenis === 'Surat Keterangan Kerja') activeSub = document.getElementById('subDocKeteranganKerja');
+            else if (jenis === 'Surat Pengalaman Kerja') activeSub = document.getElementById('subDocPengalamanKerja');
+            else if (jenis === 'Surat Rekomendasi') activeSub = document.getElementById('subDocRekomendasi');
+            else if (jenis === 'Surat Lainnya') activeSub = document.getElementById('subDocLainnya');
+
+            if (activeSub) {
+                activeSub.style.display = 'block';
+                activeSub.querySelectorAll('input, select, textarea').forEach(inp => {
+                    if(!inp.classList.contains('input-lainnya') && inp.id !== 'inputFormatKhususKet' && inp.type !== 'file') {
+                        inp.required = true;
+                    }
+                });
+            }
+
+            document.getElementById('boxDokumen').scrollTop = 0;
+        }
+
+        function backToDocSection1() {
+            document.getElementById('docSection2').style.display = 'none';
+            document.getElementById('docSection1').style.display = 'block';
+            document.getElementById('boxDokumen').scrollTop = 0;
+        }
+
+        function goToDocSection3() {
+            const jenis = document.getElementById('jenisSuratDokumen').value;
+            let activeSubSection;
+
+            if (jenis === 'Surat Keterangan Kerja') activeSubSection = document.getElementById('subDocKeteranganKerja');
+            else if (jenis === 'Surat Pengalaman Kerja') activeSubSection = document.getElementById('subDocPengalamanKerja');
+            else if (jenis === 'Surat Rekomendasi') activeSubSection = document.getElementById('subDocRekomendasi');
+            else if (jenis === 'Surat Lainnya') activeSubSection = document.getElementById('subDocLainnya');
+
+            if (activeSubSection && !validateAndScroll(activeSubSection)) return;
+
+            document.getElementById('docSection2').style.display = 'none';
+            document.getElementById('docSection3').style.display = 'block';
+            document.getElementById('boxDokumen').scrollTop = 0;
+        }
+
+        function backToDocSection2() {
+            document.getElementById('docSection3').style.display = 'none';
+            document.getElementById('docSection2').style.display = 'block';
+            document.getElementById('boxDokumen').scrollTop = 0;
+        }
+
+        function toggleFormatKhusus() {
+            const val = document.getElementById('selectFormatKhusus').value;
+            const group = document.getElementById('groupFormatKhususKet');
+            const input = document.getElementById('inputFormatKhususKet');
+
+            if (val === 'Ya') {
+                group.style.display = 'block';
+                input.required = true;
+            } else {
+                group.style.display = 'none';
+                input.required = false;
+                input.value = '';
+                input.classList.remove('input-error');
+            }
+        }
+
+        function validateDocDeclaration() {
+            const dec = document.getElementById('decDoc').checked;
+            const btnSubmit = document.getElementById('btnSubmitDoc');
+            btnSubmit.disabled = !dec;
+        }
+
         function goToLDSection2() {
             const section1 = document.getElementById('ldSection1');
             if (!validateAndScroll(section1)) return;
@@ -2818,19 +3374,27 @@
             document.getElementById('ldSection1').style.display = 'none';
             document.getElementById('ldSection2').style.display = 'block';
 
-            document.getElementById('subSectionTraining').style.display = 'none';
-            document.getElementById('subSectionSertifikasi').style.display = 'none';
-            document.getElementById('subSectionLearningProgram').style.display = 'none';
+            const ldSubs = ['subSectionTraining', 'subSectionSertifikasi', 'subSectionLearningProgram'];
+            ldSubs.forEach(id => {
+                const el = document.getElementById(id);
+                el.style.display = 'none';
+                el.querySelectorAll('input, select, textarea').forEach(inp => inp.required = false);
+            });
 
-            if (jenis === 'Training') {
-                document.getElementById('subSectionTraining').style.display = 'block';
-            } else if (jenis === 'Sertifikasi') {
-                document.getElementById('subSectionSertifikasi').style.display = 'block';
-            } else if (jenis === 'Learning Program') {
-                document.getElementById('subSectionLearningProgram').style.display = 'block';
+            let activeSub;
+            if (jenis === 'Training') activeSub = document.getElementById('subSectionTraining');
+            else if (jenis === 'Sertifikasi') activeSub = document.getElementById('subSectionSertifikasi');
+            else if (jenis === 'Learning Program') activeSub = document.getElementById('subSectionLearningProgram');
+
+            if (activeSub) {
+                activeSub.style.display = 'block';
+                activeSub.querySelectorAll('input, select, textarea').forEach(inp => {
+                    if(!inp.classList.contains('input-lainnya') && inp.type !== 'file') {
+                        inp.required = true;
+                    }
+                });
             }
 
-            // Scroll modal ke posisi paling atas saat pindah section baru
             document.getElementById('boxLearningDev').scrollTop = 0;
         }
 
@@ -2868,12 +3432,11 @@
             btnSubmit.disabled = !(dec1 && dec2);
         }
 
-        /* PERBAIKAN VALIDASI SEMUA FORM SEBELUM SUBMIT SPREADSHEET */
+        /* PERBAIKAN SOAL NO. 1 & 2: DUKUNGAN INPUT FILE MULTIPEL & FILTER AKTIF */
         function handleSpreadsheetSubmit(event, scriptUrl, modalId) {
             event.preventDefault();
             const form = event.target;
 
-            // 1. Validasi Input Kosong
             if (!validateAndScroll(form)) {
                 return false;
             }
@@ -2884,18 +3447,17 @@
             submitBtn.disabled = true;
 
             const formData = new FormData(form);
-            const fileInput = form.querySelector('input[type="file"]');
-        
-            // Fungsi pembantu eksekusi AJAX kirim data
+
+            // Temukan file input yang memiliki file terlampir
+            const activeFileInputs = Array.from(form.querySelectorAll('input[type="file"]')).filter(inp => inp.files && inp.files.length > 0);
+
             const sendData = (fileData = "", fileName = "", fileMimeType = "") => {
                 const payload = new URLSearchParams();
-        
+
                 for (let [key, value] of formData.entries()) {
-                    if (key !== fileInput?.name) {
-                        payload.append(key, value);
-                    }
+                    payload.append(key, value);
                 }
-        
+
                 if (fileData) {
                     payload.append('fileData', fileData);
                     payload.append('fileName', fileName);
@@ -2911,13 +3473,15 @@
                     if (data.result === 'success') {
                         alert('Aspirasi/Pengajuan Anda berhasil dikirim ke tim HCBP!');
                         form.reset();
-                
-                        // Reset elemen tampilan tambahan
+
                         const cancelBtns = form.querySelectorAll('.btn-cancel-file');
                         cancelBtns.forEach(btn => btn.style.display = 'none');
-                
+
                         const inputsLainnya = form.querySelectorAll('.input-lainnya');
-                        inputsLainnya.forEach(input => input.style.display = 'none');
+                        inputsLainnya.forEach(input => {
+                            input.style.display = 'none';
+                            input.required = false;
+                        });
 
                         if (modalId === 'modalLearningDev') {
                             document.getElementById('ldSection1').style.display = 'block';
@@ -2925,9 +3489,16 @@
                             document.getElementById('ldSection3').style.display = 'none';
                             document.getElementById('btnSubmitLD').disabled = true;
                         }
+
+                        if (modalId === 'modalDokumen') {
+                            document.getElementById('docSection1').style.display = 'block';
+                            document.getElementById('docSection2').style.display = 'none';
+                            document.getElementById('docSection3').style.display = 'none';
+                            document.getElementById('groupFormatKhususKet').style.display = 'none';
+                            document.getElementById('btnSubmitDoc').disabled = true;
+                        }
                         closeModal(modalId);
 
-                        // Apabila submit form Employee Voice, perbarui tabel & statistik otomatis
                         if (modalId === 'modalFormVoice') {
                             fetchVoiceData();
                         }
@@ -2944,9 +3515,8 @@
                 });
             };
 
-            // 2. Baca File Jika Ada Lampiran
-            if (fileInput && fileInput.files.length > 0) {
-                const file = fileInput.files[0];
+            if (activeFileInputs.length > 0) {
+                const file = activeFileInputs[0].files[0];
                 const reader = new FileReader();
                 reader.onload = function(e) {
                     const base64Data = e.target.result.split(',')[1];
@@ -2958,7 +3528,6 @@
             }
         }
 
-        /* --- FITUR CARI ID REQUEST, NAMA PENGAJU, ATAU KATEGORI --- */
         function filterVoiceTable() {
             const input = document.getElementById("searchVoiceInput");
             const filter = input.value.toUpperCase();
@@ -2993,7 +3562,7 @@
             filterVoiceTable();
         }
 
-        /* ==================== ANIMASI GOLD CONFETTI PITA MELAYANG ==================== */
+        /* ==================== ANIMASI GOLD CONFETTI ==================== */
         const canvas = document.getElementById('confettiCanvas');
         const ctx = canvas.getContext('2d');
         const banner = document.getElementById('kaizenBanner');
