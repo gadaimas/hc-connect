@@ -400,7 +400,7 @@
             position: relative;
             flex: 1;
             min-width: 280px;
-            max-width: 420px;
+            max-width: 480px;
         }
 
         .search-input-box i {
@@ -1671,7 +1671,7 @@
                         <i class="fa-solid fa-chart-line" style="color:#b45309;"></i>
                         Monitoring Learning & Development
                     </div>
-                    <p style="font-size:0.8rem; color:var(--text-muted);">Lihat status pengajuan program pelatihan & training.</p>
+                    <p style="font-size:0.8rem; color:var(--text-muted);">Lihat status pengajuan program pelatihan & sertifikasi.</p>
                     <span style="font-size:0.8rem; font-weight:700; color:#b45309;">Lihat Status ➔</span>
                 </div>
             </div>
@@ -1776,7 +1776,7 @@
                         <label class="radio-item"><input type="radio" name="dampak" value="Tidak berdampak signifikan" onclick="toggleRadioLainnya(false, 'dampakLainnyaVoiceInput')" checked> Tidak berdampak signifikan</label>
                         <label class="radio-item"><input type="radio" name="dampak" value="Mengganggu pekerjaan saya" onclick="toggleRadioLainnya(false, 'dampakLainnyaVoiceInput')"> Mengganggu pekerjaan saya</label>
                         <label class="radio-item"><input type="radio" name="dampak" value="Mengganggu produktivitas tim" onclick="toggleRadioLainnya(false, 'dampakLainnyaVoiceInput')"> Mengganggu produktivitas tim</label>
-                        <label class="radio-item"><input type="radio" name="dampak" value="Mempengaruhi employee experience" onclick="toggleRadioLainnya(false, 'dampakLainnyaVoiceInput')"> MempengaUrhi employee experience</label>
+                        <label class="radio-item"><input type="radio" name="dampak" value="Mempengaruhi employee experience" onclick="toggleRadioLainnya(false, 'dampakLainnyaVoiceInput')"> Mempengarugui employee experience</label>
                         <label class="radio-item"><input type="radio" name="dampak" value="Mempengaruhi pelayanan kepada nasabah" onclick="toggleRadioLainnya(false, 'dampakLainnyaVoiceInput')"> Mempengaruhi pelayanan kepada nasabah</label>
                         <label class="radio-item"><input type="radio" name="dampak" value="Berpotensi menimbulkan risiko bagi perusahaan" onclick="toggleRadioLainnya(false, 'dampakLainnyaVoiceInput')"> Berpotensi menimbulkan risiko bagi perusahaan</label>
                         <label class="radio-item"><input type="radio" name="dampak" value="Lainnya" onclick="toggleRadioLainnya(true, 'dampakLainnyaVoiceInput')"> Lainnya...</label>
@@ -2638,7 +2638,6 @@
 
                         <div class="form-group">
                             <label class="form-label">Target Peserta <span>*</span></label>
-                            <!-- KOREKSI: Atribut name disesuaikan menjadi "target_peserta" agar terbaca di Apps Script -->
                             <select name="target_peserta" id="targetPesertaSelect" class="form-control" onchange="toggleLainnyaSelect('targetPesertaSelect', 'targetPesertaLainnyaInput')">
                                 <option value="" disabled selected>-- Pilih Target Peserta --</option>
                                 <option value="Individu">Individu</option>
@@ -2773,7 +2772,7 @@
         </div>
     </div>
 
-    <!-- ==================== MODAL MONITORING (TANPA IFRAME) ==================== -->
+    <!-- ==================== MODAL MONITORING (DENGAN SEARCH BAR) ==================== -->
 
     <!-- 1. MONITORING TENAGA KERJA -->
     <div class="modal-overlay" id="modalMonTenagaKerja">
@@ -2782,8 +2781,16 @@
             <h2 class="form-section-title">Monitoring Pengajuan Tenaga Kerja</h2>
             <p class="form-section-subtitle">Daftar pemantauan status pengajuan penambahan/pergantian tenaga kerja.</p>
 
+            <div class="table-search-bar">
+                <div class="search-input-box">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" id="searchMonTKInput" onkeyup="filterMonTKTable()" placeholder="Cari Berdasarkan Nama, NIK, atau Jenis Pengajuan">
+                </div>
+                <button type="button" class="btn-see-all-table" onclick="resetMonTKSearch()">Reset</button>
+            </div>
+
             <div class="table-responsive">
-                <table class="voice-table">
+                <table class="voice-table" id="tableMonTK">
                     <thead>
                         <tr>
                             <th>Nama Lengkap</th>
@@ -2808,8 +2815,16 @@
             <h2 class="form-section-title">Monitoring Izin / Cuti Karyawan</h2>
             <p class="form-section-subtitle">Daftar pemantauan status pergantian karyawan izin/cuti.</p>
 
+            <div class="table-search-bar">
+                <div class="search-input-box">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" id="searchMonCutiInput" onkeyup="filterMonCutiTable()" placeholder="Cari Berdasarkan Nama, NIK, atau Jenis Pengajuan">
+                </div>
+                <button type="button" class="btn-see-all-table" onclick="resetMonCutiSearch()">Reset</button>
+            </div>
+
             <div class="table-responsive">
-                <table class="voice-table">
+                <table class="voice-table" id="tableMonCuti">
                     <thead>
                         <tr>
                             <th>Pengaju (Nama/NIK)</th>
@@ -2836,8 +2851,16 @@
             <h2 class="form-section-title">Monitoring Pengajuan Dokumen/Surat</h2>
             <p class="form-section-subtitle">Daftar pemantauan status penerbitan dokumen dan surat resmi HCBP.</p>
 
+            <div class="table-search-bar">
+                <div class="search-input-box">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" id="searchMonDocInput" onkeyup="filterMonDocTable()" placeholder="Cari Berdasarkan Nama, NIK, Jenis Surat, atau Keperluan Surat">
+                </div>
+                <button type="button" class="btn-see-all-table" onclick="resetMonDocSearch()">Reset</button>
+            </div>
+
             <div class="table-responsive">
-                <table class="voice-table">
+                <table class="voice-table" id="tableMonDoc">
                     <thead>
                         <tr>
                             <th>Nama / NIK</th>
@@ -2855,28 +2878,38 @@
         </div>
     </div>
 
-    <!-- 4. MONITORING LEARNING & DEVELOPMENT (DIPISAH SESUAI PERMINTAAN) -->
+    <!-- 4. MONITORING LEARNING & DEVELOPMENT -->
     <div class="modal-overlay" id="modalMonLearningDev">
         <div class="modal-box" style="max-width: 1200px;">
             <button class="modal-close" onclick="closeModal('modalMonLearningDev')">&times;</button>
             <h2 class="form-section-title">Monitoring Learning & Development</h2>
             <p class="form-section-subtitle">Daftar pemantauan status pengajuan program pelatihan & sertifikasi.</p>
 
+            <div class="table-search-bar">
+                <div class="search-input-box">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" id="searchMonLDInput" onkeyup="filterMonLDTable()" placeholder="Cari Berdasarkan Nama, NIK, atau Jenis Pengajuan">
+                </div>
+                <button type="button" class="btn-see-all-table" onclick="resetMonLDSearch()">Reset</button>
+            </div>
+
             <div class="table-responsive">
-                <table class="voice-table">
+                <table class="voice-table" id="tableMonLD">
                     <thead>
                         <tr>
                             <th>Nama / NIK</th>
                             <th>Jabatan</th>
                             <th>Unit Kerja</th>
                             <th>Jenis Pengajuan</th>
-                            <th>Program / Training / Sertifikasi</th>
+                            <th>Nama Training</th>
+                            <th>Nama Sertifikasi</th>
+                            <th>Nama Learning Program</th>
                             <th>Topik / Kompetensi</th>
                             <th>Status</th>
                         </tr>
                     </thead>
                     <tbody id="tableBodyMonLD">
-                        <tr><td colspan="7" style="text-align:center;">Memuat data...</td></tr>
+                        <tr><td colspan="9" style="text-align:center;">Memuat data...</td></tr>
                     </tbody>
                 </table>
             </div>
@@ -3004,6 +3037,8 @@
             return `<span class="badge-status ${badgeClass}">${statusText}</span>`;
         }
 
+        /* --- FETCH DATA MONITORING --- */
+
         function fetchMonTK() {
             const tbody = document.getElementById("tableBodyMonTK");
             tbody.innerHTML = `<tr><td colspan="5" style="text-align:center;">Memuat data monitoring...</td></tr>`;
@@ -3019,10 +3054,10 @@
                         let html = "";
                         res.data.slice().reverse().forEach(item => {
                             html += `<tr>
-                                <td><b>${item.nama}</b></td>
-                                <td>${item.nik}</td>
+                                <td class="mon-nama-cell"><b>${item.nama}</b></td>
+                                <td class="mon-nik-cell">${item.nik}</td>
                                 <td>${item.unit}</td>
-                                <td>${item.jenis}</td>
+                                <td class="mon-jenis-cell">${item.jenis}</td>
                                 <td>${getStatusBadge(item.status)}</td>
                             </tr>`;
                         });
@@ -3031,7 +3066,6 @@
                 }).catch(err => { tbody.innerHTML = `<tr><td colspan="5" style="text-align:center; color:#dc2626;">Gagal memuat data.</td></tr>`; });
         }
 
-        /* PERBAIKAN SOAL NO. 3: TANGGAL HANYA BERFORMAT YYYY-MM-DD */
         function fetchMonCuti() {
             const tbody = document.getElementById("tableBodyMonCuti");
             tbody.innerHTML = `<tr><td colspan="7" style="text-align:center;">Memuat data monitoring...</td></tr>`;
@@ -3050,9 +3084,9 @@
                             let tglAkhirClean = formatOnlyDate(item.tglSelesai);
 
                             html += `<tr>
-                                <td><b>${item.nama}</b><br><small style="color:var(--text-muted);">${item.nik}</small></td>
+                                <td class="mon-nama-nik-cell"><b>${item.nama}</b><br><small style="color:var(--text-muted);">${item.nik}</small></td>
                                 <td>${item.unit}</td>
-                                <td>${item.jenis}</td>
+                                <td class="mon-jenis-cell">${item.jenis}</td>
                                 <td>${tglAwalClean} s/d ${tglAkhirClean}</td>
                                 <td><b>${item.namaPengganti}</b><br><small style="color:var(--text-muted);">${item.nikPengganti}</small></td>
                                 <td>${item.unitPengganti}</td>
@@ -3085,10 +3119,10 @@
                             let jenisTampil = item.jenisSurat === "Surat Lainnya" ? item.jenisLain : item.jenisSurat;
 
                             html += `<tr>
-                                <td><b>${item.nama}</b><br><small style="color:var(--text-muted);">${item.nik}</small></td>
+                                <td class="mon-nama-nik-cell"><b>${item.nama}</b><br><small style="color:var(--text-muted);">${item.nik}</small></td>
                                 <td>${item.divisi} / ${item.unit}</td>
-                                <td><b>${jenisTampil}</b></td>
-                                <td>${keperluan}</td>
+                                <td class="mon-jenis-cell"><b>${jenisTampil}</b></td>
+                                <td class="mon-keperluan-cell">${keperluan}</td>
                                 <td>${getStatusBadge(item.status)}</td>
                             </tr>`;
                         });
@@ -3097,48 +3131,175 @@
                 }).catch(err => { tbody.innerHTML = `<tr><td colspan="5" style="text-align:center; color:#dc2626;">Gagal memuat data.</td></tr>`; });
         }
 
-        /* PERBAIKAN SOAL NO. 4: KOLOM TABEL DIBUAT TERPISAH KONSISTEN */
         function fetchMonLD() {
             const tbody = document.getElementById("tableBodyMonLD");
-            tbody.innerHTML = `<tr><td colspan="7" style="text-align:center;">Memuat data monitoring...</td></tr>`;
+            tbody.innerHTML = `<tr><td colspan="9" style="text-align:center;">Memuat data monitoring...</td></tr>`;
 
             fetch(`${MONITORING_FETCH_URL}?sheet=Learning Dev`)
                 .then(res => res.json())
                 .then(res => {
                     if (res.result === 'success' && res.data) {
                         if (res.data.length === 0) {
-                            tbody.innerHTML = `<tr><td colspan="7" style="text-align:center;">Belum ada pengajuan.</td></tr>`;
+                            tbody.innerHTML = `<tr><td colspan="9" style="text-align:center;">Belum ada pengajuan.</td></tr>`;
                             return;
                         }
                         let html = "";
                         res.data.slice().reverse().forEach(item => {
-                            let namaProgram = "-";
+                            let namaTraining = "-";
+                            let namaSertifikasi = "-";
+                            let namaLearningProgram = "-";
                             let topikKompetensi = "-";
 
                             if (item.jenis === "Training") {
-                                namaProgram = item.namaTraining || "-";
+                                namaTraining = item.namaTraining || "-";
                                 topikKompetensi = item.topikTraining || "-";
                             } else if (item.jenis === "Sertifikasi") {
-                                namaProgram = item.namaSertifikasi || "-";
+                                namaSertifikasi = item.namaSertifikasi || "-";
                                 topikKompetensi = item.kompetensiSert || "-";
                             } else if (item.jenis === "Learning Program") {
-                                namaProgram = `${item.namaProgram || "-"} (${item.bentukProgram || "-"})`;
+                                namaLearningProgram = `${item.namaProgram || "-"} (${item.bentukProgram || "-"})`;
                                 topikKompetensi = item.topikProgram || "-";
                             }
 
                             html += `<tr>
-                                <td><b>${item.nama}</b><br><small style="color:var(--text-muted);">${item.nik}</small></td>
+                                <td class="mon-nama-nik-cell"><b>${item.nama}</b><br><small style="color:var(--text-muted);">${item.nik}</small></td>
                                 <td>${item.jabatan || "-"}</td>
                                 <td>${item.unit || "-"}</td>
-                                <td><b>${item.jenis || "-"}</b></td>
-                                <td>${namaProgram}</td>
+                                <td class="mon-jenis-cell"><b>${item.jenis || "-"}</b></td>
+                                <td>${namaTraining}</td>
+                                <td>${namaSertifikasi}</td>
+                                <td>${namaLearningProgram}</td>
                                 <td>${topikKompetensi}</td>
                                 <td>${getStatusBadge(item.status)}</td>
                             </tr>`;
                         });
                         tbody.innerHTML = html;
                     }
-                }).catch(err => { tbody.innerHTML = `<tr><td colspan="7" style="text-align:center; color:#dc2626;">Gagal memuat data.</td></tr>`; });
+                }).catch(err => { tbody.innerHTML = `<tr><td colspan="9" style="text-align:center; color:#dc2626;">Gagal memuat data.</td></tr>`; });
+        }
+
+        /* --- FUNGSI SEARCH PER MONITORING --- */
+
+        // 1. Search Mon TK: Nama, NIK, Jenis Pengajuan
+        function filterMonTKTable() {
+            let filter = document.getElementById("searchMonTKInput").value.toUpperCase();
+            let tr = document.getElementById("tableMonTK").getElementsByTagName("tr");
+
+            for (let i = 1; i < tr.length; i++) {
+                let namaTd = tr[i].getElementsByClassName("mon-nama-cell")[0];
+                let nikTd = tr[i].getElementsByClassName("mon-nik-cell")[0];
+                let jenisTd = tr[i].getElementsByClassName("mon-jenis-cell")[0];
+
+                if (namaTd || nikTd || jenisTd) {
+                    let namaVal = namaTd ? (namaTd.textContent || namaTd.innerText) : "";
+                    let nikVal = nikTd ? (nikTd.textContent || nikTd.innerText) : "";
+                    let jenisVal = jenisTd ? (jenisTd.textContent || jenisTd.innerText) : "";
+
+                    if (
+                        namaVal.toUpperCase().indexOf(filter) > -1 ||
+                        nikVal.toUpperCase().indexOf(filter) > -1 ||
+                        jenisVal.toUpperCase().indexOf(filter) > -1
+                    ) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
+        function resetMonTKSearch() {
+            document.getElementById("searchMonTKInput").value = "";
+            filterMonTKTable();
+        }
+
+        // 2. Search Mon Cuti: Nama, NIK, Jenis Pengajuan
+        function filterMonCutiTable() {
+            let filter = document.getElementById("searchMonCutiInput").value.toUpperCase();
+            let tr = document.getElementById("tableMonCuti").getElementsByTagName("tr");
+
+            for (let i = 1; i < tr.length; i++) {
+                let namaNikTd = tr[i].getElementsByClassName("mon-nama-nik-cell")[0];
+                let jenisTd = tr[i].getElementsByClassName("mon-jenis-cell")[0];
+
+                if (namaNikTd || jenisTd) {
+                    let namaNikVal = namaNikTd ? (namaNikTd.textContent || namaNikTd.innerText) : "";
+                    let jenisVal = jenisTd ? (jenisTd.textContent || jenisTd.innerText) : "";
+
+                    if (
+                        namaNikVal.toUpperCase().indexOf(filter) > -1 ||
+                        jenisVal.toUpperCase().indexOf(filter) > -1
+                    ) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
+        function resetMonCutiSearch() {
+            document.getElementById("searchMonCutiInput").value = "";
+            filterMonCutiTable();
+        }
+
+        // 3. Search Mon Dokumen: Nama, NIK, Jenis Surat, Keperluan Surat
+        function filterMonDocTable() {
+            let filter = document.getElementById("searchMonDocInput").value.toUpperCase();
+            let tr = document.getElementById("tableMonDoc").getElementsByTagName("tr");
+
+            for (let i = 1; i < tr.length; i++) {
+                let namaNikTd = tr[i].getElementsByClassName("mon-nama-nik-cell")[0];
+                let jenisTd = tr[i].getElementsByClassName("mon-jenis-cell")[0];
+                let keperluanTd = tr[i].getElementsByClassName("mon-keperluan-cell")[0];
+
+                if (namaNikTd || jenisTd || keperluanTd) {
+                    let namaNikVal = namaNikTd ? (namaNikTd.textContent || namaNikTd.innerText) : "";
+                    let jenisVal = jenisTd ? (jenisTd.textContent || jenisTd.innerText) : "";
+                    let keperluanVal = keperluanTd ? (keperluanTd.textContent || keperluanTd.innerText) : "";
+
+                    if (
+                        namaNikVal.toUpperCase().indexOf(filter) > -1 ||
+                        jenisVal.toUpperCase().indexOf(filter) > -1 ||
+                        keperluanVal.toUpperCase().indexOf(filter) > -1
+                    ) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
+        function resetMonDocSearch() {
+            document.getElementById("searchMonDocInput").value = "";
+            filterMonDocTable();
+        }
+
+        // 4. Search Mon LD: Nama, NIK, Jenis Pengajuan
+        function filterMonLDTable() {
+            let filter = document.getElementById("searchMonLDInput").value.toUpperCase();
+            let tr = document.getElementById("tableMonLD").getElementsByTagName("tr");
+
+            for (let i = 1; i < tr.length; i++) {
+                let namaNikTd = tr[i].getElementsByClassName("mon-nama-nik-cell")[0];
+                let jenisTd = tr[i].getElementsByClassName("mon-jenis-cell")[0];
+
+                if (namaNikTd || jenisTd) {
+                    let namaNikVal = namaNikTd ? (namaNikTd.textContent || namaNikTd.innerText) : "";
+                    let jenisVal = jenisTd ? (jenisTd.textContent || jenisTd.innerText) : "";
+
+                    if (
+                        namaNikVal.toUpperCase().indexOf(filter) > -1 ||
+                        jenisVal.toUpperCase().indexOf(filter) > -1
+                    ) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
+        function resetMonLDSearch() {
+            document.getElementById("searchMonLDInput").value = "";
+            filterMonLDTable();
         }
 
         function idElement(id) {
@@ -3432,7 +3593,6 @@
             btnSubmit.disabled = !(dec1 && dec2);
         }
 
-        /* PERBAIKAN SOAL NO. 1 & 2: DUKUNGAN INPUT FILE MULTIPEL & FILTER AKTIF */
         function handleSpreadsheetSubmit(event, scriptUrl, modalId) {
             event.preventDefault();
             const form = event.target;
@@ -3446,27 +3606,54 @@
             submitBtn.innerText = "Mengirim...";
             submitBtn.disabled = true;
 
-            const formData = new FormData(form);
-
-            // Temukan file input yang memiliki file terlampir
             const activeFileInputs = Array.from(form.querySelectorAll('input[type="file"]')).filter(inp => inp.files && inp.files.length > 0);
 
-            const sendData = (fileData = "", fileName = "", fileMimeType = "") => {
-                const payload = new URLSearchParams();
+            const readFileAsBase64 = (fileInput) => {
+                return new Promise((resolve, reject) => {
+                    const file = fileInput.files[0];
+                    if (!file) {
+                        resolve(null);
+                        return;
+                    }
+                    const reader = new FileReader();
+                    reader.onload = (e) => {
+                        resolve({
+                            id: fileInput.id,
+                            name: file.name,
+                            type: file.type,
+                            data: e.target.result.split(',')[1]
+                        });
+                    };
+                    reader.onerror = (error) => reject(error);
+                    reader.readAsDataURL(file);
+                });
+            };
 
-                for (let [key, value] of formData.entries()) {
-                    payload.append(key, value);
-                }
+            Promise.all(activeFileInputs.map(readFileAsBase64))
+                .then(fileResults => {
+                    const payload = new URLSearchParams();
+                    const formData = new FormData(form);
 
-                if (fileData) {
-                    payload.append('fileData', fileData);
-                    payload.append('fileName', fileName);
-                    payload.append('fileMimeType', fileMimeType);
-                }
+                    for (let [key, value] of formData.entries()) {
+                        payload.append(key, value);
+                    }
 
-                fetch(scriptUrl, {
-                    method: 'POST',
-                    body: payload
+                    fileResults.forEach(f => {
+                        if (f) {
+                            payload.append(f.id + '_data', f.data);
+                            payload.append(f.id + '_name', f.name);
+                            payload.append(f.id + '_type', f.type);
+
+                            payload.append('fileData', f.data);
+                            payload.append('fileName', f.name);
+                            payload.append('fileMimeType', f.type);
+                        }
+                    });
+
+                    return fetch(scriptUrl, {
+                        method: 'POST',
+                        body: payload
+                    });
                 })
                 .then(response => response.json())
                 .then(data => {
@@ -3513,19 +3700,6 @@
                     submitBtn.innerText = originalBtnText;
                     submitBtn.disabled = false;
                 });
-            };
-
-            if (activeFileInputs.length > 0) {
-                const file = activeFileInputs[0].files[0];
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    const base64Data = e.target.result.split(',')[1];
-                    sendData(base64Data, file.name, file.type);
-                };
-                reader.readAsDataURL(file);
-            } else {
-                sendData();
-            }
         }
 
         function filterVoiceTable() {
