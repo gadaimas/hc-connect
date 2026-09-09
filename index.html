@@ -103,9 +103,18 @@
             align-items: center;
             gap: 5px;
             transition: var(--transition);
+            cursor: pointer;
         }
 
         .nav-item:hover, .nav-item.active { color: var(--brand-blue); }
+
+        /* --- PAGE DISPLAY MANAGEMENT --- */
+        .page-content {
+            display: none;
+        }
+        .page-content.active {
+            display: block;
+        }
 
         /* --- 3. HERO BANNER --- */
         .hero-banner {
@@ -1016,6 +1025,78 @@
             gap: 8px;
         }
 
+        /* --- STYLES HARAMAN KARIR --- */
+        .career-hero {
+            background: linear-gradient(135deg, #0f2c89 0%, #1e3a8a 100%);
+            color: white;
+            padding: 50px 5%;
+            border-radius: 24px;
+            margin-top: 30px;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .career-hero h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 12px;
+        }
+
+        .career-hero p {
+            font-size: 1.05rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .career-grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-bottom: 50px;
+        }
+
+        .career-card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 28px 24px;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-card);
+            transition: var(--transition);
+        }
+
+        .career-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--brand-yellow);
+        }
+
+        .career-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--brand-yellow-light);
+            color: var(--brand-blue);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 18px;
+        }
+
+        .career-title {
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: var(--brand-blue);
+            margin-bottom: 10px;
+        }
+
+        .career-desc {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
         /* --- 9. MODALS & FORMS --- */
         .modal-overlay {
             position: fixed;
@@ -1246,6 +1327,7 @@
             .kaizen-hero-banner { grid-template-columns: 1fr; padding: 24px; }
             .news-grid-3 { grid-template-columns: 1fr; }
             .hc-help-banner { flex-direction: column; gap: 14px; text-align: center; }
+            .career-grid-3 { grid-template-columns: 1fr; }
 
             .footer-contact-group {
                 align-items: flex-start;
@@ -1274,316 +1356,355 @@
             <div class="brand-title">HC <span>CONNECT</span></div>
         </div>
 
+        <!-- 3 MENU NAVIGASI HEADER -->
         <ul class="nav-links">
-            <li><a href="#" class="nav-item active">Home</a></li>
-            <li><a href="#quick-access" class="nav-item">Quick Access</a></li>
-            <li><a href="#track-voice" class="nav-item">Track Voice</a></li>
-            <li><a href="#events" class="nav-item">Events</a></li>
-            <li><a href="#news" class="nav-item">News</a></li>
+            <li><span class="nav-item active" id="nav-home" onclick="switchPage('page-home')">Home</span></li>
+            <li><span class="nav-item" id="nav-karir" onclick="switchPage('page-karir')">Karir</span></li>
+            <li><a href="https://wa.me/6281220002964" target="_blank" class="nav-item">Ask HC</a></li>
         </ul>
     </nav>
 
-    <section class="hero-banner">
-        <div class="hero-left">
-            <h2 class="hero-sub">Selamat datang di</h2>
-            <h1 class="hero-main">HC <span>CONNECT</span></h1>
-            <p class="hero-desc">
-                Portal informasi, layanan, dan pengembangan karyawan untuk mendukung kinerja terbaik pertumbuhan bersama.
-            </p>
-            <a href="#quick-access" class="btn-pill">
-                Jelajahi HC Connect
-                <span class="pill-circle"><i class="fa-solid fa-arrow-right"></i></span>
-            </a>
-        </div>
-
-        <div class="hero-right">
-            <img src="header.png" alt="Kantor Gadai MAS Nusantara" class="hero-bg-photo">
-        </div>
-    </section>
-
-    <div class="container">
-
-        <section class="quick-access-section" id="quick-access">
-            <div class="section-header">
-                <h2 class="section-title-main">Quick Access</h2>
-            </div>
-
-            <div class="qa-grid-4">
-                <div class="qa-card-simple" onclick="openModal('modalFormVoice')">
-                    <div style="display: flex; align-items: center; gap: 12px;">
-                        <div class="card-icon-small"><i class="fa-solid fa-comments"></i></div>
-                        <h3 class="card-title-sub">Employee Voice</h3>
-                    </div>
-                    <p class="card-desc-text">Sampaikan masukan, ide, dan aspirasi Anda secara langsung.</p>
-                </div>
-
-                <div class="qa-card-dropdown" id="dropdownHC">
-                    <div class="dropdown-header" onclick="toggleDropdown('dropdownHC')">
-                        <div class="dropdown-header-left">
-                            <div class="card-icon-small" style="background:#e0f2fe; color:#0284c7;"><i class="fa-solid fa-file-signature"></i></div>
-                            <h3 class="card-title-sub">HC Service</h3>
-                        </div>
-                        <i class="fa-solid fa-chevron-down dropdown-icon-arrow"></i>
-                    </div>
-                    <p class="card-desc-text">Layanan administrasi dan pemantauan pengajuan karyawan.</p>
-
-                    <div class="dropdown-content">
-                        <button class="btn-dropdown-action" onclick="openModal('pageFormAdministrasi')">
-                            <span>📝 Form Administrasi</span>
-                            <i class="fa-solid fa-arrow-right"></i>
-                        </button>
-                        <button class="btn-dropdown-action monitoring-type" onclick="openModal('pageMonitoringAdministrasi')">
-                            <span>📊 Monitoring Status Administrasi</span>
-                            <i class="fa-solid fa-arrow-right"></i>
-                        </button>
-                    </div>
-                </div>
-
-                <div class="qa-card-dropdown" id="dropdownLearning">
-                    <div class="dropdown-header" onclick="toggleDropdown('dropdownLearning')">
-                        <div class="dropdown-header-left">
-                            <div class="card-icon-small" style="background:#f0fdf4; color:#16a34a;"><i class="fa-solid fa-graduation-cap"></i></div>
-                            <h3 class="card-title-sub">Learning & Development</h3>
-                        </div>
-                        <i class="fa-solid fa-chevron-down dropdown-icon-arrow"></i>
-                    </div>
-                    <p class="card-desc-text">Pusat pembelajaran, panduan kerja, dan kebijakan perusahaan.</p>
-
-                    <div class="dropdown-content">
-                        <a href="https://mas-academy.training" target="_blank" class="btn-dropdown-action">
-                            <span>📚 SOP & Policy</span>
-                            <i class="fa-solid fa-arrow-right"></i>
-                        </a>
-                        <a href="https://mas-academy.training" target="_blank" class="btn-dropdown-action">
-                            <span>💡 Knowledge Center</span>
-                            <i class="fa-solid fa-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <a href="https://lookerstudio.google.com/" target="_blank" class="qa-card-simple">
-                    <div style="display: flex; align-items: center; gap: 12px;">
-                        <div class="card-icon-small" style="background:#fef2f2; color:#dc2626;"><i class="fa-solid fa-chart-pie"></i></div>
-                        <h3 class="card-title-sub">Dashboard & Report</h3>
-                    </div>
-                    <p class="card-desc-text">Akses data analitik dan laporan performa internal.</p>
+    <!-- ==================== PAGE 1: HOME ==================== -->
+    <div id="page-home" class="page-content active">
+        <section class="hero-banner">
+            <div class="hero-left">
+                <h2 class="hero-sub">Selamat datang di</h2>
+                <h1 class="hero-main">HC <span>CONNECT</span></h1>
+                <p class="hero-desc">
+                    Portal informasi, layanan, dan pengembangan karyawan untuk mendukung kinerja terbaik pertumbuhan bersama.
+                </p>
+                <a href="#quick-access" class="btn-pill">
+                    Jelajahi HC Connect
+                    <span class="pill-circle"><i class="fa-solid fa-arrow-right"></i></span>
                 </a>
             </div>
-        </section>
 
-        <section class="track-voice-section" id="track-voice">
-            <div class="section-header">
-                <h2 class="section-title-main">Track Your Voice</h2>
-            </div>
-
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="stat-label">Total Aspirasi</div>
-                    <div class="stat-value" id="totalAspirasiCount" style="color:var(--brand-blue);">0</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-label">Dalam Proses</div>
-                    <div class="stat-value" id="prosesAspirasiCount" style="color:#d97706;">0</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-label">Selesai Ditindaklanjuti</div>
-                    <div class="stat-value" id="selesaiAspirasiCount" style="color:#16a34a;">0</div>
-                </div>
-            </div>
-
-            <div class="table-search-bar">
-                <div class="search-input-box">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                    <input type="text" id="searchVoiceInput" onkeyup="filterVoiceTable()" placeholder="Cari Berdasarkan ID Request, Nama, atau Topik">
-                </div>
-                <button type="button" class="btn-see-all-table" onclick="resetVoiceSearch()">Reset</button>
-            </div>
-
-            <div class="table-responsive">
-                <table class="voice-table" id="voiceTable">
-                    <thead>
-                        <tr>
-                            <th>ID Request</th>
-                            <th>Nama Pengaju</th>
-                            <th>Topik</th>
-                            <th>Status</th>
-                            <th>Update Terakhir</th>
-                        </tr>
-                    </thead>
-                    <tbody id="voiceTableBody">
-                        <tr>
-                            <td colspan="5" style="text-align: center; color: var(--text-muted);">Memuat data aspirasi...</td>
-                        </tr>
-                    </tbody>
-                </table>
+            <div class="hero-right">
+                <img src="header.png" alt="Kantor Gadai MAS Nusantara" class="hero-bg-photo">
             </div>
         </section>
 
-        <section class="event-section" id="events">
-            <div class="event-wrapper">
+        <div class="container">
+
+            <section class="quick-access-section" id="quick-access">
                 <div class="section-header">
-                    <h2 class="section-title-main">Upcoming Events</h2>
+                    <h2 class="section-title-main">Quick Access</h2>
                 </div>
 
-                <div class="event-grid">
-                    <div class="mini-calendar">
-                        <div class="cal-header">
-                            <i class="fa-solid fa-chevron-left"></i>
-                            <span>Agustus 2026</span>
-                            <i class="fa-solid fa-chevron-right"></i>
+                <div class="qa-grid-4">
+                    <div class="qa-card-simple" onclick="openModal('modalFormVoice')">
+                        <div style="display: flex; align-items: center; gap: 12px;">
+                            <div class="card-icon-small"><i class="fa-solid fa-comments"></i></div>
+                            <h3 class="card-title-sub">Employee Voice</h3>
                         </div>
-                        <div class="cal-days">
-                            <span>M</span><span>S</span><span>S</span><span>R</span><span>K</span><span>J</span><span>S</span>
+                        <p class="card-desc-text">Sampaikan masukan, ide, dan aspirasi Anda secara langsung.</p>
+                    </div>
+
+                    <div class="qa-card-dropdown" id="dropdownHC">
+                        <div class="dropdown-header" onclick="toggleDropdown('dropdownHC')">
+                            <div class="dropdown-header-left">
+                                <div class="card-icon-small" style="background:#e0f2fe; color:#0284c7;"><i class="fa-solid fa-file-signature"></i></div>
+                                <h3 class="card-title-sub">HC Service</h3>
+                            </div>
+                            <i class="fa-solid fa-chevron-down dropdown-icon-arrow"></i>
                         </div>
-                        <div class="cal-dates">
-                            <span class="cal-date" style="opacity:0.3">26</span><span class="cal-date" style="opacity:0.3">27</span><span class="cal-date" style="opacity:0.3">28</span><span class="cal-date" style="opacity:0.3">29</span><span class="cal-date" style="opacity:0.3">30</span><span class="cal-date" style="opacity:0.3">31</span><span class="cal-date">1</span>
-                            <span class="cal-date">2</span><span class="cal-date">3</span><span class="cal-date">4</span><span class="cal-date">5</span><span class="cal-date">6</span><span class="cal-date">7</span><span class="cal-date">8</span>
-                            <span class="cal-date">9</span><span class="cal-date">10</span><span class="cal-date">11</span><span class="cal-date">12</span><span class="cal-date">13</span><span class="cal-date">14</span><span class="cal-date">15</span>
-                            <span class="cal-date">16</span><span class="cal-date">17</span><span class="cal-date active">18</span><span class="cal-date has-event">19</span><span class="cal-date has-event">20</span><span class="cal-date">21</span><span class="cal-date">22</span>
+                        <p class="card-desc-text">Layanan administrasi dan pemantauan pengajuan karyawan.</p>
+
+                        <div class="dropdown-content">
+                            <button class="btn-dropdown-action" onclick="openModal('pageFormAdministrasi')">
+                                <span>📝 Form Administrasi</span>
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+                            <button class="btn-dropdown-action monitoring-type" onclick="openModal('pageMonitoringAdministrasi')">
+                                <span>📊 Monitoring Status Administrasi</span>
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </button>
                         </div>
                     </div>
 
-                    <div class="events-list">
-                        <div class="event-card-item">
-                            <div class="event-date-badge">
-                                <div class="day">19</div>
-                                <div class="month">AGU</div>
+                    <div class="qa-card-dropdown" id="dropdownLearning">
+                        <div class="dropdown-header" onclick="toggleDropdown('dropdownLearning')">
+                            <div class="dropdown-header-left">
+                                <div class="card-icon-small" style="background:#f0fdf4; color:#16a34a;"><i class="fa-solid fa-graduation-cap"></i></div>
+                                <h3 class="card-title-sub">Learning & Development</h3>
                             </div>
-                            <div class="event-details">
-                                <h4 class="event-title">Sosialisasi SOP Operasional & Service Excellence 2026</h4>
-                                <div class="event-time-loc">
-                                    <span><i class="fa-regular fa-clock"></i> 09:00 - 12:00 WIB</span>
-                                    <span><i class="fa-solid fa-video"></i> Zoom Meeting</span>
+                            <i class="fa-solid fa-chevron-down dropdown-icon-arrow"></i>
+                        </div>
+                        <p class="card-desc-text">Pusat pembelajaran, panduan kerja, dan kebijakan perusahaan.</p>
+
+                        <div class="dropdown-content">
+                            <a href="https://mas-academy.training" target="_blank" class="btn-dropdown-action">
+                                <span>📚 Learning Management System</span>
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                            <a href="https://mas-academy.training" target="_blank" class="btn-dropdown-action">
+                                <span>💡 form Learning & Development</span>
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <a href="https://lookerstudio.google.com/" target="_blank" class="qa-card-simple">
+                        <div style="display: flex; align-items: center; gap: 12px;">
+                            <div class="card-icon-small" style="background:#fef2f2; color:#dc2626;"><i class="fa-solid fa-chart-pie"></i></div>
+                            <h3 class="card-title-sub">Dashboard & Report</h3>
+                        </div>
+                        <p class="card-desc-text">Akses data analitik dan laporan performa internal.</p>
+                    </a>
+                </div>
+            </section>
+
+            <section class="track-voice-section" id="track-voice">
+                <div class="section-header">
+                    <h2 class="section-title-main">Track Your Voice</h2>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-label">Total Aspirasi</div>
+                        <div class="stat-value" id="totalAspirasiCount" style="color:var(--brand-blue);">0</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">Dalam Proses</div>
+                        <div class="stat-value" id="prosesAspirasiCount" style="color:#d97706;">0</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">Selesai Ditindaklanjuti</div>
+                        <div class="stat-value" id="selesaiAspirasiCount" style="color:#16a34a;">0</div>
+                    </div>
+                </div>
+
+                <div class="table-search-bar">
+                    <div class="search-input-box">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="text" id="searchVoiceInput" onkeyup="filterVoiceTable()" placeholder="Cari Berdasarkan ID Request, Nama, atau Topik">
+                    </div>
+                    <button type="button" class="btn-see-all-table" onclick="resetVoiceSearch()">Reset</button>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="voice-table" id="voiceTable">
+                        <thead>
+                            <tr>
+                                <th>ID Request</th>
+                                <th>Nama Pengaju</th>
+                                <th>Topik</th>
+                                <th>Status</th>
+                                <th>Update Terakhir</th>
+                            </tr>
+                        </thead>
+                        <tbody id="voiceTableBody">
+                            <tr>
+                                <td colspan="5" style="text-align: center; color: var(--text-muted);">Memuat data aspirasi...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section class="event-section" id="events">
+                <div class="event-wrapper">
+                    <div class="section-header">
+                        <h2 class="section-title-main">Upcoming Events</h2>
+                    </div>
+
+                    <div class="event-grid">
+                        <div class="mini-calendar">
+                            <div class="cal-header">
+                                <i class="fa-solid fa-chevron-left"></i>
+                                <span>Agustus 2026</span>
+                                <i class="fa-solid fa-chevron-right"></i>
+                            </div>
+                            <div class="cal-days">
+                                <span>M</span><span>S</span><span>S</span><span>R</span><span>K</span><span>J</span><span>S</span>
+                            </div>
+                            <div class="cal-dates">
+                                <span class="cal-date" style="opacity:0.3">26</span><span class="cal-date" style="opacity:0.3">27</span><span class="cal-date" style="opacity:0.3">28</span><span class="cal-date" style="opacity:0.3">29</span><span class="cal-date" style="opacity:0.3">30</span><span class="cal-date" style="opacity:0.3">31</span><span class="cal-date">1</span>
+                                <span class="cal-date">2</span><span class="cal-date">3</span><span class="cal-date">4</span><span class="cal-date">5</span><span class="cal-date">6</span><span class="cal-date">7</span><span class="cal-date">8</span>
+                                <span class="cal-date">9</span><span class="cal-date">10</span><span class="cal-date">11</span><span class="cal-date">12</span><span class="cal-date">13</span><span class="cal-date">14</span><span class="cal-date">15</span>
+                                <span class="cal-date">16</span><span class="cal-date">17</span><span class="cal-date active">18</span><span class="cal-date has-event">19</span><span class="cal-date has-event">20</span><span class="cal-date">21</span><span class="cal-date">22</span>
+                            </div>
+                        </div>
+
+                        <div class="events-list">
+                            <div class="event-card-item">
+                                <div class="event-date-badge">
+                                    <div class="day">19</div>
+                                    <div class="month">AGU</div>
+                                </div>
+                                <div class="event-details">
+                                    <h4 class="event-title">Sosialisasi SOP Operasional & Service Excellence 2026</h4>
+                                    <div class="event-time-loc">
+                                        <span><i class="fa-regular fa-clock"></i> 09:00 - 12:00 WIB</span>
+                                        <span><i class="fa-solid fa-video"></i> Zoom Meeting</span>
+                                    </div>
+                                </div>
+                                <a href="https://zoom.us/" target="_blank" class="btn-event-link">Join Zoom ➔</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="news-section" id="news">
+                <div class="news-section-header">
+                    <div class="news-header-title">
+                        <i class="fa-solid fa-bullhorn"></i>
+                        <div>
+                            <h2 class="news-title-main">NEWS & UPDATE</h2>
+                        </div>
+                    </div>
+                    <a href="#" class="btn-see-all-news">Lihat Semua Berita <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+
+                <div class="kaizen-hero-banner" id="kaizenBanner">
+                    <canvas id="confettiCanvas"></canvas>
+
+                    <div class="kaizen-polaroid-wrapper">
+                        <div class="polaroid-frame">
+                            <img src="pemenang.png" alt="Pemenang Kaizen 2026" class="polaroid-img" onerror="this.src='https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600'">
+
+                            <div class="gold-seal-emboss">
+                                <div class="gold-seal-inner">
+                                    <img src="piala.png" alt="Piala Kaizen" class="seal-piala-img" onerror="this.src='https://cdn-icons-png.flaticon.com/512/3112/3112903.png'">
                                 </div>
                             </div>
-                            <a href="https://zoom.us/" target="_blank" class="btn-event-link">Join Zoom ➔</a>
                         </div>
                     </div>
-                </div>
-            </div>
-        </section>
 
-        <section class="news-section" id="news">
-            <div class="news-section-header">
-                <div class="news-header-title">
-                    <i class="fa-solid fa-bullhorn"></i>
-                    <div>
-                        <h2 class="news-title-main">NEWS & UPDATE</h2>
-                    </div>
-                </div>
-                <a href="#" class="btn-see-all-news">Lihat Semua Berita <i class="fa-solid fa-arrow-right"></i></a>
-            </div>
+                    <div class="kaizen-details-side">
+                        <div>
+                            <img src="mahkota.png" alt="Mahkota Kaizen" class="mahkota-img-3d" onerror="this.src='https://cdn-icons-png.flaticon.com/512/2825/2825102.png'">
+                            <div class="kaizen-cursive-title">Selamat & Sukses!</div>
+                            <div class="kaizen-subtext">Kepada Pemenang</div>
+                        </div>
 
-            <div class="kaizen-hero-banner" id="kaizenBanner">
-                <canvas id="confettiCanvas"></canvas>
+                        <h2 class="kaizen-main-title">KAIZEN 2026</h2>
 
-                <div class="kaizen-polaroid-wrapper">
-                    <div class="polaroid-frame">
-                        <img src="pemenang.png" alt="Pemenang Kaizen 2026" class="polaroid-img" onerror="this.src='https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600'">
+                        <div class="kaizen-quote-box">
+                            <i class="fa-solid fa-quote-left"></i>
+                            Terima kasih atas ide, inovasi, dan semangat perbaikan berkelanjutan yang membawa perubahan positif bagi Gadai MAS Nusantara.
+                            <i class="fa-solid fa-quote-right"></i>
+                        </div>
 
-                        <div class="gold-seal-emboss">
-                            <div class="gold-seal-inner">
-                                <img src="piala.png" alt="Piala Kaizen" class="seal-piala-img" onerror="this.src='https://cdn-icons-png.flaticon.com/512/3112/3112903.png'">
+                        <div class="kaizen-category-pill">Kategori: Operational Excellence</div>
+
+                        <div class="winner-card-box">
+                            <img src="piala.png" alt="Piala Kaizen" class="piala-card-img" onerror="this.src='https://cdn-icons-png.flaticon.com/512/3112/3112903.png'">
+                            <div>
+                                <div class="winner-info-title">Tim Kaizen Juara 1</div>
+                                <div class="winner-info-sub">Area NTB – MAS AMPENAN</div>
+                                <div class="winner-info-desc">Inovasi: Optimalisasi Proses Gadai Cepat</div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="kaizen-details-side">
-                    <div>
-                        <img src="mahkota.png" alt="Mahkota Kaizen" class="mahkota-img-3d" onerror="this.src='https://cdn-icons-png.flaticon.com/512/2825/2825102.png'">
-                        <div class="kaizen-cursive-title">Selamat & Sukses!</div>
-                        <div class="kaizen-subtext">Kepada Pemenang</div>
+                <div class="news-grid-3">
+                    <div class="news-card-single">
+                        <div class="news-card-img-wrap">
+                            <span class="news-badge bg-blue">HC UPDATE</span>
+                            <img src="news.jpg" alt="News 1">
+                        </div>
+                        <div class="news-card-body">
+                            <div>
+                                <h3 class="news-card-title">HC CONNECT: Fitur Baru Segera Hadir!</h3>
+                                <p class="news-card-snippet">Kami terus berinovasi untuk memberikan pengalaman terbaik bagi Sobat GadaiMAS.</p>
+                            </div>
+                            <div class="news-card-footer">
+                                <span class="news-meta">22 Agustus 2026 • HC Team</span>
+                                <a href="#" class="news-read-more">Baca Selengkapnya ➔</a>
+                            </div>
+                        </div>
                     </div>
 
-                    <h2 class="kaizen-main-title">KAIZEN 2026</h2>
-
-                    <div class="kaizen-quote-box">
-                        <i class="fa-solid fa-quote-left"></i>
-                        Terima kasih atas ide, inovasi, dan semangat perbaikan berkelanjutan yang membawa perubahan positif bagi Gadai MAS Nusantara.
-                        <i class="fa-solid fa-quote-right"></i>
+                    <div class="news-card-single">
+                        <div class="news-card-img-wrap">
+                            <span class="news-badge bg-purple">LEARNING</span>
+                            <img src="news.jpg" alt="News 2">
+                        </div>
+                        <div class="news-card-body">
+                            <div>
+                                <h3 class="news-card-title">Program Training Leadership Batch 3</h3>
+                                <p class="news-card-snippet">Tingkatkan kemampuan leadership Anda bersama program terbaik dari GadaiMAS Learning Center.</p>
+                            </div>
+                            <div class="news-card-footer">
+                                <span class="news-meta">21 Agustus 2026 • Learning Center</span>
+                                <a href="#" class="news-read-more">Baca Selengkapnya ➔</a>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="kaizen-category-pill">Kategori: Operational Excellence</div>
-
-                    <div class="winner-card-box">
-                        <img src="piala.png" alt="Piala Kaizen" class="piala-card-img" onerror="this.src='https://cdn-icons-png.flaticon.com/512/3112/3112903.png'">
-                        <div>
-                            <div class="winner-info-title">Tim Kaizen Juara 1</div>
-                            <div class="winner-info-sub">Area NTB – MAS AMPENAN</div>
-                            <div class="winner-info-desc">Inovasi: Optimalisasi Proses Gadai Cepat</div>
+                    <div class="news-card-single">
+                        <div class="news-card-img-wrap">
+                            <span class="news-badge bg-teal">ACHIEVEMENT</span>
+                            <img src="news.jpg" alt="News 3">
+                        </div>
+                        <div class="news-card-body">
+                            <div>
+                                <h3 class="news-card-title">Gadai MAS Raih Penghargaan Indonesia Best Workplace 2026</h3>
+                                <p class="news-card-snippet">Bangga menjadi bagian dari perusahaan yang terus bertumbuh dan berprestasi.</p>
+                            </div>
+                            <div class="news-card-footer">
+                                <span class="news-meta">20 Agustus 2026 • Corporate</span>
+                                <a href="#" class="news-read-more">Baca Selengkapnya ➔</a>
+                            </div>
                         </div>
                     </div>
                 </div>
+
+                <div class="hc-help-banner">
+                    <div class="hc-help-left">
+                        <div class="hc-help-avatar"><i class="fa-solid fa-headset"></i></div>
+                        <div class="hc-help-text">
+                            <h4>Butuh bantuan atau informasi lebih lanjut?</h4>
+                            <p>Tim HC siap membantu Anda!</p>
+                        </div>
+                    </div>
+                    <a href="https://wa.me/6281220002964" target="_blank" class="btn-chat-hc">
+                        <i class="fa-solid fa-comments"></i> Chat dengan HC
+                    </a>
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+    <!-- ==================== PAGE 2: KARIR (PREVIEW GAMBARAN HASIL) ==================== -->
+    <div id="page-karir" class="page-content">
+        <div class="container">
+            <div class="career-hero">
+                <h1>Karir & Pengembangan Diri</h1>
+                <p>Jelajahi peluang pertumbuhan karir internal dan program pengembangan kompetensi untuk masa depan cemerlang di PT Gadai MAS Nusantara.</p>
             </div>
 
-            <div class="news-grid-3">
-                <div class="news-card-single">
-                    <div class="news-card-img-wrap">
-                        <span class="news-badge bg-blue">HC UPDATE</span>
-                        <img src="news.jpg" alt="News 1">
-                    </div>
-                    <div class="news-card-body">
-                        <div>
-                            <h3 class="news-card-title">HC CONNECT: Fitur Baru Segera Hadir!</h3>
-                            <p class="news-card-snippet">Kami terus berinovasi untuk memberikan pengalaman terbaik bagi Sobat GadaiMAS.</p>
-                        </div>
-                        <div class="news-card-footer">
-                            <span class="news-meta">22 Agustus 2026 • HC Team</span>
-                            <a href="#" class="news-read-more">Baca Selengkapnya ➔</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="news-card-single">
-                    <div class="news-card-img-wrap">
-                        <span class="news-badge bg-purple">LEARNING</span>
-                        <img src="news.jpg" alt="News 2">
-                    </div>
-                    <div class="news-card-body">
-                        <div>
-                            <h3 class="news-card-title">Program Training Leadership Batch 3</h3>
-                            <p class="news-card-snippet">Tingkatkan kemampuan leadership Anda bersama program terbaik dari GadaiMAS Learning Center.</p>
-                        </div>
-                        <div class="news-card-footer">
-                            <span class="news-meta">21 Agustus 2026 • Learning Center</span>
-                            <a href="#" class="news-read-more">Baca Selengkapnya ➔</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="news-card-single">
-                    <div class="news-card-img-wrap">
-                        <span class="news-badge bg-teal">ACHIEVEMENT</span>
-                        <img src="news.jpg" alt="News 3">
-                    </div>
-                    <div class="news-card-body">
-                        <div>
-                            <h3 class="news-card-title">Gadai MAS Raih Penghargaan Indonesia Best Workplace 2026</h3>
-                            <p class="news-card-snippet">Bangga menjadi bagian dari perusahaan yang terus bertumbuh dan berprestasi.</p>
-                        </div>
-                        <div class="news-card-footer">
-                            <span class="news-meta">20 Agustus 2026 • Corporate</span>
-                            <a href="#" class="news-read-more">Baca Selengkapnya ➔</a>
-                        </div>
-                    </div>
-                </div>
+            <div class="section-header">
+                <h2 class="section-title-main">Peluang & Pengembangan Intern</h2>
             </div>
 
-            <div class="hc-help-banner">
-                <div class="hc-help-left">
-                    <div class="hc-help-avatar"><i class="fa-solid fa-headset"></i></div>
-                    <div class="hc-help-text">
-                        <h4>Butuh bantuan atau informasi lebih lanjut?</h4>
-                        <p>Tim HC siap membantu Anda!</p>
-                    </div>
+            <div class="career-grid-3">
+                <div class="career-card">
+                    <div class="career-icon"><i class="fa-solid fa-briefcase"></i></div>
+                    <h3 class="career-title">Lowongan Internal (Job Posting)</h3>
+                    <p class="career-desc">Temukan peluang promosi dan rotasi jabatan antar unit/divisi untuk mengembangkan potensi Anda secara berkesinambungan.</p>
+                    <button class="btn-dropdown-action" style="justify-content: center;">Lihat Lowongan Active ➔</button>
                 </div>
-                <a href="https://wa.me/6281220002964" target="_blank" class="btn-chat-hc">
-                    <i class="fa-solid fa-comments"></i> Chat dengan HC
-                </a>
-            </div>
-        </section>
 
+                <div class="career-card">
+                    <div class="career-icon"><i class="fa-solid fa-diagram-project"></i></div>
+                    <h3 class="career-title">Jalur Karir (Career Path)</h3>
+                    <p class="career-desc">Pahami pemetaan jenjang karir, persyaratan kompetensi, dan kualifikasi yang dibutuhkan di setiap fungsi jabatan.</p>
+                    <button class="btn-dropdown-action" style="justify-content: center;">Lihat Mapping Karir ➔</button>
+                </div>
+
+                <div class="career-card">
+                    <div class="career-icon"><i class="fa-solid fa-award"></i></div>
+                    <h3 class="career-title">Program Talent Pool</h3>
+                    <p class="career-desc">Program akselerasi kepemimpinan dan suksesi bagi karyawan berprestasi tinggi untuk menduduki posisi strategis.</p>
+                    <button class="btn-dropdown-action" style="justify-content: center;">Info Talent Pool ➔</button>
+                </div>
+            </div>
+        </div>
     </div>
 
     <div class="modal-overlay" id="pageFormAdministrasi">
@@ -1811,47 +1932,8 @@
                 <div class="form-group">
                     <label class="form-label">Bagaimana Anda ingin pengajuan ini ditangani? <span>*</span></label>
                     <div class="radio-list">
-                        <label class="radio-item"><input type="radio" name="penanganan_identitas" value="Identitas dapat diketahui oleh HC" checked> Identitas dapat diketahui oleh HC</label>
-                        <label class="radio-item"><input type="radio" name="penanganan_identitas" value="Mohon identitas saya dirahasiakan"> Mohon identitas saya dirahasiakan</label>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-label">Secara keseluruhan, apakah Anda puas dengan kondisi saat ini? <span>*</span></label>
-                    <div class="scale-box">
-                        <div class="scale-options">
-                            <div class="scale-option"><label for="p1">1</label><input type="radio" id="p1" name="kepuasan_skala" value="1" required></div>
-                            <div class="scale-option"><label for="p2">2</label><input type="radio" id="p2" name="kepuasan_skala" value="2"></div>
-                            <div class="scale-option"><label for="p3">3</label><input type="radio" id="p3" name="kepuasan_skala" value="3"></div>
-                            <div class="scale-option"><label for="p4">4</label><input type="radio" id="p4" name="kepuasan_skala" value="4"></div>
-                            <div class="scale-option"><label for="p5">5</label><input type="radio" id="p5" name="kepuasan_skala" value="5"></div>
-                        </div>
-                        <div class="scale-labels">
-                            <span>Sangat Tidak Puas</span>
-                            <span>Sangat Puas</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-label">Apakah Anda merekomendasikan perusahaan ini sebagai tempat bekerja? <span>*</span></label>
-                    <div class="scale-box">
-                        <div class="scale-options">
-                            <div class="scale-option"><label for="r1">1</label><input type="radio" id="r1" name="rekomendasi_skala" value="1" required></div>
-                            <div class="scale-option"><label for="r2">2</label><input type="radio" id="r2" name="rekomendasi_skala" value="2"></div>
-                            <div class="scale-option"><label for="r3">3</label><input type="radio" id="r3" name="rekomendasi_skala" value="3"></div>
-                            <div class="scale-option"><label for="r4">4</label><input type="radio" id="r4" name="rekomendasi_skala" value="4"></div>
-                            <div class="scale-option"><label for="r5">5</label><input type="radio" id="r5" name="rekomendasi_skala" value="5"></div>
-                            <div class="scale-option"><label for="r6">6</label><input type="radio" id="r6" name="rekomendasi_skala" value="6"></div>
-                            <div class="scale-option"><label for="r7">7</label><input type="radio" id="r7" name="rekomendasi_skala" value="7"></div>
-                            <div class="scale-option"><label for="r8">8</label><input type="radio" id="r8" name="rekomendasi_skala" value="8"></div>
-                            <div class="scale-option"><label for="r9">9</label><input type="radio" id="r9" name="rekomendasi_skala" value="9"></div>
-                            <div class="scale-option"><label for="r10">10</label><input type="radio" id="r10" name="rekomendasi_skala" value="10"></div>
-                        </div>
-                        <div class="scale-labels">
-                            <span>Sangat Tidak Merekomendasikan</span>
-                            <span>Sangat Merekomendasikan</span>
-                        </div>
+                        <label class="radio-item"><input type="radio" name="penanganan_identitas" value="Identitas dapat diketahui semua orang" checked> Identitas dapat diketahui semua orang</label>
+                        <label class="radio-item"><input type="radio" name="penanganan_identitas" value="Identitas dirahasiakan dan hanya diketahui oleh HC"> Identitas dirahasiakan dan hanya diketahui oleh HC</label>
                     </div>
                 </div>
 
@@ -2948,6 +3030,29 @@
             fetchVoiceData();
         });
 
+        /* FUNCTION SWITCH PAGE UNTUK NAVIGATION HEADER */
+        function switchPage(pageId) {
+            const pages = document.querySelectorAll('.page-content');
+            pages.forEach(p => p.classList.remove('active'));
+
+            const targetPage = document.getElementById(pageId);
+            if (targetPage) {
+                targetPage.classList.add('active');
+            }
+
+            const navHome = document.getElementById('nav-home');
+            const navKarir = document.getElementById('nav-karir');
+
+            if (pageId === 'page-home') {
+                navHome.classList.add('active');
+                navKarir.classList.remove('active');
+            } else if (pageId === 'page-karir') {
+                navKarir.classList.add('active');
+                navHome.classList.remove('active');
+            }
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
         /* HELPER: Memotong Jam/ISO String agar hanya menampilkan YYYY-MM-DD */
         function formatOnlyDate(rawStr) {
             if (!rawStr || rawStr === "-") return "-";
@@ -2956,6 +3061,17 @@
                 return str.split("T")[0];
             }
             return str;
+        }
+
+        /* HELPER: Mengubah format YYYY-MM-DD menjadi DD-MM-YYYY */
+        function formatDateDMY(rawStr) {
+            let dateOnly = formatOnlyDate(rawStr);
+            if (!dateOnly || dateOnly === "-") return "-";
+            let parts = dateOnly.split("-");
+            if (parts.length === 3) {
+                return `${parts[2]}-${parts[1]}-${parts[0]}`;
+            }
+            return dateOnly;
         }
 
         function fetchVoiceData() {
@@ -3080,8 +3196,8 @@
                         }
                         let html = "";
                         res.data.slice().reverse().forEach(item => {
-                            let tglAwalClean = formatOnlyDate(item.tglMulai);
-                            let tglAkhirClean = formatOnlyDate(item.tglSelesai);
+                            let tglAwalClean = formatDateDMY(item.tglMulai);
+                            let tglAkhirClean = formatDateDMY(item.tglSelesai);
 
                             html += `<tr>
                                 <td class="mon-nama-nik-cell"><b>${item.nama}</b><br><small style="color:var(--text-muted);">${item.nik}</small></td>
@@ -3113,8 +3229,8 @@
                         let html = "";
                         res.data.slice().reverse().forEach(item => {
                             let keperluan = (item.kepKet && item.kepKet !== "-") ? item.kepKet : 
-                                           ((item.kepPeng && item.kepPeng !== "-") ? item.kepPeng : 
-                                           ((item.kepRekom && item.kepRekom !== "-") ? item.kepRekom : item.kepLain));
+                                            ((item.kepPeng && item.kepPeng !== "-") ? item.kepPeng : 
+                                            ((item.kepRekom && item.kepRekom !== "-") ? item.kepRekom : item.kepLain));
                             
                             let jenisTampil = item.jenisSurat === "Surat Lainnya" ? item.jenisLain : item.jenisSurat;
 
