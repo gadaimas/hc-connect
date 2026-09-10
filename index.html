@@ -1025,76 +1025,217 @@
             gap: 8px;
         }
 
-        /* --- STYLES HARAMAN KARIR --- */
+        /* --- STYLES HALAMAN KARIR --- */
         .career-hero {
             background: linear-gradient(135deg, #0f2c89 0%, #1e3a8a 100%);
             color: white;
-            padding: 50px 5%;
+            padding: 40px 5%;
             border-radius: 24px;
-            margin-top: 30px;
-            margin-bottom: 40px;
+            margin-top: 25px;
+            margin-bottom: 35px;
             text-align: center;
         }
 
         .career-hero h1 {
-            font-size: 2.5rem;
+            font-size: 2.3rem;
             font-weight: 800;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
         }
 
         .career-hero p {
-            font-size: 1.05rem;
+            font-size: 0.98rem;
             opacity: 0.9;
             max-width: 700px;
             margin: 0 auto;
         }
 
-        .career-grid-3 {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
-            margin-bottom: 50px;
-        }
-
-        .career-card {
+        /* Section Layout dengan Header Icon Melingkar */
+        .career-section-block {
             background: #ffffff;
-            border-radius: 20px;
-            padding: 28px 24px;
+            border-radius: 24px;
+            padding: 30px;
             border: 1px solid var(--border-color);
             box-shadow: var(--shadow-card);
-            transition: var(--transition);
+            margin-bottom: 35px;
         }
 
-        .career-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--brand-yellow);
+        .career-section-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            margin-bottom: 24px;
         }
 
-        .career-icon {
-            width: 50px;
-            height: 50px;
-            background: var(--brand-yellow-light);
+        .career-header-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: #e0f2fe;
             color: var(--brand-blue);
-            border-radius: 14px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
-            margin-bottom: 18px;
+            font-size: 1.3rem;
+            flex-shrink: 0;
         }
 
-        .career-title {
-            font-size: 1.2rem;
+        .career-header-title {
+            font-size: 1.5rem;
             font-weight: 800;
             color: var(--brand-blue);
-            margin-bottom: 10px;
+            line-height: 1.2;
         }
 
-        .career-desc {
+        .career-header-sub {
             font-size: 0.88rem;
             color: var(--text-muted);
-            line-height: 1.6;
+            margin-top: 4px;
+        }
+
+        /* 2 Kotak Card Manpower Movement */
+        .career-grid-2 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .movement-card {
+            border-radius: 20px;
+            padding: 24px;
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+        }
+
+        .movement-card.blue-style {
+            background: #f0f7ff;
+            border-color: #d0e3ff;
+        }
+
+        .movement-card.yellow-style {
+            background: #fffdf0;
+            border-color: #ffe8ad;
+        }
+
+        .movement-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.06);
+        }
+
+        .movement-card-top {
+            display: flex;
+            gap: 16px;
             margin-bottom: 20px;
+        }
+
+        .movement-card-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .blue-style .movement-card-icon {
+            background: #dbeafe;
+            color: var(--brand-blue);
+        }
+
+        .yellow-style .movement-card-icon {
+            background: #fef3c7;
+            color: #d97706;
+        }
+
+        .movement-card-body h3 {
+            font-size: 1.15rem;
+            font-weight: 800;
+            color: var(--brand-blue);
+            margin-bottom: 6px;
+        }
+
+        .movement-card-body p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        .btn-form-yellow {
+            align-self: flex-start;
+            background: var(--brand-yellow);
+            color: var(--brand-blue);
+            border: none;
+            padding: 9px 20px;
+            border-radius: 30px;
+            font-weight: 800;
+            font-size: 0.82rem;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: var(--transition);
+            box-shadow: 0 4px 10px rgba(245, 166, 35, 0.25);
+        }
+
+        .btn-form-yellow:hover {
+            background: #e09419;
+            transform: translateX(3px);
+        }
+
+        /* Tabel Job Vacancy */
+        .vacancy-table-container {
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            overflow: hidden;
+        }
+
+        .vacancy-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.88rem;
+        }
+
+        .vacancy-table th {
+            background: var(--brand-blue);
+            color: #ffffff;
+            padding: 14px 16px;
+            text-align: left;
+            font-weight: 700;
+        }
+
+        .vacancy-table td {
+            padding: 14px 16px;
+            border-bottom: 1px solid var(--border-color);
+            color: var(--text-main);
+        }
+
+        .vacancy-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .vacancy-table tr:hover {
+            background-color: #f8fafc;
+        }
+
+        .btn-apply-table {
+            background: var(--brand-yellow);
+            color: var(--brand-blue);
+            border: none;
+            padding: 6px 18px;
+            border-radius: 20px;
+            font-weight: 800;
+            font-size: 0.78rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .btn-apply-table:hover {
+            background: #e09419;
         }
 
         /* --- 9. MODALS & FORMS --- */
@@ -1175,13 +1316,6 @@
         }
         .radio-item:hover { background-color: #f1f5f9; border-color: #cbd5e1; }
         .radio-item input[type="radio"] { accent-color: var(--brand-blue); width: 18px; height: 18px; }
-
-        .scale-box { background: #f8fafc; border: 1px solid var(--border-color); border-radius: 16px; padding: 24px 20px; margin-top: 8px; }
-        .scale-options { display: flex; justify-content: space-between; align-items: center; margin: 15px 0; gap: 8px; overflow-x: auto; padding-bottom: 8px; }
-        .scale-option { display: flex; flex-direction: column; align-items: center; gap: 8px; min-width: 32px; }
-        .scale-option label { font-size: 0.88rem; font-weight: 700; color: var(--brand-blue); cursor: pointer; }
-        .scale-option input[type="radio"] { width: 20px; height: 20px; accent-color: var(--brand-blue); cursor: pointer; }
-        .scale-labels { display: flex; justify-content: space-between; font-size: 0.82rem; font-weight: 700; color: var(--text-muted); }
 
         .btn-submit { width: 100%; background: var(--brand-blue); color: white; padding: 14px; border: none; border-radius: 12px; font-weight: 800; cursor: pointer; transition: var(--transition); }
         .btn-submit:hover { background: var(--brand-blue-hover); }
@@ -1327,7 +1461,7 @@
             .kaizen-hero-banner { grid-template-columns: 1fr; padding: 24px; }
             .news-grid-3 { grid-template-columns: 1fr; }
             .hc-help-banner { flex-direction: column; gap: 14px; text-align: center; }
-            .career-grid-3 { grid-template-columns: 1fr; }
+            .career-grid-2 { grid-template-columns: 1fr; }
 
             .footer-contact-group {
                 align-items: flex-start;
@@ -1670,7 +1804,7 @@
         </div>
     </div>
 
-    <!-- ==================== PAGE 2: KARIR (PREVIEW GAMBARAN HASIL) ==================== -->
+    <!-- ==================== PAGE 2: KARIR ==================== -->
     <div id="page-karir" class="page-content">
         <div class="container">
             <div class="career-hero">
@@ -1678,35 +1812,353 @@
                 <p>Jelajahi peluang pertumbuhan karir internal dan program pengembangan kompetensi untuk masa depan cemerlang di PT Gadai MAS Nusantara.</p>
             </div>
 
-            <div class="section-header">
-                <h2 class="section-title-main">Peluang & Pengembangan Intern</h2>
+            <!-- SECTION 1: MANPOWER MOVEMENT -->
+            <div class="career-section-block">
+                <div class="career-section-header">
+                    <div class="career-header-icon"><i class="fa-solid fa-user-gear"></i></div>
+                    <div>
+                        <h2 class="career-header-title">Manpower Movement</h2>
+                        <p class="career-header-sub">Ajukan kebutuhan mutasi atau promosi sesuai dengan prosedur yang berlaku.</p>
+                    </div>
+                </div>
+
+                <div class="career-grid-2">
+                    <!-- CARD MUTASI -->
+                    <div class="movement-card blue-style">
+                        <div class="movement-card-top">
+                            <div class="movement-card-icon"><i class="fa-solid fa-arrow-right-arrow-left"></i></div>
+                            <div class="movement-card-body">
+                                <h3>Mutasi</h3>
+                                <p>Ajukan permohonan mutasi untuk penempatan di unit kerja atau lokasi lain yang sesuai dengan kebutuhan dan kompetensi Anda.</p>
+                            </div>
+                        </div>
+                        <button class="btn-form-yellow" onclick="openModal('modalFormMutasi')">Isi Form Mutasi ➔</button>
+                    </div>
+
+                    <!-- CARD PROMOSI -->
+                    <div class="movement-card yellow-style">
+                        <div class="movement-card-top">
+                            <div class="movement-card-icon"><i class="fa-solid fa-trophy"></i></div>
+                            <div class="movement-card-body">
+                                <h3>Promosi</h3>
+                                <p>Ajukan permohonan promosi jabatan untuk pengembangan karir Anda bersama Gadai MAS Nusantara.</p>
+                            </div>
+                        </div>
+                        <button class="btn-form-yellow" onclick="openModal('modalFormPromosi')">Isi Form Promosi ➔</button>
+                    </div>
+                </div>
             </div>
 
-            <div class="career-grid-3">
-                <div class="career-card">
-                    <div class="career-icon"><i class="fa-solid fa-briefcase"></i></div>
-                    <h3 class="career-title">Lowongan Internal (Job Posting)</h3>
-                    <p class="career-desc">Temukan peluang promosi dan rotasi jabatan antar unit/divisi untuk mengembangkan potensi Anda secara berkesinambungan.</p>
-                    <button class="btn-dropdown-action" style="justify-content: center;">Lihat Lowongan Active ➔</button>
+            <!-- SECTION 2: JOB VACANCY (DIUBAH HANYA 2 DENGAN JABATAN PENAKSIR DAN KEPALA CABANG) -->
+            <div class="career-section-block">
+                <div class="career-section-header">
+                    <div class="career-header-icon"><i class="fa-solid fa-briefcase"></i></div>
+                    <div>
+                        <h2 class="career-header-title">Job Vacancy</h2>
+                        <p class="career-header-sub">Temukan kesempatan karir yang sesuai dengan keahlian dan minat Anda.</p>
+                    </div>
                 </div>
 
-                <div class="career-card">
-                    <div class="career-icon"><i class="fa-solid fa-diagram-project"></i></div>
-                    <h3 class="career-title">Jalur Karir (Career Path)</h3>
-                    <p class="career-desc">Pahami pemetaan jenjang karir, persyaratan kompetensi, dan kualifikasi yang dibutuhkan di setiap fungsi jabatan.</p>
-                    <button class="btn-dropdown-action" style="justify-content: center;">Lihat Mapping Karir ➔</button>
-                </div>
-
-                <div class="career-card">
-                    <div class="career-icon"><i class="fa-solid fa-award"></i></div>
-                    <h3 class="career-title">Program Talent Pool</h3>
-                    <p class="career-desc">Program akselerasi kepemimpinan dan suksesi bagi karyawan berprestasi tinggi untuk menduduki posisi strategis.</p>
-                    <button class="btn-dropdown-action" style="justify-content: center;">Info Talent Pool ➔</button>
+                <div class="vacancy-table-container">
+                    <table class="vacancy-table">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Jabatan</th>
+                                <th>Unit Kerja</th>
+                                <th>Lokasi</th>
+                                <th>Jenis Pekerjaan</th>
+                                <th>Tanggal Update</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td><b>Penaksir</b></td>
+                                <td>Operasional Cabang</td>
+                                <td>Area JATIM & NTB</td>
+                                <td>Full Time</td>
+                                <td>10 Sep 2026</td>
+                                <td><button class="btn-apply-table" onclick="openModalJobApply('Penaksir', 'Operasional Cabang')">Apply</button></td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td><b>Kepala Cabang</b></td>
+                                <td>Manajemen Operasional</td>
+                                <td>Area NTT & Sulawesi</td>
+                                <td>Full Time</td>
+                                <td>8 Sep 2026</td>
+                                <td><button class="btn-apply-table" onclick="openModalJobApply('Kepala Cabang', 'Manajemen Operasional')">Apply</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
+
         </div>
     </div>
 
+    <!-- ==================== FORM MODAL LAMARAN KERJA / JOB APPLY (KHUSUS JOB VACANCY) ==================== -->
+    <div class="modal-overlay" id="modalJobApply">
+        <div class="modal-box">
+            <button class="modal-close" onclick="closeModal('modalJobApply')">&times;</button>
+            <h2 class="form-section-title">Form Lamaran Pekerjaan</h2>
+            <p class="form-section-subtitle">Lengkapi formulir lamaran kerja di bawah ini untuk posisi lowongan yang dibuka.</p>
+
+            <form onsubmit="handleSpreadsheetSubmit(event, 'https://script.google.com/macros/s/AKfycbzZDUrbSoP3AJcxeIIWcmF-ZxASJkb9IvtapqHX-4kj8zE222Tww63z7iEC9eH15W8v/exec', 'modalJobApply')">
+                <input type="hidden" name="form_type" value="Form Lamaran Pekerjaan">
+
+                <div class="form-group">
+                    <label class="form-label">Posisi yang Dilamar <span>*</span></label>
+                    <input type="text" name="posisi_dilamar" id="applyPosisiInput" class="form-control" readonly style="background:#e2e8f0; font-weight:700; color:var(--brand-blue);" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Unit Kerja / Kategori <span>*</span></label>
+                    <input type="text" name="unit_kerja_dilamar" id="applyUnitInput" class="form-control" readonly style="background:#e2e8f0; font-weight:700; color:var(--brand-blue);" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Nama Lengkap (Sesuai KTP) <span>*</span></label>
+                    <input type="text" name="nama_lengkap" class="form-control" placeholder="Tuliskan nama lengkap Anda..." required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Email Aktif <span>*</span></label>
+                    <input type="email" name="email" class="form-control" placeholder="nama@email.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Nomor WhatsApp / HP <span>*</span></label>
+                    <input type="tel" name="no_whatsapp" class="form-control" placeholder="Contoh: 081234567890" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Pendidikan Terakhir <span>*</span></label>
+                    <select name="pendidikan_terakhir" class="form-control" required>
+                        <option value="" disabled selected>-- Pilih Pendidikan Terakhir --</option>
+                        <option value="SMA/SMK Sederajat">SMA/SMK Sederajat</option>
+                        <option value="D3">D3</option>
+                        <option value="S1/D4">S1/D4</option>
+                        <option value="S2">S2</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Jurusan / Program Studi <span>*</span></label>
+                    <input type="text" name="jurusan" class="form-control" placeholder="Contoh: Ekonomi / Manajemen / Hukum / dll" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Pengalaman Kerja Terakhir (Perusahaan & Jabatan) <span>*</span></label>
+                    <textarea name="pengalaman_kerja" class="form-control" rows="2" placeholder="Contoh: PT ABC - Penaksir (2 Tahun)" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Ekspektasi Gaji (Expected Salary) <span>*</span></label>
+                    <input type="text" name="expected_salary" class="form-control" placeholder="Contoh: Rp 4.500.000" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Kapan Anda Siap Bergabung? <span>*</span></label>
+                    <select name="ketersediaan_bergabung" class="form-control" required>
+                        <option value="" disabled selected>-- Pilih Waktu Ketersediaan --</option>
+                        <option value="Secepatnya (Immediately)">Secepatnya (Immediately)</option>
+                        <option value="1 Minggu">1 Minggu</option>
+                        <option value="1 Bulan (1 Month Notice)">1 Bulan (1 Month Notice)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Upload CV Terbaru (PDF/Word) <span>*</span></label>
+                    <div class="file-input-wrapper">
+                        <input type="file" id="fileCVApply" class="form-control" accept="image/*,.pdf,.docx" required onchange="handleFileChange('fileCVApply', 'btnCancelCVApply')">
+                        <button type="button" id="btnCancelCVApply" class="btn-cancel-file" onclick="resetFileInput('fileCVApply', 'btnCancelCVApply')">✕ Batal</button>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-submit">KIRIM LAMARAN KERJA</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- ==================== FORM MODAL ISIAN PERMOHONAN MUTASI ==================== -->
+    <div class="modal-overlay" id="modalFormMutasi">
+        <div class="modal-box">
+            <button class="modal-close" onclick="closeModal('modalFormMutasi')">&times;</button>
+            <h2 class="form-section-title">Form Permohonan Mutasi Karyawan</h2>
+            <p class="form-section-subtitle">Isi data lengkap Anda untuk pengajuan rotasi/mutasi lokasi atau unit kerja internal PT Gadai MAS Nusantara.</p>
+
+            <form onsubmit="handleSpreadsheetSubmit(event, 'https://script.google.com/macros/s/AKfycbzZDUrbSoP3AJcxeIIWcmF-ZxASJkb9IvtapqHX-4kj8zE222Tww63z7iEC9eH15W8v/exec', 'modalFormMutasi')">
+                <input type="hidden" name="form_type" value="Form Mutasi Karyawan">
+
+                <div class="form-group">
+                    <label class="form-label">Email Perusahaan <span>*</span></label>
+                    <input type="email" name="email" class="form-control" placeholder="nama@gadaimas.co.id" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Nama Lengkap <span>*</span></label>
+                    <input type="text" name="nama_lengkap" class="form-control" placeholder="Contoh: CHINTYA KHARISMA SHANTI" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">NIK (Nomor Induk Karyawan) <span>*</span></label>
+                    <input type="text" name="nik" class="form-control" placeholder="Contoh: 2019.0183" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Jabatan Saat Ini <span>*</span></label>
+                    <input type="text" name="jabatan_saat_ini" class="form-control" placeholder="Contoh: Staff Penaksir / Kasir / Ka Unit" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Unit Kerja / Cabang Saat Ini <span>*</span></label>
+                    <input type="text" name="unit_kerja_saat_ini" class="form-control" placeholder="Contoh: MAS OEBOBO" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Area / Wilayah Saat Ini <span>*</span></label>
+                    <select name="area_saat_ini" class="form-control" required>
+                        <option value="" disabled selected>-- Pilih Area --</option>
+                        <option value="JATIM 1">JATIM 1</option>
+                        <option value="JATIM 2">JATIM 2</option>
+                        <option value="SULAWESI 1">SULAWESI 1</option>
+                        <option value="SULAWESI 2">SULAWESI 2</option>
+                        <option value="SULAWESI 3">SULAWESI 3</option>
+                        <option value="NTB">NTB</option>
+                        <option value="NTT">NTT</option>
+                        <option value="KALTIM">KALTIM</option>
+                        <option value="SUMBAGUT & DKI">SUMBAGUT & DKI</option>
+                        <option value="HO">HO</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Unit Kerja / Cabang Tujuan Mutasi <span>*</span></label>
+                    <input type="text" name="unit_kerja_tujuan" class="form-control" placeholder="Contoh: MAS KUPANG / Head Office" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Area / Wilayah Tujuan Mutasi <span>*</span></label>
+                    <select name="area_tujuan" class="form-control" required>
+                        <option value="" disabled selected>-- Pilih Area Tujuan --</option>
+                        <option value="JATIM 1">JATIM 1</option>
+                        <option value="JATIM 2">JATIM 2</option>
+                        <option value="SULAWESI 1">SULAWESI 1</option>
+                        <option value="SULAWESI 2">SULAWESI 2</option>
+                        <option value="SULAWESI 3">SULAWESI 3</option>
+                        <option value="NTB">NTB</option>
+                        <option value="NTT">NTT</option>
+                        <option value="KALTIM">KALTIM</option>
+                        <option value="SUMBAGUT & DKI">SUMBAGUT & DKI</option>
+                        <option value="HO">HO</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Alasan Pengajuan Mutasi <span>*</span></label>
+                    <textarea name="alasan_mutasi" class="form-control" rows="3" placeholder="Jelaskan alasan permohonan mutasi Anda secara rinci..." required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Rencana Efektif Mutasi <span>*</span></label>
+                    <input type="date" name="rencana_efektif_mutasi" class="form-control" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Upload Surat Rekomendasi / Approval Atasan (Opsional)</label>
+                    <div class="file-input-wrapper">
+                        <input type="file" id="fileMutasi" class="form-control" accept="image/*,.pdf,.docx,.xlsx" onchange="handleFileChange('fileMutasi', 'btnCancelMutasi')">
+                        <button type="button" id="btnCancelMutasi" class="btn-cancel-file" onclick="resetFileInput('fileMutasi', 'btnCancelMutasi')">✕ Batal</button>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-submit">SUBMIT FORM MUTASI</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- ==================== FORM MODAL ISIAN PERMOHONAN PROMOSI ==================== -->
+    <div class="modal-overlay" id="modalFormPromosi">
+        <div class="modal-box">
+            <button class="modal-close" onclick="closeModal('modalFormPromosi')">&times;</button>
+            <h2 class="form-section-title">Form Permohonan Promosi Jabatan</h2>
+            <p class="form-section-subtitle">Pengajuan kenaikan jenjang karir internal di PT Gadai MAS Nusantara.</p>
+
+            <form onsubmit="handleSpreadsheetSubmit(event, 'https://script.google.com/macros/s/AKfycbzZDUrbSoP3AJcxeIIWcmF-ZxASJkb9IvtapqHX-4kj8zE222Tww63z7iEC9eH15W8v/exec', 'modalFormPromosi')">
+                <input type="hidden" name="form_type" value="Form Promosi Jabatan">
+
+                <div class="form-group">
+                    <label class="form-label">Email Perusahaan <span>*</span></label>
+                    <input type="email" name="email" class="form-control" placeholder="nama@gadaimas.co.id" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Nama Lengkap <span>*</span></label>
+                    <input type="text" name="nama_lengkap" class="form-control" placeholder="Contoh: CHINTYA KHARISMA SHANTI" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">NIK (Nomor Induk Karyawan) <span>*</span></label>
+                    <input type="text" name="nik" class="form-control" placeholder="Contoh: 2019.0183" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Jabatan Saat Ini <span>*</span></label>
+                    <input type="text" name="jabatan_saat_ini" class="form-control" placeholder="Contoh: Ka Unit / Supervisor" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Unit Kerja / Cabang Saat Ini <span>*</span></label>
+                    <input type="text" name="unit_kerja_saat_ini" class="form-control" placeholder="Contoh: MAS OEBOBO" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Posisi / Jabatan yang Diajukan Promosi <span>*</span></label>
+                    <input type="text" name="jabatan_promosi_tujuan" class="form-control" placeholder="Contoh: Branch Manager / Kepala Cabang" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Unit Kerja / Divisi Tujuan <span>*</span></label>
+                    <input type="text" name="unit_kerja_promosi_tujuan" class="form-control" placeholder="Contoh: Area NTB / Divisi HC" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Masa Kerja di Jabatan Saat Ini (Tahun/Bulan) <span>*</span></label>
+                    <input type="text" name="masa_kerja" class="form-control" placeholder="Contoh: 2 Tahun 4 Bulan" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Nilai / Result Penilaian Kinerja (PA/KPI) Terakhir <span>*</span></label>
+                    <select name="nilai_kpi_terakhir" class="form-control" required>
+                        <option value="" disabled selected>-- Pilih Predikat --</option>
+                        <option value="A - Sangat Memuaskan">A - Sangat Memuaskan</option>
+                        <option value="B - Memuaskan">B - Memuaskan</option>
+                        <option value="C - Cukup">C - Cukup</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Alasan & Key Achievement (Pencapaian Utama) <span>*</span></label>
+                    <textarea name="pencapaian_dan_alasan" class="form-control" rows="3" placeholder="Tuliskan alasan Anda siap dipromosikan beserta pencapaian/target kinerja terbesar Anda..." required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Upload CV / Portfolio / Dokumen Pendukung <span>*</span></label>
+                    <div class="file-input-wrapper">
+                        <input type="file" id="filePromosi" class="form-control" accept="image/*,.pdf,.docx,.xlsx" required onchange="handleFileChange('filePromosi', 'btnCancelPromosi')">
+                        <button type="button" id="btnCancelPromosi" class="btn-cancel-file" onclick="resetFileInput('filePromosi', 'btnCancelPromosi')">✕ Batal</button>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-submit">SUBMIT FORM PROMOSI</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- ==================== FORM ADMINISTRASI MODAL ==================== -->
     <div class="modal-overlay" id="pageFormAdministrasi">
         <div class="modal-box">
             <button class="modal-close" onclick="closeModal('pageFormAdministrasi')">&times;</button>
@@ -2854,7 +3306,7 @@
         </div>
     </div>
 
-    <!-- ==================== MODAL MONITORING (DENGAN SEARCH BAR) ==================== -->
+    <!-- ==================== MODAL MONITORING ==================== -->
 
     <!-- 1. MONITORING TENAGA KERJA -->
     <div class="modal-overlay" id="modalMonTenagaKerja">
@@ -3051,6 +3503,13 @@
                 navHome.classList.remove('active');
             }
             window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        /* FUNCTION KHUSUS UNTUK MEMBUKA FORM LAMARAN KERJA JOB VACANCY */
+        function openModalJobApply(posisi, unit) {
+            document.getElementById('applyPosisiInput').value = posisi;
+            document.getElementById('applyUnitInput').value = unit;
+            openModal('modalJobApply');
         }
 
         /* HELPER: Memotong Jam/ISO String agar hanya menampilkan YYYY-MM-DD */
