@@ -1092,11 +1092,12 @@
             margin-top: 4px;
         }
 
-        /* 2 Kotak Card Manpower Movement */
-        .career-grid-2 {
+        /* 3 Kotak Card Manpower Movement - DISAMAKAN UKURANNYA DAN DIBUAT DENGAN ALIGNMENT UNIFORM */
+        .career-grid-3 {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(3, 1fr);
             gap: 20px;
+            align-items: stretch; /* Memastikan semua kotak memiliki tinggi yang sama persis */
         }
 
         .movement-card {
@@ -1108,6 +1109,8 @@
             flex-direction: column;
             justify-content: space-between;
             position: relative;
+            cursor: pointer; /* Indikator bahwa kartu dapat diklik secara utuh */
+            height: 100%;
         }
 
         .movement-card.blue-style {
@@ -1120,6 +1123,12 @@
             border-color: #ffe8ad;
         }
 
+        .movement-card.teal-style {
+            background: #f0fdfa;
+            border-color: #ccfbf1;
+            cursor: default; /* Khusus dropdown dikendalikan oleh fungsi toggle */
+        }
+
         .movement-card:hover {
             transform: translateY(-4px);
             box-shadow: 0 12px 25px rgba(0,0,0,0.06);
@@ -1128,7 +1137,7 @@
         .movement-card-top {
             display: flex;
             gap: 16px;
-            margin-bottom: 20px;
+            margin-bottom: 0px;
         }
 
         .movement-card-icon {
@@ -1152,6 +1161,11 @@
             color: #d97706;
         }
 
+        .teal-style .movement-card-icon {
+            background: #ccfbf1;
+            color: #0d9488;
+        }
+
         .movement-card-body h3 {
             font-size: 1.15rem;
             font-weight: 800;
@@ -1165,26 +1179,31 @@
             line-height: 1.5;
         }
 
-        .btn-form-yellow {
-            align-self: flex-start;
-            background: var(--brand-yellow);
-            color: var(--brand-blue);
+        .btn-view-sk {
+            background: var(--brand-blue);
+            color: #ffffff;
             border: none;
-            padding: 9px 20px;
-            border-radius: 30px;
-            font-weight: 800;
-            font-size: 0.82rem;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.78rem;
             cursor: pointer;
+            text-decoration: none;
             display: inline-flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
             transition: var(--transition);
-            box-shadow: 0 4px 10px rgba(245, 166, 35, 0.25);
         }
 
-        .btn-form-yellow:hover {
-            background: #e09419;
-            transform: translateX(3px);
+        .btn-view-sk:hover {
+            background: var(--brand-blue-hover);
+        }
+
+        .btn-view-sk.disabled {
+            background: #cbd5e1;
+            color: #64748b;
+            cursor: not-allowed;
+            pointer-events: none;
         }
 
         /* Tabel Job Vacancy */
@@ -1461,7 +1480,7 @@
             .kaizen-hero-banner { grid-template-columns: 1fr; padding: 24px; }
             .news-grid-3 { grid-template-columns: 1fr; }
             .hc-help-banner { flex-direction: column; gap: 14px; text-align: center; }
-            .career-grid-2 { grid-template-columns: 1fr; }
+            .career-grid-3 { grid-template-columns: 1fr; }
 
             .footer-contact-group {
                 align-items: flex-start;
@@ -1556,27 +1575,14 @@
                         </div>
                     </div>
 
-                    <div class="qa-card-dropdown" id="dropdownLearning">
-                        <div class="dropdown-header" onclick="toggleDropdown('dropdownLearning')">
-                            <div class="dropdown-header-left">
-                                <div class="card-icon-small" style="background:#f0fdf4; color:#16a34a;"><i class="fa-solid fa-graduation-cap"></i></div>
-                                <h3 class="card-title-sub">Learning & Development</h3>
-                            </div>
-                            <i class="fa-solid fa-chevron-down dropdown-icon-arrow"></i>
+                    <!-- LEARNING & DEVELOPMENT DIBUAT CARD DIRECT LINK (TANPA DROPDOWN) -->
+                    <a href="https://mas-academy.training" target="_blank" class="qa-card-simple">
+                        <div style="display: flex; align-items: center; gap: 12px;">
+                            <div class="card-icon-small" style="background:#f0fdf4; color:#16a34a;"><i class="fa-solid fa-graduation-cap"></i></div>
+                            <h3 class="card-title-sub">Learning & Development</h3>
                         </div>
                         <p class="card-desc-text">Pusat pembelajaran, panduan kerja, dan kebijakan perusahaan.</p>
-
-                        <div class="dropdown-content">
-                            <a href="https://mas-academy.training" target="_blank" class="btn-dropdown-action">
-                                <span>📚 Learning Management System</span>
-                                <i class="fa-solid fa-arrow-right"></i>
-                            </a>
-                            <a href="https://mas-academy.training" target="_blank" class="btn-dropdown-action">
-                                <span>💡 form Learning & Development</span>
-                                <i class="fa-solid fa-arrow-right"></i>
-                            </a>
-                        </div>
-                    </div>
+                    </a>
 
                     <a href="https://lookerstudio.google.com/" target="_blank" class="qa-card-simple">
                         <div style="display: flex; align-items: center; gap: 12px;">
@@ -1818,13 +1824,13 @@
                     <div class="career-header-icon"><i class="fa-solid fa-user-gear"></i></div>
                     <div>
                         <h2 class="career-header-title">Manpower Movement</h2>
-                        <p class="career-header-sub">Ajukan kebutuhan mutasi atau promosi sesuai dengan prosedur yang berlaku.</p>
+                        <p class="career-header-sub">Ajukan kebutuhan mutasi, promosi, atau pengajuan tenaga kerja sesuai dengan prosedur yang berlaku.</p>
                     </div>
                 </div>
 
-                <div class="career-grid-2">
-                    <!-- CARD MUTASI -->
-                    <div class="movement-card blue-style">
+                <div class="career-grid-3">
+                    <!-- CARD MUTASI (KLIK LANGSUNG BUKA FORM) -->
+                    <div class="movement-card blue-style" onclick="openModal('modalFormMutasi')">
                         <div class="movement-card-top">
                             <div class="movement-card-icon"><i class="fa-solid fa-arrow-right-arrow-left"></i></div>
                             <div class="movement-card-body">
@@ -1832,24 +1838,83 @@
                                 <p>Ajukan permohonan mutasi untuk penempatan di unit kerja atau lokasi lain yang sesuai dengan kebutuhan dan kompetensi Anda.</p>
                             </div>
                         </div>
-                        <button class="btn-form-yellow" onclick="openModal('modalFormMutasi')">Isi Form Mutasi ➔</button>
                     </div>
 
-                    <!-- CARD PROMOSI -->
-                    <div class="movement-card yellow-style">
+                    <!-- CARD PROMOSI (KLIK LANGSUNG BUKA FORM) -->
+                    <div class="movement-card yellow-style" onclick="openModal('modalFormPromosi')">
                         <div class="movement-card-top">
                             <div class="movement-card-icon"><i class="fa-solid fa-trophy"></i></div>
                             <div class="movement-card-body">
-                                <h3>Promosi</h3>
+                                <h3>Promosi atau Demosi</h3>
                                 <p>Ajukan permohonan promosi jabatan untuk pengembangan karir Anda bersama Gadai MAS Nusantara.</p>
                             </div>
                         </div>
-                        <button class="btn-form-yellow" onclick="openModal('modalFormPromosi')">Isi Form Promosi ➔</button>
+                    </div>
+
+                    <!-- CARD DROPDOWN PENGAJUAN TENAGA KERJA -->
+                    <div class="qa-card-dropdown movement-card teal-style" id="dropdownTenagaKerja">
+                        <div class="dropdown-header" onclick="toggleDropdown('dropdownTenagaKerja')">
+                            <div class="dropdown-header-left">
+                                <div class="movement-card-icon"><i class="fa-solid fa-user-plus"></i></div>
+                                <h3 class="card-title-sub">Pengajuan Tenaga Kerja</h3>
+                            </div>
+                            <i class="fa-solid fa-chevron-down dropdown-icon-arrow"></i>
+                        </div>
+                        <p class="card-desc-text">Layanan pengajuan dan monitoring kebutuhan penambahan atau pergantian personel.</p>
+
+                        <div class="dropdown-content">
+                            <button class="btn-dropdown-action" onclick="openModal('modalTenagaKerja')">
+                                <span>📝 Form Pengajuan Tenaga Kerja</span>
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+                            <button class="btn-dropdown-action monitoring-type" onclick="openModal('modalMonTenagaKerja'); fetchMonTK();">
+                                <span>📊 Monitoring Status Pengajuan</span>
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TABEL MONITORING MANPOWER MOVEMENT -->
+                <div style="margin-top: 35px; border-top: 1px dashed var(--border-color); padding-top: 25px;">
+                    <div class="section-header" style="margin-bottom: 16px;">
+                        <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--brand-blue); display: flex; align-items: center; gap: 8px;">
+                            <i class="fa-solid fa-chart-line" style="color: var(--brand-yellow);"></i> Monitoring Status Manpower Movement
+                        </h3>
+                    </div>
+
+                    <div class="table-search-bar">
+                        <div class="search-input-box">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                            <input type="text" id="searchMonMovementInput" onkeyup="filterMonMovementTable()" placeholder="Cari Berdasarkan Nama, NIK, Jenis Pengajuan, atau Unit Kerja">
+                        </div>
+                        <button type="button" class="btn-see-all-table" onclick="resetMonMovementSearch()">Reset</button>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="voice-table" id="tableMonMovement">
+                            <thead>
+                                <tr>
+                                    <th>Pengaju (Nama/NIK)</th>
+                                    <th>Jenis Pengajuan</th>
+                                    <th>Jabatan Awal ➔ Tujuan</th>
+                                    <th>Unit Kerja Awal ➔ Tujuan</th>
+                                    <th>Tanggal Pengajuan</th>
+                                    <th>Status Approval</th>
+                                    <th>Dokumen Pendukung</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tableBodyMonMovement">
+                                <tr>
+                                    <td colspan="7" style="text-align: center; color: var(--text-muted);">Memuat data monitoring manpower movement...</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
 
-            <!-- SECTION 2: JOB VACANCY (DIUBAH HANYA 2 DENGAN JABATAN PENAKSIR DAN KEPALA CABANG) -->
+            <!-- SECTION 2: JOB VACANCY -->
             <div class="career-section-block">
                 <div class="career-section-header">
                     <div class="career-header-icon"><i class="fa-solid fa-briefcase"></i></div>
@@ -1868,16 +1933,16 @@
                                 <th>Unit Kerja</th>
                                 <th>Lokasi</th>
                                 <th>Jenis Pekerjaan</th>
-                                <th>Tanggal Update</th>
-                                <th>Aksi</th>
+                                <th>Batas Waktu Apply</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
                                 <td>1</td>
                                 <td><b>Penaksir</b></td>
-                                <td>Operasional Cabang</td>
-                                <td>Area JATIM & NTB</td>
+                                <td>MAS OEBOBO</td>
+                                <td>Area Kupang, NTT</td>
                                 <td>Full Time</td>
                                 <td>10 Sep 2026</td>
                                 <td><button class="btn-apply-table" onclick="openModalJobApply('Penaksir', 'Operasional Cabang')">Apply</button></td>
@@ -1885,8 +1950,8 @@
                             <tr>
                                 <td>2</td>
                                 <td><b>Kepala Cabang</b></td>
-                                <td>Manajemen Operasional</td>
-                                <td>Area NTT & Sulawesi</td>
+                                <td>MAS Simpang Limun</td>
+                                <td>Area Medan, Sumatera Utara</td>
                                 <td>Full Time</td>
                                 <td>8 Sep 2026</td>
                                 <td><button class="btn-apply-table" onclick="openModalJobApply('Kepala Cabang', 'Manajemen Operasional')">Apply</button></td>
@@ -1899,7 +1964,7 @@
         </div>
     </div>
 
-    <!-- ==================== FORM MODAL LAMARAN KERJA / JOB APPLY (KHUSUS JOB VACANCY) ==================== -->
+    <!-- ==================== FORM MODAL LAMARAN KERJA / JOB APPLY ==================== -->
     <div class="modal-overlay" id="modalJobApply">
         <div class="modal-box">
             <button class="modal-close" onclick="closeModal('modalJobApply')">&times;</button>
@@ -2153,7 +2218,7 @@
                     </div>
                 </div>
 
-                <button type="submit" class="btn-submit">SUBMIT FORM PROMOSI</button>
+                <button type="submit" class="btn-submit">SUBMIT</button>
             </form>
         </div>
     </div>
@@ -2166,15 +2231,6 @@
             <p class="form-section-subtitle">Pilih jenis pengajuan administrasi yang ingin Anda ajukan di bawah ini:</p>
 
             <div class="hub-grid">
-                <div class="hub-item-card" onclick="openModal('modalTenagaKerja')">
-                    <div class="hub-item-title">
-                        <i class="fa-solid fa-user-plus" style="color:var(--brand-blue);"></i>
-                        Form Pengajuan Tenaga Kerja
-                    </div>
-                    <p style="font-size:0.8rem; color:var(--text-muted);">Pengajuan kebutuhan penambahan/pergantian personel.</p>
-                    <span style="font-size:0.8rem; font-weight:700; color:var(--brand-blue);">Buka Form ➔</span>
-                </div>
-
                 <div class="hub-item-card" onclick="openModal('modalIzinCuti')">
                     <div class="hub-item-title">
                         <i class="fa-solid fa-calendar-check" style="color:var(--brand-blue);"></i>
@@ -2212,15 +2268,6 @@
             <p class="form-section-subtitle">Pantau status progress dari pengajuan administrasi Anda di bawah ini:</p>
 
             <div class="hub-grid">
-                <div class="hub-item-card" onclick="openModal('modalMonTenagaKerja'); fetchMonTK();">
-                    <div class="hub-item-title">
-                        <i class="fa-solid fa-chart-line" style="color:#b45309;"></i>
-                        Monitoring Tenaga Kerja
-                    </div>
-                    <p style="font-size:0.8rem; color:var(--text-muted);">Lihat progress pengajuan penambahan tenaga kerja.</p>
-                    <span style="font-size:0.8rem; font-weight:700; color:#b45309;">Lihat Status ➔</span>
-                </div>
-
                 <div class="hub-item-card" onclick="openModal('modalMonCuti'); fetchMonCuti();">
                     <div class="hub-item-title">
                         <i class="fa-solid fa-chart-line" style="color:#b45309;"></i>
@@ -3480,7 +3527,72 @@
 
         window.addEventListener('DOMContentLoaded', () => {
             fetchVoiceData();
+            fetchMonMovement();
+            initKaizenConfetti();
         });
+
+        /* --- SCRIPT ANIMASI CONFETTI KAIZEN BANNER --- */
+        function initKaizenConfetti() {
+            const canvas = document.getElementById('confettiCanvas');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+
+            function resizeCanvas() {
+                const banner = document.getElementById('kaizenBanner');
+                if (banner) {
+                    canvas.width = banner.offsetWidth;
+                    canvas.height = banner.offsetHeight;
+                }
+            }
+            resizeCanvas();
+            window.addEventListener('resize', resizeCanvas);
+
+            const particles = [];
+            const colors = ['#f5a623', '#ffe285', '#3b82f6', '#ffffff', '#60a5fa'];
+
+            for (let i = 0; i < 45; i++) {
+                particles.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height - canvas.height,
+                    size: Math.random() * 7 + 4,
+                    color: colors[Math.floor(Math.random() * colors.length)],
+                    speedY: Math.random() * 1.5 + 0.8,
+                    speedX: Math.random() * 0.8 - 0.4,
+                    angle: Math.random() * 360,
+                    spin: Math.random() * 4 - 2
+                });
+            }
+
+            function animateConfetti() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+                particles.forEach(p => {
+                    p.y += p.speedY;
+                    p.x += p.speedX;
+                    p.angle += p.spin;
+
+                    if (p.y > canvas.height) {
+                        p.y = -10;
+                        p.x = Math.random() * canvas.width;
+                    }
+
+                    ctx.save();
+                    ctx.translate(p.x, p.y);
+                    ctx.rotate((p.angle * Math.PI) / 180);
+                    ctx.fillStyle = p.color;
+                    ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size);
+                    ctx.restore();
+                });
+
+                requestAnimationFrame(animateConfetti);
+            }
+
+            animateConfetti();
+        }
+
+        function idElement(id) {
+            return document.getElementById(id);
+        }
 
         /* FUNCTION SWITCH PAGE UNTUK NAVIGATION HEADER */
         function switchPage(pageId) {
@@ -3510,6 +3622,58 @@
             document.getElementById('applyPosisiInput').value = posisi;
             document.getElementById('applyUnitInput').value = unit;
             openModal('modalJobApply');
+        }
+
+        /* MODAL OPEN & CLOSE HELPER */
+        function openModal(id) {
+            const m = document.getElementById(id);
+            if (m) {
+                m.style.display = 'flex';
+                setTimeout(() => m.classList.add('show'), 10);
+            }
+        }
+
+        function closeModal(id) {
+            const m = document.getElementById(id);
+            if (m) {
+                m.classList.remove('show');
+                setTimeout(() => m.style.display = 'none', 300);
+            }
+        }
+
+        function toggleDropdown(id) {
+            const el = document.getElementById(id);
+            if (el) el.classList.toggle('active');
+        }
+
+        function toggleLainnyaSelect(selectId, inputId) {
+            const sel = document.getElementById(selectId);
+            const inp = document.getElementById(inputId);
+            if (sel && inp) {
+                inp.style.display = sel.value === "Lainnya" ? "block" : "none";
+            }
+        }
+
+        function toggleRadioLainnya(isLainnya, inputId) {
+            const inp = document.getElementById(inputId);
+            if (inp) inp.style.display = isLainnya ? "block" : "none";
+        }
+
+        function handleFileChange(inputId, btnId) {
+            const inp = document.getElementById(inputId);
+            const btn = document.getElementById(btnId);
+            if (inp && inp.files.length > 0 && btn) btn.style.display = 'block';
+        }
+
+        function handleFileChangeLarge(inputId, btnId) {
+            handleFileChange(inputId, btnId);
+        }
+
+        function resetFileInput(inputId, btnId) {
+            const inp = document.getElementById(inputId);
+            const btn = document.getElementById(btnId);
+            if (inp) inp.value = '';
+            if (btn) btn.style.display = 'none';
         }
 
         /* HELPER: Memotong Jam/ISO String agar hanya menampilkan YYYY-MM-DD */
@@ -3598,705 +3762,24 @@
             idElement("selesaiAspirasiCount").innerText = selesai;
         }
 
-        function getStatusBadge(statusRaw) {
-            let statusText = statusRaw || "Menunggu proses";
-            let statusLower = statusText.toLowerCase();
-            let badgeClass = "bg-pending"; 
-
-            if (statusLower.includes("approved") || statusLower.includes("selesai")) {
-                badgeClass = "bg-done";
-            } else if (statusLower.includes("diproses") || statusLower.includes("pending")) {
-                badgeClass = "bg-process";
-            }
-
-            return `<span class="badge-status ${badgeClass}">${statusText}</span>`;
-        }
-
-        /* --- FETCH DATA MONITORING --- */
-
-        function fetchMonTK() {
-            const tbody = document.getElementById("tableBodyMonTK");
-            tbody.innerHTML = `<tr><td colspan="5" style="text-align:center;">Memuat data monitoring...</td></tr>`;
-
-            fetch(`${MONITORING_FETCH_URL}?sheet=Tenaga Kerja`)
-                .then(res => res.json())
-                .then(res => {
-                    if (res.result === 'success' && res.data) {
-                        if (res.data.length === 0) {
-                            tbody.innerHTML = `<tr><td colspan="5" style="text-align:center;">Belum ada pengajuan.</td></tr>`;
-                            return;
-                        }
-                        let html = "";
-                        res.data.slice().reverse().forEach(item => {
-                            html += `<tr>
-                                <td class="mon-nama-cell"><b>${item.nama}</b></td>
-                                <td class="mon-nik-cell">${item.nik}</td>
-                                <td>${item.unit}</td>
-                                <td class="mon-jenis-cell">${item.jenis}</td>
-                                <td>${getStatusBadge(item.status)}</td>
-                            </tr>`;
-                        });
-                        tbody.innerHTML = html;
-                    }
-                }).catch(err => { tbody.innerHTML = `<tr><td colspan="5" style="text-align:center; color:#dc2626;">Gagal memuat data.</td></tr>`; });
-        }
-
-        function fetchMonCuti() {
-            const tbody = document.getElementById("tableBodyMonCuti");
-            tbody.innerHTML = `<tr><td colspan="7" style="text-align:center;">Memuat data monitoring...</td></tr>`;
-
-            fetch(`${MONITORING_FETCH_URL}?sheet=Izin Cuti`)
-                .then(res => res.json())
-                .then(res => {
-                    if (res.result === 'success' && res.data) {
-                        if (res.data.length === 0) {
-                            tbody.innerHTML = `<tr><td colspan="7" style="text-align:center;">Belum ada pengajuan.</td></tr>`;
-                            return;
-                        }
-                        let html = "";
-                        res.data.slice().reverse().forEach(item => {
-                            let tglAwalClean = formatDateDMY(item.tglMulai);
-                            let tglAkhirClean = formatDateDMY(item.tglSelesai);
-
-                            html += `<tr>
-                                <td class="mon-nama-nik-cell"><b>${item.nama}</b><br><small style="color:var(--text-muted);">${item.nik}</small></td>
-                                <td>${item.unit}</td>
-                                <td class="mon-jenis-cell">${item.jenis}</td>
-                                <td>${tglAwalClean} s/d ${tglAkhirClean}</td>
-                                <td><b>${item.namaPengganti}</b><br><small style="color:var(--text-muted);">${item.nikPengganti}</small></td>
-                                <td>${item.unitPengganti}</td>
-                                <td>${getStatusBadge(item.status)}</td>
-                            </tr>`;
-                        });
-                        tbody.innerHTML = html;
-                    }
-                }).catch(err => { tbody.innerHTML = `<tr><td colspan="7" style="text-align:center; color:#dc2626;">Gagal memuat data.</td></tr>`; });
-        }
-
-        function fetchMonDokumen() {
-            const tbody = document.getElementById("tableBodyMonDoc");
-            tbody.innerHTML = `<tr><td colspan="5" style="text-align:center;">Memuat data monitoring...</td></tr>`;
-
-            fetch(`${MONITORING_FETCH_URL}?sheet=Dokumen Surat`)
-                .then(res => res.json())
-                .then(res => {
-                    if (res.result === 'success' && res.data) {
-                        if (res.data.length === 0) {
-                            tbody.innerHTML = `<tr><td colspan="5" style="text-align:center;">Belum ada pengajuan.</td></tr>`;
-                            return;
-                        }
-                        let html = "";
-                        res.data.slice().reverse().forEach(item => {
-                            let keperluan = (item.kepKet && item.kepKet !== "-") ? item.kepKet : 
-                                            ((item.kepPeng && item.kepPeng !== "-") ? item.kepPeng : 
-                                            ((item.kepRekom && item.kepRekom !== "-") ? item.kepRekom : item.kepLain));
-                            
-                            let jenisTampil = item.jenisSurat === "Surat Lainnya" ? item.jenisLain : item.jenisSurat;
-
-                            html += `<tr>
-                                <td class="mon-nama-nik-cell"><b>${item.nama}</b><br><small style="color:var(--text-muted);">${item.nik}</small></td>
-                                <td>${item.divisi} / ${item.unit}</td>
-                                <td class="mon-jenis-cell"><b>${jenisTampil}</b></td>
-                                <td class="mon-keperluan-cell">${keperluan}</td>
-                                <td>${getStatusBadge(item.status)}</td>
-                            </tr>`;
-                        });
-                        tbody.innerHTML = html;
-                    }
-                }).catch(err => { tbody.innerHTML = `<tr><td colspan="5" style="text-align:center; color:#dc2626;">Gagal memuat data.</td></tr>`; });
-        }
-
-        function fetchMonLD() {
-            const tbody = document.getElementById("tableBodyMonLD");
-            tbody.innerHTML = `<tr><td colspan="9" style="text-align:center;">Memuat data monitoring...</td></tr>`;
-
-            fetch(`${MONITORING_FETCH_URL}?sheet=Learning Dev`)
-                .then(res => res.json())
-                .then(res => {
-                    if (res.result === 'success' && res.data) {
-                        if (res.data.length === 0) {
-                            tbody.innerHTML = `<tr><td colspan="9" style="text-align:center;">Belum ada pengajuan.</td></tr>`;
-                            return;
-                        }
-                        let html = "";
-                        res.data.slice().reverse().forEach(item => {
-                            let namaTraining = "-";
-                            let namaSertifikasi = "-";
-                            let namaLearningProgram = "-";
-                            let topikKompetensi = "-";
-
-                            if (item.jenis === "Training") {
-                                namaTraining = item.namaTraining || "-";
-                                topikKompetensi = item.topikTraining || "-";
-                            } else if (item.jenis === "Sertifikasi") {
-                                namaSertifikasi = item.namaSertifikasi || "-";
-                                topikKompetensi = item.kompetensiSert || "-";
-                            } else if (item.jenis === "Learning Program") {
-                                namaLearningProgram = `${item.namaProgram || "-"} (${item.bentukProgram || "-"})`;
-                                topikKompetensi = item.topikProgram || "-";
-                            }
-
-                            html += `<tr>
-                                <td class="mon-nama-nik-cell"><b>${item.nama}</b><br><small style="color:var(--text-muted);">${item.nik}</small></td>
-                                <td>${item.jabatan || "-"}</td>
-                                <td>${item.unit || "-"}</td>
-                                <td class="mon-jenis-cell"><b>${item.jenis || "-"}</b></td>
-                                <td>${namaTraining}</td>
-                                <td>${namaSertifikasi}</td>
-                                <td>${namaLearningProgram}</td>
-                                <td>${topikKompetensi}</td>
-                                <td>${getStatusBadge(item.status)}</td>
-                            </tr>`;
-                        });
-                        tbody.innerHTML = html;
-                    }
-                }).catch(err => { tbody.innerHTML = `<tr><td colspan="9" style="text-align:center; color:#dc2626;">Gagal memuat data.</td></tr>`; });
-        }
-
-        /* --- FUNGSI SEARCH PER MONITORING --- */
-
-        // 1. Search Mon TK: Nama, NIK, Jenis Pengajuan
-        function filterMonTKTable() {
-            let filter = document.getElementById("searchMonTKInput").value.toUpperCase();
-            let tr = document.getElementById("tableMonTK").getElementsByTagName("tr");
-
-            for (let i = 1; i < tr.length; i++) {
-                let namaTd = tr[i].getElementsByClassName("mon-nama-cell")[0];
-                let nikTd = tr[i].getElementsByClassName("mon-nik-cell")[0];
-                let jenisTd = tr[i].getElementsByClassName("mon-jenis-cell")[0];
-
-                if (namaTd || nikTd || jenisTd) {
-                    let namaVal = namaTd ? (namaTd.textContent || namaTd.innerText) : "";
-                    let nikVal = nikTd ? (nikTd.textContent || nikTd.innerText) : "";
-                    let jenisVal = jenisTd ? (jenisTd.textContent || jenisTd.innerText) : "";
-
-                    if (
-                        namaVal.toUpperCase().indexOf(filter) > -1 ||
-                        nikVal.toUpperCase().indexOf(filter) > -1 ||
-                        jenisVal.toUpperCase().indexOf(filter) > -1
-                    ) {
-                        tr[i].style.display = "";
-                    } else {
-                        tr[i].style.display = "none";
-                    }
-                }
-            }
-        }
-        function resetMonTKSearch() {
-            document.getElementById("searchMonTKInput").value = "";
-            filterMonTKTable();
-        }
-
-        // 2. Search Mon Cuti: Nama, NIK, Jenis Pengajuan
-        function filterMonCutiTable() {
-            let filter = document.getElementById("searchMonCutiInput").value.toUpperCase();
-            let tr = document.getElementById("tableMonCuti").getElementsByTagName("tr");
-
-            for (let i = 1; i < tr.length; i++) {
-                let namaNikTd = tr[i].getElementsByClassName("mon-nama-nik-cell")[0];
-                let jenisTd = tr[i].getElementsByClassName("mon-jenis-cell")[0];
-
-                if (namaNikTd || jenisTd) {
-                    let namaNikVal = namaNikTd ? (namaNikTd.textContent || namaNikTd.innerText) : "";
-                    let jenisVal = jenisTd ? (jenisTd.textContent || jenisTd.innerText) : "";
-
-                    if (
-                        namaNikVal.toUpperCase().indexOf(filter) > -1 ||
-                        jenisVal.toUpperCase().indexOf(filter) > -1
-                    ) {
-                        tr[i].style.display = "";
-                    } else {
-                        tr[i].style.display = "none";
-                    }
-                }
-            }
-        }
-        function resetMonCutiSearch() {
-            document.getElementById("searchMonCutiInput").value = "";
-            filterMonCutiTable();
-        }
-
-        // 3. Search Mon Dokumen: Nama, NIK, Jenis Surat, Keperluan Surat
-        function filterMonDocTable() {
-            let filter = document.getElementById("searchMonDocInput").value.toUpperCase();
-            let tr = document.getElementById("tableMonDoc").getElementsByTagName("tr");
-
-            for (let i = 1; i < tr.length; i++) {
-                let namaNikTd = tr[i].getElementsByClassName("mon-nama-nik-cell")[0];
-                let jenisTd = tr[i].getElementsByClassName("mon-jenis-cell")[0];
-                let keperluanTd = tr[i].getElementsByClassName("mon-keperluan-cell")[0];
-
-                if (namaNikTd || jenisTd || keperluanTd) {
-                    let namaNikVal = namaNikTd ? (namaNikTd.textContent || namaNikTd.innerText) : "";
-                    let jenisVal = jenisTd ? (jenisTd.textContent || jenisTd.innerText) : "";
-                    let keperluanVal = keperluanTd ? (keperluanTd.textContent || keperluanTd.innerText) : "";
-
-                    if (
-                        namaNikVal.toUpperCase().indexOf(filter) > -1 ||
-                        jenisVal.toUpperCase().indexOf(filter) > -1 ||
-                        keperluanVal.toUpperCase().indexOf(filter) > -1
-                    ) {
-                        tr[i].style.display = "";
-                    } else {
-                        tr[i].style.display = "none";
-                    }
-                }
-            }
-        }
-        function resetMonDocSearch() {
-            document.getElementById("searchMonDocInput").value = "";
-            filterMonDocTable();
-        }
-
-        // 4. Search Mon LD: Nama, NIK, Jenis Pengajuan
-        function filterMonLDTable() {
-            let filter = document.getElementById("searchMonLDInput").value.toUpperCase();
-            let tr = document.getElementById("tableMonLD").getElementsByTagName("tr");
-
-            for (let i = 1; i < tr.length; i++) {
-                let namaNikTd = tr[i].getElementsByClassName("mon-nama-nik-cell")[0];
-                let jenisTd = tr[i].getElementsByClassName("mon-jenis-cell")[0];
-
-                if (namaNikTd || jenisTd) {
-                    let namaNikVal = namaNikTd ? (namaNikTd.textContent || namaNikTd.innerText) : "";
-                    let jenisVal = jenisTd ? (jenisTd.textContent || jenisTd.innerText) : "";
-
-                    if (
-                        namaNikVal.toUpperCase().indexOf(filter) > -1 ||
-                        jenisVal.toUpperCase().indexOf(filter) > -1
-                    ) {
-                        tr[i].style.display = "";
-                    } else {
-                        tr[i].style.display = "none";
-                    }
-                }
-            }
-        }
-        function resetMonLDSearch() {
-            document.getElementById("searchMonLDInput").value = "";
-            filterMonLDTable();
-        }
-
-        function idElement(id) {
-            return document.getElementById(id);
-        }
-
-        function toggleDropdown(elementId) {
-            const card = document.getElementById(elementId);
-            card.classList.toggle('active');
-        }
-
-        function openModal(modalId) {
-            const modal = document.getElementById(modalId);
-            if(modal) modal.classList.add('show');
-        }
-
-        function closeModal(modalId) {
-            const modal = document.getElementById(modalId);
-            if(modal) modal.classList.remove('show');
-        }
-
-        window.onclick = function(event) {
-            const overlays = document.querySelectorAll('.modal-overlay');
-            overlays.forEach(overlay => {
-                if (event.target === overlay) overlay.classList.remove('show');
-            });
-        }
-
-        function toggleLainnyaSelect(selectId, inputId) {
-            const selectVal = document.getElementById(selectId).value;
-            const inputEl = document.getElementById(inputId);
-            if (selectVal === 'Lainnya') {
-                inputEl.style.display = 'block';
-                inputEl.required = true;
-            } else {
-                inputEl.style.display = 'none';
-                inputEl.required = false;
-                inputEl.value = '';
-                inputEl.classList.remove('input-error');
-            }
-        }
-
-        function toggleRadioLainnya(isLainnya, inputId) {
-            const inputEl = document.getElementById(inputId);
-            if (isLainnya) {
-                inputEl.style.display = 'block';
-                inputEl.required = true;
-            } else {
-                inputEl.style.display = 'none';
-                inputEl.required = false;
-                inputEl.value = '';
-                inputEl.classList.remove('input-error');
-            }
-        }
-
-        function handleFileChange(inputId, btnId) {
-            const fileInput = document.getElementById(inputId);
-            const cancelBtn = document.getElementById(btnId);
-            const maxMB = 10;
-
-            if (fileInput.files && fileInput.files[0]) {
-                const fileSizeMB = fileInput.files[0].size / 1024 / 1024;
-                if (fileSizeMB > maxMB) {
-                    alert('Ukuran file terlalu besar! Maksimal ukuran file adalah ' + maxMB + ' MB. Silakan pilih file yang lebih kecil.');
-                    fileInput.value = '';
-                    if (cancelBtn) cancelBtn.style.display = 'none';
-                    return;
-                }
-                if (cancelBtn) cancelBtn.style.display = 'inline-block';
-            }
-        }
-
-        function handleFileChangeLarge(inputId, btnId) {
-            const fileInput = document.getElementById(inputId);
-            const cancelBtn = document.getElementById(btnId);
-            const maxMB = 50;
-
-            if (fileInput.files && fileInput.files[0]) {
-                const fileSizeMB = fileInput.files[0].size / 1024 / 1024;
-                if (fileSizeMB > maxMB) {
-                    alert('Ukuran file terlalu besar! Maksimal ukuran file adalah ' + maxMB + ' MB. Silakan pilih file yang lebih kecil.');
-                    fileInput.value = '';
-                    if (cancelBtn) cancelBtn.style.display = 'none';
-                    return;
-                }
-                if (cancelBtn) cancelBtn.style.display = 'inline-block';
-            }
-        }
-
-        function resetFileInput(inputId, btnId) {
-            const fileInput = document.getElementById(inputId);
-            const cancelBtn = document.getElementById(btnId);
-            fileInput.value = '';
-            cancelBtn.style.display = 'none';
-        }
-
-        function validateAndScroll(containerElement) {
-            const requiredFields = Array.from(containerElement.querySelectorAll('input[required], select[required], textarea[required]'))
-                                         .filter(field => field.offsetParent !== null);
-            let firstInvalidField = null;
-
-            requiredFields.forEach(field => field.classList.remove('input-error'));
-
-            for (let field of requiredFields) {
-                let isInvalid = false;
-
-                if (field.type === 'radio') {
-                    const radioGroup = containerElement.querySelectorAll(`input[name="${field.name}"]`);
-                    const isChecked = Array.from(radioGroup).some(r => r.checked);
-                    if (!isChecked) isInvalid = true;
-                } else if (!field.value.trim()) {
-                    isInvalid = true;
-                }
-
-                if (isInvalid) {
-                    field.classList.add('input-error');
-                    if (!firstInvalidField) {
-                        firstInvalidField = field;
-                    }
-                }
-            }
-
-            if (firstInvalidField) {
-                const modalBox = containerElement.closest('.modal-box');
-                const formGroup = firstInvalidField.closest('.form-group') || firstInvalidField;
-
-                if (modalBox) {
-                    modalBox.scrollTo({
-                        top: formGroup.offsetTop - 30,
-                        behavior: 'smooth'
-                    });
-                } else {
-                    formGroup.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                }
-
-                firstInvalidField.focus();
-                alert('Mohon isi terlebih dahulu pertanyaan yang wajib diisi (*) sebelum melanjutkan.');
-                return false;
-            }
-            return true;
-        }
-
-        function goToDocSection2() {
-            const section1 = document.getElementById('docSection1');
-            if (!validateAndScroll(section1)) return;
-
-            const jenis = document.getElementById('jenisSuratDokumen').value;
-
-            document.getElementById('docSection1').style.display = 'none';
-            document.getElementById('docSection2').style.display = 'block';
-
-            const subSections = ['subDocKeteranganKerja', 'subDocPengalamanKerja', 'subDocRekomendasi', 'subDocLainnya'];
-            subSections.forEach(id => {
-                const el = document.getElementById(id);
-                el.style.display = 'none';
-                el.querySelectorAll('input, select, textarea').forEach(inp => inp.required = false);
-            });
-
-            let activeSub;
-            if (jenis === 'Surat Keterangan Kerja') activeSub = document.getElementById('subDocKeteranganKerja');
-            else if (jenis === 'Surat Pengalaman Kerja') activeSub = document.getElementById('subDocPengalamanKerja');
-            else if (jenis === 'Surat Rekomendasi') activeSub = document.getElementById('subDocRekomendasi');
-            else if (jenis === 'Surat Lainnya') activeSub = document.getElementById('subDocLainnya');
-
-            if (activeSub) {
-                activeSub.style.display = 'block';
-                activeSub.querySelectorAll('input, select, textarea').forEach(inp => {
-                    if(!inp.classList.contains('input-lainnya') && inp.id !== 'inputFormatKhususKet' && inp.type !== 'file') {
-                        inp.required = true;
-                    }
-                });
-            }
-
-            document.getElementById('boxDokumen').scrollTop = 0;
-        }
-
-        function backToDocSection1() {
-            document.getElementById('docSection2').style.display = 'none';
-            document.getElementById('docSection1').style.display = 'block';
-            document.getElementById('boxDokumen').scrollTop = 0;
-        }
-
-        function goToDocSection3() {
-            const jenis = document.getElementById('jenisSuratDokumen').value;
-            let activeSubSection;
-
-            if (jenis === 'Surat Keterangan Kerja') activeSubSection = document.getElementById('subDocKeteranganKerja');
-            else if (jenis === 'Surat Pengalaman Kerja') activeSubSection = document.getElementById('subDocPengalamanKerja');
-            else if (jenis === 'Surat Rekomendasi') activeSubSection = document.getElementById('subDocRekomendasi');
-            else if (jenis === 'Surat Lainnya') activeSubSection = document.getElementById('subDocLainnya');
-
-            if (activeSubSection && !validateAndScroll(activeSubSection)) return;
-
-            document.getElementById('docSection2').style.display = 'none';
-            document.getElementById('docSection3').style.display = 'block';
-            document.getElementById('boxDokumen').scrollTop = 0;
-        }
-
-        function backToDocSection2() {
-            document.getElementById('docSection3').style.display = 'none';
-            document.getElementById('docSection2').style.display = 'block';
-            document.getElementById('boxDokumen').scrollTop = 0;
-        }
-
-        function toggleFormatKhusus() {
-            const val = document.getElementById('selectFormatKhusus').value;
-            const group = document.getElementById('groupFormatKhususKet');
-            const input = document.getElementById('inputFormatKhususKet');
-
-            if (val === 'Ya') {
-                group.style.display = 'block';
-                input.required = true;
-            } else {
-                group.style.display = 'none';
-                input.required = false;
-                input.value = '';
-                input.classList.remove('input-error');
-            }
-        }
-
-        function validateDocDeclaration() {
-            const dec = document.getElementById('decDoc').checked;
-            const btnSubmit = document.getElementById('btnSubmitDoc');
-            btnSubmit.disabled = !dec;
-        }
-
-        function goToLDSection2() {
-            const section1 = document.getElementById('ldSection1');
-            if (!validateAndScroll(section1)) return;
-
-            const jenis = document.getElementById('jenisPengajuanLD').value;
-
-            document.getElementById('ldSection1').style.display = 'none';
-            document.getElementById('ldSection2').style.display = 'block';
-
-            const ldSubs = ['subSectionTraining', 'subSectionSertifikasi', 'subSectionLearningProgram'];
-            ldSubs.forEach(id => {
-                const el = document.getElementById(id);
-                el.style.display = 'none';
-                el.querySelectorAll('input, select, textarea').forEach(inp => inp.required = false);
-            });
-
-            let activeSub;
-            if (jenis === 'Training') activeSub = document.getElementById('subSectionTraining');
-            else if (jenis === 'Sertifikasi') activeSub = document.getElementById('subSectionSertifikasi');
-            else if (jenis === 'Learning Program') activeSub = document.getElementById('subSectionLearningProgram');
-
-            if (activeSub) {
-                activeSub.style.display = 'block';
-                activeSub.querySelectorAll('input, select, textarea').forEach(inp => {
-                    if(!inp.classList.contains('input-lainnya') && inp.type !== 'file') {
-                        inp.required = true;
-                    }
-                });
-            }
-
-            document.getElementById('boxLearningDev').scrollTop = 0;
-        }
-
-        function backToLDSection1() {
-            document.getElementById('ldSection2').style.display = 'none';
-            document.getElementById('ldSection1').style.display = 'block';
-            document.getElementById('boxLearningDev').scrollTop = 0;
-        }
-
-        function goToLDSection3() {
-            const jenis = document.getElementById('jenisPengajuanLD').value;
-            let activeSubSection;
-
-            if (jenis === 'Training') activeSubSection = document.getElementById('subSectionTraining');
-            else if (jenis === 'Sertifikasi') activeSubSection = document.getElementById('subSectionSertifikasi');
-            else if (jenis === 'Learning Program') activeSubSection = document.getElementById('subSectionLearningProgram');
-
-            if (activeSubSection && !validateAndScroll(activeSubSection)) return;
-
-            document.getElementById('ldSection2').style.display = 'none';
-            document.getElementById('ldSection3').style.display = 'block';
-            document.getElementById('boxLearningDev').scrollTop = 0;
-        }
-
-        function backToLDSection2() {
-            document.getElementById('ldSection3').style.display = 'none';
-            document.getElementById('ldSection2').style.display = 'block';
-            document.getElementById('boxLearningDev').scrollTop = 0;
-        }
-
-        function validateLDDeclaration() {
-            const dec1 = document.getElementById('dec1').checked;
-            const dec2 = document.getElementById('dec2').checked;
-            const btnSubmit = document.getElementById('btnSubmitLD');
-            btnSubmit.disabled = !(dec1 && dec2);
-        }
-
-        function handleSpreadsheetSubmit(event, scriptUrl, modalId) {
-            event.preventDefault();
-            const form = event.target;
-
-            if (!validateAndScroll(form)) {
-                return false;
-            }
-
-            const submitBtn = form.querySelector('button[type="submit"]');
-            const originalBtnText = submitBtn.innerText;
-            submitBtn.innerText = "Mengirim...";
-            submitBtn.disabled = true;
-
-            const activeFileInputs = Array.from(form.querySelectorAll('input[type="file"]')).filter(inp => inp.files && inp.files.length > 0);
-
-            const readFileAsBase64 = (fileInput) => {
-                return new Promise((resolve, reject) => {
-                    const file = fileInput.files[0];
-                    if (!file) {
-                        resolve(null);
-                        return;
-                    }
-                    const reader = new FileReader();
-                    reader.onload = (e) => {
-                        resolve({
-                            id: fileInput.id,
-                            name: file.name,
-                            type: file.type,
-                            data: e.target.result.split(',')[1]
-                        });
-                    };
-                    reader.onerror = (error) => reject(error);
-                    reader.readAsDataURL(file);
-                });
-            };
-
-            Promise.all(activeFileInputs.map(readFileAsBase64))
-                .then(fileResults => {
-                    const payload = new URLSearchParams();
-                    const formData = new FormData(form);
-
-                    for (let [key, value] of formData.entries()) {
-                        payload.append(key, value);
-                    }
-
-                    fileResults.forEach(f => {
-                        if (f) {
-                            payload.append(f.id + '_data', f.data);
-                            payload.append(f.id + '_name', f.name);
-                            payload.append(f.id + '_type', f.type);
-
-                            payload.append('fileData', f.data);
-                            payload.append('fileName', f.name);
-                            payload.append('fileMimeType', f.type);
-                        }
-                    });
-
-                    return fetch(scriptUrl, {
-                        method: 'POST',
-                        body: payload
-                    });
-                })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.result === 'success') {
-                        alert('Aspirasi/Pengajuan Anda berhasil dikirim ke tim HCBP!');
-                        form.reset();
-
-                        const cancelBtns = form.querySelectorAll('.btn-cancel-file');
-                        cancelBtns.forEach(btn => btn.style.display = 'none');
-
-                        const inputsLainnya = form.querySelectorAll('.input-lainnya');
-                        inputsLainnya.forEach(input => {
-                            input.style.display = 'none';
-                            input.required = false;
-                        });
-
-                        if (modalId === 'modalLearningDev') {
-                            document.getElementById('ldSection1').style.display = 'block';
-                            document.getElementById('ldSection2').style.display = 'none';
-                            document.getElementById('ldSection3').style.display = 'none';
-                            document.getElementById('btnSubmitLD').disabled = true;
-                        }
-
-                        if (modalId === 'modalDokumen') {
-                            document.getElementById('docSection1').style.display = 'block';
-                            document.getElementById('docSection2').style.display = 'none';
-                            document.getElementById('docSection3').style.display = 'none';
-                            document.getElementById('groupFormatKhususKet').style.display = 'none';
-                            document.getElementById('btnSubmitDoc').disabled = true;
-                        }
-                        closeModal(modalId);
-
-                        if (modalId === 'modalFormVoice') {
-                            fetchVoiceData();
-                        }
-                    } else {
-                        alert('Gagal mengirim data: ' + data.error);
-                    }
-                })
-                .catch(err => {
-                    alert('Terjadi kesalahan koneksi. Pastikan URL Web App sudah benar.');
-                })
-                .finally(() => {
-                    submitBtn.innerText = originalBtnText;
-                    submitBtn.disabled = false;
-                });
-        }
-
         function filterVoiceTable() {
-            const input = document.getElementById("searchVoiceInput");
-            const filter = input.value.toUpperCase();
-            const table = document.getElementById("voiceTable");
-            const tr = table.getElementsByTagName("tr");
+            let filter = document.getElementById("searchVoiceInput").value.toUpperCase();
+            let tr = document.getElementById("voiceTable").getElementsByTagName("tr");
 
             for (let i = 1; i < tr.length; i++) {
                 let idTd = tr[i].getElementsByClassName("id-cell")[0];
                 let namaTd = tr[i].getElementsByClassName("nama-cell")[0];
-                let kategoriTd = tr[i].getElementsByClassName("kategori-cell")[0];
+                let katTd = tr[i].getElementsByClassName("kategori-cell")[0];
 
-                if (idTd || namaTd || kategoriTd) {
+                if (idTd || namaTd || katTd) {
                     let idVal = idTd ? (idTd.textContent || idTd.innerText) : "";
                     let namaVal = namaTd ? (namaTd.textContent || namaTd.innerText) : "";
-                    let kategoriVal = kategoriTd ? (kategoriTd.textContent || kategoriTd.innerText) : "";
+                    let katVal = katTd ? (katTd.textContent || katTd.innerText) : "";
 
                     if (
                         idVal.toUpperCase().indexOf(filter) > -1 ||
                         namaVal.toUpperCase().indexOf(filter) > -1 ||
-                        kategoriVal.toUpperCase().indexOf(filter) > -1
+                        katVal.toUpperCase().indexOf(filter) > -1
                     ) {
                         tr[i].style.display = "";
                     } else {
@@ -4311,68 +3794,133 @@
             filterVoiceTable();
         }
 
-        /* ==================== ANIMASI GOLD CONFETTI ==================== */
-        const canvas = document.getElementById('confettiCanvas');
-        const ctx = canvas.getContext('2d');
-        const banner = document.getElementById('kaizenBanner');
+        function getStatusBadge(statusRaw) {
+            let statusText = statusRaw || "Menunggu proses";
+            let statusLower = statusText.toLowerCase();
+            let badgeClass = "bg-pending"; 
 
-        function resizeCanvas() {
-            canvas.width = banner.offsetWidth;
-            canvas.height = banner.offsetHeight;
-        }
-        window.addEventListener('resize', resizeCanvas);
-        resizeCanvas();
-
-        class Particle {
-            constructor() {
-                this.reset();
+            if (statusLower.includes("approved") || statusLower.includes("selesai")) {
+                badgeClass = "bg-done";
+            } else if (statusLower.includes("diproses") || statusLower.includes("pending")) {
+                badgeClass = "bg-process";
             }
 
-            reset() {
-                this.x = Math.random() * canvas.width;
-                this.y = -20 - Math.random() * 50;
-                this.width = 6 + Math.random() * 8;
-                this.height = 12 + Math.random() * 14;
-                this.speedY = 1 + Math.random() * 1.8;
-                this.speedX = (Math.random() - 0.5) * 1.2;
-                this.rotation = Math.random() * Math.PI * 2;
-                this.rotationSpeed = (Math.random() - 0.5) * 0.08;
-                this.alpha = 0.4 + Math.random() * 0.6;
-                this.color = ['#ffe285', '#f5a623', '#ffffff', '#fbbf24', '#d97706'][Math.floor(Math.random() * 5)];
-            }
-
-            update() {
-                this.y += this.speedY;
-                this.x += Math.sin(this.y * 0.05) * 0.8 + this.speedX;
-                this.rotation += this.rotationSpeed;
-                if (this.y > canvas.height + 30) this.reset();
-            }
-
-            draw() {
-                ctx.save();
-                ctx.translate(this.x, this.y);
-                ctx.rotate(this.rotation);
-                ctx.globalAlpha = this.alpha;
-                ctx.fillStyle = this.color;
-                ctx.shadowBlur = 8;
-                ctx.shadowColor = this.color;
-                ctx.fillRect(-this.width / 2, -this.height / 2, this.width, this.height);
-                ctx.restore();
-            }
+            return `<span class="badge-status ${badgeClass}">${statusText}</span>`;
         }
 
-        const particles = Array.from({ length: 45 }, () => new Particle());
+        /* --- FETCH DATA MONITORING MANPOWER MOVEMENT --- */
+        function fetchMonMovement() {
+            const tbody = document.getElementById("tableBodyMonMovement");
+            if (!tbody) return;
+            tbody.innerHTML = `<tr><td colspan="7" style="text-align:center;">Memuat data monitoring manpower movement...</td></tr>`;
 
-        function animate() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            particles.forEach(p => {
-                p.update();
-                p.draw();
-            });
-            requestAnimationFrame(animate);
+            fetch(`${MONITORING_FETCH_URL}?sheet=Manpower Movement`)
+                .then(res => res.json())
+                .then(res => {
+                    if (res.result === 'success' && res.data) {
+                        if (res.data.length === 0) {
+                            tbody.innerHTML = `<tr><td colspan="7" style="text-align:center;">Belum ada pengajuan mutasi/promosi.</td></tr>`;
+                            return;
+                        }
+                        let html = "";
+                        res.data.slice().reverse().forEach(item => {
+                            let linkSK = item.linkSK || item.urlSK || item.skUrl || "";
+                            let btnSK = "";
+
+                            if (linkSK && linkSK !== "-" && linkSK.startsWith("http")) {
+                                btnSK = `<a href="${linkSK}" target="_blank" class="btn-view-sk"><i class="fa-solid fa-file-pdf"></i> Lihat SK</a>`;
+                            } else {
+                                btnSK = `<button class="btn-view-sk disabled"><i class="fa-solid fa-clock"></i> Belum Terbit</button>`;
+                            }
+
+                            let jabatanAwal = item.jabatanAwal || item.jabatan_saat_ini || "-";
+                            let jabatanTujuan = item.jabatanTujuan || item.jabatan_promosi_tujuan || item.jabatan_saat_ini || "-";
+                            let unitAwal = item.unitAwal || item.unit_kerja_saat_ini || "-";
+                            let unitTujuan = item.unitTujuan || item.unit_kerja_tujuan || item.unit_kerja_promosi_tujuan || "-";
+
+                            html += `<tr>
+                                <td class="mon-mov-nama-nik"><b>${item.nama || "-"}</b><br><small style="color:var(--text-muted);">${item.nik || "-"}</small></td>
+                                <td class="mon-mov-jenis"><b>${item.jenisForm || item.form_type || "Mutasi/Promosi"}</b></td>
+                                <td>${jabatanAwal} <i class="fa-solid fa-arrow-right" style="font-size:0.75rem; color:var(--brand-yellow);"></i> ${jabatanTujuan}</td>
+                                <td class="mon-mov-unit">${unitAwal} <i class="fa-solid fa-arrow-right" style="font-size:0.75rem; color:var(--brand-yellow);"></i> ${unitTujuan}</td>
+                                <td>${formatDateDMY(item.tanggal || item.timestamp)}</td>
+                                <td>${getStatusBadge(item.status)}</td>
+                                <td>${btnSK}</td>
+                            </tr>`;
+                        });
+                        tbody.innerHTML = html;
+                    } else {
+                        tbody.innerHTML = `<tr><td colspan="7" style="text-align:center;">Belum ada pengajuan data.</td></tr>`;
+                    }
+                }).catch(err => { tbody.innerHTML = `<tr><td colspan="7" style="text-align:center; color:#dc2626;">Gagal memuat data monitoring manpower movement.</td></tr>`; });
         }
 
-        animate();
+        function filterMonMovementTable() {
+            let filter = document.getElementById("searchMonMovementInput").value.toUpperCase();
+            let tr = document.getElementById("tableMonMovement").getElementsByTagName("tr");
+
+            for (let i = 1; i < tr.length; i++) {
+                let namaNikTd = tr[i].getElementsByClassName("mon-mov-nama-nik")[0];
+                let jenisTd = tr[i].getElementsByClassName("mon-mov-jenis")[0];
+                let unitTd = tr[i].getElementsByClassName("mon-mov-unit")[0];
+
+                if (namaNikTd || jenisTd || unitTd) {
+                    let namaNikVal = namaNikTd ? (namaNikTd.textContent || namaNikTd.innerText) : "";
+                    let jenisVal = jenisTd ? (jenisTd.textContent || jenisTd.innerText) : "";
+                    let unitVal = unitTd ? (unitTd.textContent || unitTd.innerText) : "";
+
+                    if (
+                        namaNikVal.toUpperCase().indexOf(filter) > -1 ||
+                        jenisVal.toUpperCase().indexOf(filter) > -1 ||
+                        unitVal.toUpperCase().indexOf(filter) > -1
+                    ) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
+
+        function resetMonMovementSearch() {
+            document.getElementById("searchMonMovementInput").value = "";
+            filterMonMovementTable();
+        }
+
+        /* --- FETCH DATA MONITORING HC SERVICES (MENGAKOMODASI SEMUA KEMUNGKINAN KEY JSON) --- */
+        function fetchMonTK() {
+            const tbody = document.getElementById("tableBodyMonTK");
+            tbody.innerHTML = `<tr><td colspan="5" style="text-align:center;">Memuat data monitoring...</td></tr>`;
+
+            fetch(`${MONITORING_FETCH_URL}?sheet=Tenaga Kerja`)
+                .then(res => res.json())
+                .then(res => {
+                    if (res.result === 'success' && res.data) {
+                        if (res.data.length === 0) {
+                            tbody.innerHTML = `<tr><td colspan="5" style="text-align:center;">Belum ada data pengajuan.</td></tr>`;
+                            return;
+                        }
+                        let html = "";
+                        res.data.slice().reverse().forEach(item => {
+                            let valUnit = item.unitKerja || item.unit_kerja_area || item.unitKerjaArea || item.unit_kerja || item.unit || "-";
+                            let valJenis = item.jenisPengajuan || item.jenis_pengajuan || item.jenisPengajuanTK || item.jenis || "-";
+                            let valNama = item.nama || item.nama_lengkap || item.namaLengkap || "-";
+                            let valNik = item.nik || item.NIK || "-";
+
+                            html += `<tr>
+                                <td><b>${valNama}</b></td>
+                                <td>${valNik}</td>
+                                <td>${valUnit}</td>
+                                <td>${valJenis}</td>
+                                <td>${getStatusBadge(item.status)}</td>
+                            </tr>`;
+                        });
+                        tbody.innerHTML = html;
+                    } else {
+                        tbody.innerHTML = `<tr><td colspan="5" style="text-align:center;">Gagal memuat data.</td></tr>`;
+                    }
+                }).catch(err => { tbody.innerHTML = `<tr><td colspan="5" style="text-align:center; color:#dc2626;">Terjadi kesalahan sistem.</td></tr>`; });
+        }
     </script>
 </body>
 </html>
