@@ -1720,6 +1720,8 @@
     </style>
 </head>
 <body>
+    <!-- ➕ TAMBAHKAN BARIS INI TEPAT DI BAWAH BODY -->
+    <div id="top-of-page"></div>
 
     <svg style="width:0;height:0;position:absolute;" aria-hidden="true" focusable="false">
       <linearGradient id="goldGradient3D" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -1730,8 +1732,10 @@
       </linearGradient>
     </svg>
 
-    <nav>
-        <div class="brand-group">
+    <!-- NAVBAR HEADER -->
+    <nav class="navbar">
+        <!-- LOGO (Diklik -> pindah ke Home & scroll ke paling atas) -->
+        <div class="brand-group" onclick="goToHome()" style="cursor: pointer;">
             <div class="logo-container">
                 <img src="logo.png" alt="Logo Gadai MAS Nusantara" class="logo-img">
             </div>
@@ -1739,10 +1743,9 @@
             <div class="brand-title">HC <span>CONNECT</span></div>
         </div>
 
-        <!-- 3 MENU NAVIGASI HEADER -->
+        <!-- NAVIGASI KANAN (Tombol Home sudah dihapus) -->
         <ul class="nav-links">
-            <li><span class="nav-item active" id="nav-home" onclick="switchPage('page-home')">Home</span></li>
-            <li><span class="nav-item" id="nav-karir" onclick="switchPage('page-karir')">Career Hub</span></li>
+            <li><span class="nav-item" id="nav-karir" onclick="switchPage('page-karir')">Career & Development</span></li>
             <li><a href="https://wa.me/6281220002964" target="_blank" class="nav-item">Ask HC</a></li>
         </ul>
     </nav>
@@ -1821,7 +1824,7 @@
                     <a href="https://lookerstudio.google.com/" target="_blank" class="qa-card-simple">
                         <div style="display: flex; align-items: center; gap: 12px;">
                             <div class="card-icon-small" style="background:#fef2f2; color:#dc2626;"><i class="fa-solid fa-chart-pie"></i></div>
-                            <h3 class="card-title-sub">Dashboard & Report</h3>
+                            <h3 class="card-title-sub">Career Journey</h3>
                         </div>
                         <p class="card-desc-text">Akses data analitik dan laporan performa internal.</p>
                     </a>
@@ -2061,7 +2064,7 @@
     <div id="page-karir" class="page-content">
         <div class="container">
             <div class="career-hero">
-                <h1>Career Journey</h1>
+                <h1>Career & Development</h1>
                 <p>Jelajahi peluang pertumbuhan karir internal dan program pengembangan kompetensi untuk masa depan cemerlang di PT Gadai MAS Nusantara.</p>
             </div>
 
@@ -4414,6 +4417,27 @@
             event.target.reset();
             toggleKategoriFields('');
             closeModal('modalFasilitasRelokasi');
+        }
+
+        function goToHome() {
+            // 1. Pindah halaman dulu
+            if (typeof switchPage === 'function') {
+                switchPage('page-home');
+            }
+
+            // 2. Eksekusi reset scroll di microtask (biar jalan SETELAH switchPage selesai)
+            setTimeout(() => {
+                // Reset window scroll instant
+                window.scrollTo(0, 0);
+                document.documentElement.scrollTop = 0;
+                document.body.scrollTop = 0;
+
+                // Reset scroll jika container utama yang di-scroll (misal: main / .page-content)
+                const activePage = document.querySelector('.page-content.active');
+                if (activePage) {
+                    activePage.scrollTop = 0;
+                }
+            }, 10);
         }
     </script>
 </body>
