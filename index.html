@@ -206,6 +206,85 @@
             align-items: start;
         }
 
+        /* CSS MODAL JADWAL KONSULTASI */
+        .consult-header-banner {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            background: linear-gradient(135deg, #ffffff 0%, #eef5ff 100%);
+            border-radius: 18px;
+            padding: 20px 24px;
+            margin-bottom: 24px;
+            border: 1px solid #d0e1fd;
+        }
+
+        .consult-header-icon {
+            width: 58px;
+            height: 58px;
+            border-radius: 50%;
+            background: #e0edff;
+            color: var(--brand-blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            flex-shrink: 0;
+        }
+
+        .consult-tag {
+            font-size: 0.68rem;
+            font-weight: 800;
+            letter-spacing: 0.8px;
+            color: var(--brand-blue);
+            background: #e0edff;
+            padding: 3px 10px;
+            border-radius: 12px;
+            display: inline-block;
+            margin-bottom: 4px;
+            text-transform: uppercase;
+        }
+
+        .consult-title-banner { font-size: 1.5rem; font-weight: 900; color: var(--brand-blue); line-height: 1.1; }
+        .consult-desc-banner { font-size: 0.83rem; color: var(--text-muted); margin-top: 4px; }
+        .consult-list { display: flex; flex-direction: column; gap: 18px; }
+
+        .consult-card {
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 22px 24px;
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 24px;
+            align-items: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+            transition: var(--transition);
+        }
+
+        .consult-left { display: flex; align-items: flex-start; gap: 16px; }
+        .consult-avatar { width: 72px; height: 72px; border-radius: 50%; object-fit: cover; object-position: center 10%; background-color: #ffe6d5; flex-shrink: 0; }
+        .consult-info-tag { font-size: 0.65rem; font-weight: 800; color: var(--brand-blue); background: #e0edff; padding: 2px 8px; border-radius: 10px; display: inline-block; margin-bottom: 10px; text-transform: uppercase; }
+        .consult-role-title { font-size: 1.1rem; font-weight: 800; color: var(--brand-blue); margin-bottom: 4px; line-height: 1.2; }
+        .consult-role-desc { font-size: 0.81rem; color: var(--text-muted); line-height: 1.45; }
+        .consult-right { border-left: 1px solid var(--border-color); padding-left: 24px; }
+        .consult-right-header { display: flex; align-items: center; gap: 8px; font-size: 0.85rem; font-weight: 800; color: var(--brand-blue); margin-bottom: 12px; }
+        .consult-pills-wrap { display: flex; gap: 10px; flex-wrap: wrap; }
+
+        .schedule-pill-box {
+            background: #eef5ff;
+            border-radius: 14px;
+            padding: 8px 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            min-width: 135px;
+        }
+
+        .schedule-pill-box i { color: var(--brand-blue); font-size: 1rem; }
+        .pill-day { font-size: 0.82rem; font-weight: 800; color: var(--brand-blue); line-height: 1.1; }
+        .pill-time { font-size: 0.74rem; color: var(--text-muted); font-weight: 600; }
+        .modal-box.modal-xl { max-width: 980px; background: #f8fafc; }
+
         .qa-card-simple {
             background: #ffffff;
             border-radius: 20px;
@@ -1092,17 +1171,36 @@
             margin-top: 4px;
         }
 
-        /* 3 Kotak Card Manpower Movement - DISAMAKAN UKURANNYA DAN DIBUAT DENGAN ALIGNMENT UNIFORM */
-        .career-grid-3 {
+        /* Grid 4 Kolom untuk Manpower Movement */
+        .career-grid-4 {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(4, 1fr);
             gap: 20px;
-            align-items: stretch; /* Memastikan semua kotak memiliki tinggi yang sama persis */
+            align-items: start;
+        }
+
+        /* Warna Ungu Soft untuk Job Vacancy */
+        .movement-card.purple-style {
+            background: #f5f3ff;
+            border-color: #ddd6fe;
+        }
+
+        .purple-style .movement-card-icon {
+            background: #ede9fe;
+            color: #7c3aed;
+        }
+
+        /* Responsive Layout saat dibuka di HP / Tablet */
+        @media (max-width: 1024px) {
+            .career-grid-4 { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 600px) {
+            .career-grid-4 { grid-template-columns: 1fr; }
         }
 
         .movement-card {
             border-radius: 20px;
-            padding: 24px;
+            padding: 24px 20px;
             border: 1px solid var(--border-color);
             transition: var(--transition);
             display: flex;
@@ -1110,7 +1208,8 @@
             justify-content: space-between;
             position: relative;
             cursor: pointer; /* Indikator bahwa kartu dapat diklik secara utuh */
-            height: 100%;
+            height: auto;
+            min-height: 170px
         }
 
         .movement-card.blue-style {
@@ -1206,7 +1305,7 @@
             pointer-events: none;
         }
 
-        /* Tabel Job Vacancy */
+/* Tabel Onboarding / Vacancy */
         .vacancy-table-container {
             border: 1px solid var(--border-color);
             border-radius: 14px;
@@ -1231,6 +1330,7 @@
             padding: 14px 16px;
             border-bottom: 1px solid var(--border-color);
             color: var(--text-main);
+            vertical-align: middle;
         }
 
         .vacancy-table tr:last-child td {
@@ -1239,6 +1339,17 @@
 
         .vacancy-table tr:hover {
             background-color: #f8fafc;
+        }
+
+        /* Styling Foto Avatar Karyawan Baru */
+        .onboarding-avatar {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            object-fit: cover;
+            object-position: center;
+            border: 2px solid var(--border-color);
+            background-color: #f1f5f9;
         }
 
         .btn-apply-table {
@@ -1487,6 +1598,125 @@
                 margin-top: 15px;
             }
         }
+
+        /* Styling Grid 4 Kolom untuk Modal HC Service & Monitoring */
+        .hub-grid-4 {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin-top: 20px;
+        }
+
+        @media (max-width: 992px) {
+            .hub-grid-4 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hub-grid-4 {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Efek Hover Tombol Jadwal Konsultasi */
+        .schedule-pill-box {
+            cursor: pointer;
+            transition: transform 0.2s ease, background-color 0.2s ease;
+        }
+
+        .schedule-pill-box:hover {
+            background-color: #d0e1fd !important;
+            transform: translateY(-2px);
+        }
+
+        /* STYLING BANNER JADWAL KONSULTASI (GRADASI BIRU & EMAS SOFT) */
+        .consult-banner-box {
+            /* Gradasi Biru Navy ke Gold/Kuning Soft */
+            background: linear-gradient(135deg, rgba(15, 44, 137, 0.92) 0%, rgba(30, 64, 175, 0.85) 55%, rgba(217, 119, 6, 0.75) 100%);
+            border-radius: 20px;
+            padding: 28px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(15, 44, 137, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(8px); /* Efek glassmorphism lembut */
+        }
+
+        .consult-banner-left {
+            z-index: 2;
+            color: #ffffff;
+            max-width: 65%;
+        }
+
+        .consult-banner-title {
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 6px;
+            color: #ffffff;
+            line-height: 1.25;
+            letter-spacing: -0.02em;
+        }
+
+        .consult-banner-desc {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        .consult-banner-right {
+            z-index: 2;
+            flex-shrink: 0;
+        }
+
+        /* Tombol Putih Semi-Transparan Rapi */
+        .btn-consult-banner {
+            background: #ffffff;
+            color: var(--brand-blue, #0f2c89);
+            border: none;
+            padding: 12px 24px;
+            border-radius: 12px;
+            font-weight: 800;
+            font-size: 0.88rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-consult-banner:hover {
+            background: #f8fafc;
+            color: #1e40af;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.18);
+        }
+
+        @media (max-width: 768px) {
+            .consult-banner-box {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 20px;
+                padding: 24px 20px;
+            }
+            .consult-banner-left {
+                max-width: 100%;
+            }
+            .consult-banner-right {
+                width: 100%;
+            }
+            .btn-consult-banner {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -1512,7 +1742,7 @@
         <!-- 3 MENU NAVIGASI HEADER -->
         <ul class="nav-links">
             <li><span class="nav-item active" id="nav-home" onclick="switchPage('page-home')">Home</span></li>
-            <li><span class="nav-item" id="nav-karir" onclick="switchPage('page-karir')">Karir</span></li>
+            <li><span class="nav-item" id="nav-karir" onclick="switchPage('page-karir')">Career Hub</span></li>
             <li><a href="https://wa.me/6281220002964" target="_blank" class="nav-item">Ask HC</a></li>
         </ul>
     </nav>
@@ -1539,12 +1769,14 @@
 
         <div class="container">
 
+<!-- QUICK ACCESS SECTION -->
             <section class="quick-access-section" id="quick-access">
                 <div class="section-header">
                     <h2 class="section-title-main">Quick Access</h2>
                 </div>
 
                 <div class="qa-grid-4">
+                    <!-- 1. EMPLOYEE VOICE (KEMBALI KE SIMPLE CARD) -->
                     <div class="qa-card-simple" onclick="openModal('modalFormVoice')">
                         <div style="display: flex; align-items: center; gap: 12px;">
                             <div class="card-icon-small"><i class="fa-solid fa-comments"></i></div>
@@ -1553,6 +1785,7 @@
                         <p class="card-desc-text">Sampaikan masukan, ide, dan aspirasi Anda secara langsung.</p>
                     </div>
 
+                    <!-- 2. HC SERVICE (DROPDOWN) -->
                     <div class="qa-card-dropdown" id="dropdownHC">
                         <div class="dropdown-header" onclick="toggleDropdown('dropdownHC')">
                             <div class="dropdown-header-left">
@@ -1575,7 +1808,7 @@
                         </div>
                     </div>
 
-                    <!-- LEARNING & DEVELOPMENT DIBUAT CARD DIRECT LINK (TANPA DROPDOWN) -->
+                    <!-- 3. LEARNING & DEVELOPMENT -->
                     <a href="https://mas-academy.training" target="_blank" class="qa-card-simple">
                         <div style="display: flex; align-items: center; gap: 12px;">
                             <div class="card-icon-small" style="background:#f0fdf4; color:#16a34a;"><i class="fa-solid fa-graduation-cap"></i></div>
@@ -1584,6 +1817,7 @@
                         <p class="card-desc-text">Pusat pembelajaran, panduan kerja, dan kebijakan perusahaan.</p>
                     </a>
 
+                    <!-- 4. DASHBOARD & REPORT -->
                     <a href="https://lookerstudio.google.com/" target="_blank" class="qa-card-simple">
                         <div style="display: flex; align-items: center; gap: 12px;">
                             <div class="card-icon-small" style="background:#fef2f2; color:#dc2626;"><i class="fa-solid fa-chart-pie"></i></div>
@@ -1593,6 +1827,19 @@
                     </a>
                 </div>
             </section>
+
+            <!-- BANNER JADWAL KONSULTASI -->
+        <div class="consult-banner-box">
+            <div class="consult-banner-left">
+                <h3 class="consult-banner-title">Your People Partner, Always Here</h3>
+                <p class="consult-banner-desc">Konsultasikan bersama HC, karena setiap suara punya arti.</p>
+            </div>
+            <div class="consult-banner-right">
+                <button class="btn-consult-banner" onclick="openModal('modalJadwalKonsultasi')">
+                    Konsultasi dengan HC
+                </button>
+            </div>
+        </div>
 
             <section class="track-voice-section" id="track-voice">
                 <div class="section-header">
@@ -1814,55 +2061,55 @@
     <div id="page-karir" class="page-content">
         <div class="container">
             <div class="career-hero">
-                <h1>Karir & Pengembangan Diri</h1>
+                <h1>Career Journey</h1>
                 <p>Jelajahi peluang pertumbuhan karir internal dan program pengembangan kompetensi untuk masa depan cemerlang di PT Gadai MAS Nusantara.</p>
             </div>
 
-            <!-- SECTION 1: MANPOWER MOVEMENT -->
+            <!-- SECTION 1: MANPOWER MOVEMENT & JOB VACANCY (4 KOTAK) -->
             <div class="career-section-block">
                 <div class="career-section-header">
-                    <div class="career-header-icon"><i class="fa-solid fa-user-gear"></i></div>
-                    <div>
-                        <h2 class="career-header-title">Manpower Movement</h2>
-                        <p class="career-header-sub">Ajukan kebutuhan mutasi, promosi, atau pengajuan tenaga kerja sesuai dengan prosedur yang berlaku.</p>
-                    </div>
                 </div>
 
-                <div class="career-grid-3">
-                    <!-- CARD MUTASI (KLIK LANGSUNG BUKA FORM) -->
-                    <div class="movement-card blue-style" onclick="openModal('modalFormMutasi')">
+                <div class="career-grid-4">
+                    <!-- Kotak 1: Mutasi -->
+                    <div class="movement-card blue-style" onclick="openModal('modalMutasi')">
                         <div class="movement-card-top">
-                            <div class="movement-card-icon"><i class="fa-solid fa-arrow-right-arrow-left"></i></div>
+                            <div class="movement-card-icon"><i class="fa-solid fa-arrows-rotate"></i></div>
                             <div class="movement-card-body">
                                 <h3>Mutasi</h3>
-                                <p>Ajukan permohonan mutasi untuk penempatan di unit kerja atau lokasi lain yang sesuai dengan kebutuhan dan kompetensi Anda.</p>
+                                <p>Ajukan permohonan mutasi untuk penempatan di unit kerja.</p>
                             </div>
                         </div>
                     </div>
 
-                    <!-- CARD PROMOSI (KLIK LANGSUNG BUKA FORM) -->
-                    <div class="movement-card yellow-style" onclick="openModal('modalFormPromosi')">
+                    <!-- Kotak 2: Promosi atau Demosi -->
+                    <div class="movement-card yellow-style" onclick="openModal('modalPromosiDemosi')">
                         <div class="movement-card-top">
                             <div class="movement-card-icon"><i class="fa-solid fa-trophy"></i></div>
                             <div class="movement-card-body">
                                 <h3>Promosi atau Demosi</h3>
-                                <p>Ajukan permohonan promosi jabatan untuk pengembangan karir Anda bersama Gadai MAS Nusantara.</p>
+                                <p>Ajukan permohonan promosi jabatan.</p>
                             </div>
                         </div>
                     </div>
 
-                    <!-- CARD DROPDOWN PENGAJUAN TENAGA KERJA -->
-                    <div class="qa-card-dropdown movement-card teal-style" id="dropdownTenagaKerja">
+                    <!-- Kotak 3: Pengajuan Tenaga Kerja (DENGAN DROPDOWN FORM & MONITORING) -->
+                    <div class="movement-card teal-style qa-card-dropdown" id="dropdownTenagaKerja">
                         <div class="dropdown-header" onclick="toggleDropdown('dropdownTenagaKerja')">
-                            <div class="dropdown-header-left">
+                            <div class="movement-card-top">
                                 <div class="movement-card-icon"><i class="fa-solid fa-user-plus"></i></div>
-                                <h3 class="card-title-sub">Pengajuan Tenaga Kerja</h3>
+                                <div class="movement-card-body">
+                                    <h3 style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
+                                        Pengajuan SDM
+                                        <i class="fa-solid fa-chevron-down dropdown-icon-arrow" style="font-size: 0.85rem;"></i>
+                                    </h3>
+                                    <p>Pengajuan penambahan atau pergantian SDM.</p>
+                                </div>
                             </div>
-                            <i class="fa-solid fa-chevron-down dropdown-icon-arrow"></i>
                         </div>
-                        <p class="card-desc-text">Layanan pengajuan dan monitoring kebutuhan penambahan atau pergantian personel.</p>
 
-                        <div class="dropdown-content">
+                        <!-- SUBMENU DROPDOWN FORM & MONITORING -->
+                        <div class="dropdown-content mt-3">
                             <button class="btn-dropdown-action" onclick="openModal('modalTenagaKerja')">
                                 <span>📝 Form Pengajuan Tenaga Kerja</span>
                                 <i class="fa-solid fa-arrow-right"></i>
@@ -1873,7 +2120,19 @@
                             </button>
                         </div>
                     </div>
+
+                    <!-- Kotak 4: Job Vacancy (DIRECT LINK GADAIMAS.COM) -->
+                    <a href="https://web-dev.gadaimas.com/karir" target="_blank" class="movement-card purple-style" style="text-decoration: none;">
+                        <div class="movement-card-top">
+                            <div class="movement-card-icon"><i class="fa-solid fa-briefcase"></i></div>
+                            <div class="movement-card-body">
+                                <h3>Job Vacancy</h3>
+                                <p>Akses informasi lowongan kerja terbaru.</p>
+                            </div>
+                        </div>
+                    </a>
                 </div>
+            </div>
 
                 <!-- TABEL MONITORING MANPOWER MOVEMENT -->
                 <div style="margin-top: 35px; border-top: 1px dashed var(--border-color); padding-top: 25px;">
@@ -1914,13 +2173,15 @@
                 </div>
             </div>
 
-            <!-- SECTION 2: JOB VACANCY -->
+            <!-- SECTION 2: ONBOARDING KARYAWAN BARU -->
             <div class="career-section-block">
                 <div class="career-section-header">
-                    <div class="career-header-icon"><i class="fa-solid fa-briefcase"></i></div>
+                    <div class="career-header-icon" style="background:#e0f2fe; color:var(--brand-blue);">
+                        <i class="fa-solid fa-user-plus"></i>
+                    </div>
                     <div>
-                        <h2 class="career-header-title">Job Vacancy</h2>
-                        <p class="career-header-sub">Temukan kesempatan karir yang sesuai dengan keahlian dan minat Anda.</p>
+                        <h2 class="career-header-title">Onboarding Karyawan</h2>
+                        <p class="career-header-sub">Daftar karyawan baru yang bergabung di PT Gadai MAS Nusantara.</p>
                     </div>
                 </div>
 
@@ -1928,33 +2189,31 @@
                     <table class="vacancy-table">
                         <thead>
                             <tr>
-                                <th>No</th>
+                                <th style="width: 70px; text-align: center;">No</th>
+                                <th style="width: 120px; text-align: center;">Foto Karyawan</th>
+                                <th>Nama</th>
                                 <th>Jabatan</th>
-                                <th>Unit Kerja</th>
                                 <th>Lokasi</th>
-                                <th>Jenis Pekerjaan</th>
-                                <th>Batas Waktu Apply</th>
-                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td>1</td>
-                                <td><b>Penaksir</b></td>
-                                <td>MAS OEBOBO</td>
-                                <td>Area Kupang, NTT</td>
-                                <td>Full Time</td>
-                                <td>10 Sep 2026</td>
-                                <td><button class="btn-apply-table" onclick="openModalJobApply('Penaksir', 'Operasional Cabang')">Apply</button></td>
+                                <td style="text-align: center; font-weight: 700;">1</td>
+                                <td style="text-align: center;">
+                                    <img src="rendra.png" alt="Foto Karyawan" class="onboarding-avatar">
+                                </td>
+                                <td><b>Ahmad Fauzi</b></td>
+                                <td>Penaksir</td>
+                                <td>MAS OEBOBO (Area Kupang, NTT)</td>
                             </tr>
                             <tr>
-                                <td>2</td>
-                                <td><b>Kepala Cabang</b></td>
-                                <td>MAS Simpang Limun</td>
-                                <td>Area Medan, Sumatera Utara</td>
-                                <td>Full Time</td>
-                                <td>8 Sep 2026</td>
-                                <td><button class="btn-apply-table" onclick="openModalJobApply('Kepala Cabang', 'Manajemen Operasional')">Apply</button></td>
+                                <td style="text-align: center; font-weight: 700;">2</td>
+                                <td style="text-align: center;">
+                                    <img src="chintya.png" alt="Foto Karyawan" class="onboarding-avatar">
+                                </td>
+                                <td><b>Siti Rahmawati</b></td>
+                                <td>Kepala Cabang</td>
+                                <td>MAS Simpang Limun (Area Medan, Sumatera Utara)</td>
                             </tr>
                         </tbody>
                     </table>
@@ -1964,89 +2223,131 @@
         </div>
     </div>
 
-    <!-- ==================== FORM MODAL LAMARAN KERJA / JOB APPLY ==================== -->
-    <div class="modal-overlay" id="modalJobApply">
-        <div class="modal-box">
-            <button class="modal-close" onclick="closeModal('modalJobApply')">&times;</button>
-            <h2 class="form-section-title">Form Lamaran Pekerjaan</h2>
-            <p class="form-section-subtitle">Lengkapi formulir lamaran kerja di bawah ini untuk posisi lowongan yang dibuka.</p>
-
-            <form onsubmit="handleSpreadsheetSubmit(event, 'https://script.google.com/macros/s/AKfycbzZDUrbSoP3AJcxeIIWcmF-ZxASJkb9IvtapqHX-4kj8zE222Tww63z7iEC9eH15W8v/exec', 'modalJobApply')">
-                <input type="hidden" name="form_type" value="Form Lamaran Pekerjaan">
-
-                <div class="form-group">
-                    <label class="form-label">Posisi yang Dilamar <span>*</span></label>
-                    <input type="text" name="posisi_dilamar" id="applyPosisiInput" class="form-control" readonly style="background:#e2e8f0; font-weight:700; color:var(--brand-blue);" required>
+    <!-- MODAL JADWAL KONSULTASI -->
+    <div class="modal-overlay" id="modalJadwalKonsultasi">
+        <div class="modal-box modal-xl">
+            <button class="modal-close" onclick="closeModal('modalJadwalKonsultasi')">&times;</button>
+        
+            <!-- Header Banner -->
+            <div class="consult-header-banner">
+                <div class="consult-header-icon">
+                    <i class="fa-regular fa-comments"></i>
                 </div>
-
-                <div class="form-group">
-                    <label class="form-label">Unit Kerja / Kategori <span>*</span></label>
-                    <input type="text" name="unit_kerja_dilamar" id="applyUnitInput" class="form-control" readonly style="background:#e2e8f0; font-weight:700; color:var(--brand-blue);" required>
+                <div>
+                    <span class="consult-tag">KONSULTASI DENGAN HCBP</span>
+                    <h2 class="consult-title-banner">Jadwal Konsultasi</h2>
+                    <p class="consult-desc-banner">Pilih jadwal konsultasi sesuai dengan kebutuhan Anda. Pastikan untuk melakukan pendaftaran terlebih dahulu jika diperlukan.</p>
                 </div>
+            </div>
 
-                <div class="form-group">
-                    <label class="form-label">Nama Lengkap (Sesuai KTP) <span>*</span></label>
-                    <input type="text" name="nama_lengkap" class="form-control" placeholder="Tuliskan nama lengkap Anda..." required>
-                </div>
+            <!-- List Spesialis -->
+            <div class="consult-list">
 
-                <div class="form-group">
-                    <label class="form-label">Email Aktif <span>*</span></label>
-                    <input type="email" name="email" class="form-control" placeholder="nama@email.com" required>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-label">Nomor WhatsApp / HP <span>*</span></label>
-                    <input type="tel" name="no_whatsapp" class="form-control" placeholder="Contoh: 081234567890" required>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-label">Pendidikan Terakhir <span>*</span></label>
-                    <select name="pendidikan_terakhir" class="form-control" required>
-                        <option value="" disabled selected>-- Pilih Pendidikan Terakhir --</option>
-                        <option value="SMA/SMK Sederajat">SMA/SMK Sederajat</option>
-                        <option value="D3">D3</option>
-                        <option value="S1/D4">S1/D4</option>
-                        <option value="S2">S2</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-label">Jurusan / Program Studi <span>*</span></label>
-                    <input type="text" name="jurusan" class="form-control" placeholder="Contoh: Ekonomi / Manajemen / Hukum / dll" required>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-label">Pengalaman Kerja Terakhir (Perusahaan & Jabatan) <span>*</span></label>
-                    <textarea name="pengalaman_kerja" class="form-control" rows="2" placeholder="Contoh: PT ABC - Penaksir (2 Tahun)" required></textarea>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-label">Ekspektasi Gaji (Expected Salary) <span>*</span></label>
-                    <input type="text" name="expected_salary" class="form-control" placeholder="Contoh: Rp 4.500.000" required>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-label">Kapan Anda Siap Bergabung? <span>*</span></label>
-                    <select name="ketersediaan_bergabung" class="form-control" required>
-                        <option value="" disabled selected>-- Pilih Waktu Ketersediaan --</option>
-                        <option value="Secepatnya (Immediately)">Secepatnya (Immediately)</option>
-                        <option value="1 Minggu">1 Minggu</option>
-                        <option value="1 Bulan (1 Month Notice)">1 Bulan (1 Month Notice)</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-label">Upload CV Terbaru (PDF/Word) <span>*</span></label>
-                    <div class="file-input-wrapper">
-                        <input type="file" id="fileCVApply" class="form-control" accept="image/*,.pdf,.docx" required onchange="handleFileChange('fileCVApply', 'btnCancelCVApply')">
-                        <button type="button" id="btnCancelCVApply" class="btn-cancel-file" onclick="resetFileInput('fileCVApply', 'btnCancelCVApply')">✕ Batal</button>
+                <!-- Spesialis 1 -->
+                <div class="consult-card">
+                    <div class="consult-left">
+                        <img src="rendra.png" alt="Spesialis HR" class="consult-avatar">
+                        <div>
+                            <span class="consult-info-tag">HEAD OF DIVISION HUMAN CAPITAL</span>
+                            <h3 class="consult-role-title">MARENDRA NOVIANSYAH</h3>
+                            <p class="consult-role-desc">Konsultasi terkait pengelolaan SDM, pengembangan karir, konflik tim, budaya kerja, dan isu kepegawaian lainnya.</p>
+                        </div>
+                    </div>
+                    <div class="consult-right">
+                        <div class="consult-right-header">
+                            <i class="fa-regular fa-calendar-check"></i>
+                            <span>Jadwal Konsultasi</span>
+                        </div>
+                        <div class="consult-pills-wrap">
+                            <div class="schedule-pill-box" onclick="openFormKonsultasi('Marendra Noviansyah', 'Senin (14.00 - 15.00)')">
+                                <i class="fa-regular fa-calendar-days"></i>
+                                <div>
+                                    <div class="pill-day">Senin</div>
+                                    <div class="pill-time">(14.00 - 15.00)</div>
+                                </div>
+                            </div>
+                            <div class="schedule-pill-box" onclick="openFormKonsultasi('Marendra Noviansyah', 'Rabu (16.00 - 17.00)')">
+                                <i class="fa-regular fa-calendar-days"></i>
+                                <div>
+                                    <div class="pill-day">Rabu</div>
+                                    <div class="pill-time">(16.00 - 17.00)</div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <button type="submit" class="btn-submit">KIRIM LAMARAN KERJA</button>
-            </form>
-        </div>
-    </div>
+                <!-- Spesialis 2 -->
+                <div class="consult-card">
+                    <div class="consult-left">
+                        <img src="chintya.png" alt="Staff HCBP" class="consult-avatar" style="background-color: #dbeafe;">
+                        <div>
+                            <span class="consult-info-tag">STAFF OF HCBP DEPARTEMENT</span>
+                            <h3 class="consult-role-title">CHINTYA KHARISMA SHANTI</h3>
+                            <p class="consult-role-desc">Konsultasi terkait kendala operasional, alur kerja, koordinasi antar unit, serta solusi untuk meningkatkan efektivitas proses kerja di perusahaan.</p>
+                        </div>
+                    </div>
+                    <div class="consult-right">
+                        <div class="consult-right-header">
+                            <i class="fa-regular fa-calendar-check"></i>
+                            <span>Jadwal Konsultasi</span>
+                        </div>
+                        <div class="consult-pills-wrap">
+                            <div class="schedule-pill-box" onclick="openFormKonsultasi('Chintya Kharisma Shanti', 'Selasa (10.30 - 11.30)')">
+                                <i class="fa-regular fa-calendar-days"></i>
+                                <div>
+                                    <div class="pill-day">Selasa</div>
+                                    <div class="pill-time">(10.30 - 11.30)</div>
+                                </div>
+                            </div>
+                            <div class="schedule-pill-box" onclick="openFormKonsultasi('Chintya Kharisma Shanti', 'Kamis (15.00 - 16.00)')">
+                                <i class="fa-regular fa-calendar-days"></i>
+                                <div>
+                                    <div class="pill-day">Kamis</div>
+                                    <div class="pill-time">(15.00 - 16.00)</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Spesialis 3 -->
+                <div class="consult-card">
+                    <div class="consult-left">
+                        <img src="arum.png" alt="Staff HCBP" class="consult-avatar" style="background-color: #fef3c7;">
+                        <div>
+                            <span class="consult-info-tag">STAFF OF HCBP DEPARTEMENT</span>
+                            <h3 class="consult-role-title">ARUM PUTRI</h3>
+                            <p class="consult-role-desc">Konsultasi terkait komunikasi efektif, manajemen waktu, public speaking, serta pengembangan kompetensi diri di lingkungan kerja.</p>
+                        </div>
+                    </div>
+                    <div class="consult-right">
+                        <div class="consult-right-header">
+                            <i class="fa-regular fa-calendar-check"></i>
+                            <span>Jadwal Konsultasi</span>
+                        </div>
+                        <div class="consult-pills-wrap">
+                            <div class="schedule-pill-box" onclick="openFormKonsultasi('Aline Rahma Ghanie Exwanti', 'Rabu (17.00 - 18.00)')">
+                                <i class="fa-regular fa-calendar-days"></i>
+                                <div>
+                                    <div class="pill-day">Rabu</div>
+                                    <div class="pill-time">(17.00 - 18.00)</div>
+                                </div>
+                            </div>
+                            <div class="schedule-pill-box" onclick="openFormKonsultasi('Aline Rahma Ghanie Exwanti', 'Jumat (16.30 - 17.30)')">
+                                <i class="fa-regular fa-calendar-days"></i>
+                                <div>
+                                    <div class="pill-day">Jumat</div>
+                                    <div class="pill-time">(16.30 - 17.30)</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div> <!-- Tutup consult-list -->
+        </div> <!-- Tutup modal-box -->
+    </div> <!-- Tutup modal-overlay -->
 
     <!-- ==================== FORM MODAL ISIAN PERMOHONAN MUTASI ==================== -->
     <div class="modal-overlay" id="modalFormMutasi">
@@ -2141,6 +2442,34 @@
                 </div>
 
                 <button type="submit" class="btn-submit">SUBMIT FORM MUTASI</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- MODAL FORM BOOKING KONSULTASI -->
+    <div class="modal-overlay" id="modalFormKonsultasi">
+        <div class="modal-box">
+            <button class="modal-close" onclick="closeModal('modalFormKonsultasi')">&times;</button>
+            <h2 class="form-section-title">Form Booking Konsultasi</h2>
+            <p class="form-section-subtitle">Lengkapi data diri Anda untuk mengonfirmasi jadwal konsultasi.</p>
+
+            <form onsubmit="handleSubmitKonsultasi(event)">
+                <div class="form-group">
+                    <label class="form-label">Spesialis & Jadwal Terpilih</label>
+                    <input type="text" id="selectedKonsultan" class="form-control" readonly style="background-color: #e2e8f0; font-weight: 700; color: #0f2c89;">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Nama Lengkap <span>*</span></label>
+                    <input type="text" id="namaKonsultasi" class="form-control" placeholder="Masukkan nama lengkap Anda" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Nomor Telepon / WhatsApp <span>*</span></label>
+                    <input type="tel" id="noHpKonsultasi" class="form-control" placeholder="Contoh: 081234567890" required>
+                </div>
+
+                <button type="submit" class="btn-submit">Konfirmasi Booking</button>
             </form>
         </div>
     </div>
@@ -2257,10 +2586,21 @@
                     <p style="font-size:0.8rem; color:var(--text-muted);">Pengajuan kebutuhan pelatihan/training dan pengembangan skill.</p>
                     <span style="font-size:0.8rem; font-weight:700; color:var(--brand-blue);">Buka Form ➔</span>
                 </div>
+
+                <!-- KOTAK KE-4 (BARU) -->
+                <div class="hub-item-card" onclick="openModal('modalFasilitasRelokasi')">
+                    <div class="hub-item-title">
+                        <i class="fa-solid fa-building-user" style="color:var(--brand-blue);"></i>
+                        Form Pengajuan Fasilitas dan Relokasi Karyawan
+                    </div>
+                    <p style="font-size:0.8rem; color:var(--text-muted);">Pengajuan bantuan fasilitas kerja serta permohonan relokasi karyawan.</p>
+                    <span style="font-size:0.8rem; font-weight:700; color:var(--brand-blue);">Buka Form ➔</span>
+                </div>
             </div>
         </div>
     </div>
 
+    <!-- ==================== MONITORING ADMINISTRASI MODAL ==================== -->
     <div class="modal-overlay" id="pageMonitoringAdministrasi">
         <div class="modal-box">
             <button class="modal-close" onclick="closeModal('pageMonitoringAdministrasi')">&times;</button>
@@ -2294,9 +2634,19 @@
                     <p style="font-size:0.8rem; color:var(--text-muted);">Lihat status pengajuan program pelatihan & sertifikasi.</p>
                     <span style="font-size:0.8rem; font-weight:700; color:#b45309;">Lihat Status ➔</span>
                 </div>
+
+                <!-- KOTAK KE-4 (BARU) -->
+                <div class="hub-item-card" onclick="openModal('modalMonFasilitasRelokasi'); fetchMonFasilitasRelokasi();">
+                    <div class="hub-item-title">
+                        <i class="fa-solid fa-chart-line" style="color:#b45309;"></i>
+                        Monitoring Pengajuan Fasilitas dan Relokasi Karyawan
+                    </div>
+                    <p style="font-size:0.8rem; color:var(--text-muted);">Lihat progress status permohonan fasilitas kerja dan relokasi.</p>
+                    <span style="font-size:0.8rem; font-weight:700; color:#b45309;">Lihat Status ➔</span>
+                </div>
             </div>
         </div>
-    </div>
+    </div> 
 
     <!-- ==================== FORM EMPLOYEE VOICE ==================== -->
     <div class="modal-overlay" id="modalFormVoice">
@@ -2532,7 +2882,7 @@
             </form>
         </div>
     </div>
-
+    
     <!-- ==================== FORM PERGANTIAN KARYAWAN IZIN/CUTI ==================== -->
     <div class="modal-overlay" id="modalIzinCuti">
         <div class="modal-box">
@@ -3459,6 +3809,102 @@
         </div>
     </div>
 
+    <!-- ==================== MODAL FORM PENGAJUAN FASILITAS & RELOKASI ==================== -->
+    <div class="modal-overlay" id="modalFasilitasRelokasi">
+        <div class="modal-box">
+            <button class="modal-close" onclick="closeModal('modalFasilitasRelokasi')">&times;</button>
+            <h2 class="form-section-title">Form Pengajuan Fasilitas & Relokasi Karyawan</h2>
+            <p class="form-section-subtitle">Isi data di bawah ini secara lengkap untuk mengajukan fasilitas kerja atau relokasi tugas.</p>
+
+            <form onsubmit="handleSubmitFasilitasRelokasi(event)">
+                <!-- 1. Data Diri Karyawan -->
+                <div class="form-group">
+                    <label class="form-label">Nama Lengkap <span>*</span></label>
+                    <input type="text" id="frNama" class="form-control" placeholder="Masukkan nama lengkap Anda" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">NIK Karyawan <span>*</span></label>
+                    <input type="text" id="frNik" class="form-control" placeholder="Masukkan NIK Karyawan" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Departemen / Divisi <span>*</span></label>
+                    <input type="text" id="frDepartemen" class="form-control" placeholder="Contoh: Operational / HC / Finance" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Cabang / Unit Kerja Saat Ini <span>*</span></label>
+                    <input type="text" id="frCabangAsal" class="form-control" placeholder="Contoh: Cabang Jakarta Pusat" required>
+                </div>
+
+                <!-- 2. Jenis Pengajuan -->
+                <div class="form-group">
+                    <label class="form-label">Kategori Pengajuan <span>*</span></label>
+                    <select id="frKategori" class="form-control" required onchange="toggleKategoriFields(this.value)">
+                        <option value="">-- Pilih Kategori Pengajuan --</option>
+                        <option value="Fasilitas">Pengajuan Fasilitas Kerja</option>
+                        <option value="Relokasi">Permohonan Relokasi Karyawan</option>
+                        <option value="Keduanya">Pengajuan Fasilitas & Relokasi</option>
+                    </select>
+                </div>
+
+                <!-- 3. Section Pengajuan Fasilitas (Dynamic) -->
+                <div id="sectionFasilitas" style="display: none; background: #f8fafc; padding: 16px; border-radius: 12px; margin-bottom: 22px; border: 1px solid var(--border-color);">
+                    <label class="form-label">Fasilitas yang Diajukan <span>*</span></label>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 12px;">
+                        <label class="checkbox-item"><input type="checkbox" name="fasilitasItem" value="Laptop/PC"> Laptop / PC Kerja</label>
+                        <label class="checkbox-item"><input type="checkbox" name="fasilitasItem" value="HP Operasional"> HP Operasional</label>
+                        <label class="checkbox-item"><input type="checkbox" name="fasilitasItem" value="Kendaraan Dinas"> Kendaraan Dinas</label>
+                        <label class="checkbox-item"><input type="checkbox" name="fasilitasItem" value="Tempat Tinggal/Mess"> Tempat Tinggal / Mess</label>
+                    </div>
+                    
+                    <label class="form-label">Alasan & Urgensi Kebutuhan Fasilitas</label>
+                    <textarea id="frAlasanFasilitas" class="form-control" rows="3" placeholder="Jelaskan secara rinci alasan kebutuhan fasilitas tersebut..."></textarea>
+                </div>
+
+                <!-- 4. Section Pengajuan Relokasi (Dynamic) -->
+                <div id="sectionRelokasi" style="display: none; background: #f8fafc; padding: 16px; border-radius: 12px; margin-bottom: 22px; border: 1px solid var(--border-color);">
+                    <div class="form-group">
+                        <label class="form-label">Cabang / Lokasi Tujuan Relokasi <span>*</span></label>
+                        <input type="text" id="frCabangTujuan" class="form-control" placeholder="Contoh: Cabang Bandung / Surabaya">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Rencana Tanggal Efektif Relokasi</label>
+                        <input type="date" id="frTanggalRelokasi" class="form-control">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Alasan Permohonan Relokasi</label>
+                        <select id="frAlasanRelokasi" class="form-control">
+                            <option value="">-- Pilih Alasan --</option>
+                            <option value="Keluarga">Domisili / Pertimbangan Keluarga</option>
+                            <option value="Kesehatan">Faktor Kesehatan</option>
+                            <option value="Pengembangan Karir">Pengembangan Karir / Promosi</option>
+                            <option value="Operasional">Kebutuhan Operasional Perusahaan</option>
+                            <option value="Lainnya">Lainnya</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- 5. Catatan & Attachment -->
+                <div class="form-group">
+                    <label class="form-label">Catatan / Alasan Tambahan</label>
+                    <textarea id="frCatatan" class="form-control" rows="3" placeholder="Tuliskan catatan tambahan jika ada..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Lampiran Dokumen Pendukung (Opsional)</label>
+                    <input type="file" id="frDokumen" class="form-control" accept=".pdf,.png,.jpg,.jpeg,.doc,.docx">
+                    <small style="color: var(--text-muted); font-size: 0.75rem;">Format: PDF/JPG/PNG/DOC (Maks. 5MB)</small>
+                </div>
+
+                <button type="submit" class="btn-submit">Kirim Pengajuan</button>
+            </form>
+        </div>
+    </div>
+
     <!-- 4. MONITORING LEARNING & DEVELOPMENT -->
     <div class="modal-overlay" id="modalMonLearningDev">
         <div class="modal-box" style="max-width: 1200px;">
@@ -3615,13 +4061,6 @@
                 navHome.classList.remove('active');
             }
             window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        /* FUNCTION KHUSUS UNTUK MEMBUKA FORM LAMARAN KERJA JOB VACANCY */
-        function openModalJobApply(posisi, unit) {
-            document.getElementById('applyPosisiInput').value = posisi;
-            document.getElementById('applyUnitInput').value = unit;
-            openModal('modalJobApply');
         }
 
         /* MODAL OPEN & CLOSE HELPER */
@@ -3920,6 +4359,61 @@
                         tbody.innerHTML = `<tr><td colspan="5" style="text-align:center;">Gagal memuat data.</td></tr>`;
                     }
                 }).catch(err => { tbody.innerHTML = `<tr><td colspan="5" style="text-align:center; color:#dc2626;">Terjadi kesalahan sistem.</td></tr>`; });
+        }
+
+        // Fungsi Buka Form Booking Konsultasi
+        function openFormKonsultasi(namaSpesialis, jadwal) {
+            document.getElementById('selectedKonsultan').value = namaSpesialis + " - " + jadwal;
+            closeModal('modalJadwalKonsultasi');
+            openModal('modalFormKonsultasi');
+        }
+
+        // Fungsi Submit Booking Konsultasi
+        function handleSubmitKonsultasi(event) {
+            event.preventDefault();
+            
+            const konsultan = document.getElementById('selectedKonsultan').value;
+            const nama = document.getElementById('namaKonsultasi').value;
+            const noHp = document.getElementById('noHpKonsultasi').value;
+
+            alert(`Terima kasih ${nama}!\nPengajuan konsultasi Anda untuk [${konsultan}] telah berhasil disimpan. Kami akan menghubungi Anda melalui WhatsApp di nomor ${noHp}.`);
+
+            event.target.reset();
+            closeModal('modalFormKonsultasi');
+        }
+
+        // Menampilkan section form secara dinamis berdasarkan Kategori Pengajuan
+        function toggleKategoriFields(val) {
+            const secFasilitas = document.getElementById('sectionFasilitas');
+            const secRelokasi = document.getElementById('sectionRelokasi');
+
+            if (val === 'Fasilitas') {
+                secFasilitas.style.display = 'block';
+                secRelokasi.style.display = 'none';
+            } else if (val === 'Relokasi') {
+                secFasilitas.style.display = 'none';
+                secRelokasi.style.display = 'block';
+            } else if (val === 'Keduanya') {
+                secFasilitas.style.display = 'block';
+                secRelokasi.style.display = 'block';
+            } else {
+                secFasilitas.style.display = 'none';
+                secRelokasi.style.display = 'none';
+            }
+        }
+
+        // Handle Submit Form Pengajuan Fasilitas & Relokasi
+        function handleSubmitFasilitasRelokasi(event) {
+            event.preventDefault();
+            
+            const nama = document.getElementById('frNama').value;
+            const kategori = document.getElementById('frKategori').value;
+
+            alert(`Terima kasih ${nama}.\nPengajuan [${kategori}] Anda telah berhasil dikirim dan akan diproses oleh tim Human Capital.`);
+            
+            event.target.reset();
+            toggleKategoriFields('');
+            closeModal('modalFasilitasRelokasi');
         }
     </script>
 </body>
