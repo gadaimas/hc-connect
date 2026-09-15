@@ -1745,7 +1745,6 @@
 
         <!-- NAVIGASI KANAN (Tombol Home sudah dihapus) -->
         <ul class="nav-links">
-            <li><span class="nav-item" id="nav-karir" onclick="switchPage('page-karir')">Career & Development</span></li>
             <li><a href="https://wa.me/6281220002964" target="_blank" class="nav-item">Ask HC</a></li>
         </ul>
     </nav>
@@ -1820,14 +1819,14 @@
                         <p class="card-desc-text">Pusat pembelajaran, panduan kerja, dan kebijakan perusahaan.</p>
                     </a>
 
-                    <!-- 4. DASHBOARD & REPORT -->
-                    <a href="https://lookerstudio.google.com/" target="_blank" class="qa-card-simple">
+                    <!-- 4. CAREER & DEVELOPMENT (PINDAH PAGE) -->
+                    <div class="qa-card-simple" onclick="switchPage('page-karir')" style="cursor: pointer;">
                         <div style="display: flex; align-items: center; gap: 12px;">
                             <div class="card-icon-small" style="background:#fef2f2; color:#dc2626;"><i class="fa-solid fa-chart-pie"></i></div>
                             <h3 class="card-title-sub">Career & Development</h3>
                         </div>
                         <p class="card-desc-text">Akses data analitik dan laporan performa internal.</p>
-                    </a>
+                    </div>
                 </div>
             </section>
 
@@ -2079,7 +2078,7 @@
                         <div class="movement-card-top">
                             <div class="movement-card-icon"><i class="fa-solid fa-arrows-rotate"></i></div>
                             <div class="movement-card-body">
-                                <h3>Mutasi</h3>
+                                <h3>Manpower Movement</h3>
                                 <p>Pengajuan perubahan penempatan SDM.</p>
                             </div>
                         </div>
@@ -2090,7 +2089,7 @@
                         <div class="movement-card-top">
                             <div class="movement-card-icon"><i class="fa-solid fa-trophy"></i></div>
                             <div class="movement-card-body">
-                                <h3>Promosi atau Demosi</h3>
+                                <h3>Development</h3>
                                 <p>Ajukan permohonan promosi jabatan.</p>
                             </div>
                         </div>
@@ -2103,7 +2102,7 @@
                                 <div class="movement-card-icon"><i class="fa-solid fa-user-plus"></i></div>
                                 <div class="movement-card-body">
                                     <h3 style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
-                                        Pengajuan SDM
+                                        Manpower Request
                                         <i class="fa-solid fa-chevron-down dropdown-icon-arrow" style="font-size: 0.85rem;"></i>
                                     </h3>
                                     <p>Pengajuan penambahan atau pergantian SDM.</p>
