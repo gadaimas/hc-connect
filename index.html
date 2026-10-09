@@ -2382,12 +2382,12 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="form-label">Unit Kerja / Cabang Saat Ini <span>*</span></label>
+                    <label class="form-label">Unit Kerja/Cabang Saat Ini <span>*</span></label>
                     <input type="text" name="unit_kerja_saat_ini" class="form-control" placeholder="Contoh: MAS OEBOBO" required>
                 </div>
 
                 <div class="form-group">
-                    <label class="form-label">Area / Wilayah Saat Ini <span>*</span></label>
+                    <label class="form-label">Area/Wilayah Saat Ini <span>*</span></label>
                     <select name="area_saat_ini" class="form-control" required>
                         <option value="" disabled selected>-- Pilih Area --</option>
                         <option value="JATIM 1">JATIM 1</option>
@@ -2404,7 +2404,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="form-label">Unit Kerja / Cabang Tujuan Mutasi <span>*</span></label>
+                    <label class="form-label">Unit Kerja/Cabang Tujuan Mutasi <span>*</span></label>
                     <input type="text" name="unit_kerja_tujuan" class="form-control" placeholder="Contoh: MAS KUPANG / Head Office" required>
                 </div>
 
@@ -2436,7 +2436,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="form-label">Upload Surat Rekomendasi / Approval Atasan (Opsional)</label>
+                    <label class="form-label">Upload Surat Rekomendasi/Approval Atasan (Opsional)</label>
                     <div class="file-input-wrapper">
                         <input type="file" id="fileMutasi" class="form-control" accept="image/*,.pdf,.docx,.xlsx" onchange="handleFileChange('fileMutasi', 'btnCancelMutasi')">
                         <button type="button" id="btnCancelMutasi" class="btn-cancel-file" onclick="resetFileInput('fileMutasi', 'btnCancelMutasi')">✕ Batal</button>
@@ -2676,7 +2676,7 @@
                 <div class="form-group">
                     <label class="form-label">Jabatan <span>*</span></label>
                     <select name="jabatan" class="form-control" required>
-                        <option value="" disabled selected>-- Pilih Jabatan --</option>
+                        <option value="" selected hidden>-- Pilih Jabatan --</option>
                         <option value="C-Level">C-Level</option>
                         <option value="Division Head">Division Head</option>
                         <option value="Department Head">Department Head</option>
@@ -2704,7 +2704,7 @@
                 <div class="form-group">
                     <label class="form-label">Jenis Suara <span>*</span></label>
                     <select name="jenis_suara" class="form-control" required>
-                        <option value="" disabled selected>-- Pilih Jenis Suara --</option>
+                        <option value="" selected hidden>-- Pilih Jenis Suara --</option>
                         <option value="Keluhan">Keluhan</option>
                         <option value="Permasalahan">Permasalahan</option>
                         <option value="Apresiasi">Apresiasi</option>
@@ -2717,7 +2717,7 @@
                 <div class="form-group">
                     <label class="form-label">Topik Terkait <span>*</span></label>
                     <select name="topik" id="topikVoiceSelect" class="form-control" onchange="toggleLainnyaSelect('topikVoiceSelect', 'topikLainnyaVoiceInput')" required>
-                        <option value="" disabled selected>-- Pilih Topik --</option>
+                        <option value="" selected hidden>-- Pilih Topik --</option>
                         <option value="Atasan / Leadership">Atasan / Leadership</option>
                         <option value="Rekan Kerja">Rekan Kerja</option>
                         <option value="Komunikasi">Komunikasi</option>
@@ -2748,7 +2748,7 @@
                         <label class="radio-item"><input type="radio" name="dampak" value="Tidak berdampak signifikan" onclick="toggleRadioLainnya(false, 'dampakLainnyaVoiceInput')" checked> Tidak berdampak signifikan</label>
                         <label class="radio-item"><input type="radio" name="dampak" value="Mengganggu pekerjaan saya" onclick="toggleRadioLainnya(false, 'dampakLainnyaVoiceInput')"> Mengganggu pekerjaan saya</label>
                         <label class="radio-item"><input type="radio" name="dampak" value="Mengganggu produktivitas tim" onclick="toggleRadioLainnya(false, 'dampakLainnyaVoiceInput')"> Mengganggu produktivitas tim</label>
-                        <label class="radio-item"><input type="radio" name="dampak" value="Mempengaruhi employee experience" onclick="toggleRadioLainnya(false, 'dampakLainnyaVoiceInput')"> Mempengarugui employee experience</label>
+                        <label class="radio-item"><input type="radio" name="dampak" value="Mempengaruhi employee experience" onclick="toggleRadioLainnya(false, 'dampakLainnyaVoiceInput')"> Mempengaruhi employee experience</label>
                         <label class="radio-item"><input type="radio" name="dampak" value="Mempengaruhi pelayanan kepada nasabah" onclick="toggleRadioLainnya(false, 'dampakLainnyaVoiceInput')"> Mempengaruhi pelayanan kepada nasabah</label>
                         <label class="radio-item"><input type="radio" name="dampak" value="Berpotensi menimbulkan risiko bagi perusahaan" onclick="toggleRadioLainnya(false, 'dampakLainnyaVoiceInput')"> Berpotensi menimbulkan risiko bagi perusahaan</label>
                         <label class="radio-item"><input type="radio" name="dampak" value="Lainnya" onclick="toggleRadioLainnya(true, 'dampakLainnyaVoiceInput')"> Lainnya...</label>
@@ -2764,7 +2764,7 @@
                 <div class="form-group">
                     <label class="form-label">Seberapa Penting hal ini untuk ditindaklanjuti? <span>*</span></label>
                     <select name="urgensi" class="form-control" required>
-                        <option value="" disabled selected>-- Pilih Tingkat Urgensi --</option>
+                        <option value="" selected hidden>-- Pilih Tingkat Urgensi --</option>
                         <option value="Rendah - Tidak mendesak">Rendah - Tidak mendesak</option>
                         <option value="Sedang - Perlu diperhatikan">Sedang - Perlu diperhatikan</option>
                         <option value="Tinggi - Perlu segera ditindaklanjuti">Tinggi - Perlu segera ditindaklanjuti</option>
@@ -2775,7 +2775,8 @@
                 <div class="form-group">
                     <label class="form-label">Apakah Anda memiliki dokumen/bukti pendukung?</label>
                     <div class="file-input-wrapper">
-                        <input type="file" id="fileVoice" class="form-control" accept="image/*,.pdf,.docx,.xlsx" onchange="handleFileChange('fileVoice', 'btnCancelVoice')">
+                        <!-- TAMBAHKAN name="file" AGAR TERBACA OLEH JAVASCRIPT/SPREADSHEET -->
+                        <input type="file" name="file" id="fileVoice" class="form-control" accept="image/*,.pdf,.docx,.xlsx" onchange="handleFileChange('fileVoice', 'btnCancelVoice')">
                         <button type="button" id="btnCancelVoice" class="btn-cancel-file" onclick="resetFileInput('fileVoice', 'btnCancelVoice')">✕ Batal</button>
                     </div>
                 </div>
@@ -4437,6 +4438,116 @@
                     activePage.scrollTop = 0;
                 }
             }, 10);
+        }
+
+        /* --- FUNGSI SUBMIT FORM KE SPREADSHEET (APPS SCRIPT) --- */
+        function handleSpreadsheetSubmit(event, scriptUrl, modalId) {
+            event.preventDefault();
+            const form = event.target;
+
+            if (!validateAndScroll(form)) {
+                return false;
+            }
+
+            const submitBtn = form.querySelector('button[type="submit"]');
+            const originalBtnText = submitBtn.innerText;
+            submitBtn.innerText = "Mengirim...";
+            submitBtn.disabled = true;
+
+            const activeFileInputs = Array.from(form.querySelectorAll('input[type="file"]')).filter(inp => inp.files && inp.files.length > 0);
+
+            const readFileAsBase64 = (fileInput) => {
+                return new Promise((resolve, reject) => {
+                    const file = fileInput.files[0];
+                    if (!file) {
+                        resolve(null);
+                        return;
+                    }
+                    const reader = new FileReader();
+                    reader.onload = (e) => {
+                        resolve({
+                            id: fileInput.id,
+                            name: file.name,
+                            type: file.type,
+                            data: e.target.result.split(',')[1]
+                        });
+                    };
+                    reader.onerror = (error) => reject(error);
+                    reader.readAsDataURL(file);
+                });
+            };
+
+            Promise.all(activeFileInputs.map(readFileAsBase64))
+                .then(fileResults => {
+                    const payload = new URLSearchParams();
+                    const formData = new FormData(form);
+
+                    for (let [key, value] of formData.entries()) {
+                        payload.append(key, value);
+                    }
+
+                    fileResults.forEach(f => {
+                        if (f) {
+                            payload.append(f.id + '_data', f.data);
+                            payload.append(f.id + '_name', f.name);
+                            payload.append(f.id + '_type', f.type);
+
+                            payload.append('fileData', f.data);
+                            payload.append('fileName', f.name);
+                            payload.append('fileMimeType', f.type);
+                        }
+                    });
+
+                    return fetch(scriptUrl, {
+                        method: 'POST',
+                        body: payload
+                    });
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.result === 'success') {
+                        alert('Aspirasi/Pengajuan Anda berhasil dikirim ke tim HCBP!');
+                        form.reset();
+
+                        const cancelBtns = form.querySelectorAll('.btn-cancel-file');
+                        cancelBtns.forEach(btn => btn.style.display = 'none');
+
+                        const inputsLainnya = form.querySelectorAll('.input-lainnya');
+                        inputsLainnya.forEach(input => {
+                            input.style.display = 'none';
+                            input.required = false;
+                        });
+
+                        if (modalId === 'modalLearningDev') {
+                            document.getElementById('ldSection1').style.display = 'block';
+                            document.getElementById('ldSection2').style.display = 'none';
+                            document.getElementById('ldSection3').style.display = 'none';
+                            document.getElementById('btnSubmitLD').disabled = true;
+                        }
+
+                        if (modalId === 'modalDokumen') {
+                            document.getElementById('docSection1').style.display = 'block';
+                            document.getElementById('docSection2').style.display = 'none';
+                            document.getElementById('docSection3').style.display = 'none';
+                            document.getElementById('groupFormatKhususKet').style.display = 'none';
+                            document.getElementById('btnSubmitDoc').disabled = true;
+                        }
+                        closeModal(modalId);
+
+                        if (modalId === 'modalFormVoice') {
+                            fetchVoiceData();
+                        }
+                    } else {
+                        alert('Gagal mengirim data: ' + data.error);
+                    }
+                })
+                .catch(err => {
+                    alert('Terjadi kesalahan koneksi. Pastikan URL Web App sudah benar.');
+                })
+                .finally(() => {
+                    submitBtn.innerText = originalBtnText;
+                    submitBtn.disabled = false;
+                });
         }
     </script>
 </body>
