@@ -1171,68 +1171,59 @@
             margin-top: 4px;
         }
 
-        /* Grid untuk Manpower Movement (Sisa 2 Kolom) */
+        /* Grid Container untuk 2 Kartu Menyamping */
         .career-grid-4 {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 155px;
+            gap: 24px;
             align-items: start;
-            max-width: 900px; /* <--- Batasi lebar maksimal di sini (bisa sesuaikan: 500px - 700px) */
-            margin: 0 auto;   /* <--- Bikin kotaknya rata tengah */
+            width: 100%;
+            margin: 0 auto;
         }
 
-        /* Responsive Layout saat dibuka di HP / Tablet */
-        @media (max-width: 1024px) {
-            .career-grid-4 { 
-                grid-template-columns: repeat(2, 1fr); 
-            }
-        }
-        @media (max-width: 600px) {
-            .career-grid-4 { 
-                grid-template-columns: 1fr; 
-                max-width: 100%; /* Agar di HP ukurannya fleksibel mengikuti layar */
-            }
-        }
-
+        /* Base Card Style (Bentuk Pipih Horizontal) */
         .movement-card {
-            border-radius: 20px;
-            padding: 20px 20px;
-            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 18px 20px;
             transition: var(--transition);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            position: relative;
-            cursor: pointer; /* Indikator bahwa kartu dapat diklik secara utuh */
-            height: auto;
-            min-height: 170px
+            border: none;
+            cursor: pointer;
+            box-shadow: var(--shadow-card);
         }
 
+        /* Kartu 1: Blue Style (Manpower Movement) */
         .movement-card.blue-style {
-            background: #f0f7ff;
-            border-color: #d0e3ff;
+            background: #eaf3ff;
+            border-bottom: 3px solid #3b82f6;
         }
 
-        .movement-card.yellow-style {
-            background: #fffdf0;
-            border-color: #ffe8ad;
+        .movement-card.blue-style .movement-card-icon {
+            background: #4f46e5;
+            color: #ffffff;
         }
 
+        /* Kartu 2: Teal Style (Manpower Request) */
         .movement-card.teal-style {
             background: #f0fdfa;
-            border-color: #ccfbf1;
-            cursor: default; /* Khusus dropdown dikendalikan oleh fungsi toggle */
+            border-bottom: 3px solid #0d9488;
+        }
+
+        .movement-card.teal-style .movement-card-icon {
+            background: #0d9488;
+            color: #ffffff;
         }
 
         .movement-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 25px rgba(0,0,0,0.06);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.08);
         }
 
+        /* Elemen Dalam Kartu */
         .movement-card-top {
             display: flex;
-            gap: 16px;
-            margin-bottom: 0px;
+            align-items: center;
+            gap: 14px;
+            width: 100%;
         }
 
         .movement-card-icon {
@@ -1246,32 +1237,34 @@
             flex-shrink: 0;
         }
 
-        .blue-style .movement-card-icon {
-            background: #dbeafe;
-            color: var(--brand-blue);
-        }
-
-        .yellow-style .movement-card-icon {
-            background: #fef3c7;
-            color: #d97706;
-        }
-
-        .teal-style .movement-card-icon {
-            background: #ccfbf1;
-            color: #0d9488;
+        .movement-card-body {
+            flex-grow: 1;
         }
 
         .movement-card-body h3 {
-            font-size: 1.15rem;
+            font-size: 1.05rem;
             font-weight: 800;
             color: var(--brand-blue);
-            margin-bottom: 6px;
+            margin: 0 0 4px 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
         }
 
         .movement-card-body p {
-            font-size: 0.85rem;
+            font-size: 0.82rem;
             color: var(--text-muted);
-            line-height: 1.5;
+            margin: 0;
+            line-height: 1.3;
+        }
+
+        /* Responsive Layout saat dibuka di HP / Tablet */
+        @media (max-width: 768px) {
+            .career-grid-4 { 
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
         }
 
         .btn-view-sk {
@@ -1828,12 +1821,12 @@
                             </a>
                             <!-- Dropdown 2: Form Permintaan L&D -->
                             <button class="btn-dropdown-action" onclick="openModal('modalLearningDev')">
-                                <span>📝 Form Pengajuan Training & Learning Development</span>
+                                <span>📝 Form Permintaan Training</span>
                                 <i class="fa-solid fa-arrow-right"></i>
                             </button>
                             <!-- Dropdown 3: Monitoring L&D -->
                             <button class="btn-dropdown-action monitoring-type" onclick="openModal('modalMonLearningDev'); fetchMonLD();">
-                                <span>📊 Monitoring PPengajuan Training & Learning Development</span>
+                                <span>📊 Monitoring Permintaan Training</span>
                                 <i class="fa-solid fa-arrow-right"></i>
                             </button>
                         </div>
@@ -2084,7 +2077,7 @@
     <div id="page-karir" class="page-content">
         <div class="container">
             <div class="career-hero">
-                <h1>Career & Development</h1>
+                <h1>Talent Management</h1>
                 <p>Jelajahi peluang pertumbuhan karir internal dan program pengembangan kompetensi untuk masa depan cemerlang di PT Gadai MAS Nusantara.</p>
             </div>
 
@@ -2094,40 +2087,61 @@
                 </div>
 
                 <div class="career-grid-4">
-                    <!-- Kotak 1: Mutasi -->
-                    <div class="movement-card blue-style" onclick="openModal('modalMutasi')">
-                        <div class="movement-card-top">
-                            <div class="movement-card-icon"><i class="fa-solid fa-arrows-rotate"></i></div>
-                            <div class="movement-card-body">
-                                <h3>Manpower Movement</h3>
-                                <p>Pengajuan perubahan penempatan SDM.</p>
+                    <!-- Kotak 1: Manpower Movement (Dropdown) -->
+                    <div class="movement-card blue-style qa-card-dropdown" id="dropdownMovement">
+                        <div class="dropdown-header" onclick="toggleDropdown('dropdownMovement')">
+                            <div class="movement-card-top">
+                                <div class="movement-card-icon">
+                                    <i class="fa-solid fa-arrows-rotate"></i>
+                                </div>
+                                <div class="movement-card-body">
+                                    <h3>
+                                        <span>Manpower Movement</span>
+                                        <i class="fa-solid fa-chevron-down dropdown-icon-arrow"></i>
+                                    </h3>
+                                    <p>Pengajuan perubahan penempatan SDM.</p>
+                                </div>
                             </div>
+                        </div>
+
+                        <!-- Isi Dropdown Manpower Movement -->
+                        <div class="dropdown-content">
+                            <button class="btn-dropdown-action" onclick="openModal('modalFormMutasi')">
+                                <span>📝 Form Pengajuan Mutasi Karyawan</span>
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+                            <button class="btn-dropdown-action monitoring-type" onclick="openModal('modalMonMutasi')">
+                                <span>📊 Monitoring Status Mutasi</span>
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </button>
                         </div>
                     </div>
 
-                    <!-- Kotak 3: Pengajuan Tenaga Kerja (DENGAN DROPDOWN FORM & MONITORING) -->
+                    <!-- Kotak 2: Manpower Request (Dropdown) -->
                     <div class="movement-card teal-style qa-card-dropdown" id="dropdownTenagaKerja">
                         <div class="dropdown-header" onclick="toggleDropdown('dropdownTenagaKerja')">
                             <div class="movement-card-top">
-                                <div class="movement-card-icon"><i class="fa-solid fa-user-plus"></i></div>
+                                <div class="movement-card-icon">
+                                    <i class="fa-solid fa-user-plus"></i>
+                                </div>
                                 <div class="movement-card-body">
-                                    <h3 style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
-                                        Manpower Request
-                                        <i class="fa-solid fa-chevron-down dropdown-icon-arrow" style="font-size: 0.85rem;"></i>
+                                    <h3>
+                                        <span>Manpower Request</span>
+                                        <i class="fa-solid fa-chevron-down dropdown-icon-arrow"></i>
                                     </h3>
                                     <p>Pengajuan penambahan atau pergantian SDM.</p>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- SUBMENU DROPDOWN FORM & MONITORING -->
-                        <div class="dropdown-content mt-3">
-                            <button class="btn-dropdown-action" onclick="openModal('modalTenagaKerja')">
-                                <span>📝 Form Pengajuan Tenaga Kerja</span>
+                        <!-- Isi Dropdown Manpower Request -->
+                        <div class="dropdown-content">
+                            <button class="btn-dropdown-action" onclick="openModal('modalFormPenambahan')">
+                                <span>📝 Form Penambahan Karyawan</span>
                                 <i class="fa-solid fa-arrow-right"></i>
                             </button>
-                            <button class="btn-dropdown-action monitoring-type" onclick="openModal('modalMonTenagaKerja'); fetchMonTK();">
-                                <span>📊 Monitoring Status Pengajuan</span>
+                            <button class="btn-dropdown-action monitoring-type" onclick="openModal('modalMonPenambahan')">
+                                <span>📊 Monitoring Status Penambahan</span>
                                 <i class="fa-solid fa-arrow-right"></i>
                             </button>
                         </div>
