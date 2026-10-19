@@ -1785,6 +1785,7 @@
                             <h3 class="card-title-sub">Employee Voice</h3>
                         </div>
                         <p class="card-desc-text">Sampaikan masukan, ide, dan aspirasi Anda secara langsung.</p>
+                        <p class="card-desc-text"></p>
                     </div>
 
                     <!-- 2. HC SERVICE (DROPDOWN) -->
@@ -1796,7 +1797,8 @@
                             </div>
                             <i class="fa-solid fa-chevron-down dropdown-icon-arrow"></i>
                         </div>
-                        <p class="card-desc-text">Layanan administrasi dan pemantauan pengajuan karyawan.</p>
+                        <p class="card-desc-text">Layanan operasional dan administrasi kepegawaian.</p>
+                        <p class="card-desc-text"></p>
 
                         <div class="dropdown-content">
                             <button class="btn-dropdown-action" onclick="openModal('pageFormAdministrasi')">
@@ -1814,18 +1816,19 @@
                     <a href="https://mas-academy.training" target="_blank" class="qa-card-simple">
                         <div style="display: flex; align-items: center; gap: 12px;">
                             <div class="card-icon-small" style="background:#f0fdf4; color:#16a34a;"><i class="fa-solid fa-graduation-cap"></i></div>
-                            <h3 class="card-title-sub">Learning & Development</h3>
+                            <h3 class="card-title-sub">Training & Learning Development</h3>
                         </div>
-                        <p class="card-desc-text">Pusat pembelajaran, panduan kerja, dan kebijakan perusahaan.</p>
+                        <p class="card-desc-text">Peningkatan kompetensi, pengetahuan, dan profesionalisme karyawan.</p>
                     </a>
 
                     <!-- 4. CAREER & DEVELOPMENT (PINDAH PAGE) -->
                     <div class="qa-card-simple" onclick="switchPage('page-karir')" style="cursor: pointer;">
                         <div style="display: flex; align-items: center; gap: 12px;">
                             <div class="card-icon-small" style="background:#fef2f2; color:#dc2626;"><i class="fa-solid fa-chart-pie"></i></div>
-                            <h3 class="card-title-sub">Career & Development</h3>
+                            <h3 class="card-title-sub">Talent Management</h3>
                         </div>
-                        <p class="card-desc-text">Akses data analitik dan laporan performa internal.</p>
+                        <p class="card-desc-text">Kaderisasi kartawan dalam menghadapi tantangan bisnis.</p>
+                        <p class="card-desc-text"></p>
                     </div>
                 </div>
             </section>
@@ -2329,14 +2332,14 @@
                             <span>Jadwal Konsultasi</span>
                         </div>
                         <div class="consult-pills-wrap">
-                            <div class="schedule-pill-box" onclick="openFormKonsultasi('Aline Rahma Ghanie Exwanti', 'Rabu (17.00 - 18.00)')">
+                            <div class="schedule-pill-box" onclick="openFormKonsultasi('Arum Putri', 'Rabu (17.00 - 18.00)')">
                                 <i class="fa-regular fa-calendar-days"></i>
                                 <div>
                                     <div class="pill-day">Rabu</div>
                                     <div class="pill-time">(17.00 - 18.00)</div>
                                 </div>
                             </div>
-                            <div class="schedule-pill-box" onclick="openFormKonsultasi('Aline Rahma Ghanie Exwanti', 'Jumat (16.30 - 17.30)')">
+                            <div class="schedule-pill-box" onclick="openFormKonsultasi('Arum Putri', 'Jumat (16.30 - 17.30)')">
                                 <i class="fa-regular fa-calendar-days"></i>
                                 <div>
                                     <div class="pill-day">Jumat</div>
@@ -3328,7 +3331,7 @@
     <div class="modal-overlay" id="modalLearningDev">
         <div class="modal-box" id="boxLearningDev">
             <button class="modal-close" onclick="closeModal('modalLearningDev')">&times;</button>
-            <h2 class="form-section-title">Form Permintaan Learning & Development</h2>
+            <h2 class="form-section-title">Form Permintaan Training</h2>
             <p class="form-section-subtitle">Pengajuan kebutuhan program pelatihan, workshop, atau sertifikasi karyawan.</p>
 
             <form id="formLearningDev" onsubmit="handleSpreadsheetSubmit(event, 'https://script.google.com/macros/s/AKfycbzZDUrbSoP3AJcxeIIWcmF-ZxASJkb9IvtapqHX-4kj8zE222Tww63z7iEC9eH15W8v/exec', 'modalLearningDev')">
@@ -3960,7 +3963,7 @@
             <div class="footer-contact-group">
                 <a href="https://wa.me/6281220002964" target="_blank" class="footer-contact-item">
                     <i class="fa-brands fa-whatsapp" style="color: #25d366;"></i>
-                    <span>+62 812-2000-2964</span>
+                    <span>+62 812-2000-2964 (Chintya)</span>
                 </a>
                 <a href="mailto:hcbp.gadaimas@gmail.com" class="footer-contact-item">
                     <i class="fa-regular fa-envelope" style="color: var(--brand-blue);"></i>
@@ -3970,14 +3973,16 @@
         </div>
     </footer>
 
-    <script>
+<script>
         const MONITORING_FETCH_URL = "https://script.google.com/macros/s/AKfycbzZDUrbSoP3AJcxeIIWcmF-ZxASJkb9IvtapqHX-4kj8zE222Tww63z7iEC9eH15W8v/exec";
         const APPS_SCRIPT_VOICE_URL = 'https://script.google.com/macros/s/AKfycbxKi5DIGtt6LqyFx6VUcE-xRJ3xakmW_3BvxbDXwH058zBIHb0g4ZlQd2f8uWvfH1a9/exec';
+        const APPS_SCRIPT_KONSULTASI_URL = 'https://script.google.com/macros/s/AKfycbyotWwJE2RBJJ2qalgAfUz-kl7ME3EkBzap4EN9axaJTn4xpmP9XZZqzjTPrPT462Y/exec';
 
         window.addEventListener('DOMContentLoaded', () => {
             fetchVoiceData();
             fetchMonMovement();
             initKaizenConfetti();
+            checkBookedSlots(); // Memeriksa slot jadwal konsultasi yang sudah terisi saat halaman di-load
         });
 
         /* --- SCRIPT ANIMASI CONFETTI KAIZEN BANNER --- */
@@ -4313,7 +4318,7 @@
 
                     if (
                         namaNikVal.toUpperCase().indexOf(filter) > -1 ||
-                        jenisVal.toUpperCase().indexOf(filter) > -1 ||
+                        namaNikVal.toUpperCase().indexOf(filter) > -1 ||
                         unitVal.toUpperCase().indexOf(filter) > -1
                     ) {
                         tr[i].style.display = "";
@@ -4329,7 +4334,7 @@
             filterMonMovementTable();
         }
 
-        /* --- FETCH DATA MONITORING HC SERVICES (MENGAKOMODASI SEMUA KEMUNGKINAN KEY JSON) --- */
+        /* --- FETCH DATA MONITORING HC SERVICES --- */
         function fetchMonTK() {
             const tbody = document.getElementById("tableBodyMonTK");
             tbody.innerHTML = `<tr><td colspan="5" style="text-align:center;">Memuat data monitoring...</td></tr>`;
@@ -4364,6 +4369,51 @@
                 }).catch(err => { tbody.innerHTML = `<tr><td colspan="5" style="text-align:center; color:#dc2626;">Terjadi kesalahan sistem.</td></tr>`; });
         }
 
+        /* --- FUNGSI CEK SLOT JADWAL TERISI --- */
+        async function checkBookedSlots() {
+            if (!APPS_SCRIPT_KONSULTASI_URL) return;
+            try {
+                const response = await fetch(APPS_SCRIPT_KONSULTASI_URL);
+                const result = await response.json();
+                const bookedSlots = result.booked || [];
+
+                // Ambil semua tombol jadwal
+                const buttons = document.querySelectorAll('button[onclick*="openFormKonsultasi"]');
+
+                buttons.forEach(btn => {
+                    const onclickAttr = btn.getAttribute('onclick') || '';
+                    const btnText = btn.innerText || '';
+
+                    bookedSlots.forEach(bookedJadwal => {
+                        let cleanBooked = bookedJadwal.toString().toLowerCase().replace(/\s+/g, '');
+                        let cleanOnclick = onclickAttr.toLowerCase().replace(/\s+/g, '');
+                        let cleanBtnText = btnText.toLowerCase().replace(/\s+/g, '');
+
+                        // Cek apakah data dari spreadsheet cocok dengan atribut onclick atau teks tombol
+                        let isMatch = cleanOnclick.includes(cleanBooked) || cleanBooked.includes(cleanBtnText);
+
+                        if (!isMatch && cleanBtnText.length > 3) {
+                            if (cleanBooked.includes(cleanBtnText)) {
+                                isMatch = true;
+                            }
+                        }
+
+                        if (isMatch) {
+                            btn.disabled = true;
+                            btn.innerText = "Full / Terisi";
+                            btn.style.opacity = "0.6";
+                            btn.style.cursor = "not-allowed";
+                            btn.style.backgroundColor = "#cbd5e1";
+                            btn.style.color = "#64748b";
+                            btn.removeAttribute("onclick");
+                        }
+                    });
+                });
+            } catch (error) {
+                console.error("Gagal memeriksa slot jadwal konsultasi:", error);
+            }
+        }
+
         // Fungsi Buka Form Booking Konsultasi
         function openFormKonsultasi(namaSpesialis, jadwal) {
             document.getElementById('selectedKonsultan').value = namaSpesialis + " - " + jadwal;
@@ -4371,18 +4421,51 @@
             openModal('modalFormKonsultasi');
         }
 
-        // Fungsi Submit Booking Konsultasi
-        function handleSubmitKonsultasi(event) {
+        // Fungsi Submit Booking Konsultasi (Integrasi Google Sheets)
+        async function handleSubmitKonsultasi(event) {
             event.preventDefault();
             
+            const submitBtn = event.target.querySelector('button[type="submit"]');
+            const originalText = submitBtn ? submitBtn.innerText : "Konfirmasi";
+            if (submitBtn) {
+                submitBtn.innerText = "Mengirim...";
+                submitBtn.disabled = true;
+            }
+
             const konsultan = document.getElementById('selectedKonsultan').value;
             const nama = document.getElementById('namaKonsultasi').value;
-            const noHp = document.getElementById('noHpKonsultasi').value;
+            let noHp = document.getElementById('noHpKonsultasi').value;
 
-            alert(`Terima kasih ${nama}!\nPengajuan konsultasi Anda untuk [${konsultan}] telah berhasil disimpan. Kami akan menghubungi Anda melalui WhatsApp di nomor ${noHp}.`);
+            if (APPS_SCRIPT_KONSULTASI_URL) {
+                try {
+                    const payload = {
+                        jadwal: konsultan,
+                        nama: nama,
+                        noHp: "'" + noHp
+                    };
+
+                    await fetch(APPS_SCRIPT_KONSULTASI_URL, {
+                        method: 'POST',
+                        body: JSON.stringify(payload)
+                    });
+
+                    alert(`Terima kasih ${nama}!\nPengajuan konsultasi Anda untuk [${konsultan}] telah berhasil disimpan.`);
+                } catch (err) {
+                    console.error("Error submit ke Google Sheets:", err);
+                    alert("Terjadi kesalahan saat menyimpan data.");
+                }
+            }
 
             event.target.reset();
             closeModal('modalFormKonsultasi');
+
+            if (submitBtn) {
+                submitBtn.innerText = originalText;
+                submitBtn.disabled = false;
+            }
+
+            // Refresh/update status tombol jadwal
+            checkBookedSlots();
         }
 
         // Menampilkan section form secara dinamis berdasarkan Kategori Pengajuan
@@ -4420,19 +4503,15 @@
         }
 
         function goToHome() {
-            // 1. Pindah halaman dulu
             if (typeof switchPage === 'function') {
                 switchPage('page-home');
             }
 
-            // 2. Eksekusi reset scroll di microtask (biar jalan SETELAH switchPage selesai)
             setTimeout(() => {
-                // Reset window scroll instant
                 window.scrollTo(0, 0);
                 document.documentElement.scrollTop = 0;
                 document.body.scrollTop = 0;
 
-                // Reset scroll jika container utama yang di-scroll (misal: main / .page-content)
                 const activePage = document.querySelector('.page-content.active');
                 if (activePage) {
                     activePage.scrollTop = 0;
