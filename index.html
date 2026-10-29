@@ -567,6 +567,48 @@
         .bg-process { background-color: #fef3c7; color: #d97706; } 
         .bg-done { background-color: #dcfce7; color: #15803d; }    
 
+        /* --- RATING STARS STYLING --- */
+        .star-rating-input {
+            direction: rtl; /* Penting agar hover bintang berfungsi dari kiri ke kanan */
+            display: inline-block;
+            font-size: 2rem;
+        }
+        .star-rating-input input[type="radio"] {
+            display: none;
+        }
+        .star-rating-input label {
+            color: #cbd5e1;
+            cursor: pointer;
+            padding: 0 4px;
+            transition: color 0.2s ease;
+        }
+        .star-rating-input label:hover,
+        .star-rating-input label:hover ~ label,
+        .star-rating-input input[type="radio"]:checked ~ label {
+            color: #f5a623; /* Warna Kuning/Emas */
+        }
+
+        .btn-rate-action {
+            background: var(--brand-yellow);
+            color: var(--brand-blue);
+            padding: 6px 12px;
+            border-radius: 8px;
+            border: none;
+            font-size: 0.75rem;
+            font-weight: 800;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .btn-rate-action:hover {
+            background: #e09419;
+        }
+
+        .stars-display {
+            color: #f5a623;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+        }
+
         /* --- 7. UPCOMING EVENT SECTION --- */
         .event-section { margin-bottom: 50px; }
         .event-wrapper {
@@ -1904,11 +1946,13 @@
                                 <th>Topik</th>
                                 <th>Status</th>
                                 <th>Update Terakhir</th>
+                                <th>PIC</th>
+                                <th>Score PIC</th>
                             </tr>
                         </thead>
                         <tbody id="voiceTableBody">
                             <tr>
-                                <td colspan="5" style="text-align: center; color: var(--text-muted);">Memuat data aspirasi...</td>
+                                <td colspan="7" style="text-align: center; color: var(--text-muted);">Memuat data aspirasi...</td>
                             </tr>
                         </tbody>
                     </table>
@@ -2334,6 +2378,36 @@
             </div> <!-- Tutup consult-list -->
         </div> <!-- Tutup modal-box -->
     </div> <!-- Tutup modal-overlay -->
+
+    <!-- ==================== FORM RATING EMPLOYEE VOICE ==================== -->
+    <div class="modal-overlay" id="modalRatingVoice">
+        <div class="modal-box" style="max-width: 500px;">
+            <button class="modal-close" onclick="closeModal('modalRatingVoice')">&times;</button>
+            <h2 class="form-section-title" style="text-align: center;">Beri Nilai Layanan HC</h2>
+            <p class="form-section-subtitle" style="text-align: center;">Bagaimana pengalaman Anda terhadap penyelesaian aspirasi ini?</p>
+
+            <form id="formRatingVoice" onsubmit="handleRatingSubmit(event)">
+                <input type="hidden" id="ratingRequestId" name="id_request">
+                
+                <div class="form-group" style="text-align: center; margin-bottom: 30px;">
+                    <div class="star-rating-input">
+                        <input type="radio" id="star5" name="rating" value="5" required><label for="star5" class="fa-solid fa-star"></label>
+                        <input type="radio" id="star4" name="rating" value="4"><label for="star4" class="fa-solid fa-star"></label>
+                        <input type="radio" id="star3" name="rating" value="3"><label for="star3" class="fa-solid fa-star"></label>
+                        <input type="radio" id="star2" name="rating" value="2"><label for="star2" class="fa-solid fa-star"></label>
+                        <input type="radio" id="star1" name="rating" value="1"><label for="star1" class="fa-solid fa-star"></label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Ulasan (Opsional)</label>
+                    <textarea name="ulasan" class="form-control" rows="3" placeholder="Berikan masukan atau apresiasi Anda terkait penyelesaian masalah ini..."></textarea>
+                </div>
+
+                <button type="submit" class="btn-submit">KIRIM PENILAIAN</button>
+            </form>
+        </div>
+    </div>
 
     <!-- ==================== FORM MODAL ISIAN PERMOHONAN MUTASI ==================== -->
     <div class="modal-overlay" id="modalFormMutasi">
@@ -3777,140 +3851,6 @@
         </div>
     </div>
 
-    <!-- ==================== MODAL FORM PENGAJUAN FASILITAS & RELOKASI ==================== -->
-    <div class="modal-overlay" id="modalFasilitasRelokasi">
-        <div class="modal-box">
-            <button class="modal-close" onclick="closeModal('modalFasilitasRelokasi')">&times;</button>
-            <h2 class="form-section-title">Form Pengajuan Fasilitas & Relokasi Karyawan</h2>
-            <p class="form-section-subtitle">Isi data di bawah ini secara lengkap untuk mengajukan fasilitas kerja atau relokasi tugas.</p>
-
-            <form onsubmit="handleSubmitFasilitasRelokasi(event)">
-                <!-- 1. Data Diri Karyawan -->
-                <div class="form-group">
-                    <label class="form-label">Nama Lengkap <span>*</span></label>
-                    <input type="text" id="frNama" class="form-control" placeholder="Masukkan nama lengkap Anda" required>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-label">NIK Karyawan <span>*</span></label>
-                    <input type="text" id="frNik" class="form-control" placeholder="Masukkan NIK Karyawan" required>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-label">Departemen / Divisi <span>*</span></label>
-                    <input type="text" id="frDepartemen" class="form-control" placeholder="Contoh: Operational / HC / Finance" required>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-label">Cabang / Unit Kerja Saat Ini <span>*</span></label>
-                    <input type="text" id="frCabangAsal" class="form-control" placeholder="Contoh: Cabang Jakarta Pusat" required>
-                </div>
-
-                <!-- 2. Jenis Pengajuan -->
-                <div class="form-group">
-                    <label class="form-label">Kategori Pengajuan <span>*</span></label>
-                    <select id="frKategori" class="form-control" required onchange="toggleKategoriFields(this.value)">
-                        <option value="">-- Pilih Kategori Pengajuan --</option>
-                        <option value="Fasilitas">Pengajuan Fasilitas Kerja</option>
-                        <option value="Relokasi">Permohonan Relokasi Karyawan</option>
-                        <option value="Keduanya">Pengajuan Fasilitas & Relokasi</option>
-                    </select>
-                </div>
-
-                <!-- 3. Section Pengajuan Fasilitas (Dynamic) -->
-                <div id="sectionFasilitas" style="display: none; background: #f8fafc; padding: 16px; border-radius: 12px; margin-bottom: 22px; border: 1px solid var(--border-color);">
-                    <label class="form-label">Fasilitas yang Diajukan <span>*</span></label>
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 12px;">
-                        <label class="checkbox-item"><input type="checkbox" name="fasilitasItem" value="Laptop/PC"> Laptop / PC Kerja</label>
-                        <label class="checkbox-item"><input type="checkbox" name="fasilitasItem" value="HP Operasional"> HP Operasional</label>
-                        <label class="checkbox-item"><input type="checkbox" name="fasilitasItem" value="Kendaraan Dinas"> Kendaraan Dinas</label>
-                        <label class="checkbox-item"><input type="checkbox" name="fasilitasItem" value="Tempat Tinggal/Mess"> Tempat Tinggal / Mess</label>
-                    </div>
-                    
-                    <label class="form-label">Alasan & Urgensi Kebutuhan Fasilitas</label>
-                    <textarea id="frAlasanFasilitas" class="form-control" rows="3" placeholder="Jelaskan secara rinci alasan kebutuhan fasilitas tersebut..."></textarea>
-                </div>
-
-                <!-- 4. Section Pengajuan Relokasi (Dynamic) -->
-                <div id="sectionRelokasi" style="display: none; background: #f8fafc; padding: 16px; border-radius: 12px; margin-bottom: 22px; border: 1px solid var(--border-color);">
-                    <div class="form-group">
-                        <label class="form-label">Cabang / Lokasi Tujuan Relokasi <span>*</span></label>
-                        <input type="text" id="frCabangTujuan" class="form-control" placeholder="Contoh: Cabang Bandung / Surabaya">
-                    </div>
-
-                    <div class="form-group">
-                        <label class="form-label">Rencana Tanggal Efektif Relokasi</label>
-                        <input type="date" id="frTanggalRelokasi" class="form-control">
-                    </div>
-
-                    <div class="form-group">
-                        <label class="form-label">Alasan Permohonan Relokasi</label>
-                        <select id="frAlasanRelokasi" class="form-control">
-                            <option value="">-- Pilih Alasan --</option>
-                            <option value="Keluarga">Domisili/Pertimbangan Keluarga</option>
-                            <option value="Kesehatan">Faktor Kesehatan</option>
-                            <option value="Pengembangan Karir">Pengembangan Karir/Promosi</option>
-                            <option value="Operasional">Kebutuhan Operasional Perusahaan</option>
-                            <option value="Lainnya">Lainnya</option>
-                        </select>
-                    </div>
-                </div>
-
-                <!-- 5. Catatan & Attachment -->
-                <div class="form-group">
-                    <label class="form-label">Catatan/Alasan Tambahan</label>
-                    <textarea id="frCatatan" class="form-control" rows="3" placeholder="Tuliskan catatan tambahan jika ada..."></textarea>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-label">Lampiran Dokumen Pendukung (Opsional)</label>
-                    <input type="file" id="frDokumen" class="form-control" accept=".pdf,.png,.jpg,.jpeg,.doc,.docx">
-                    <small style="color: var(--text-muted); font-size: 0.75rem;">Format: PDF/JPG/PNG/DOC (Maks. 5MB)</small>
-                </div>
-
-                <button type="submit" class="btn-submit">Kirim Pengajuan</button>
-            </form>
-        </div>
-    </div>
-
-    <!-- 4. MONITORING LEARNING & DEVELOPMENT -->
-    <div class="modal-overlay" id="modalMonLearningDev">
-        <div class="modal-box" style="max-width: 1200px;">
-            <button class="modal-close" onclick="closeModal('modalMonLearningDev')">&times;</button>
-            <h2 class="form-section-title">Monitoring Learning & Development</h2>
-            <p class="form-section-subtitle">Daftar pemantauan status pengajuan program pelatihan & sertifikasi.</p>
-
-            <div class="table-search-bar">
-                <div class="search-input-box">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                    <input type="text" id="searchMonLDInput" onkeyup="filterMonLDTable()" placeholder="Cari Berdasarkan Nama, NIK, atau Jenis Pengajuan">
-                </div>
-                <button type="button" class="btn-see-all-table" onclick="resetMonLDSearch()">Reset</button>
-            </div>
-
-            <div class="table-responsive">
-                <table class="voice-table" id="tableMonLD">
-                    <thead>
-                        <tr>
-                            <th>Nama / NIK</th>
-                            <th>Jabatan</th>
-                            <th>Unit Kerja</th>
-                            <th>Jenis Pengajuan</th>
-                            <th>Nama Training</th>
-                            <th>Nama Sertifikasi</th>
-                            <th>Nama Learning Program</th>
-                            <th>Topik / Kompetensi</th>
-                            <th>Status</th>
-                        </tr>
-                    </thead>
-                    <tbody id="tableBodyMonLD">
-                        <tr><td colspan="9" style="text-align:center;">Memuat data...</td></tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
-
     <footer>
         <div class="footer-container">
             <div>
@@ -4108,7 +4048,7 @@
 
         function fetchVoiceData() {
             const tableBody = idElement("voiceTableBody");
-            tableBody.innerHTML = `<tr><td colspan="5" style="text-align: center; color: var(--text-muted);">Memuat data aspirasi...</td></tr>`;
+            tableBody.innerHTML = `<tr><td colspan="7" style="text-align: center; color: var(--text-muted);">Memuat data aspirasi...</td></tr>`;
 
             fetch(APPS_SCRIPT_VOICE_URL)
                 .then(response => response.json())
@@ -4116,11 +4056,11 @@
                     if (res.result === 'success' && res.data) {
                         renderVoiceTable(res.data);
                     } else {
-                        tableBody.innerHTML = `<tr><td colspan="5" style="text-align: center; color: #ef4444;">Gagal memuat data aspirasi.</td></tr>`;
+                        tableBody.innerHTML = `<tr><td colspan="7" style="text-align: center; color: #ef4444;">Gagal memuat data aspirasi.</td></tr>`;
                     }
                 })
                 .catch(err => {
-                    tableBody.innerHTML = `<tr><td colspan="5" style="text-align: center; color: #ef4444;">Terjadi kesalahan saat memuat data.</td></tr>`;
+                    tableBody.innerHTML = `<tr><td colspan="7" style="text-align: center; color: #ef4444;">Terjadi kesalahan saat memuat data.</td></tr>`;
                 });
         }
 
@@ -4131,7 +4071,7 @@
             let selesai = 0;
 
             if (total === 0) {
-                tableBody.innerHTML = `<tr><td colspan="5" style="text-align: center; color: var(--text-muted);">Belum ada data aspirasi yang masuk.</td></tr>`;
+                tableBody.innerHTML = `<tr><td colspan="7" style="text-align: center; color: var(--text-muted);">Belum ada data aspirasi yang masuk.</td></tr>`;
                 idElement("totalAspirasiCount").innerText = 0;
                 idElement("prosesAspirasiCount").innerText = 0;
                 idElement("selesaiAspirasiCount").innerText = 0;
@@ -4143,8 +4083,13 @@
                 let statusText = (item.status || "").toString().trim();
                 let statusLower = statusText.toLowerCase();
                 let statusBadge = "";
+                let actionCell = "-"; 
 
-                if (statusLower === "selesai") {
+                // Periksa variabel yang datang dari JSON kamu
+                let picName = item.pic && item.pic !== "" ? item.pic : "-";
+
+                // --- 1. LOGIKA BADGE STATUS ---
+                if (statusLower.includes("selesai")) {
                     selesai++;
                     statusBadge = `<span class="badge-status bg-done">${statusText}</span>`;
                 } else if (statusLower.includes("diproses")) {
@@ -4154,6 +4099,16 @@
                     statusBadge = `<span class="badge-status bg-pending">${statusText}</span>`;
                 }
 
+                // --- 2. LOGIKA TOMBOL RATING (Berlaku untuk semua status) ---
+                // Jika sudah direview (rating > 0), tampilkan bintang. Jika belum, tampilkan tombol.
+                if (item.rating && item.rating > 0) {
+                    let starsHTML = "";
+                    for (let i = 0; i < item.rating; i++) starsHTML += "★";
+                    actionCell = `<div class="stars-display">${starsHTML}</div>`;
+                } else {
+                    actionCell = `<button type="button" class="btn-rate-action" onclick="openRatingModal('${item.id}')">Beri Rating</button>`;
+                }
+
                 htmlStr += `
                     <tr>
                         <td class="id-cell"><b>${item.id}</b></td>
@@ -4161,6 +4116,8 @@
                         <td class="kategori-cell">${item.topik}</td>
                         <td>${statusBadge}</td>
                         <td>${formatOnlyDate(item.update)}</td>
+                        <td>${picName}</td> <!-- KOLOM PIC -->
+                        <td>${actionCell}</td>
                     </tr>
                 `;
             });
@@ -4169,6 +4126,50 @@
             idElement("totalAspirasiCount").innerText = total;
             idElement("prosesAspirasiCount").innerText = diproses;
             idElement("selesaiAspirasiCount").innerText = selesai;
+        }
+
+        // FUNGSI UNTUK MEMBUKA MODAL RATING
+        function openRatingModal(idRequest) {
+            document.getElementById('ratingRequestId').value = idRequest;
+            openModal('modalRatingVoice');
+        }
+
+        // FUNGSI UNTUK MENGIRIM RATING
+        function handleRatingSubmit(event) {
+            event.preventDefault();
+            const form = event.target;
+            const submitBtn = form.querySelector('button[type="submit"]');
+            
+            submitBtn.innerText = "Mengirim...";
+            submitBtn.disabled = true;
+
+            const payload = new URLSearchParams(new FormData(form));
+            // Tambahkan flag agar Apps Script tahu ini request update rating
+            payload.append("action", "submit_rating"); 
+
+            // Gunakan APPS_SCRIPT_VOICE_URL yang sama atau endpoint khusus
+            fetch(APPS_SCRIPT_VOICE_URL, {
+                method: 'POST',
+                body: payload
+            })
+            .then(res => res.json())
+            .then(data => {
+                if(data.result === 'success') {
+                    alert('Terima kasih! Penilaian Anda sangat berharga bagi HCBP.');
+                    form.reset();
+                    closeModal('modalRatingVoice');
+                    fetchVoiceData(); // Refresh tabel agar bintangnya muncul
+                } else {
+                    alert('Gagal mengirim rating: ' + (data.error || 'Terjadi kesalahan'));
+                }
+            })
+            .catch(err => {
+                alert('Terjadi kesalahan koneksi.');
+            })
+            .finally(() => {
+                submitBtn.innerText = "KIRIM PENILAIAN";
+                submitBtn.disabled = false;
+            });
         }
 
         function filterVoiceTable() {
@@ -4481,11 +4482,30 @@
             }, 10);
         }
 
-        /* --- FUNGSI SUBMIT FORM KE SPREADSHEET (APPS SCRIPT) --- */
+        // 1. FUNGSI UNTUK SCROLL KE PERTANYAAN YANG BELUM DIISI (TIDAK KE PALING ATAS)
+        function validateAndScroll(form) {
+            if (!form.checkValidity()) {
+                // Cari elemen wajib pertama yang belum diisi (invalid)
+                const firstInvalid = form.querySelector(':invalid');
+        
+                if (firstInvalid) {
+                    // Scroll mulus tepat ke pertanyaan tersebut, dan posisikan di tengah layar (block: 'center')
+                    firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            
+                    // Fokuskan pada inputnya agar muncul notifikasi "Please fill out this field"
+                    firstInvalid.focus();
+                }
+                return false; // Hentikan proses submit
+            }
+            return true; // Lanjutkan proses submit
+        }
+
+        // 2. FUNGSI UTAMA SUBMIT FORM (Kode Anda yang sudah bekerja dengan baik)
         function handleSpreadsheetSubmit(event, scriptUrl, modalId) {
             event.preventDefault();
             const form = event.target;
 
+            // Memanggil fungsi validasi di atas
             if (!validateAndScroll(form)) {
                 return false;
             }
@@ -4529,66 +4549,66 @@
 
                     fileResults.forEach(f => {
                         if (f) {
-                            payload.append(f.id + '_data', f.data);
-                            payload.append(f.id + '_name', f.name);
-                            payload.append(f.id + '_type', f.type);
+                        payload.append(f.id + '_data', f.data);
+                        payload.append(f.id + '_name', f.name);
+                        payload.append(f.id + '_type', f.type);
 
-                            payload.append('fileData', f.data);
-                            payload.append('fileName', f.name);
-                            payload.append('fileMimeType', f.type);
-                        }
-                    });
-
-                    return fetch(scriptUrl, {
-                        method: 'POST',
-                        body: payload
-                    });
-                })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.result === 'success') {
-                        alert('Aspirasi/Pengajuan Anda berhasil dikirim ke tim HCBP!');
-                        form.reset();
-
-                        const cancelBtns = form.querySelectorAll('.btn-cancel-file');
-                        cancelBtns.forEach(btn => btn.style.display = 'none');
-
-                        const inputsLainnya = form.querySelectorAll('.input-lainnya');
-                        inputsLainnya.forEach(input => {
-                            input.style.display = 'none';
-                            input.required = false;
-                        });
-
-                        if (modalId === 'modalLearningDev') {
-                            document.getElementById('ldSection1').style.display = 'block';
-                            document.getElementById('ldSection2').style.display = 'none';
-                            document.getElementById('ldSection3').style.display = 'none';
-                            document.getElementById('btnSubmitLD').disabled = true;
-                        }
-
-                        if (modalId === 'modalDokumen') {
-                            document.getElementById('docSection1').style.display = 'block';
-                            document.getElementById('docSection2').style.display = 'none';
-                            document.getElementById('docSection3').style.display = 'none';
-                            document.getElementById('groupFormatKhususKet').style.display = 'none';
-                            document.getElementById('btnSubmitDoc').disabled = true;
-                        }
-                        closeModal(modalId);
-
-                        if (modalId === 'modalFormVoice') {
-                            fetchVoiceData();
-                        }
-                    } else {
-                        alert('Gagal mengirim data: ' + data.error);
+                        payload.append('fileData', f.data);
+                        payload.append('fileName', f.name);
+                        payload.append('fileMimeType', f.type);
                     }
-                })
-                .catch(err => {
-                    alert('Terjadi kesalahan koneksi. Pastikan URL Web App sudah benar.');
-                })
-                .finally(() => {
-                    submitBtn.innerText = originalBtnText;
-                    submitBtn.disabled = false;
                 });
+
+                return fetch(scriptUrl, {
+                    method: 'POST',
+                    body: payload
+                });
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.result === 'success') {
+                    alert('Aspirasi/Pengajuan Anda berhasil dikirim ke tim HCBP!');
+                    form.reset();
+
+                    const cancelBtns = form.querySelectorAll('.btn-cancel-file');
+                    cancelBtns.forEach(btn => btn.style.display = 'none');
+
+                    const inputsLainnya = form.querySelectorAll('.input-lainnya');
+                    inputsLainnya.forEach(input => {
+                        input.style.display = 'none';
+                        input.required = false;
+                    });
+
+                    if (modalId === 'modalLearningDev') {
+                        document.getElementById('ldSection1').style.display = 'block';
+                        document.getElementById('ldSection2').style.display = 'none';
+                        document.getElementById('ldSection3').style.display = 'none';
+                        document.getElementById('btnSubmitLD').disabled = true;
+                    }
+
+                    if (modalId === 'modalDokumen') {
+                        document.getElementById('docSection1').style.display = 'block';
+                        document.getElementById('docSection2').style.display = 'none';
+                        document.getElementById('docSection3').style.display = 'none';
+                        document.getElementById('groupFormatKhususKet').style.display = 'none';
+                        document.getElementById('btnSubmitDoc').disabled = true;
+                    }
+                    closeModal(modalId);
+
+                    if (modalId === 'modalFormVoice') {
+                        fetchVoiceData();
+                    }
+                } else {
+                    alert('Gagal mengirim data: ' + data.error);
+                }
+            })
+            .catch(err => {
+                alert('Terjadi kesalahan koneksi. Pastikan URL Web App sudah benar.');
+            })
+            .finally(() => {
+                submitBtn.innerText = originalBtnText;
+                submitBtn.disabled = false;
+            });
         }
     </script>
 </body>
