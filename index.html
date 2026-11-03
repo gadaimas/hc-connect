@@ -1774,7 +1774,7 @@
             <div class="brand-title">HC <span>CONNECT</span></div>
         </div>
 
-        <!-- NAVIGASI KANAN (Tombol Home sudah dihapus) -->
+        <!-- NAVIGASI KANAN -->
         <ul class="nav-links">
             <li><a href="https://web-dev.gadaimas.com/karir" target="_blank" class="nav-item">Recruitment</a></li>
             <li><a href="https://wa.me/6281220002964" target="_blank" class="nav-item">Ask HC</a></li>
@@ -1810,7 +1810,7 @@
                 </div>
 
                 <div class="qa-grid-4">
-                    <!-- 1. EMPLOYEE VOICE (KEMBALI KE SIMPLE CARD) -->
+                    <!-- 1. EMPLOYEE VOICE -->
                     <div class="qa-card-simple" onclick="openModal('modalFormVoice')">
                         <div style="display: flex; align-items: center; gap: 12px;">
                             <div class="card-icon-small"><i class="fa-solid fa-comments"></i></div>
@@ -1874,16 +1874,16 @@
                         </div>
                     </div>
 
-                    <!-- 4. CAREER & DEVELOPMENT (PINDAH PAGE) -->
+                    <!-- 4. CAREER & DEVELOPMENT -->
                     <div class="qa-card-simple" onclick="switchPage('page-karir')" style="cursor: pointer;">
                         <div style="display: flex; align-items: center; gap: 12px;">
                             <div class="card-icon-small" style="background:#fef2f2; color:#dc2626;"><i class="fa-solid fa-chart-pie"></i></div>
                             <h3 class="card-title-sub">Talent Management</h3>
                         </div>
-                        <p class="card-desc-text">Kaderisasi kartawan dalam menghadapi tantangan bisnis.</p>
+                        <p class="card-desc-text">Kaderisasi karyawan dalam menghadapi tantangan bisnis.</p>
                     </div>
 
-                    <!-- 5. DASHBOARD & ANALYTICS (BARU) -->
+                    <!-- 5. DASHBOARD & ANALYTICS -->
                     <a href="https://gadaimas.github.io/HCDashboard/" target="_blank" class="qa-card-simple" style="text-decoration: none;">
                         <div style="display: flex; align-items: center; gap: 12px;">
                             <div class="card-icon-small" style="background:#f3e8ff; color:#7e22ce;">
@@ -2629,21 +2629,22 @@
                     <span style="font-size:0.8rem; font-weight:700; color:var(--brand-blue);">Buka Form ➔</span>
                 </div>
 
-                <div class="hub-item-card" onclick="openModal('modalLearningDev')">
+                <div class="hub-item-card" onclick="openModal('modalKosKaryawan')">
                     <div class="hub-item-title">
-                        <i class="fa-solid fa-graduation-cap" style="color:var(--brand-blue);"></i>
+                        <i class="fa-solid fa-bed" style="color:var(--brand-blue);"></i>
                         Form Pengajuan Kos Karyawan
                     </div>
                     <p style="font-size:0.8rem; color:var(--text-muted);">Pengajuan kebutuhan kos untuk karyawan.</p>
                     <span style="font-size:0.8rem; font-weight:700; color:var(--brand-blue);">Buka Form ➔</span>
                 </div>
 
-                <div class="hub-item-card" onclick="openModal('modalFasilitasRelokasi')">
+                <!-- Update Onclick Modal KDO -->
+                <div class="hub-item-card" onclick="openModal('modalKdoKaryawan')">
                     <div class="hub-item-title">
                         <i class="fa-solid fa-building-user" style="color:var(--brand-blue);"></i>
                         Form Pengajuan KDO Karyawan
                     </div>
-                    <p style="font-size:0.8rem; color:var(--text-muted);">Pengajuan bantuan fasilitas kerja serta permohonan relokasi karyawan.</p>
+                    <p style="font-size:0.8rem; color:var(--text-muted);">Pengajuan klaim KDO dan BBM.</p>
                     <span style="font-size:0.8rem; font-weight:700; color:var(--brand-blue);">Buka Form ➔</span>
                 </div>
             </div>
@@ -2667,22 +2668,22 @@
                     <span style="font-size:0.8rem; font-weight:700; color:#b45309;">Lihat Status ➔</span>
                 </div>
 
-                <div class="hub-item-card" onclick="openModal('modalMonLearningDev'); fetchMonLD();">
+                <div class="hub-item-card" onclick="openModal('modalMonKosKaryawan'); fetchMonKos();">
                     <div class="hub-item-title">
                         <i class="fa-solid fa-chart-line" style="color:#b45309;"></i>
                         Monitoring Pengajuan Kos Karyawan
                     </div>
-                    <p style="font-size:0.8rem; color:var(--text-muted);">Lihat status pengajuan program pelatihan & sertifikasi.</p>
+                    <p style="font-size:0.8rem; color:var(--text-muted);">Lihat status pengajuan kos karyawan.</p>
                     <span style="font-size:0.8rem; font-weight:700; color:#b45309;">Lihat Status ➔</span>
                 </div>
 
-                <!-- KOTAK KE-4 (BARU) -->
-                <div class="hub-item-card" onclick="openModal('modalMonFasilitasRelokasi'); fetchMonFasilitasRelokasi();">
+                <!-- Update Onclick Monitoring KDO -->
+                <div class="hub-item-card" onclick="openModal('modalMonKdoKaryawan'); fetchMonKdo();">
                     <div class="hub-item-title">
                         <i class="fa-solid fa-chart-line" style="color:#b45309;"></i>
                         Monitoring Pengajuan KDO Karyawan
                     </div>
-                    <p style="font-size:0.8rem; color:var(--text-muted);">Lihat progress status permohonan fasilitas kerja dan relokasi.</p>
+                    <p style="font-size:0.8rem; color:var(--text-muted);">Lihat progress status permohonan klaim KDO.</p>
                     <span style="font-size:0.8rem; font-weight:700; color:#b45309;">Lihat Status ➔</span>
                 </div>
             </div>
@@ -3363,7 +3364,428 @@
         </div>
     </div>
 
-    <!-- ==================== FORM PERMINTAAN LEARNING & DEVELOPMENT (MULTI-STEP) ==================== -->
+    <!-- ==================== FORM PENGAJUAN KOS KARYAWAN ==================== -->
+    <div class="modal-overlay" id="modalKosKaryawan">
+        <div class="modal-box" id="boxKosKaryawan">
+            <button class="modal-close" onclick="closeModal('modalKosKaryawan')">&times;</button>
+            <h2 class="form-section-title">Form Pengajuan Kos Karyawan</h2>
+            
+            <form id="formKosKaryawan">
+                <!-- SECTION 1: Informasi Dasar -->
+                <div id="kosSec1" class="form-section active" style="display: block;">
+                    <div class="form-group">
+                        <label class="form-label">Email <span>*</span></label>
+                        <input type="email" id="emailKos" class="form-control" placeholder="nama@gadaimas.co.id" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Nama Lengkap <span>*</span></label>
+                        <input type="text" id="namaKos" class="form-control" placeholder="Contoh: CHINTYA KHARISMA SHANTI" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">NIK <span>*</span></label>
+                        <input type="text" id="nikKos" class="form-control" placeholder="Contoh: 2019.0183" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Apakah kamu sudah pernah melakukan pengajuan kos sebelumnya? <span>*</span></label>
+                        <div class="radio-list">
+                            <label class="radio-item">
+                                <input type="radio" name="pernah_pengajuan" value="Sudah" required> Sudah
+                            </label>
+                            <label class="radio-item">
+                                <input type="radio" name="pernah_pengajuan" value="Belum Pernah"> Belum Pernah
+                            </label>
+                        </div>
+                    </div>
+                    <button type="button" class="btn-nav-step" style="width: 100%; justify-content: center;" onclick="nextKosSectionFrom1()">Selanjutnya ➔</button>
+                </div>
+
+                <!-- SECTION 2: Jika "Sudah" - Cek Perubahan -->
+                <div id="kosSec2Sudah" class="form-section" style="display: none;">
+                    <div class="form-group">
+                        <label class="form-label">Apakah ada perubahan dari data terakhir yang di upload? <span>*</span></label>
+                        <div class="radio-list">
+                            <label class="radio-item">
+                                <input type="radio" name="ada_perubahan" value="Ya"> Ya
+                            </label>
+                            <label class="radio-item">
+                                <input type="radio" name="ada_perubahan" value="Tidak"> Tidak
+                            </label>
+                        </div>
+                    </div>
+                    <div style="display:flex; gap:10px;">
+                        <button type="button" class="btn-nav-secondary" style="flex:1; justify-content:center;" onclick="goToKosSection('kosSec1')">← Kembali</button>
+                        <button type="button" class="btn-nav-step" style="flex:1; justify-content:center;" onclick="nextKosSectionFrom2()">Selanjutnya ➔</button>
+                    </div>
+                </div>
+
+                <!-- SECTION 3: Form Detail (Untuk "Belum Pernah" ATAU "Sudah tapi Ada Perubahan") -->
+                <div id="kosSec3Detail" class="form-section" style="display: none;">
+                    
+                    <div class="form-group">
+                        <label class="form-label">Area Kerja <span>*</span></label>
+                        <select id="areaKerjaKos" class="form-control">
+                            <option value="">-- Pilih Area --</option>
+                            <option value="Sumbagut & DKI">Sumbagut & DKI</option>
+                            <option value="Kalimantan Timur">Kalimantan Timur</option>
+                            <option value="Sulawesi 1">Sulawesi 1</option>
+                            <option value="Sulawesi 2">Sulawesi 2</option>
+                            <option value="Sulawesi 3">Sulawesi 3</option>
+                            <option value="Jatim 1">Jatim 1</option>
+                            <option value="Jatim">Jatim</option>
+                            <option value="NTB">NTB</option>
+                            <option value="NTT">NTT</option>
+                            <option value="Head Office">Head Office</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Cabang Kerja <span>*</span></label>
+                        <input type="text" id="cabangKerjaKos" class="form-control" placeholder="Contoh: MAS OEBOBO">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Lokasi Kerja <span>*</span></label>
+                        <input type="text" id="lokasiKerjaKos" class="form-control" placeholder="Contoh: Kupang">
+                    </div>
+
+                    <!-- Jabatan Dipindah ke Sini -->
+                    <div class="form-group" id="kosJabatanContainer">
+                        <label class="form-label">Jabatan <span>*</span></label>
+                        <select id="jabatanKos" class="form-control" onchange="checkJabatanKos(this.value)">
+                            <option value="">-- Pilih Jabatan --</option>
+                            <option value="C-Level">C-Level</option>
+                            <option value="Division Head">Division Head</option>
+                            <option value="Departement Head">Departement Head</option>
+                            <option value="Section Head">Section Head</option>
+                            <option value="Manager">Manager</option>
+                            <option value="Supervisor">Supervisor</option>
+                            <option value="Advisor">Advisor</option>
+                            <option value="Kepala Cabang">Kepala Cabang</option>
+                            <option value="Ka Unit">Ka Unit</option>
+                            <option value="Penaksir">Penaksir</option>
+                            <option value="Kasir">Kasir</option>
+                            <option value="Staff">Staff</option>
+                            <option value="Officer">Officer</option>
+                            <option value="Security">Security</option>
+                            <option value="Driver">Driver</option>
+                            <option value="Office Boy/Girl">Office Boy/Girl</option>
+                            <option value="Lainnya">Lainnya</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group" id="kosJabatanLainnyaContainer" style="display: none;">
+                        <label class="form-label">Sebutkan Jabatan Lainnya <span>*</span></label>
+                        <input type="text" id="jabatanLainnyaKos" class="form-control" placeholder="Sebutkan Jabatan Lainnya...">
+                    </div>
+                    <!-- Akhir Jabatan -->
+
+                    <div class="form-group">
+                        <label class="form-label">Upload Surat Pernyataan <span>*</span></label>
+                        <div class="form-note" style="margin-bottom: 10px; line-height: 1.4;">
+                            Surat pernyataan dapat diakses di: <a href="https://drive.google.com/drive/folders/16Ue33jFuqL1ThXdFK1FiQQc6wkAaiKxA" target="_blank" style="color: var(--brand-blue); font-weight: 700; text-decoration: underline;">Klik di sini untuk Template Surat Pernyataan</a>
+                        </div>
+                        <div class="file-input-wrapper">
+                            <!-- onchange ini yang bikin tombol batal MUNCUL pas file dipilih -->
+                            <input type="file" id="suratPernyataanKos" class="form-control" accept="image/*,.pdf,.docx,.xlsx" onchange="handleFileChange('suratPernyataanKos', 'btnCancelKos')">
+                            <!-- onclick ini yang bikin file ILANG pas tombol batal diklik -->
+                            <button type="button" id="btnCancelKos" class="btn-cancel-file" onclick="cancelFileKos()">✕ Batal</button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Pengajuan Berdasarkan Surat Pernyataan <span>*</span></label>
+                        <div class="radio-list">
+                            <label class="radio-item">
+                                <input type="radio" name="berdasarkanKos" value="Benar-benar kos (100%)"> Benar-benar kos (100%)
+                            </label>
+                            <label class="radio-item">
+                                <input type="radio" name="berdasarkanKos" value="Tidak melakukan sewa kos (50%)"> Tidak melakukan sewa kos (50%)
+                            </label>
+                            <label class="radio-item">
+                                <input type="radio" name="berdasarkanKos" value="Memenuhi ketentuan kos karena jarak homebase ke lokasi kerja >60 km tetapi jarak kos ke lokasi kerja >30 Km (50%)"> Memenuhi ketentuan kos karena jarak homebase ke lokasi kerja >60 km tetapi jarak kos ke lokasi kerja >30 Km (50%)
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div style="display:flex; gap:10px;">
+                        <button type="button" class="btn-nav-secondary" style="flex:1; justify-content:center;" onclick="backFromKosDetail()">← Kembali</button>
+                        <button type="button" class="btn-nav-step" style="flex:1; justify-content:center;" onclick="goToKosSection('kosSec4Agreement')">Selanjutnya ➔</button>
+                    </div>
+                </div>
+
+                <!-- SECTION 4: Pernyataan (Final Section) -->
+                <div id="kosSec4Agreement" class="form-section" style="display: none;">
+                    <div class="form-group">
+                        <label class="form-label">Dengan ini saya menyatakan bahwa seluruh data dan informasi yang saya masukkan dalam form pengajuan ini adalah benar, akurat, dan sesuai dengan kondisi yang sebenarnya. Apabila di kemudian hari ditemukan kecurangan atau manipulasi data, saya bersedia menerima sanksi sesuai dengan peraturan perusahaan yang berlaku. <span>*</span></label>
+                        <div class="radio-list">
+                            <label class="radio-item">
+                                <input type="radio" name="pernyataanKos" value="Ya, saya menyatakan data ini benar dan bersedia bertanggung jawab." required> Ya, saya menyatakan data ini benar dan bersedia bertanggung jawab.
+                            </label>
+                        </div>
+                    </div>
+                    <div style="display:flex; gap:10px;">
+                        <button type="button" class="btn-nav-secondary" style="flex:1; justify-content:center;" onclick="backFromKosAgreement()">← Kembali</button>
+                        <button type="button" class="btn-submit" style="flex:1; justify-content:center;" onclick="submitFormKos()" id="btnSubmitKos">Kirim Pengajuan</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- ==================== MONITORING KOS KARYAWAN ==================== -->
+    <div class="modal-overlay" id="modalMonKosKaryawan">
+        <div class="modal-box" style="max-width: 1100px;">
+            <button class="modal-close" onclick="closeModal('modalMonKosKaryawan')">&times;</button>
+            <h2 class="form-section-title">Monitoring Pengajuan Kos Karyawan</h2>
+            <p class="form-section-subtitle">Daftar pemantauan status pengajuan kos karyawan.</p>
+
+            <div class="table-search-bar">
+                <div class="search-input-box">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <!-- Input search dengan fungsi onkeyup -->
+                    <input type="text" id="searchMonKosInput" onkeyup="filterMonKosTable()" placeholder="Cari Berdasarkan Nama, NIK, atau Cabang">
+                </div>
+                <!-- Tombol Reset -->
+                <button type="button" class="btn-see-all-table" onclick="resetMonKosSearch()">Reset</button>
+            </div>
+
+            <div class="table-responsive">
+                <table class="voice-table" id="tableMonKos">
+                    <thead>
+                        <tr>
+                            <th>Nama Lengkap</th>
+                            <th>NIK</th>
+                            <th>Area</th>
+                            <th>Cabang</th>
+                            <th>Lokasi Kerja</th>
+                            <th>Jabatan</th>
+                            <th>Pengajuan</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBodyMonKos">
+                        <tr><td colspan="6" style="text-align:center;">Memuat data...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== FORM PENGAJUAN KDO KARYAWAN ==================== -->
+    <div class="modal-overlay" id="modalKdoKaryawan">
+        <div class="modal-box">
+            <button class="modal-close" onclick="closeModal('modalKdoKaryawan')">&times;</button>
+            <h2 class="form-section-title">Form Pengajuan KDO Karyawan</h2>
+            <p class="form-section-subtitle">Formulir pengajuan klaim Kendaraan Dinas Operasional (KDO) dan BBM.</p>
+
+            <form id="formKdoKaryawan" onsubmit="return submitFormKDO(event)">
+                <input type="hidden" name="form_type" value="kdo_karyawan">
+
+                <div class="form-group">
+                    <label class="form-label">Email Aktif <span>*</span></label>
+                    <input type="email" name="email" class="form-control" placeholder="Masukkan Email aktif atau email pribadi Anda" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Nama Lengkap <span>*</span></label>
+                    <input type="text" name="nama_lengkap" class="form-control" placeholder="Contoh: CHINTYA KHARISMA SHANTI" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">NIK <span>*</span></label>
+                    <input type="text" name="nik" class="form-control" placeholder="Contoh: 2019.0183" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Area <span>*</span></label>
+                    <select name="area" class="form-control" required>
+                        <option value="" disabled selected>-- Pilih Area --</option>
+                        <option value="Sumbagut & DKI">Sumbagut & DKI</option>
+                        <option value="Kalimantan Timur">Kalimantan Timur</option>
+                        <option value="Sulawesi 1">Sulawesi 1</option>
+                        <option value="Sulawesi 2">Sulawesi 2</option>
+                        <option value="Sulawesi 3">Sulawesi 3</option>
+                        <option value="Jatim 1">Jatim 1</option>
+                        <option value="Jatim">Jatim</option>
+                        <option value="NTB">NTB</option>
+                        <option value="NTT">NTT</option>
+                        <option value="Head Office">Head Office</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Cabang <span>*</span></label>
+                    <input type="text" name="cabang" class="form-control" placeholder="Contoh: MAS OEBOBO" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Lokasi Kerja <span>*</span></label>
+                    <input type="text" name="lokasi_kerja" class="form-control" placeholder="Contoh: Kupang" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Jabatan <span>*</span></label>
+                    <select name="jabatan" id="jabatanKdoSelect" class="form-control" onchange="toggleLainnyaSelect('jabatanKdoSelect', 'jabatanLainnyaKdoInput')" required>
+                        <option value="" disabled selected>-- Pilih Jabatan --</option>
+                        <option value="C-Level">C-Level</option>
+                        <option value="Division Head">Division Head</option>
+                        <option value="Departement Head">Departement Head</option>
+                        <option value="Section Head">Section Head</option>
+                        <option value="Manager">Manager</option>
+                        <option value="Supervisor">Supervisor</option>
+                        <option value="Advisor">Advisor</option>
+                        <option value="Kepala Cabang">Kepala Cabang</option>
+                        <option value="Ka Unit">Ka Unit</option>
+                        <option value="Penaksir">Penaksir</option>
+                        <option value="Kasir">Kasir</option>
+                        <option value="Staff">Staff</option>
+                        <option value="Officer">Officer</option>
+                        <option value="Security">Security</option>
+                        <option value="Driver">Driver</option>
+                        <option value="Office Boy/Girl">Office Boy/Girl</option>
+                        <option value="Lainnya">Lainnya</option>
+                    </select>
+                    <input type="text" name="jabatan_lainnya" id="jabatanLainnyaKdoInput" class="form-control input-lainnya" placeholder="Sebutkan Jabatan Lainnya...">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Jenis Klaim <span>*</span></label>
+                    <div class="form-note" style="color: #475569; margin-bottom: 12px; line-height: 1.4;">
+                        Pilih jenis yang ingin di klaim (Bisa pilih lebih dari 1).<br>
+                        <strong>Contoh:</strong><br>
+                        1) Jika KKCP akan klaim KDO motor dan BBM motor maka pilih keduanya.<br>
+                        2) Jika Kepala Cabang akan klaim BBM mobil maka pilih BBM mobil saja.
+                    </div>
+                    <div class="radio-list">
+                        <label class="checkbox-item" style="padding: 10px 14px; background: #f8fafc; border: 1px solid var(--border-color); border-radius: 10px; margin-bottom: 6px;">
+                            <input type="checkbox" name="cb_jenis_klaim" value="KDO Motor">
+                            <span style="margin-left: 4px; font-weight: 600;">KDO Motor</span>
+                        </label>
+                        <label class="checkbox-item" style="padding: 10px 14px; background: #f8fafc; border: 1px solid var(--border-color); border-radius: 10px; margin-bottom: 6px;">
+                            <input type="checkbox" name="cb_jenis_klaim" value="BBM Motor">
+                            <span style="margin-left: 4px; font-weight: 600;">BBM Motor</span>
+                        </label>
+                        <label class="checkbox-item" style="padding: 10px 14px; background: #f8fafc; border: 1px solid var(--border-color); border-radius: 10px; margin-bottom: 6px;">
+                            <input type="checkbox" name="cb_jenis_klaim" value="BBM Mobil">
+                            <span style="margin-left: 4px; font-weight: 600;">BBM Mobil</span>
+                        </label>
+                    </div>
+                    <!-- Hidden input untuk menampung gabungan checkbox -->
+                    <input type="hidden" name="jenis_klaim" id="hiddenJenisKlaimKdo">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Bulan Pengajuan <span>*</span></label>
+                    <div class="form-note" style="color: #475569; margin-bottom: 12px; line-height: 1.4;">
+                        Pilih bulan pengajuan (Bisa pilih lebih dari 1 bulan).
+                    </div>
+                    <!-- Pakai Grid 2 Kolom biar rapi -->
+                    <div class="radio-list" style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                        <label class="checkbox-item" style="padding: 10px 14px; background: #f8fafc; border: 1px solid var(--border-color); border-radius: 10px; margin-bottom: 0;">
+                            <input type="checkbox" name="cb_bulan_pengajuan" value="Januari">
+                            <span style="margin-left: 4px; font-weight: 600;">Januari</span>
+                        </label>
+                        <label class="checkbox-item" style="padding: 10px 14px; background: #f8fafc; border: 1px solid var(--border-color); border-radius: 10px; margin-bottom: 0;">
+                            <input type="checkbox" name="cb_bulan_pengajuan" value="Februari">
+                            <span style="margin-left: 4px; font-weight: 600;">Februari</span>
+                        </label>
+                        <label class="checkbox-item" style="padding: 10px 14px; background: #f8fafc; border: 1px solid var(--border-color); border-radius: 10px; margin-bottom: 0;">
+                            <input type="checkbox" name="cb_bulan_pengajuan" value="Maret">
+                            <span style="margin-left: 4px; font-weight: 600;">Maret</span>
+                        </label>
+                        <label class="checkbox-item" style="padding: 10px 14px; background: #f8fafc; border: 1px solid var(--border-color); border-radius: 10px; margin-bottom: 0;">
+                            <input type="checkbox" name="cb_bulan_pengajuan" value="April">
+                            <span style="margin-left: 4px; font-weight: 600;">April</span>
+                        </label>
+                        <label class="checkbox-item" style="padding: 10px 14px; background: #f8fafc; border: 1px solid var(--border-color); border-radius: 10px; margin-bottom: 0;">
+                            <input type="checkbox" name="cb_bulan_pengajuan" value="Mei">
+                            <span style="margin-left: 4px; font-weight: 600;">Mei</span>
+                        </label>
+                        <label class="checkbox-item" style="padding: 10px 14px; background: #f8fafc; border: 1px solid var(--border-color); border-radius: 10px; margin-bottom: 0;">
+                            <input type="checkbox" name="cb_bulan_pengajuan" value="Juni">
+                            <span style="margin-left: 4px; font-weight: 600;">Juni</span>
+                        </label>
+                        <label class="checkbox-item" style="padding: 10px 14px; background: #f8fafc; border: 1px solid var(--border-color); border-radius: 10px; margin-bottom: 0;">
+                            <input type="checkbox" name="cb_bulan_pengajuan" value="Juli">
+                            <span style="margin-left: 4px; font-weight: 600;">Juli</span>
+                        </label>
+                        <label class="checkbox-item" style="padding: 10px 14px; background: #f8fafc; border: 1px solid var(--border-color); border-radius: 10px; margin-bottom: 0;">
+                            <input type="checkbox" name="cb_bulan_pengajuan" value="Agustus">
+                            <span style="margin-left: 4px; font-weight: 600;">Agustus</span>
+                        </label>
+                        <label class="checkbox-item" style="padding: 10px 14px; background: #f8fafc; border: 1px solid var(--border-color); border-radius: 10px; margin-bottom: 0;">
+                            <input type="checkbox" name="cb_bulan_pengajuan" value="September">
+                            <span style="margin-left: 4px; font-weight: 600;">September</span>
+                        </label>
+                        <label class="checkbox-item" style="padding: 10px 14px; background: #f8fafc; border: 1px solid var(--border-color); border-radius: 10px; margin-bottom: 0;">
+                            <input type="checkbox" name="cb_bulan_pengajuan" value="Oktober">
+                            <span style="margin-left: 4px; font-weight: 600;">Oktober</span>
+                        </label>
+                        <label class="checkbox-item" style="padding: 10px 14px; background: #f8fafc; border: 1px solid var(--border-color); border-radius: 10px; margin-bottom: 0;">
+                            <input type="checkbox" name="cb_bulan_pengajuan" value="November">
+                            <span style="margin-left: 4px; font-weight: 600;">November</span>
+                        </label>
+                        <label class="checkbox-item" style="padding: 10px 14px; background: #f8fafc; border: 1px solid var(--border-color); border-radius: 10px; margin-bottom: 0;">
+                            <input type="checkbox" name="cb_bulan_pengajuan" value="Desember">
+                            <span style="margin-left: 4px; font-weight: 600;">Desember</span>
+                        </label>
+                    </div>
+                    <!-- Hidden input untuk menampung gabungan checkbox bulan ke spreadsheet -->
+                    <input type="hidden" name="bulan_pengajuan" id="hiddenBulanPengajuanKdo">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Jenis Kendaraan <span>*</span></label>
+                    <input type="text" name="jenis_kendaraan" class="form-control" placeholder="Contoh: Honda Vario" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Nomor Polisi <span>*</span></label>
+                    <input type="text" name="nomor_polisi" class="form-control" placeholder="Contoh: B 1212 UNS" required>
+                </div>
+
+                <button type="submit" id="btnSubmitKdo" class="btn-submit">SUBMIT FORM KDO</button>
+            </form>
+        </div>
+    </div>
+
+
+    <!-- ==================== MONITORING KDO KARYAWAN ==================== -->
+    <div class="modal-overlay" id="modalMonKdoKaryawan">
+        <div class="modal-box" style="max-width: 1100px;">
+            <button class="modal-close" onclick="closeModal('modalMonKdoKaryawan')">&times;</button>
+            <h2 class="form-section-title">Monitoring Pengajuan KDO Karyawan</h2>
+            <p class="form-section-subtitle">Daftar pemantauan status pengajuan KDO dan BBM karyawan.</p>
+
+            <div class="table-search-bar">
+                <div class="search-input-box">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" id="searchMonKdoInput" onkeyup="filterMonKdoTable()" placeholder="Cari Berdasarkan Nama, NIK, atau Cabang">
+                </div>
+                <button type="button" class="btn-see-all-table" onclick="resetMonKdoSearch()">Reset</button>
+            </div>
+
+            <div class="table-responsive">
+                <table class="voice-table" id="tableMonKdo">
+                    <thead>
+                        <tr>
+                            <th>Nama Lengkap</th>
+                            <th>NIK</th>
+                            <th>Area</th>
+                            <th>Cabang</th>
+                            <th>Lokasi Kerja</th>
+                            <th>Jabatan</th>
+                            <th>Jenis Klaim</th>
+                            <th>Bulan</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBodyMonKdo">
+                        <tr><td colspan="6" style="text-align:center;">Memuat data...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== PERMINTAAN LEARNING & DEVELOPMENT (MULTI-STEP) ==================== -->
     <div class="modal-overlay" id="modalLearningDev">
         <div class="modal-box" id="boxLearningDev">
             <button class="modal-close" onclick="closeModal('modalLearningDev')">&times;</button>
@@ -3745,111 +4167,6 @@
         </div>
     </div>
 
-    <!-- ==================== MODAL MONITORING ==================== -->
-
-    <!-- 1. MONITORING TENAGA KERJA -->
-    <div class="modal-overlay" id="modalMonTenagaKerja">
-        <div class="modal-box" style="max-width: 1000px;">
-            <button class="modal-close" onclick="closeModal('modalMonTenagaKerja')">&times;</button>
-            <h2 class="form-section-title">Monitoring Pengajuan Tenaga Kerja</h2>
-            <p class="form-section-subtitle">Daftar pemantauan status pengajuan penambahan/pergantian tenaga kerja.</p>
-
-            <div class="table-search-bar">
-                <div class="search-input-box">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                    <input type="text" id="searchMonTKInput" onkeyup="filterMonTKTable()" placeholder="Cari Berdasarkan Nama, NIK, atau Jenis Pengajuan">
-                </div>
-                <button type="button" class="btn-see-all-table" onclick="resetMonTKSearch()">Reset</button>
-            </div>
-
-            <div class="table-responsive">
-                <table class="voice-table" id="tableMonTK">
-                    <thead>
-                        <tr>
-                            <th>Nama Lengkap</th>
-                            <th>NIK</th>
-                            <th>Unit Kerja/Area</th>
-                            <th>Jenis Pengajuan</th>
-                            <th>Status</th>
-                        </tr>
-                    </thead>
-                    <tbody id="tableBodyMonTK">
-                        <tr><td colspan="5" style="text-align:center;">Memuat data...</td></tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
-
-    <!-- 2. MONITORING IZIN / CUTI -->
-    <div class="modal-overlay" id="modalMonCuti">
-        <div class="modal-box" style="max-width: 1100px;">
-            <button class="modal-close" onclick="closeModal('modalMonCuti')">&times;</button>
-            <h2 class="form-section-title">Monitoring Izin / Cuti Karyawan</h2>
-            <p class="form-section-subtitle">Daftar pemantauan status pergantian karyawan izin/cuti.</p>
-
-            <div class="table-search-bar">
-                <div class="search-input-box">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                    <input type="text" id="searchMonCutiInput" onkeyup="filterMonCutiTable()" placeholder="Cari Berdasarkan Nama, NIK, atau Jenis Pengajuan">
-                </div>
-                <button type="button" class="btn-see-all-table" onclick="resetMonCutiSearch()">Reset</button>
-            </div>
-
-            <div class="table-responsive">
-                <table class="voice-table" id="tableMonCuti">
-                    <thead>
-                        <tr>
-                            <th>Pengaju (Nama/NIK)</th>
-                            <th>Unit Kerja</th>
-                            <th>Jenis</th>
-                            <th>Periode</th>
-                            <th>Pengganti (Nama/NIK)</th>
-                            <th>Unit Pengganti</th>
-                            <th>Status</th>
-                        </tr>
-                    </thead>
-                    <tbody id="tableBodyMonCuti">
-                        <tr><td colspan="7" style="text-align:center;">Memuat data...</td></tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
-
-    <!-- 3. MONITORING DOKUMEN / SURAT -->
-    <div class="modal-overlay" id="modalMonDokumen">
-        <div class="modal-box" style="max-width: 1100px;">
-            <button class="modal-close" onclick="closeModal('modalMonDokumen')">&times;</button>
-            <h2 class="form-section-title">Monitoring Pengajuan Dokumen/Surat</h2>
-            <p class="form-section-subtitle">Daftar pemantauan status penerbitan dokumen dan surat resmi HCBP.</p>
-
-            <div class="table-search-bar">
-                <div class="search-input-box">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                    <input type="text" id="searchMonDocInput" onkeyup="filterMonDocTable()" placeholder="Cari Berdasarkan Nama, NIK, Jenis Surat, atau Keperluan Surat">
-                </div>
-                <button type="button" class="btn-see-all-table" onclick="resetMonDocSearch()">Reset</button>
-            </div>
-
-            <div class="table-responsive">
-                <table class="voice-table" id="tableMonDoc">
-                    <thead>
-                        <tr>
-                            <th>Nama / NIK</th>
-                            <th>Divisi / Unit</th>
-                            <th>Jenis Surat</th>
-                            <th>Keperluan Surat</th>
-                            <th>Status</th>
-                        </tr>
-                    </thead>
-                    <tbody id="tableBodyMonDoc">
-                        <tr><td colspan="5" style="text-align:center;">Memuat data...</td></tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
 
     <footer>
         <div class="footer-container">
@@ -3885,7 +4202,646 @@
             fetchMonMovement();
             initKaizenConfetti();
             checkBookedSlots(); // Memeriksa slot jadwal konsultasi yang sudah terisi saat halaman di-load
+            
+            // Cek batasan tanggal untuk Form Kos & KDO Karyawan
+            checkKosDateRestriction();
+            checkKdoDateRestriction();
         });
+
+        // ==========================================
+        // SCRIPT TAMBAHAN UNTUK KDO KARYAWAN
+        // ==========================================
+
+        function checkKdoDateRestriction() {
+            const today = new Date().getDate();
+            const kdoGridItem = document.querySelector('.hub-item-card[onclick*="modalKdoKaryawan"]');
+            
+            if (today < 1 || today > 5) {
+                if (kdoGridItem) {
+                    kdoGridItem.removeAttribute('onclick');
+                    kdoGridItem.style.opacity = '0.5';
+                    kdoGridItem.style.cursor = 'not-allowed';
+                    kdoGridItem.querySelector('span').innerHTML = '<i class="fa-solid fa-lock"></i> Ditutup';
+                    kdoGridItem.querySelector('span').style.color = '#dc2626';
+                    
+                    kdoGridItem.addEventListener('click', function() {
+                        alert("Mohon maaf, Form Pengajuan KDO Karyawan hanya dibuka pada tanggal 1-5 setiap bulannya.");
+                    });
+                }
+            }
+        }
+
+        // Custom Submit Function untuk KDO (Menggabungkan Checkbox Multi-select)
+        function submitFormKDO(event) {
+            event.preventDefault();
+            const form = event.target;
+
+            // 1. Validasi Checkbox Jenis Klaim Minimal 1
+            const cbKlaim = form.querySelectorAll('input[name="cb_jenis_klaim"]:checked');
+            if (cbKlaim.length === 0) {
+                alert("Harap pilih minimal 1 Jenis Klaim KDO/BBM!");
+                return false;
+            }
+            let selectedKlaim = Array.from(cbKlaim).map(cb => cb.value).join(", ");
+            document.getElementById('hiddenJenisKlaimKdo').value = selectedKlaim;
+
+            // 2. Validasi Checkbox Bulan Pengajuan Minimal 1
+            const cbBulan = form.querySelectorAll('input[name="cb_bulan_pengajuan"]:checked');
+            if (cbBulan.length === 0) {
+                alert("Harap pilih minimal 1 Bulan Pengajuan!");
+                return false;
+            }
+            let selectedBulan = Array.from(cbBulan).map(cb => cb.value).join(", ");
+            document.getElementById('hiddenBulanPengajuanKdo').value = selectedBulan;
+
+            // Validasi sisa form pakai fungsi bawaan
+            if (!validateAndScroll(form)) {
+                return false;
+            }
+
+            const submitBtn = form.querySelector('button[type="submit"]');
+            const originalBtnText = submitBtn.innerText;
+            submitBtn.innerText = "Mengirim...";
+            submitBtn.disabled = true;
+
+            const payload = new URLSearchParams(new FormData(form));
+
+            fetch(MONITORING_FETCH_URL, {
+                method: 'POST',
+                body: payload
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (data.result === 'success') {
+                    alert('Pengajuan KDO Karyawan berhasil terkirim!');
+                    form.reset();
+                    
+                    // Reset hidden div 'lainnya'
+                    document.getElementById('jabatanLainnyaKdoInput').style.display = 'none';
+                    
+                    closeModal('modalKdoKaryawan');
+                } else {
+                    alert('Gagal mengirim data: ' + data.error);
+                }
+            })
+            .catch(err => {
+                alert('Terjadi kesalahan koneksi jaringan.');
+            })
+            .finally(() => {
+                submitBtn.innerText = originalBtnText;
+                submitBtn.disabled = false;
+            });
+        }
+
+        /* --- FETCH DATA MONITORING KDO KARYAWAN --- */
+        function fetchMonKdo() {
+            const tbody = document.getElementById("tableBodyMonKdo");
+            if (!tbody) return;
+            tbody.innerHTML = `<tr><td colspan="9" style="text-align:center;">Memuat data monitoring pengajuan KDO...</td></tr>`;
+
+            fetch(`${MONITORING_FETCH_URL}?sheet=KDO Karyawan`)
+                .then(res => res.json())
+                .then(res => {
+                    if (res.result === 'success' && res.data) {
+                        if (res.data.length === 0) {
+                            tbody.innerHTML = `<tr><td colspan="9" style="text-align:center;">Belum ada pengajuan KDO karyawan.</td></tr>`;
+                            return;
+                        }
+                        let html = "";
+                        res.data.slice().reverse().forEach(item => {
+                            let nama = item.nama || "-";
+                            let nik = item.nik || "-";
+                            let area = item.area || "-";
+                            let cabang = item.cabang || "-";
+                            let lokasi = item.lokasi || "-";
+                            let jabatan = item.jabatan || "-";
+                            let jenisKlaim = item.jenisKlaim || "-";
+                            let bulan = item.bulan || "-";
+                            let status = item.status || "-";
+
+                            html += `<tr>
+                                <td><b>${nama}</b></td>
+                                <td>${nik}</td>
+                                <td>${area}</td>
+                                <td>${cabang}</td>
+                                <td>${lokasi}</td>
+                                <td>${jabatan}</td>
+                                <td>${jenisKlaim}</td>
+                                <td>${bulan}</td>
+                                <td>${getStatusBadge(status)}</td>
+                            </tr>`;
+                        });
+                        tbody.innerHTML = html;
+                    } else {
+                        tbody.innerHTML = `<tr><td colspan="9" style="text-align:center;">Belum ada data pengajuan KDO karyawan.</td></tr>`;
+                    }
+                }).catch(err => { tbody.innerHTML = `<tr><td colspan="9" style="text-align:center; color:#dc2626;">Gagal memuat data monitoring KDO.</td></tr>`; });
+        }
+
+        /* --- SEARCH FILTER MONITORING KDO --- */
+        function filterMonKdoTable() {
+            let filter = document.getElementById("searchMonKdoInput").value.toUpperCase();
+            let tr = document.getElementById("tableMonKdo").getElementsByTagName("tr");
+
+            for (let i = 1; i < tr.length; i++) {
+                // TD ke-0: Nama, TD ke-1: NIK, TD ke-2: Area, TD ke-3: Cabang
+                let namaTd = tr[i].getElementsByTagName("td")[0];
+                let nikTd = tr[i].getElementsByTagName("td")[1];
+                let areaTd = tr[i].getElementsByTagName("td")[2];
+                let cabangTd = tr[i].getElementsByTagName("td")[3];
+
+                if (namaTd || nikTd || areaTd || cabangTd) {
+                    let namaVal = namaTd ? (namaTd.textContent || namaTd.innerText) : "";
+                    let nikVal = nikTd ? (nikTd.textContent || nikTd.innerText) : "";
+                    let areaVal = areaTd ? (areaTd.textContent || areaTd.innerText) : "";
+                    let cabangVal = cabangTd ? (cabangTd.textContent || cabangTd.innerText) : "";
+
+                    if (
+                        namaVal.toUpperCase().indexOf(filter) > -1 ||
+                        nikVal.toUpperCase().indexOf(filter) > -1 ||
+                        areaVal.toUpperCase().indexOf(filter) > -1 ||
+                        cabangVal.toUpperCase().indexOf(filter) > -1
+                    ) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
+
+        function resetMonKdoSearch() {
+            document.getElementById("searchMonKdoInput").value = "";
+            filterMonKdoTable();
+        }
+
+        // 1. DATE RESTRICTION LOGIC (Tanggal 1-5) untuk Kos Karyawan
+        function checkKosDateRestriction() {
+            const today = new Date().getDate();
+            const kosGridItem = document.querySelector('.hub-item-card[onclick*="modalKosKaryawan"]');
+            
+            if (today < 1 || today > 5) {
+                if (kosGridItem) {
+                    kosGridItem.removeAttribute('onclick');
+                    kosGridItem.style.opacity = '0.5';
+                    kosGridItem.style.cursor = 'not-allowed';
+                    kosGridItem.querySelector('span').innerHTML = '<i class="fa-solid fa-lock"></i> Ditutup';
+                    kosGridItem.querySelector('span').style.color = '#dc2626';
+                    
+                    // Tambahkan event listener untuk menampilkan alert
+                    kosGridItem.addEventListener('click', function() {
+                        alert("Mohon maaf, Form Pengajuan Kos hanya dibuka pada tanggal 1-5 setiap bulannya.");
+                    });
+                }
+            }
+        }
+
+
+        // MULTI-STEP LOGIC UNTUK KOS KARYAWAN
+        function goToKosSection(targetId) {
+            document.querySelectorAll('#formKosKaryawan .form-section').forEach(el => el.style.display = 'none');
+            document.getElementById(targetId).style.display = 'block';
+        }
+
+        function nextKosSectionFrom1() {
+            // Validasi wajib isi untuk Sec-1
+            if(!document.getElementById('emailKos').value || !document.getElementById('namaKos').value || !document.getElementById('nikKos').value){
+                alert("Harap isi Email, Nama, dan NIK!"); return;
+            }
+            let pernah = document.querySelector('input[name="pernah_pengajuan"]:checked');
+            if (!pernah) { alert("Pilih salah satu opsi pengajuan!"); return; }
+
+            if (pernah.value === "Sudah") {
+                goToKosSection('kosSec2Sudah');
+            } else {
+                document.getElementById('kosJabatanContainer').style.display = 'block';
+                goToKosSection('kosSec3Detail');
+            }
+        }
+
+        function nextKosSectionFrom2() {
+            let rubah = document.querySelector('input[name="ada_perubahan"]:checked');
+            if (!rubah) { alert("Pilih apakah ada perubahan data!"); return; }
+
+            if (rubah.value === "Ya") {
+                // Ubah dari 'none' menjadi 'block' agar kolom jabatan tetap muncul
+                document.getElementById('kosJabatanContainer').style.display = 'block'; 
+                goToKosSection('kosSec3Detail');
+            } else {
+                goToKosSection('kosSec4Agreement'); 
+            }
+        }
+
+        function backFromKosDetail() {
+            let pernah = document.querySelector('input[name="pernah_pengajuan"]:checked').value;
+            if (pernah === "Sudah") goToKosSection('kosSec2Sudah');
+            else goToKosSection('kosSec1');
+        }
+
+        function backFromKosAgreement() {
+            let pernah = document.querySelector('input[name="pernah_pengajuan"]:checked').value;
+            if (pernah === "Belum Pernah") {
+                goToKosSection('kosSec3Detail');
+            } else {
+                let rubah = document.querySelector('input[name="ada_perubahan"]:checked').value;
+                if (rubah === "Ya") goToKosSection('kosSec3Detail');
+                else goToKosSection('kosSec2Sudah');
+            }
+        }
+
+        // JABATAN "LAINNYA" LOGIC KOS KARYAWAN
+        function checkJabatanKos(val) {
+            if (val === "Lainnya") {
+                document.getElementById('kosJabatanLainnyaContainer').style.display = 'block';
+            } else {
+                document.getElementById('kosJabatanLainnyaContainer').style.display = 'none';
+            }
+        }
+
+        // SUBMIT FORM KOS KARYAWAN
+        let fileKosData = null;
+        let fileKosName = "";
+        let fileKosType = "";
+
+        // Fungsi yang bekerja saat tombol Batal di-klik (menghapus file)
+        function cancelFileKos() {
+            // Ini ngereset input file jadi kosong dan nyembunyiin tombol batal
+            resetFileInput('suratPernyataanKos', 'btnCancelKos');
+            
+            // Ini ngereset data file di sistem (memori)
+            fileKosData = null;
+            fileKosName = "";
+            fileKosType = "";
+        }
+
+        // Event Listener untuk Upload Surat Pernyataan Kos
+        const suratPernyataanKosInput = document.getElementById('suratPernyataanKos');
+        if (suratPernyataanKosInput) {
+            suratPernyataanKosInput.addEventListener('change', function(e) {
+                let file = e.target.files[0];
+                if (file) {
+                    let reader = new FileReader();
+                    reader.onload = function(event) {
+                        fileKosData = event.target.result.split(',')[1];
+                        fileKosName = file.name;
+                        fileKosType = file.type;
+                    };
+                    reader.readAsDataURL(file);
+                } else {
+                    fileKosData = null;
+                    fileKosName = "";
+                    fileKosType = "";
+                }
+            });
+        }
+
+        function submitFormKos() {
+            // Validasi Agreement
+            let agreement = document.querySelector('input[name="pernyataanKos"]:checked');
+            if (!agreement) { alert("Anda harus menyetujui pernyataan untuk melanjutkan."); return; }
+
+            // Validasi file upload jika masuk ke section detail
+            let pernah = document.querySelector('input[name="pernah_pengajuan"]:checked').value;
+            let adaPerubahan = pernah === "Sudah" ? document.querySelector('input[name="ada_perubahan"]:checked').value : "";
+            
+            if (pernah === "Belum Pernah" || (pernah === "Sudah" && adaPerubahan === "Ya")) {
+                if (!fileKosData) {
+                    alert("Harap upload Surat Pernyataan!");
+                    return;
+                }
+            }
+
+            let submitBtn = document.getElementById('btnSubmitKos');
+            const originalText = submitBtn.innerText;
+            submitBtn.innerText = "Mengirim...";
+            submitBtn.disabled = true;
+
+            // Kumpulkan Payload
+            let payload = new URLSearchParams();
+            payload.append("form_type", "kos_karyawan");
+            payload.append("email", document.getElementById('emailKos').value);
+            payload.append("nama_lengkap", document.getElementById('namaKos').value);
+            payload.append("nik", document.getElementById('nikKos').value);
+            payload.append("pernah_pengajuan", pernah);
+
+            if (pernah === "Sudah") {
+                payload.append("ada_perubahan", adaPerubahan);
+            }
+
+            if (pernah === "Belum Pernah" || (pernah === "Sudah" && adaPerubahan === "Ya")) {
+                payload.append("jabatan", document.getElementById('jabatanKos').value);
+                payload.append("jabatan_lainnya", document.getElementById('jabatanLainnyaKos').value);
+                payload.append("area_kerja", document.getElementById('areaKerjaKos').value);
+                payload.append("cabang_kerja", document.getElementById('cabangKerjaKos').value);
+                payload.append("lokasi_kerja", document.getElementById('lokasiKerjaKos').value);
+                
+                let dasar = document.querySelector('input[name="berdasarkanKos"]:checked');
+                payload.append("pengajuan_berdasarkan", dasar ? dasar.value : "");
+
+                if (fileKosData) {
+                    payload.append("fileKos_data", fileKosData);
+                    payload.append("fileKos_name", fileKosName);
+                    payload.append("fileKos_type", fileKosType);
+                }
+            }
+
+            payload.append("pernyataan_validitas", agreement.value);
+
+            // Ganti URL_WEB_APP_KAMU_DISINI dengan URL deployment Apps Script terbaru (sama dengan MONITORING_FETCH_URL)
+            const WEB_APP_URL = MONITORING_FETCH_URL; // "https://script.google.com/macros/s/AKfycbzZDUrbSoP3AJcxeIIWcmF-ZxASJkb9IvtapqHX-4kj8zE222Tww63z7iEC9eH15W8v/exec";
+
+            fetch(WEB_APP_URL, {
+                method: "POST",
+                body: payload
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (data.result === 'success') {
+                    alert("Pengajuan Kos Karyawan berhasil dikirim!");
+                    document.getElementById('formKosKaryawan').reset();
+                    fileKosData = null; // Reset file data
+                    closeModal('modalKosKaryawan');
+                    
+                    // Kembali ke section 1
+                    goToKosSection('kosSec1');
+                    
+                    // Refresh data monitoring jika modal monitoring terbuka (opsional)
+                    // fetchMonKos(); 
+                } else {
+                    alert("Gagal mengirim: " + data.error);
+                }
+            })
+            .catch(error => {
+                alert("Terjadi kesalahan jaringan.");
+            })
+            .finally(() => {
+                submitBtn.innerText = originalText;
+                submitBtn.disabled = false;
+            });
+        }
+
+        /* --- FETCH DATA MONITORING KOS KARYAWAN --- */
+        function fetchMonKos() {
+            const tbody = document.getElementById("tableBodyMonKos");
+            if (!tbody) return;
+            tbody.innerHTML = `<tr><td colspan="5" style="text-align:center;">Memuat data monitoring pengajuan kos...</td></tr>`;
+
+            fetch(`${MONITORING_FETCH_URL}?sheet=Kos Karyawan`)
+                .then(res => res.json())
+                .then(res => {
+                    if (res.result === 'success' && res.data) {
+                        if (res.data.length === 0) {
+                            tbody.innerHTML = `<tr><td colspan="5" style="text-align:center;">Belum ada pengajuan kos karyawan.</td></tr>`;
+                            return;
+                        }
+                        let html = "";
+                        res.data.slice().reverse().forEach(item => {
+                            let nama = item.nama || "-";
+                            let nik = item.nik || "-";
+                            let jabatan = item.jabatan || "-";
+                            let areaKerja = item.areaKerja || "-";
+                            let status = item.status || "-";
+
+                            html += `<tr>
+                                <td><b>${nama}</b></td>
+                                <td>${nik}</td>
+                                <td>${jabatan}</td>
+                                <td>${areaKerja}</td>
+                                <td>${getStatusBadge(status)}</td>
+                            </tr>`;
+                        });
+                        tbody.innerHTML = html;
+                    } else {
+                        tbody.innerHTML = `<tr><td colspan="5" style="text-align:center;">Belum ada data pengajuan kos karyawan.</td></tr>`;
+                    }
+                }).catch(err => { tbody.innerHTML = `<tr><td colspan="5" style="text-align:center; color:#dc2626;">Gagal memuat data monitoring kos karyawan.</td></tr>`; });
+        }
+
+        function filterMonKosTable() {
+            let filter = document.getElementById("searchMonKosInput").value.toUpperCase();
+            let tr = document.getElementById("tableMonKos").getElementsByTagName("tr");
+
+            for (let i = 1; i < tr.length; i++) {
+                let namaTd = tr[i].getElementsByTagName("td")[0];
+                let nikTd = tr[i].getElementsByTagName("td")[1];
+                let areaTd = tr[i].getElementsByTagName("td")[3];
+
+                if (namaTd || nikTd || areaTd) {
+                    let namaVal = namaTd ? (namaTd.textContent || namaTd.innerText) : "";
+                    let nikVal = nikTd ? (nikTd.textContent || nikTd.innerText) : "";
+                    let areaVal = areaTd ? (areaTd.textContent || areaTd.innerText) : "";
+
+                    if (
+                        namaVal.toUpperCase().indexOf(filter) > -1 ||
+                        nikVal.toUpperCase().indexOf(filter) > -1 ||
+                        areaVal.toUpperCase().indexOf(filter) > -1
+                    ) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
+
+        function resetMonKosSearch() {
+            document.getElementById("searchMonKosInput").value = "";
+            filterMonKosTable();
+        }// ==========================================
+        // SCRIPT MONITORING KOS KARYAWAN
+        // ==========================================
+
+        /* --- FETCH DATA MONITORING KOS KARYAWAN --- */
+        function fetchMonKos() {
+            const tbody = document.getElementById("tableBodyMonKos");
+            if (!tbody) return;
+            tbody.innerHTML = `<tr><td colspan="8" style="text-align:center;">Memuat data monitoring pengajuan kos...</td></tr>`;
+
+            fetch(`${MONITORING_FETCH_URL}?sheet=Kos Karyawan`)
+                .then(res => res.json())
+                .then(res => {
+                    if (res.result === 'success' && res.data) {
+                        if (res.data.length === 0) {
+                            tbody.innerHTML = `<tr><td colspan="8" style="text-align:center;">Belum ada pengajuan kos karyawan.</td></tr>`;
+                            return;
+                        }
+                        let html = "";
+                        res.data.slice().reverse().forEach(item => {
+                            let nama = item.nama || "-";
+                            let nik = item.nik || "-";
+                            let area = item.area || "-";
+                            let cabang = item.cabang || "-";
+                            let lokasi = item.lokasi || "-";
+                            let jabatan = item.jabatan || "-";
+                            let pengajuan = item.pengajuan || "-";
+                            let status = item.status || "-";
+
+                            html += `<tr>
+                                <td><b>${nama}</b></td>
+                                <td>${nik}</td>
+                                <td>${area}</td>
+                                <td>${cabang}</td>
+                                <td>${lokasi}</td>
+                                <td>${jabatan}</td>
+                                <td>${pengajuan}</td>
+                                <td>${getStatusBadge(status)}</td>
+                            </tr>`;
+                        });
+                        tbody.innerHTML = html;
+                    } else {
+                        tbody.innerHTML = `<tr><td colspan="8" style="text-align:center;">Belum ada data pengajuan kos karyawan.</td></tr>`;
+                    }
+                }).catch(err => { tbody.innerHTML = `<tr><td colspan="8" style="text-align:center; color:#dc2626;">Gagal memuat data monitoring kos.</td></tr>`; });
+        }
+
+        /* --- SEARCH FILTER MONITORING KOS --- */
+        function filterMonKosTable() {
+            let filter = document.getElementById("searchMonKosInput").value.toUpperCase();
+            let tr = document.getElementById("tableMonKos").getElementsByTagName("tr");
+
+            for (let i = 1; i < tr.length; i++) {
+                // Filter nyari di kolom Nama (0), NIK (1), Area (2), atau Cabang (3)
+                let namaTd = tr[i].getElementsByTagName("td")[0];
+                let nikTd = tr[i].getElementsByTagName("td")[1];
+                let areaTd = tr[i].getElementsByTagName("td")[2]; 
+                let cabangTd = tr[i].getElementsByTagName("td")[3];
+
+                if (namaTd || nikTd || areaTd || cabangTd) {
+                    let namaVal = namaTd ? (namaTd.textContent || namaTd.innerText) : "";
+                    let nikVal = nikTd ? (nikTd.textContent || nikTd.innerText) : "";
+                    let areaVal = areaTd ? (areaTd.textContent || areaTd.innerText) : "";
+                    let cabangVal = cabangTd ? (cabangTd.textContent || cabangTd.innerText) : "";
+
+                    if (
+                        namaVal.toUpperCase().indexOf(filter) > -1 ||
+                        nikVal.toUpperCase().indexOf(filter) > -1 ||
+                        areaVal.toUpperCase().indexOf(filter) > -1 ||
+                        cabangVal.toUpperCase().indexOf(filter) > -1
+                    ) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
+
+        /* --- RESET SEARCH MONITORING KOS --- */
+        function resetMonKosSearch() {
+            document.getElementById("searchMonKosInput").value = "";
+            filterMonKosTable();
+        }
+
+        // ==========================================
+        // SCRIPT UNTUK MULTI-STEP FORM DOKUMEN/SURAT
+        // ==========================================
+
+        // 1. Fungsi Lanjut ke Section 2
+        function goToDocSection2() {
+            // Validasi: pastikan semua form yang wajib di Section 1 sudah diisi
+            const section1 = document.getElementById('docSection1');
+            const inputs = section1.querySelectorAll('input[required], select[required]');
+            let isValid = true;
+            
+            for (let i = 0; i < inputs.length; i++) {
+                if (!inputs[i].checkValidity()) {
+                    inputs[i].reportValidity(); // Memunculkan popup "Please fill out this field"
+                    isValid = false;
+                    break;
+                }
+            }
+            if (!isValid) return;
+
+            // Pindah halaman
+            document.getElementById('docSection1').style.display = 'none';
+            document.getElementById('docSection2').style.display = 'block';
+
+            // Sembunyikan semua sub-section dulu
+            document.getElementById('subDocKeteranganKerja').style.display = 'none';
+            document.getElementById('subDocPengalamanKerja').style.display = 'none';
+            document.getElementById('subDocRekomendasi').style.display = 'none';
+            document.getElementById('subDocLainnya').style.display = 'none';
+
+            // Munculkan sub-section sesuai "Jenis Surat yang Dibutuhkan"
+            const jenisSurat = document.getElementById('jenisSuratDokumen').value;
+            if (jenisSurat === 'Surat Keterangan Kerja') {
+                document.getElementById('subDocKeteranganKerja').style.display = 'block';
+            } else if (jenisSurat === 'Surat Pengalaman Kerja') {
+                document.getElementById('subDocPengalamanKerja').style.display = 'block';
+            } else if (jenisSurat === 'Surat Rekomendasi') {
+                document.getElementById('subDocRekomendasi').style.display = 'block';
+            } else if (jenisSurat === 'Surat Lainnya') {
+                document.getElementById('subDocLainnya').style.display = 'block';
+            }
+        }
+
+        // 2. Fungsi Kembali ke Section 1
+        function backToDocSection1() {
+            document.getElementById('docSection2').style.display = 'none';
+            document.getElementById('docSection1').style.display = 'block';
+        }
+
+        // 3. Fungsi Lanjut ke Section 3
+        function goToDocSection3() {
+            const jenisSurat = document.getElementById('jenisSuratDokumen').value;
+            let activeSubSectionId = '';
+            
+            if (jenisSurat === 'Surat Keterangan Kerja') activeSubSectionId = 'subDocKeteranganKerja';
+            else if (jenisSurat === 'Surat Pengalaman Kerja') activeSubSectionId = 'subDocPengalamanKerja';
+            else if (jenisSurat === 'Surat Rekomendasi') activeSubSectionId = 'subDocRekomendasi';
+            else if (jenisSurat === 'Surat Lainnya') activeSubSectionId = 'subDocLainnya';
+
+            // Validasi kolom di sub-section yang aktif
+            if (activeSubSectionId) {
+                const activeSubSection = document.getElementById(activeSubSectionId);
+                const inputs = activeSubSection.querySelectorAll('input[required], select[required], textarea[required]');
+                let isValid = true;
+                
+                for (let i = 0; i < inputs.length; i++) {
+                    if (inputs[i].offsetParent === null) continue; // Lewati jika input tersembunyi
+                    if (!inputs[i].checkValidity()) {
+                        inputs[i].reportValidity();
+                        isValid = false;
+                        break;
+                    }
+                }
+                if (!isValid) return;
+            }
+
+            document.getElementById('docSection2').style.display = 'none';
+            document.getElementById('docSection3').style.display = 'block';
+        }
+
+        // 4. Fungsi Kembali ke Section 2
+        function backToDocSection2() {
+            document.getElementById('docSection3').style.display = 'none';
+            document.getElementById('docSection2').style.display = 'block';
+        }
+
+        // 5. Fungsi Memunculkan Kolom Format Khusus (Jika pilih "Ya")
+        function toggleFormatKhusus() {
+            const selectFormat = document.getElementById('selectFormatKhusus');
+            const groupFormat = document.getElementById('groupFormatKhususKet');
+            const inputFormat = document.getElementById('inputFormatKhususKet');
+            
+            if (selectFormat.value === 'Ya') {
+                groupFormat.style.display = 'block';
+                inputFormat.setAttribute('required', 'required');
+            } else {
+                groupFormat.style.display = 'none';
+                inputFormat.removeAttribute('required');
+                inputFormat.value = '';
+            }
+        }
+
+        // 6. Fungsi Validasi Centang "Saya menyatakan..." di Section Terakhir
+        function validateDocDeclaration() {
+            const decDoc = document.getElementById('decDoc');
+            const btnSubmitDoc = document.getElementById('btnSubmitDoc');
+            if (decDoc && btnSubmitDoc) {
+                btnSubmitDoc.disabled = !decDoc.checked;
+            }
+        }
 
         /* --- SCRIPT ANIMASI CONFETTI KAIZEN BANNER --- */
         function initKaizenConfetti() {
@@ -4484,20 +5440,39 @@
 
         // 1. FUNGSI UNTUK SCROLL KE PERTANYAAN YANG BELUM DIISI (TIDAK KE PALING ATAS)
         function validateAndScroll(form) {
-            if (!form.checkValidity()) {
-                // Cari elemen wajib pertama yang belum diisi (invalid)
+            // Tampung sementara input yang wajib diisi tapi lagi disembunyikan
+            const hiddenRequiredInputs = [];
+            const allRequiredInputs = form.querySelectorAll('[required]');
+            
+            allRequiredInputs.forEach(input => {
+                // offsetParent === null artinya elemen tersebut sedang di-hide (display: none)
+                if (input.offsetParent === null) {
+                    hiddenRequiredInputs.push(input);
+                    input.removeAttribute('required'); // Cabut status wajibnya sementara waktu
+                }
+            });
+
+            // Cek validasi form (sekarang browser hanya mengecek elemen yang terlihat saja)
+            const isValid = form.checkValidity();
+
+            if (!isValid) {
+                // Cari elemen wajib pertama yang belum diisi (invalid) yang kelihatan di layar
                 const firstInvalid = form.querySelector(':invalid');
         
                 if (firstInvalid) {
-                    // Scroll mulus tepat ke pertanyaan tersebut, dan posisikan di tengah layar (block: 'center')
+                    // Scroll mulus tepat ke pertanyaan tersebut
                     firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            
-                    // Fokuskan pada inputnya agar muncul notifikasi "Please fill out this field"
+                    // Fokuskan pada inputnya biar notif "Please fill out this field" muncul
                     firstInvalid.focus();
                 }
-                return false; // Hentikan proses submit
             }
-            return true; // Lanjutkan proses submit
+
+            // Kembalikan status 'required' ke elemen yang tersembunyi tadi biar form gak rusak
+            hiddenRequiredInputs.forEach(input => {
+                input.setAttribute('required', 'required');
+            });
+
+            return isValid; 
         }
 
         // 2. FUNGSI UTAMA SUBMIT FORM (Kode Anda yang sudah bekerja dengan baik)
