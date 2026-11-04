@@ -3168,6 +3168,7 @@
                             <option value="Surat Keterangan Kerja">Surat Keterangan Kerja</option>
                             <option value="Surat Pengalaman Kerja">Surat Pengalaman Kerja</option>
                             <option value="Surat Rekomendasi">Surat Rekomendasi</option>
+                            <option value="Dokumen Slip Gaji">Dokumen Slip Gaji</option>
                             <option value="Surat Lainnya">Surat Lainnya</option>
                         </select>
                     </div>
@@ -3315,6 +3316,66 @@
                         </div>
                     </div>
 
+                    <!-- SUB SECTION: DOKUMEN SLIP GAJI -->
+                    <div id="subDocSlipGaji" style="display: none;">
+                        <div class="form-group">
+                            <label class="form-label">Tujuan Pengajuan <span>*</span></label>
+                            <input type="text" name="tujuan_slip_gaji" id="inputTujuanSlipGaji" class="form-control" placeholder="Contoh: Pengajuan KPR, Kredit, Visa, dll">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Periode Pengajuan <span>*</span></label>
+                            <div class="form-note" style="color: #475569; margin-bottom: 12px; line-height: 1.4;">
+                                Pilih periode bulan slip gaji (Bisa pilih lebih dari 1).
+                            </div>
+                            <div class="radio-list" style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;" id="containerBulanSlip">
+                                <label class="checkbox-item" style="padding: 10px 14px; background: #f8fafc; border: 1px solid var(--border-color); border-radius: 10px; margin-bottom: 0;">
+                                    <input type="checkbox" name="cb_periode_slip" value="Januari"><span style="margin-left: 4px; font-weight: 600;">Januari</span>
+                                </label>
+                                <label class="checkbox-item" style="padding: 10px 14px; background: #f8fafc; border: 1px solid var(--border-color); border-radius: 10px; margin-bottom: 0;">
+                                    <input type="checkbox" name="cb_periode_slip" value="Februari"><span style="margin-left: 4px; font-weight: 600;">Februari</span>
+                                </label>
+                                <label class="checkbox-item" style="padding: 10px 14px; background: #f8fafc; border: 1px solid var(--border-color); border-radius: 10px; margin-bottom: 0;">
+                                    <input type="checkbox" name="cb_periode_slip" value="Maret"><span style="margin-left: 4px; font-weight: 600;">Maret</span>
+                                </label>
+                                <label class="checkbox-item" style="padding: 10px 14px; background: #f8fafc; border: 1px solid var(--border-color); border-radius: 10px; margin-bottom: 0;">
+                                    <input type="checkbox" name="cb_periode_slip" value="April"><span style="margin-left: 4px; font-weight: 600;">April</span>
+                                </label>
+                                <label class="checkbox-item" style="padding: 10px 14px; background: #f8fafc; border: 1px solid var(--border-color); border-radius: 10px; margin-bottom: 0;">
+                                    <input type="checkbox" name="cb_periode_slip" value="Mei"><span style="margin-left: 4px; font-weight: 600;">Mei</span>
+                                </label>
+                                <label class="checkbox-item" style="padding: 10px 14px; background: #f8fafc; border: 1px solid var(--border-color); border-radius: 10px; margin-bottom: 0;">
+                                    <input type="checkbox" name="cb_periode_slip" value="Juni"><span style="margin-left: 4px; font-weight: 600;">Juni</span>
+                                </label>
+                                <label class="checkbox-item" style="padding: 10px 14px; background: #f8fafc; border: 1px solid var(--border-color); border-radius: 10px; margin-bottom: 0;">
+                                    <input type="checkbox" name="cb_periode_slip" value="Juli"><span style="margin-left: 4px; font-weight: 600;">Juli</span>
+                                </label>
+                                <label class="checkbox-item" style="padding: 10px 14px; background: #f8fafc; border: 1px solid var(--border-color); border-radius: 10px; margin-bottom: 0;">
+                                    <input type="checkbox" name="cb_periode_slip" value="Agustus"><span style="margin-left: 4px; font-weight: 600;">Agustus</span>
+                                </label>
+                                <label class="checkbox-item" style="padding: 10px 14px; background: #f8fafc; border: 1px solid var(--border-color); border-radius: 10px; margin-bottom: 0;">
+                                    <input type="checkbox" name="cb_periode_slip" value="September"><span style="margin-left: 4px; font-weight: 600;">September</span>
+                                </label>
+                                <label class="checkbox-item" style="padding: 10px 14px; background: #f8fafc; border: 1px solid var(--border-color); border-radius: 10px; margin-bottom: 0;">
+                                    <input type="checkbox" name="cb_periode_slip" value="Oktober"><span style="margin-left: 4px; font-weight: 600;">Oktober</span>
+                                </label>
+                                <label class="checkbox-item" style="padding: 10px 14px; background: #f8fafc; border: 1px solid var(--border-color); border-radius: 10px; margin-bottom: 0;">
+                                    <input type="checkbox" name="cb_periode_slip" value="November"><span style="margin-left: 4px; font-weight: 600;">November</span>
+                                </label>
+                                <label class="checkbox-item" style="padding: 10px 14px; background: #f8fafc; border: 1px solid var(--border-color); border-radius: 10px; margin-bottom: 0;">
+                                    <input type="checkbox" name="cb_periode_slip" value="Desember"><span style="margin-left: 4px; font-weight: 600;">Desember</span>
+                                </label>
+                            </div>
+                            <input type="hidden" name="periode_slip_gaji" id="hiddenPeriodeSlip">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Email Tujuan <span>*</span></label>
+                            <div class="form-note">Masukkan alamat email tujuan untuk mengirimkan dokumen slip gaji.</div>
+                            <input type="email" name="email_tujuan_slip" id="inputEmailSlipGaji" class="form-control" placeholder="Contoh: hrd.bank@email.com">
+                        </div>
+                    </div>
+
                     <!-- SUB SECTION: SURAT LAINNYA -->
                     <div id="subDocLainnya" style="display: none;">
                         <div class="form-group">
@@ -3351,6 +3412,12 @@
                     </div>
 
                     <div class="declaration-box">
+                        <!-- Checkbox 1: Khusus Muncul Jika Pilih Slip Gaji -->
+                        <label class="checkbox-item" id="containerDecSlip" style="display: none;">
+                            <input type="checkbox" id="decDocSlip" onchange="validateDocDeclaration()">
+                            <span>Saya setuju untuk menjaga kerahasiaan dokumen slip gaji tersebut karena sifatnya confidential.</span>
+                        </label>
+                        <!-- Checkbox 2: Default Semua Pengajuan -->
                         <label class="checkbox-item">
                             <input type="checkbox" id="decDoc" onchange="validateDocDeclaration()">
                             <span>Saya menyatakan bahwa data yang diberikan benar dan dapat dipertanggungjawabkan, bersedia melengkapi dokumen/informasi tambahan jika diperlukan, dan memahami bahwa pengajuan diproses sesuai ketentuan serta SLA Human Capital.</span>
@@ -3529,6 +3596,43 @@
         </div>
     </div>
 
+    <!-- ==================== MONITORING DOKUMEN / SURAT ==================== -->
+    <div class="modal-overlay" id="modalMonDokumen">
+        <div class="modal-box" style="max-width: 1100px;">
+            <button class="modal-close" onclick="closeModal('modalMonDokumen')">&times;</button>
+            <h2 class="form-section-title">Monitoring Pengajuan Dokumen/Surat</h2>
+            <p class="form-section-subtitle">Daftar pemantauan status penerbitan dokumen dan surat resmi HCBP.</p>
+
+            <div class="table-search-bar">
+                <div class="search-input-box">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" id="searchMonDocInput" onkeyup="filterMonDocTable()" placeholder="Cari Berdasarkan Nama, NIK, Unit Kerja, atau Jenis Surat">
+                </div>
+                <button type="button" class="btn-see-all-table" onclick="resetMonDocSearch()">Reset</button>
+            </div>
+
+            <div class="table-responsive">
+                <table class="voice-table" id="tableMonDoc">
+                    <thead>
+                        <tr>
+                            <th>Nama Lengkap</th>
+                            <th>NIK</th>
+                            <th>Jabatan</th>
+                            <th>Divisi/BU</th>
+                            <th>Unit Kerja</th>
+                            <th>Area</th>
+                            <th>Jenis Pengajuan</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBodyMonDoc">
+                        <tr><td colspan="8" style="text-align:center;">Memuat data...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
     <!-- ==================== MONITORING KOS KARYAWAN ==================== -->
     <div class="modal-overlay" id="modalMonKosKaryawan">
         <div class="modal-box" style="max-width: 1100px;">
@@ -3556,12 +3660,13 @@
                             <th>Cabang</th>
                             <th>Lokasi Kerja</th>
                             <th>Jabatan</th>
-                            <th>Pengajuan</th>
+                            <th>Pengajuan Berdasarkan Surat Pernyataan</th>
+                            <th>Surat Pernyataan</th>
                             <th>Status</th>
                         </tr>
                     </thead>
                     <tbody id="tableBodyMonKos">
-                        <tr><td colspan="6" style="text-align:center;">Memuat data...</td></tr>
+                        <tr><td colspan="9" style="text-align:center;">Memuat data...</td></tr>
                     </tbody>
                 </table>
             </div>
@@ -4580,6 +4685,98 @@
             });
         }
 
+        // ==========================================
+        // SCRIPT MONITORING DOKUMEN/SURAT
+        // ==========================================
+
+        /* --- FETCH DATA MONITORING DOKUMEN --- */
+        function fetchMonDokumen() {
+            const tbody = document.getElementById("tableBodyMonDoc");
+            if (!tbody) return;
+            tbody.innerHTML = `<tr><td colspan="8" style="text-align:center;">Memuat data monitoring dokumen...</td></tr>`;
+
+            fetch(`${MONITORING_FETCH_URL}?sheet=Permintaan Dokumen/Surat`)
+                .then(res => res.json())
+                .then(res => {
+                    if (res.result === 'success' && res.data) {
+                        if (res.data.length === 0) {
+                            tbody.innerHTML = `<tr><td colspan="8" style="text-align:center;">Belum ada pengajuan dokumen/surat.</td></tr>`;
+                            return;
+                        }
+                        let html = "";
+                        res.data.slice().reverse().forEach(item => {
+                            let nama = item.nama || "-";
+                            let nik = item.nik || "-";
+                            let jabatan = item.jabatan || "-";
+                            let divisi = item.divisi || "-";
+                            let unit = item.unit || "-";
+                            let area = item.area || "-";
+                            
+                            // LOGIKA TIMPA TEKS (SWAP)
+                            let jenis = item.jenis || "-";
+                            // Jika milih "Surat Lainnya" dan kolom AC ada isinya, maka timpa teksnya
+                            if (jenis === "Surat Lainnya" && item.jenisLainnya && item.jenisLainnya !== "-") {
+                                jenis = item.jenisLainnya;
+                            }
+
+                            let status = item.status || "-";
+
+                            html += `<tr>
+                                <td><b>${nama}</b></td>
+                                <td>${nik}</td>
+                                <td>${jabatan}</td>
+                                <td>${divisi}</td>
+                                <td>${unit}</td>
+                                <td>${area}</td>
+                                <td>${jenis}</td>
+                                <td>${getStatusBadge(status)}</td>
+                            </tr>`;
+                        });
+                        tbody.innerHTML = html;
+                    } else {
+                        tbody.innerHTML = `<tr><td colspan="8" style="text-align:center;">Belum ada data pengajuan dokumen/surat.</td></tr>`;
+                    }
+                }).catch(err => { tbody.innerHTML = `<tr><td colspan="8" style="text-align:center; color:#dc2626;">Gagal memuat data monitoring dokumen.</td></tr>`; });
+        }
+
+        /* --- SEARCH FILTER MONITORING DOKUMEN --- */
+        function filterMonDocTable() {
+            let filter = document.getElementById("searchMonDocInput").value.toUpperCase();
+            let tr = document.getElementById("tableMonDoc").getElementsByTagName("tr");
+
+            for (let i = 1; i < tr.length; i++) {
+                // Cari di kolom Nama (0), NIK (1), Unit (4), dan Jenis (6)
+                let namaTd = tr[i].getElementsByTagName("td")[0];
+                let nikTd = tr[i].getElementsByTagName("td")[1];
+                let unitTd = tr[i].getElementsByTagName("td")[4];
+                let jenisTd = tr[i].getElementsByTagName("td")[6];
+
+                if (namaTd || nikTd || unitTd || jenisTd) {
+                    let namaVal = namaTd ? (namaTd.textContent || namaTd.innerText) : "";
+                    let nikVal = nikTd ? (nikTd.textContent || nikTd.innerText) : "";
+                    let unitVal = unitTd ? (unitTd.textContent || unitTd.innerText) : "";
+                    let jenisVal = jenisTd ? (jenisTd.textContent || jenisTd.innerText) : "";
+
+                    if (
+                        namaVal.toUpperCase().indexOf(filter) > -1 ||
+                        nikVal.toUpperCase().indexOf(filter) > -1 ||
+                        unitVal.toUpperCase().indexOf(filter) > -1 ||
+                        jenisVal.toUpperCase().indexOf(filter) > -1
+                    ) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
+
+        /* --- RESET SEARCH MONITORING DOKUMEN --- */
+        function resetMonDocSearch() {
+            document.getElementById("searchMonDocInput").value = "";
+            filterMonDocTable();
+        }
+
         /* --- FETCH DATA MONITORING KOS KARYAWAN --- */
         function fetchMonKos() {
             const tbody = document.getElementById("tableBodyMonKos");
@@ -4655,14 +4852,14 @@
         function fetchMonKos() {
             const tbody = document.getElementById("tableBodyMonKos");
             if (!tbody) return;
-            tbody.innerHTML = `<tr><td colspan="8" style="text-align:center;">Memuat data monitoring pengajuan kos...</td></tr>`;
+            tbody.innerHTML = `<tr><td colspan="9" style="text-align:center;">Memuat data monitoring pengajuan kos...</td></tr>`;
 
             fetch(`${MONITORING_FETCH_URL}?sheet=Kos Karyawan`)
                 .then(res => res.json())
                 .then(res => {
                     if (res.result === 'success' && res.data) {
                         if (res.data.length === 0) {
-                            tbody.innerHTML = `<tr><td colspan="8" style="text-align:center;">Belum ada pengajuan kos karyawan.</td></tr>`;
+                            tbody.innerHTML = `<tr><td colspan="9" style="text-align:center;">Belum ada pengajuan kos karyawan.</td></tr>`;
                             return;
                         }
                         let html = "";
@@ -4673,8 +4870,15 @@
                             let cabang = item.cabang || "-";
                             let lokasi = item.lokasi || "-";
                             let jabatan = item.jabatan || "-";
+                            let pengajuan_berdasarkan = item.pengajuan_berdasarkan || "-";
                             let pengajuan = item.pengajuan || "-";
                             let status = item.status || "-";
+                            
+                            // Format link menjadi tombol atau link yang bisa diklik
+                            let fileLink = pengajuan;
+                            if (pengajuan !== "-" && pengajuan.startsWith("http")) {
+                                fileLink = `<a href="${pengajuan}" target="_blank" style="color: var(--brand-blue); text-decoration: underline;">Lihat File</a>`;
+                            }
 
                             html += `<tr>
                                 <td><b>${nama}</b></td>
@@ -4683,15 +4887,16 @@
                                 <td>${cabang}</td>
                                 <td>${lokasi}</td>
                                 <td>${jabatan}</td>
-                                <td>${pengajuan}</td>
+                                <td>${pengajuan_berdasarkan}</td>
+                                <td>${fileLink}</td>
                                 <td>${getStatusBadge(status)}</td>
                             </tr>`;
                         });
                         tbody.innerHTML = html;
                     } else {
-                        tbody.innerHTML = `<tr><td colspan="8" style="text-align:center;">Belum ada data pengajuan kos karyawan.</td></tr>`;
+                        tbody.innerHTML = `<tr><td colspan="9" style="text-align:center;">Belum ada data pengajuan kos karyawan.</td></tr>`;
                     }
-                }).catch(err => { tbody.innerHTML = `<tr><td colspan="8" style="text-align:center; color:#dc2626;">Gagal memuat data monitoring kos.</td></tr>`; });
+                }).catch(err => { tbody.innerHTML = `<tr><td colspan="9" style="text-align:center; color:#dc2626;">Gagal memuat data monitoring kos.</td></tr>`; });
         }
 
         /* --- SEARCH FILTER MONITORING KOS --- */
@@ -4738,41 +4943,36 @@
 
         // 1. Fungsi Lanjut ke Section 2
         function goToDocSection2() {
-            // Validasi: pastikan semua form yang wajib di Section 1 sudah diisi
             const section1 = document.getElementById('docSection1');
             const inputs = section1.querySelectorAll('input[required], select[required]');
             let isValid = true;
             
             for (let i = 0; i < inputs.length; i++) {
                 if (!inputs[i].checkValidity()) {
-                    inputs[i].reportValidity(); // Memunculkan popup "Please fill out this field"
+                    inputs[i].reportValidity(); 
                     isValid = false;
                     break;
                 }
             }
             if (!isValid) return;
 
-            // Pindah halaman
             document.getElementById('docSection1').style.display = 'none';
             document.getElementById('docSection2').style.display = 'block';
 
-            // Sembunyikan semua sub-section dulu
+            // Reset Sembunyikan Semua
             document.getElementById('subDocKeteranganKerja').style.display = 'none';
             document.getElementById('subDocPengalamanKerja').style.display = 'none';
             document.getElementById('subDocRekomendasi').style.display = 'none';
             document.getElementById('subDocLainnya').style.display = 'none';
+            document.getElementById('subDocSlipGaji').style.display = 'none';
 
-            // Munculkan sub-section sesuai "Jenis Surat yang Dibutuhkan"
+            // Munculkan sesuai pilihan
             const jenisSurat = document.getElementById('jenisSuratDokumen').value;
-            if (jenisSurat === 'Surat Keterangan Kerja') {
-                document.getElementById('subDocKeteranganKerja').style.display = 'block';
-            } else if (jenisSurat === 'Surat Pengalaman Kerja') {
-                document.getElementById('subDocPengalamanKerja').style.display = 'block';
-            } else if (jenisSurat === 'Surat Rekomendasi') {
-                document.getElementById('subDocRekomendasi').style.display = 'block';
-            } else if (jenisSurat === 'Surat Lainnya') {
-                document.getElementById('subDocLainnya').style.display = 'block';
-            }
+            if (jenisSurat === 'Surat Keterangan Kerja') document.getElementById('subDocKeteranganKerja').style.display = 'block';
+            else if (jenisSurat === 'Surat Pengalaman Kerja') document.getElementById('subDocPengalamanKerja').style.display = 'block';
+            else if (jenisSurat === 'Surat Rekomendasi') document.getElementById('subDocRekomendasi').style.display = 'block';
+            else if (jenisSurat === 'Surat Lainnya') document.getElementById('subDocLainnya').style.display = 'block';
+            else if (jenisSurat === 'Dokumen Slip Gaji') document.getElementById('subDocSlipGaji').style.display = 'block';
         }
 
         // 2. Fungsi Kembali ke Section 1
@@ -4790,15 +4990,35 @@
             else if (jenisSurat === 'Surat Pengalaman Kerja') activeSubSectionId = 'subDocPengalamanKerja';
             else if (jenisSurat === 'Surat Rekomendasi') activeSubSectionId = 'subDocRekomendasi';
             else if (jenisSurat === 'Surat Lainnya') activeSubSectionId = 'subDocLainnya';
+            else if (jenisSurat === 'Dokumen Slip Gaji') activeSubSectionId = 'subDocSlipGaji';
 
-            // Validasi kolom di sub-section yang aktif
+            // LOGIKA VALIDASI KHUSUS SLIP GAJI (MULTI-SELECT BULAN)
+            if (jenisSurat === 'Dokumen Slip Gaji') {
+                const cbBulan = document.querySelectorAll('#subDocSlipGaji input[name="cb_periode_slip"]:checked');
+                if (cbBulan.length === 0) {
+                    alert("Harap pilih minimal 1 Periode Pengajuan (Bulan)!");
+                    return;
+                }
+                // Gabungin jadi teks dan taruh di hidden input
+                let selectedBulan = Array.from(cbBulan).map(cb => cb.value).join(", ");
+                document.getElementById('hiddenPeriodeSlip').value = selectedBulan;
+
+                // Wajibkan isian text
+                document.getElementById('inputTujuanSlipGaji').setAttribute('required', 'required');
+                document.getElementById('inputEmailSlipGaji').setAttribute('required', 'required');
+            } else {
+                document.getElementById('inputTujuanSlipGaji').removeAttribute('required');
+                document.getElementById('inputEmailSlipGaji').removeAttribute('required');
+            }
+
+            // Validasi kolom di sub-section yang aktif (Bawaan HTML)
             if (activeSubSectionId) {
                 const activeSubSection = document.getElementById(activeSubSectionId);
                 const inputs = activeSubSection.querySelectorAll('input[required], select[required], textarea[required]');
                 let isValid = true;
                 
                 for (let i = 0; i < inputs.length; i++) {
-                    if (inputs[i].offsetParent === null) continue; // Lewati jika input tersembunyi
+                    if (inputs[i].offsetParent === null) continue;
                     if (!inputs[i].checkValidity()) {
                         inputs[i].reportValidity();
                         isValid = false;
@@ -4807,6 +5027,17 @@
                 }
                 if (!isValid) return;
             }
+
+            // LOGIKA MENAMPILKAN CHECKBOX DI SECTION 3
+            if (jenisSurat === 'Dokumen Slip Gaji') {
+                document.getElementById('containerDecSlip').style.display = 'flex'; // Munculin Checkbox Confidential
+                document.getElementById('decDocSlip').checked = false; // Reset Centang
+            } else {
+                document.getElementById('containerDecSlip').style.display = 'none'; // Sembunyiin
+            }
+            
+            document.getElementById('decDoc').checked = false; // Reset Centang Default
+            validateDocDeclaration(); // Jalankan validasi biar tombol submit mati
 
             document.getElementById('docSection2').style.display = 'none';
             document.getElementById('docSection3').style.display = 'block';
@@ -4818,7 +5049,7 @@
             document.getElementById('docSection2').style.display = 'block';
         }
 
-        // 5. Fungsi Memunculkan Kolom Format Khusus (Jika pilih "Ya")
+        // 5. Fungsi Memunculkan Kolom Format Khusus
         function toggleFormatKhusus() {
             const selectFormat = document.getElementById('selectFormatKhusus');
             const groupFormat = document.getElementById('groupFormatKhususKet');
@@ -4836,9 +5067,18 @@
 
         // 6. Fungsi Validasi Centang "Saya menyatakan..." di Section Terakhir
         function validateDocDeclaration() {
+            const jenisSurat = document.getElementById('jenisSuratDokumen').value;
             const decDoc = document.getElementById('decDoc');
+            const decDocSlip = document.getElementById('decDocSlip');
             const btnSubmitDoc = document.getElementById('btnSubmitDoc');
-            if (decDoc && btnSubmitDoc) {
+            
+            if (!btnSubmitDoc) return;
+
+            if (jenisSurat === 'Dokumen Slip Gaji') {
+                // Keduanya harus dicentang
+                btnSubmitDoc.disabled = !(decDoc.checked && decDocSlip.checked);
+            } else {
+                // Cuma 1 yang harus dicentang
                 btnSubmitDoc.disabled = !decDoc.checked;
             }
         }
