@@ -9,6 +9,211 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
+        /* ==================== LOGIN SCREEN (NEW DESIGN) ==================== */
+        #loginScreen {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100vh;
+            background-color: #f4f7fb;
+            display: flex;
+            z-index: 99999;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .login-left {
+            flex: 1;
+            /* Ganti background-size dari 'cover' menjadi persentase untuk mengecilkan gambar */
+            background: url('team-hc.png.png') no-repeat center bottom;
+            background-size: 65%; /* Ubah angka ini (60% - 80%) sesuai selera besarnya gambar */
+            background-color: #ffffff; 
+            padding: 50px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .login-left-content {
+            max-width: 500px;
+            z-index: 2;
+        }
+
+        .login-left h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 5px;
+            line-height: 1.1;
+        }
+
+        .text-hc { color: #00428c; }
+        .text-connect { color: #ffc107; }
+
+        .login-left h3 {
+            font-size: 1.8rem;
+            color: #00428c;
+            font-style: italic;
+            margin-bottom: 15px;
+        }
+
+        .login-left p {
+            color: #475569;
+            font-size: 1.1rem;
+            line-height: 1.5;
+        }
+
+        /* Bagian Kanan (Form Login) */
+        .login-right {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #e0eaf5 0%, #f4f7fb 100%);
+        }
+
+        .login-card {
+            background: #ffffff;
+            padding: 50px 40px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+            width: 100%;
+            max-width: 450px;
+        }
+
+        .login-card h2 {
+            color: #00428c;
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .login-card p {
+            color: #64748b;
+            margin-bottom: 30px;
+        }
+
+        .input-group {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .input-group i.icon-left {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #94a3b8;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 14px 15px 14px 45px;
+            border: 1px solid #cbd5e1;
+            border-radius: 10px;
+            font-size: 1rem;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        .input-group input:focus { border-color: #00428c; }
+
+        .input-group i.icon-right {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #94a3b8;
+            cursor: pointer;
+        }
+
+        .login-options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            font-size: 0.9rem;
+        }
+
+        .login-options label {
+            color: #475569;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+        }
+
+        .login-options a {
+            color: #00428c;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .btn-primary-login {
+            width: 100%;
+            padding: 14px;
+            background-color: #00428c;
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-primary-login:hover { background-color: #003066; }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            text-align: center;
+            margin: 25px 0;
+            color: #94a3b8;
+            font-size: 0.9rem;
+        }
+
+        .divider::before, .divider::after {
+            content: '';
+            flex: 1;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .divider:not(:empty)::before { margin-right: 15px; }
+        .divider:not(:empty)::after { margin-left: 15px; }
+
+        .btn-ms-login {
+            width: 100%;
+            padding: 14px;
+            background-color: white;
+            color: #333;
+            border: 1px solid #cbd5e1;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-ms-login:hover { background-color: #f8fafc; }
+
+        #loginError {
+            color: #dc2626;
+            font-size: 0.85rem;
+            margin-top: 15px;
+            text-align: center;
+            display: none;
+        }
+
+        /* Responsif untuk layar kecil (HP) */
+        @media (max-width: 900px) {
+            #loginScreen { flex-direction: column; }
+            .login-left { display: none; } /* Sembunyikan gambar di HP biar fokus ke form */
+            .login-right { padding: 20px; }
+        }
+        
         /* --- 1. RESET & GLOBAL VARIABLES --- */
         :root {
             --brand-blue: #0f2c89;
@@ -1751,6 +1956,53 @@
     </style>
 </head>
 <body>
+    <!-- ==================== LOGIN SCREEN ==================== -->
+    <div id="loginScreen">
+        <!-- Bagian Kiri (Branding) -->
+        <div class="login-left">
+            <div class="login-left-content">
+                <!-- Ganti src di bawah dengan link logo Gadai MAS lo -->
+                <img src="logo.png" alt="Gadai MAS" style="width: 100px; margin-bottom: 15px;">
+                <h1><span class="text-hc">HC</span> <span class="text-connect">CONNECT</span></h1>
+                <h3>Together, Grow Stronger</h3>
+                <p>Your one-stop platform for HR information, services, and more.</p>
+            </div>
+            <!-- Lo bisa masukin background ilustrasi orang-orang itu lewat CSS .login-left tadi -->
+        </div>
+
+        <!-- Bagian Kanan (Form) -->
+        <div class="login-right">
+            <div class="login-card">
+                <h2>Welcome to<br>HC CONNECT</h2>
+                <p>Login to access your HR services</p>
+                
+                <div class="input-group">
+                    <i class="fa-regular fa-user icon-left"></i>
+                    <input type="text" id="usernameInput" placeholder="NIK">
+                </div>
+
+                <div class="input-group">
+                    <i class="fa-solid fa-lock icon-left"></i>
+                    <input type="password" id="passwordInput" placeholder="Password">
+                    <i class="fa-regular fa-eye-slash icon-right" id="togglePasswordBtn" onclick="togglePassword()"></i>
+                </div>
+
+                <div class="login-options">
+                    <label>
+                        <input type="checkbox"> Remember Me
+                    </label>
+                    <a href="#">Forgot Password?</a>
+                </div>
+
+                <button class="btn-primary-login" id="btnLoginSubmit" onclick="prosesLogin()">
+                    Login <i class="fa-solid fa-arrow-right"></i>
+                </button>
+                
+                <div id="loginError">Username atau Password salah!</div>
+            </div>
+        </div>
+    </div>
+    
     <!-- ➕ TAMBAHKAN BARIS INI TEPAT DI BAWAH BODY -->
     <div id="top-of-page"></div>
 
@@ -4301,17 +4553,64 @@
         const MONITORING_FETCH_URL = "https://script.google.com/macros/s/AKfycbzZDUrbSoP3AJcxeIIWcmF-ZxASJkb9IvtapqHX-4kj8zE222Tww63z7iEC9eH15W8v/exec";
         const APPS_SCRIPT_VOICE_URL = 'https://script.google.com/macros/s/AKfycbxKi5DIGtt6LqyFx6VUcE-xRJ3xakmW_3BvxbDXwH058zBIHb0g4ZlQd2f8uWvfH1a9/exec';
         const APPS_SCRIPT_KONSULTASI_URL = 'https://script.google.com/macros/s/AKfycbyotWwJE2RBJJ2qalgAfUz-kl7ME3EkBzap4EN9axaJTn4xpmP9XZZqzjTPrPT462Y/exec';
+        const APPS_SCRIPT_LOGIN_URL = "https://script.google.com/macros/s/AKfycbySr_PRyDcm6HpRMZL5h9-a7nhlg8h5BZe9lI4vZ5NRWFj0Ths9qbwFW0hL2G576J8/exec"
 
-        window.addEventListener('DOMContentLoaded', () => {
-            fetchVoiceData();
-            fetchMonMovement();
-            initKaizenConfetti();
-            checkBookedSlots(); // Memeriksa slot jadwal konsultasi yang sudah terisi saat halaman di-load
+        // ==========================================
+        // SCRIPT SISTEM LOGIN (CONNECT SPREADSHEET)
+        // ==========================================
+        
+        function togglePassword() {
+            const passInput = document.getElementById('passwordInput');
+            const toggleIcon = document.getElementById('togglePasswordBtn');
             
-            // Cek batasan tanggal untuk Form Kos & KDO Karyawan
-            checkKosDateRestriction();
-            checkKdoDateRestriction();
-        });
+            if (passInput.type === 'password') {
+                passInput.type = 'text';
+                toggleIcon.classList.remove('fa-eye-slash');
+                toggleIcon.classList.add('fa-eye');
+            } else {
+                passInput.type = 'password';
+                toggleIcon.classList.remove('fa-eye');
+                toggleIcon.classList.add('fa-eye-slash');
+            }
+        }
+
+        function prosesLogin() {
+            const user = document.getElementById('usernameInput').value;
+            const pass = document.getElementById('passwordInput').value;
+            const errorMsg = document.getElementById('loginError');
+            const btn = document.getElementById('btnLoginSubmit');
+
+            if (!user || !pass) {
+                errorMsg.innerText = "NIK/Email dan Password harus diisi!";
+                errorMsg.style.display = 'block';
+                return;
+            }
+
+            btn.innerHTML = `Memeriksa... <i class="fa-solid fa-circle-notch fa-spin"></i>`;
+            btn.disabled = true;
+            errorMsg.style.display = 'none';
+
+            fetch(`${APPS_SCRIPT_LOGIN_URL}?action=login&username=${encodeURIComponent(user)}&password=${encodeURIComponent(pass)}`)
+                .then(res => res.json())
+                .then(res => {
+                    btn.innerHTML = `Login <i class="fa-solid fa-arrow-right"></i>`;
+                    btn.disabled = false;
+                    
+                    if (res.result === 'success') {
+                        document.getElementById('loginScreen').style.display = 'none';
+                        document.getElementById('mainContent').style.display = 'block';
+                    } else {
+                        errorMsg.innerText = res.message || "Username atau Password salah!";
+                        errorMsg.style.display = 'block';
+                    }
+                })
+                .catch(err => {
+                    btn.innerHTML = `Login <i class="fa-solid fa-arrow-right"></i>`;
+                    btn.disabled = false;
+                    errorMsg.innerText = "Terjadi kesalahan koneksi jaringan. Coba lagi.";
+                    errorMsg.style.display = 'block';
+                });
+        }
 
         // ==========================================
         // SCRIPT TAMBAHAN UNTUK KDO KARYAWAN
